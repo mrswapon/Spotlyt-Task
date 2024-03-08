@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -102,6 +103,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+
       ),
     );
   }
