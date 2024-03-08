@@ -38,6 +38,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   get: ^4.6.6
   flutter_svg: ^2.0.10+1
+  curved_labeled_navigation_bar:
 
 dev_dependencies:
   flutter_test:

@@ -5,6 +5,8 @@ import 'package:spotlyt_task/views/screens/home/home_screen.dart';
 import 'views/screens/auth/selectroleScreen/selectrole_screen.dart';
 import 'views/screens/auth/signUpScreen/sign_up_screen.dart';
 
+import 'views/screens/bottom_nav_bar/bottom_nav_bar.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: (context, child) => GetMaterialApp(
+      builder: (context, child) => const GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Spotlyt Task',
         home: SignUpScreen(),
@@ -23,3 +25,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
