@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/views/screens/home/home_screen.dart';
 import 'views/screens/auth/selectroleScreen/selectrole_screen.dart';
+import 'views/screens/auth/signUpScreen/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: (context, child) => const GetMaterialApp(
+      builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Spotlyt Task',
-        home: SelectroleScreen(),
+        home: SignUpScreen(),
       ),
+        designSize:  const Size(393, 852)
     );
   }
 }
