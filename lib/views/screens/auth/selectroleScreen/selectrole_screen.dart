@@ -5,7 +5,6 @@ import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
-
 import '../../../../routes/app_routes.dart';
 
 class SelectroleScreen extends StatelessWidget {
@@ -22,25 +21,27 @@ class SelectroleScreen extends StatelessWidget {
             children: [
               //=============================> Text Section <=============================
               CustomText(
-                text: AppStrings.areYouLooking,
+                text: AppString.areYouLooking,
                 fontName: 'Lato/R 16',
                 bottom: 4.h,
                 maxline: 3,
               ),
               CustomText(
-                text: AppStrings.orToEarn,
+                text: AppString.orToEarn,
                 fontName: 'Lato/R 16',
                 bottom: 4.h,
                 maxline: 3,
               ),
               //=============================> Button Section <=============================
               SizedBox(height: 24.h),
-              CustomButton(title: AppStrings.requester, onpress: () {
-                Get.toNamed(AppRoutes.signUpScreen);
-              }),
+              CustomButton(
+                  title: AppString.requester,
+                  onpress: () {
+                    Get.toNamed(AppRoutes.signUpScreen);
+                  }),
               SizedBox(height: 16.h),
               CustomButton(
-                  title: AppStrings.tasker,
+                  title: AppString.tasker,
                   titlecolor: AppColors.primaryColor,
                   color: Colors.white,
                   onpress: () {}),
