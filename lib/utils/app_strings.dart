@@ -1,5 +1,7 @@
-class AppStrings {
-  //==========================> Selectrole Screen <=============================
+
+class AppString {
+  static const String requestForServices = "Request For Services";
+   //==========================> Selectrole Screen <=============================
   static String areYouLooking = "Are you looking to a task (requester)?";
   static String orToEarn = "Or, to earn by completing tasks (tasker)?";
   static String requester = "Requester";
@@ -17,6 +19,4 @@ class AppStrings {
   static String privacyPolicy = "Privacy Policy";
   static String alreadyHave = "Already have an account?";
   static String signIn = "Sign In";
-
-
 }
