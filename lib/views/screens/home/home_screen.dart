@@ -17,7 +17,10 @@ class HomeScreen extends StatelessWidget {
 
           CustomText(text: "Sagor ahamed",),
           Text("Sagor ahamed",style: TextStyle(fontSize: 20.h, fontWeight: FontWeight.w700)),
-          CustomText(text: "Sagor ahamed",fontWeight: FontWeight.w700, fontsize: 20.h,)
+          CustomText(text: "Sagor ahamed",fontWeight: FontWeight.w700, fontsize: 20.h),
+
+
+          Text("data")
 
         ],
       ),
