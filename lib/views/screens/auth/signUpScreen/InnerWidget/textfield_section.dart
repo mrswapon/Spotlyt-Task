@@ -45,7 +45,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 contenpaddingVertical: 14.h,
                 controller: _fullNameController,
                 prefixIcon: _customIcons(AppIcons.person),
-                hintText: AppStrings.fullName,
+                hintText: AppString.fullName,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your full name";
@@ -60,7 +60,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 contenpaddingVertical: 14.h,
                 controller: _emailController,
                 prefixIcon: _customIcons(AppIcons.mail),
-                hintText: AppStrings.email,
+                hintText: AppString.email,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your user email";
@@ -92,7 +92,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                     ),
                   ),
                 ),
-                hintText: AppStrings.createPassword,
+                hintText: AppString.createPassword,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your password";
@@ -124,7 +124,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                     ),
                   ),
                 ),
-                hintText: AppStrings.reenterPassword,
+                hintText: AppString.reenterPassword,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter aging your user password";
@@ -137,7 +137,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               //===============================> Sign Up Button <===============================
               SizedBox(height: 44.h),
               CustomButton(
-                  title: AppStrings.signUps,
+                  title: AppString.signUps,
                   onpress: () {
                     if (_formKey.currentState!.validate()) {
                       Get.offAllNamed(AppRoutes.selectroleScreen);
@@ -149,7 +149,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomText(
-                    text: AppStrings.alreadyHave,
+                    text: AppString.alreadyHave,
                     fontWeight: FontWeight.w500,
                     fontsize: 15.h,
                     fontName: 'Lato',
@@ -157,7 +157,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   SizedBox(width: 10.w),
                   CustomText(
                     color: AppColors.primaryColor,
-                    text: AppStrings.signIn,
+                    text: AppString.signIn,
                     fontWeight: FontWeight.w500,
                     fontsize: 15.h,
                     fontName: 'Lato',
@@ -213,7 +213,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               //===============================> By Creating An Account TextSpan Section <===============================
               children: <TextSpan>[
                 TextSpan(
-                  text: AppStrings.byCreating,
+                  text: AppString.byCreating,
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: Dimensions.fontSizeDefault,
@@ -223,7 +223,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   ),
                 ),
                 TextSpan(
-                  text: AppStrings.termsOfServices,
+                  text: AppString.termsOfServices,
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     overflow: TextOverflow.ellipsis,
@@ -242,7 +242,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   ),
                 ),
                 TextSpan(
-                    text: AppStrings.privacyPolicy,
+                    text: AppString.privacyPolicy,
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: Dimensions.fontSizeDefault,

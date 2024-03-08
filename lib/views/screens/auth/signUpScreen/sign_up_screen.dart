@@ -20,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       //===============================> AppBar Section <===============================
       appBar: AppBar(
         title: CustomText(
-          text: AppStrings.signUp,
+          text: AppString.signUp,
           fontName: 'Lato/M 18',
           fontsize: 18.sp,
           fontWeight: FontWeight.w500,
