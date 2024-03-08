@@ -22,11 +22,13 @@ class SelectroleScreen extends StatelessWidget {
                 text: AppStrings.areYouLooking,
                 fontName: 'Lato/R 16',
                 bottom: 4.h,
+                maxline: 3,
               ),
               CustomText(
                 text: AppStrings.orToEarn,
                 fontName: 'Lato/R 16',
                 bottom: 4.h,
+                maxline: 3,
               ),
               //=============================> Button Section <=============================
               SizedBox(height: 24.h),
