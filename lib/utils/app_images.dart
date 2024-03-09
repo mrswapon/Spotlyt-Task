@@ -3,7 +3,7 @@ class AppImages{
 
 
   ///------------------------dynamic------------------------>
-  static const String sagor = "$path/sagor.jpg";
+  static const String sagor = "$path/profile_Image.png";
 
 
 

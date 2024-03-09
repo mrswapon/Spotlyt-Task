@@ -34,11 +34,13 @@ class SelectroleScreen extends StatelessWidget {
               ),
               //=============================> Button Section <=============================
               SizedBox(height: 24.h),
+
               CustomButton(
                   title: AppString.requester,
                   onpress: () {
                     Get.toNamed(AppRoutes.signUpScreen);
                   }),
+
               SizedBox(height: 16.h),
               CustomButton(
                   title: AppString.tasker,

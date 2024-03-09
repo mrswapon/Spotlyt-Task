@@ -33,4 +33,8 @@ class AppString {
   static String dontHaveAccount = "Don’t have an account?";
   static String password = "Password";
 
+  ///----------------------------services screen----------------------------------------->
+  static String requestForService = "Request for a Service";
+  static String selectCategoryThatYouWantService = "Select Category that you want service for";
+
 }
