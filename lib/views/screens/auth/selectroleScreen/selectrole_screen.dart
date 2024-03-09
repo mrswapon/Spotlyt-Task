@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
+import '../../../../routes/app_routes.dart';
 
 class SelectroleScreen extends StatelessWidget {
   const SelectroleScreen({super.key});
@@ -32,7 +34,13 @@ class SelectroleScreen extends StatelessWidget {
               ),
               //=============================> Button Section <=============================
               SizedBox(height: 24.h),
-              CustomButton(title: AppString.requester, onpress: () {}),
+
+              CustomButton(
+                  title: AppString.requester,
+                  onpress: () {
+                    Get.toNamed(AppRoutes.signUpScreen);
+                  }),
+
               SizedBox(height: 16.h),
               CustomButton(
                   title: AppString.tasker,

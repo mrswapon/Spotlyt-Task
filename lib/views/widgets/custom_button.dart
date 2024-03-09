@@ -28,7 +28,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         width: 353.w,
         height: height ?? 52.h,
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.h),
         decoration: color == null
             ? ShapeDecoration(
                 color: const Color(0xFF318130),
@@ -48,9 +48,9 @@ class CustomButton extends StatelessWidget {
           children: [
             CustomText(
               text: title,
-              fontsize: fontSize ?? 20.h,
+              fontsize: fontSize ?? 18.h,
               color: titlecolor ?? Colors.white,
-              fontName: 'Lato/S B 18',
+              fontName: 'Lato',
               fontWeight: FontWeight.w400,
             ),
           ],
