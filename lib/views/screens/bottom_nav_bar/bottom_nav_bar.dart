@@ -13,15 +13,15 @@ import '../../../utils/app_icons.dart';
 import '../task/task_screen.dart';
 
 
-class BottomNavBars extends StatefulWidget {
-  const BottomNavBars({super.key});
+class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({super.key});
 
 
   @override
-  State<BottomNavBars> createState() => _BottomNavBarsState();
+  State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class _BottomNavBarsState extends State<BottomNavBars> {
+class _BottomNavBarState extends State<BottomNavBar> {
   int _index = 0;
 
 

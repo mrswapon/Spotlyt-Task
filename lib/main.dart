@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) =>  GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Spotlyt Task',
-        home: ServicesScreen(),
+        home: BottomNavBar(),
+      )
     );
   }
 }
