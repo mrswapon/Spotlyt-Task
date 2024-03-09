@@ -46,13 +46,12 @@ class AppString {
 
 //==========================> Settings Screen <=============================
   static String settings = "Settings";
-  static String changePassword = "Change password";
+  static String changePassword = "Change Password";
   static String privacyPolicys = "Privacy policy";
   static String termsAndConditions = "Terms & Conditions";
-  static String aboutUs = "About us";
+  static String aboutUs = "About Us";
 
 //==========================> Change Password Screen <=============================
-  static String changePasswords = "Change Password";
   static String oldPassword = "Old password";
   static String reEnterPassword = "Re-enter new password";
 

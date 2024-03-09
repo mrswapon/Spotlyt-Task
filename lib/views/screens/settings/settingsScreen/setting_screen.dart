@@ -90,7 +90,7 @@ class SettingsScreen extends StatelessWidget {
             //=================================> About Us Section <=======================
             GestureDetector(
               onTap: () {
-                //Get.toNamed(AppRoutes.aboutusScreen);
+                Get.toNamed(AppRoutes.aboutusScreen);
               },
               child: CustomListTile(
                 title: AppString.aboutUs,

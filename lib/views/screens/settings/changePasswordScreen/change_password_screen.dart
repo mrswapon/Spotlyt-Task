@@ -162,7 +162,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     SizedBox(height: 367.h),
                     //===============================> Change Password Button <===============================
                     CustomButton(
-                        title: AppString.changePasswords,
+                        title: AppString.changePassword,
                         onpress: () {
                           if (_formKey.currentState!.validate()) {
                             Get.toNamed(AppRoutes.verifyOtpScreen);
