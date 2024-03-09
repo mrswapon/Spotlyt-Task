@@ -244,7 +244,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                       }
                 ),
                 const TextSpan(
-                  text: ' And ',
+                  text: ' and ',
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: Dimensions.fontSizeDefault,
