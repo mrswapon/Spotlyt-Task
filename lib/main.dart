@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
         title: 'Spotlyt Task',
         theme: Themes().lightTheme,
         darkTheme: Themes().darkTheme,
-        initialRoute: AppRoutes.settingsScreen,
+        initialRoute: AppRoutes.signUpScreen,
         getPages: AppRoutes.routes,
-        home: SettingsScreen(),
+        home: SignUpScreen(),
       ),
         designSize:  const Size(393, 852)
     );
