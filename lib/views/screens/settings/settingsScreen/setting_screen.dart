@@ -27,14 +27,14 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: Dimensions.paddingSizeDefault),
+            horizontal: Dimensions.paddingSizeLarge),
         child: Column(
           children: [
             SizedBox(height: 24.h),
             //=================================> Change Password Section <=======================
             GestureDetector(
               onTap: () {
-                //Get.toNamed(AppRoutes.changepasswordScreen);
+                Get.toNamed(AppRoutes.changePasswordScreen);
               },
               child: CustomListTile(
                 title: AppString.changePassword,
