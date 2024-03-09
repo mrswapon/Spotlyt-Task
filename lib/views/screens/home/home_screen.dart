@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import '../../../utils/app_icons.dart';
 import 'inner_widgets/cetegories_and_services_card.dart';
@@ -45,6 +47,9 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: 16.h,),
                     ///-------------------------------social media card--------------------------->
                     CetegoriesAndServicesCard(
+                      ontap: (){
+                        Get.toNamed(AppRoutes.servicesScreen);
+                      },
                       title: "Social Media",
                       servicesInfo: const [
                         "  • REQUEST LIKES",
@@ -75,6 +80,9 @@ class HomeScreen extends StatelessWidget {
             
                     ///-------------------------------Video card--------------------------->
                     CetegoriesAndServicesCard(
+                      ontap: (){
+                        Get.toNamed(AppRoutes.servicesScreen);
+                      },
                       title: "Video",
                       servicesInfo: const [
                         "  • REQUEST VIEWS",
@@ -96,6 +104,9 @@ class HomeScreen extends StatelessWidget {
             
                     ///-------------------------------Corporate card--------------------------->
                     CetegoriesAndServicesCard(
+                      ontap: (){
+                        Get.toNamed(AppRoutes.servicesScreen);
+                      },
                       title: "Corporate",
                       servicesInfo: const [
                         "  • SIGN UP TO SERVICES",

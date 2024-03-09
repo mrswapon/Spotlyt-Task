@@ -11,12 +11,14 @@ import '../../../widgets/cetegory_botton.dart';
 import '../../../widgets/custom_text.dart';
 
 class CetegoriesAndServicesCard extends StatelessWidget {
+   VoidCallback? ontap;
   final String? title;
   final List? servicesInfo;
   final List categories;
 
 
-  CetegoriesAndServicesCard({this.title, this.servicesInfo, required this.categories});
+
+  CetegoriesAndServicesCard({this.title, this.servicesInfo, required this.categories, this.ontap});
 
 
 
@@ -129,19 +131,25 @@ class CetegoriesAndServicesCard extends StatelessWidget {
             ///-------------------------------------request for serviecs botton-------------------------------------->
             Padding(
               padding:  EdgeInsets.only(bottom: 15.h, right: 15.w, left: 15.w),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(color: AppColors.primaryColor)),
-                child: Center(
-                    child: CustomText(
-                      text: AppString.requestForServices,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.primaryColor,
-                      bottom: 12.h,
-                      top: 12.h,
-                    )),
+              child: GestureDetector(
+
+                ///-------------------ontap ------------->
+                onTap: ontap,
+
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(color: AppColors.primaryColor)),
+                  child: Center(
+                      child: CustomText(
+                        text: AppString.requestForServices,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor,
+                        bottom: 12.h,
+                        top: 12.h,
+                      )),
+                ),
               ),
             ),
 
