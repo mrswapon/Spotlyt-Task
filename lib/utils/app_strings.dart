@@ -1,7 +1,6 @@
-
 class AppString {
   static const String requestForServices = "Request For Services";
-   //==========================> Selectrole Screen <=============================
+  //==========================> Selectrole Screen <=============================
   static String areYouLooking = "Are you looking to a task (requester)?";
   static String orToEarn = "Or, to earn by completing tasks (tasker)?";
   static String requester = "Requester";
@@ -22,7 +21,8 @@ class AppString {
 
   //==========================> Verify OTP Screen <=============================
   static String verifyOTP = "Verify OTP";
-  static String weHaveSent = "We have sent a verification code to your email address. Please check and enter the code here.";
+  static String weHaveSent =
+      "We have sent a verification code to your email address. Please check and enter the code here.";
   static String didntRecieve = "Didn’t recieve the code?";
   static String resend = "Resend";
   static String verify = "Verify";
@@ -33,13 +33,37 @@ class AppString {
   static String dontHaveAccount = "Don’t have an account?";
   static String password = "Password";
 
+//==========================> Forgot password Screen <=============================
+  static String forgotpassword = "Forgot password";
+  static String enterEmail = "Enter email address to reset password.";
+  static String getOTP = "Get OTP";
+
+//==========================> Reset password Screen <=============================
+  static String resetpassword = "Reset password";
+  static String resetPassword = "Reset Password";
+  static String setNewPassword = "Set new Password";
+  static String confirmPassword = "Confirm Password";
+
+//==========================> Settings Screen <=============================
+  static String settings = "Settings";
+  static String changePassword = "Change Password";
+  static String privacyPolicys = "Privacy policy";
+  static String termsAndConditions = "Terms & Conditions";
+  static String aboutUs = "About Us";
+
+//==========================> Change Password Screen <=============================
+  static String oldPassword = "Old password";
+  static String reEnterPassword = "Re-enter new password";
+
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
+
   static String selectCategoryThatYouWantService = "Select Category that you want service for";
   static String selectTheRequiredServiceyouWant = "Select the required service you want";
   static String addQuantity = "Add Quantity";
   static String addLink = "Add Link";
   static String totalPayable = "Total Payable";
   static String selectTimeline = "Select Timeline";
-
+  static String selectCategoryThatYouWantService = "Select Category that you want service for";
 }
+

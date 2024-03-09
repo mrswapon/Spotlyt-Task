@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/themes/app_themes.dart';
 import 'routes/app_routes.dart';
 import 'views/screens/bottom_nav_bar/bottom_nav_bar.dart';
+import 'views/screens/settings/settingsScreen/setting_screen.dart';
 
 void main() {
   runApp(const MyApp());

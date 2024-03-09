@@ -26,6 +26,8 @@ class AppIcons {
   static const String profile = "$path/profile.svg";
   static const String radioButton = "$path/radio_button.svg";
   static const String linkIcon = "$path/linkIcon.svg";
+  static const String rightArrow = "$path/rightArrow.svg";
+
 
 }
 
