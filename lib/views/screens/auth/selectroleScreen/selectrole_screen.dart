@@ -19,23 +19,23 @@ class SelectroleScreen extends StatelessWidget {
             children: [
               //=============================> Text Section <=============================
               CustomText(
-                text: AppStrings.areYouLooking,
+                text: AppString.areYouLooking,
                 fontName: 'Lato/R 16',
                 bottom: 4.h,
                 maxline: 3,
               ),
               CustomText(
-                text: AppStrings.orToEarn,
+                text: AppString.orToEarn,
                 fontName: 'Lato/R 16',
                 bottom: 4.h,
                 maxline: 3,
               ),
               //=============================> Button Section <=============================
               SizedBox(height: 24.h),
-              CustomButton(title: AppStrings.requester, onpress: () {}),
+              CustomButton(title: AppString.requester, onpress: () {}),
               SizedBox(height: 16.h),
               CustomButton(
-                  title: AppStrings.tasker,
+                  title: AppString.tasker,
                   titlecolor: AppColors.primaryColor,
                   color: Colors.white,
                   onpress: () {}),
