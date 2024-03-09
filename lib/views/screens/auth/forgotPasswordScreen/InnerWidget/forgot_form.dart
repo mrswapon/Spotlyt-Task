@@ -28,7 +28,6 @@ class _ForgotFormState extends State<ForgotForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SizedBox(height: 11.h),
               //===============================> Email Text-field <===============================
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
@@ -49,7 +48,7 @@ class _ForgotFormState extends State<ForgotForm> {
                   title: AppString.getOTP,
                   onpress: () {
                     if (_formKey.currentState!.validate()) {
-                      Get.offAllNamed(AppRoutes.verifyOtpScreen);
+                      Get.toNamed(AppRoutes.resetPasswordScreen);
                     }
                   }),
             ],
@@ -61,8 +60,8 @@ class _ForgotFormState extends State<ForgotForm> {
 
   //===============================> Custom Icons Method <===============================
   _customIcons(
-      String icon,
-      ) {
+    String icon,
+  ) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.w),
       child: SvgPicture.asset(

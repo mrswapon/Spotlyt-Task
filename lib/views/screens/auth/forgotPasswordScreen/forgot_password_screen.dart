@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
-import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text.dart';
 import 'InnerWidget/forgot_form.dart';
 
@@ -19,7 +15,7 @@ class ForgotPasswordScreen extends StatelessWidget {
       //===============================> AppBar Section <===============================
       appBar: AppBar(
         title: CustomText(
-          text: AppString.verifyOTP,
+          text: AppString.forgotpassword,
           fontName: 'Lato/M 18',
           fontsize: 18.sp,
           fontWeight: FontWeight.w500,
@@ -31,31 +27,25 @@ class ForgotPasswordScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //=================================> PasswordOutline Image Section <===============================
               SizedBox(height: 123.h),
               Center(
-                  child: Image.asset(AppImages.passwordOutline,
+                  child: Image.asset(AppImages.mailOutline,
                       width: 94.5.w, height: 120.h)),
               SizedBox(height: 24.h),
               CustomText(
                 textAlign: TextAlign.start,
                 maxline: 5,
-                text: AppString.weHaveSent,
+                text: AppString.enterEmail,
                 fontName: 'Lato',
                 fontsize: 16.sp,
               ),
               //=================================> PinCodeField Section <===============================
               SizedBox(height: 24.h),
               ForgotForm(),
-              //=================================> Didn’t recieve the code? Section <===============================
 
-              //=================================>  Section <===============================
-              SizedBox(height: 39.h),
-              CustomButton(title: AppString.getOTP, onpress: () {
-                Get.toNamed(AppRoutes.signInScreen);
-              })
             ],
           ),
         ),

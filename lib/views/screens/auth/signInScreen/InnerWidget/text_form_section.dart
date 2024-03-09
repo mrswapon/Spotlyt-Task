@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
-import '../../../../../utils/app_dimentions.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_strings.dart';
 import '../../../../widgets/custom_button.dart';
@@ -84,7 +82,9 @@ class _TextFormSectionState extends State<TextFormSection> {
               ),
               SizedBox(height: 16.h),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.forgotPasswordScreen);
+                },
                 child: CustomText(
                   text: AppString.forgotPassword,
                   fontWeight: FontWeight.w600,
@@ -94,7 +94,7 @@ class _TextFormSectionState extends State<TextFormSection> {
                 ),
               ),
 
-              //===============================> Sign Up Button <===============================
+              //===============================> Sign In Button <===============================
               SizedBox(height: 24.h),
               CustomButton(
                   title: AppString.signIn,
@@ -104,7 +104,7 @@ class _TextFormSectionState extends State<TextFormSection> {
                     }
                   }),
               SizedBox(height: 235.h),
-              //===============================> Already have an account Section <===============================
+              //===============================> Don’t have an account Section <===============================
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -136,7 +136,6 @@ class _TextFormSectionState extends State<TextFormSection> {
       ],
     );
   }
-
   //===============================> Custom Icons Method <===============================
   _customIcons(
     String icon,

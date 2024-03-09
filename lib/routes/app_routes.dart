@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
+import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
 import '../views/screens/auth/signInScreen/sign_in_screen.dart';
 import '../views/screens/auth/signUpScreen/sign_up_screen.dart';
@@ -15,6 +16,7 @@ class AppRoutes {
   static const String servicesScreen = "/ServicesScreen.dart";
   static const String bottomNavBar = "/BottomNavBar.dart";
   static const String forgotPasswordScreen = "/forgot_password_screen.dart";
+  static const String resetPasswordScreen = "/reset_password_screen.dart";
 
   static List<GetPage> get routes => [
         GetPage(name: selectroleScreen, page: () => SelectroleScreen()),
@@ -24,5 +26,6 @@ class AppRoutes {
         GetPage(name: servicesScreen, page: () => ServicesScreen()),
         GetPage(name: bottomNavBar, page: () => BottomNavBar()),
         GetPage(name: forgotPasswordScreen, page: () => ForgotPasswordScreen()),
+        GetPage(name: resetPasswordScreen, page: () => ResetPasswordScreen()),
       ];
 }
