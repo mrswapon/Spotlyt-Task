@@ -7,7 +7,7 @@ import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
-import '../../../widgets/cetegory_botton.dart';
+import 'cetegory_botton.dart';
 import '../../../widgets/custom_text.dart';
 
 class CetegoriesAndServicesCard extends StatelessWidget {
