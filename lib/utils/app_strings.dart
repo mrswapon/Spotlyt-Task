@@ -64,6 +64,5 @@ class AppString {
   static String addLink = "Add Link";
   static String totalPayable = "Total Payable";
   static String selectTimeline = "Select Timeline";
-  static String selectCategoryThatYouWantService = "Select Category that you want service for";
 }
 
