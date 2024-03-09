@@ -33,6 +33,12 @@ class AppString {
   static String dontHaveAccount = "Don’t have an account?";
   static String password = "Password";
 
+//==========================> Forgot password Screen <=============================
+  static String forgotpassword = "Forgot password";
+  static String enterEmail = "Enter email address to reset password.";
+  static String getOTP = "Get OTP";
+
+
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
   static String selectCategoryThatYouWantService = "Select Category that you want service for";

@@ -17,10 +17,10 @@ class TextFormSection extends StatefulWidget {
   const TextFormSection({super.key});
 
   @override
-  State<TextFormSection> createState() => _TextfieldSectionState();
+  State<TextFormSection> createState() => _TextFormSectionState();
 }
 
-class _TextfieldSectionState extends State<TextFormSection> {
+class _TextFormSectionState extends State<TextFormSection> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
