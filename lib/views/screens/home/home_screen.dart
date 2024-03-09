@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                     ///-------------------------------Video card--------------------------->
                     CetegoriesAndServicesCard(
                       ontap: (){
-                        Get.toNamed(AppRoutes.servicesScreen);
+                        Get.toNamed(AppRoutes.videoServicesScreen);
                       },
                       title: "Video",
                       servicesInfo: const [
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                     ///-------------------------------Corporate card--------------------------->
                     CetegoriesAndServicesCard(
                       ontap: (){
-                        Get.toNamed(AppRoutes.servicesScreen);
+                        Get.toNamed(AppRoutes.corporateServicesScreen);
                       },
                       title: "Corporate",
                       servicesInfo: const [

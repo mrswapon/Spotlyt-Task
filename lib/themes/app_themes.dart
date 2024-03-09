@@ -36,19 +36,24 @@ class Themes {
 
 
       ///-------------------text field style---------------------------->
-      // inputDecorationTheme: InputDecorationTheme(
-      //
-      //     focusedBorder: OutlineInputBorder(
-      //       borderRadius: BorderRadius.circular(Dimensions.radiusDefault.r),
-      //       borderSide: const BorderSide(color: Colors.black),
-      //     ),
-      //
-      //     border: OutlineInputBorder(
-      //       borderRadius: BorderRadius.circular(Dimensions.radiusDefault.r),
-      //       borderSide: const BorderSide(color: Colors.black),
-      //     ),
-      //     hintStyle: TextStyle(fontSize: 12.h, fontWeight: FontWeight.w400,color: AppColors.hintColor,fontStyle: FontStyle.italic, )
-      // )
+      inputDecorationTheme: InputDecorationTheme(
+
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(color: AppColors.primaryColor),
+          ),
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(color: AppColors.primaryColor),
+          ),
+
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(color: AppColors.primaryColor),
+          ),
+          hintStyle: TextStyle(fontSize: 16.h, fontWeight: FontWeight.w400,color: Color(0xff767676))
+      )
   );
 
 
