@@ -57,6 +57,12 @@ class AppString {
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
-  static String selectCategoryThatYouWantService =
-      "Select Category that you want service for";
+
+  static String selectCategoryThatYouWantService = "Select Category that you want service for";
+  static String selectTheRequiredServiceyouWant = "Select the required service you want";
+  static String addQuantity = "Add Quantity";
+  static String addLink = "Add Link";
+  static String totalPayable = "Total Payable";
+  static String selectTimeline = "Select Timeline";
 }
+
