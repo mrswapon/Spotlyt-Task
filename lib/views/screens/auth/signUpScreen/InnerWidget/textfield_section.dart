@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -127,7 +128,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 hintText: AppString.reenterPassword,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Please enter aging your user password";
+                    return "Please enter again your user password";
                   }
                   return null;
                 },
@@ -140,7 +141,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   title: AppString.signUps,
                   onpress: () {
                     if (_formKey.currentState!.validate()) {
-                      Get.offAllNamed(AppRoutes.selectroleScreen);
+                      Get.offAllNamed(AppRoutes.verifyOtpScreen);
                     }
                   }),
               SizedBox(height: 64.h),
@@ -154,13 +155,18 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                     fontsize: 15.h,
                     fontName: 'Lato',
                   ),
-                  SizedBox(width: 10.w),
-                  CustomText(
-                    color: AppColors.primaryColor,
-                    text: AppString.signIn,
-                    fontWeight: FontWeight.w500,
-                    fontsize: 15.h,
-                    fontName: 'Lato',
+                  SizedBox(width: 5.w),
+                  GestureDetector(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.signInScreen);
+                    },
+                    child: CustomText(
+                      color: AppColors.primaryColor,
+                      text: AppString.signIn,
+                      fontWeight: FontWeight.w500,
+                      fontsize: 15.h,
+                      fontName: 'Lato',
+                    ),
                   )
                 ],
               ),
