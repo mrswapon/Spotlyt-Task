@@ -72,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
 
             GestureDetector(
               onTap: () {
-                //Get.toNamed(AppRoutes.termsconditionsScreen);
+                Get.toNamed(AppRoutes.termsConditionScreen);
               },
               child: CustomListTile(
                 title: AppString.termsAndConditions,

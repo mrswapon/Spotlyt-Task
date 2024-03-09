@@ -48,7 +48,7 @@ class AppString {
   static String settings = "Settings";
   static String changePassword = "Change password";
   static String privacyPolicys = "Privacy policy";
-  static String termsAndConditions = "Terms & conditions";
+  static String termsAndConditions = "Terms & Conditions";
   static String aboutUs = "About us";
 
 //==========================> Change Password Screen <=============================
