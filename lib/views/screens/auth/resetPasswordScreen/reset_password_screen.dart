@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
-import 'InnerWidget/text_form_section.dart';
+import 'InnerWidget/reset_form.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class SignInScreen extends StatelessWidget {
       //===============================> AppBar Section <===============================
       appBar: AppBar(
         title: CustomText(
-          text: AppString.signin,
+          text: AppString.resetpassword,
           fontName: 'Lato/M 18',
           fontsize: 18.sp,
           fontWeight: FontWeight.w500,
@@ -27,14 +28,16 @@ class SignInScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 88.h),
+              //=================================> SetPasswordOutline Image Section <===============================
+              SizedBox(height: 134.h),
               Center(
-                  child: Image.asset(AppImages.appLogo,
-                      width: 171.w, height: 49.h)),
-              //=================================> Text-field Section <===============================
-              TextFormSection(),
+                  child: Image.asset(AppImages.setPasswordOutline,
+                      width: 94.5.w, height: 120.h)),
+              //=================================> PinCodeField Section <===============================
+              SizedBox(height: 20.h),
+              ResetForm(),
             ],
           ),
         ),
