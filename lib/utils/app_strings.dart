@@ -44,6 +44,18 @@ class AppString {
   static String setNewPassword = "Set new Password";
   static String confirmPassword = "Confirm Password";
 
+//==========================> Settings Screen <=============================
+  static String settings = "Settings";
+  static String changePassword = "Change password";
+  static String privacyPolicys = "Privacy policy";
+  static String termsAndConditions = "Terms & conditions";
+  static String aboutUs = "About us";
+
+//==========================> Change Password Screen <=============================
+  static String changePasswords = "Change Password";
+  static String oldPassword = "Old password";
+  static String reEnterPassword = "Re-enter new password";
+
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
   static String selectCategoryThatYouWantService =

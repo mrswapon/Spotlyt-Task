@@ -24,6 +24,7 @@ class AppIcons {
   static const String home = "$path/home.svg";
   static const String task = "$path/task.svg";
   static const String profile = "$path/profile.svg";
+  static const String rightArrow = "$path/rightArrow.svg";
 
 }
 
