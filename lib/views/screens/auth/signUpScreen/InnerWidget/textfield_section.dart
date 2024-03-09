@@ -237,6 +237,11 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                     color: AppColors.primaryColor,
                     fontFamily: "Lato/R 14",
                   ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        //==========================> on tap here <==========================
+                        Get.toNamed(AppRoutes.termsConditionScreen);
+                      }
                 ),
                 const TextSpan(
                   text: ' And ',
@@ -258,6 +263,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         //==========================> on tap here <==========================
+                        Get.toNamed(AppRoutes.privacyPolicyScreen);
                       }),
               ],
             ),
