@@ -88,25 +88,6 @@ class CetegoriesAndServicesCard extends StatelessWidget {
                   ),
 
 
-
-                  // const Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     CetegoryBotton(
-                  //       icon: AppIcons.facebook,
-                  //       name: "Facebook",
-                  //     ),
-                  //     CetegoryBotton(
-                  //       icon: AppIcons.instagram,
-                  //       name: "Instagram",
-                  //     ),
-                  //     CetegoryBotton(
-                  //       icon: AppIcons.tiktok,
-                  //       name: "Tiktok",
-                  //     )
-                  //   ],
-                  // ),
-
                   ///------------------------------------Services: text---------------------------->
                   CustomText(
                     text: "Services:",
@@ -123,6 +104,7 @@ class CetegoriesAndServicesCard extends StatelessWidget {
                   SizedBox(
                     height: 120.h,
                     child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: servicesInfo!.length,
                       itemBuilder: (context, index) {
                         var info = servicesInfo![index];

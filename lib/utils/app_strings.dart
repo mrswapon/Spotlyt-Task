@@ -19,4 +19,15 @@ class AppString {
   static String privacyPolicy = "Privacy Policy";
   static String alreadyHave = "Already Have An Account?";
   static String signIn = "Sign In";
+
+
+
+
+  ///----------------------------services screen----------------------------------------->
+  static String requestForService = "Request for a Service";
+  static String selectCategoryThatYouWantService = "Select Category that you want service for";
+
+
+
+
 }
