@@ -20,9 +20,9 @@ class PersonalInformationScreen extends StatelessWidget {
         leading: const SizedBox(),
         title: CustomText(
           text: AppString.personalInformation,
-          fontName: 'Aldrich',
+          fontName: 'Lato',
           fontsize: 18.h,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
         ),
         centerTitle: true,
       ),
@@ -52,6 +52,9 @@ class PersonalInformationScreen extends StatelessWidget {
             SizedBox(height: 16.h),
             CustomListTile(
                 title: '20-01-1996', prefixIcon: _prefixIcon(AppIcons.calendar)),
+            SizedBox(height: 16.h),
+            CustomListTile(
+                title: '845633266107207576', prefixIcon: _prefixIcon(AppIcons.creditCard)),
             SizedBox(height: 16.h),
             CustomListTile(
               title: '2972 Westheimer Rd. Santa Ana, Illinois 85486 ',

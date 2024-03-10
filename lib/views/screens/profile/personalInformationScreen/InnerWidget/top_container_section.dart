@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_images.dart';
@@ -43,10 +44,11 @@ class TopContainerSection extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () {
-                      //Get.toNamed(AppRoutes.editprofileScreen);
+                      Get.toNamed(AppRoutes.updateProfileScreen);
                     },
                     icon: SvgPicture.asset(
-                      AppIcons.edit,color: AppColors.primaryColor,
+                      AppIcons.edit,
+                      color: AppColors.primaryColor,
                     )),
               ],
             ),
