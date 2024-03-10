@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/themes/app_themes.dart';
 import 'routes/app_routes.dart';
 import 'views/screens/bottom_nav_bar/bottom_nav_bar.dart';
+import 'views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +20,9 @@ class MyApp extends StatelessWidget {
               title: 'Spotlyt Task',
               theme: Themes().lightTheme,
               darkTheme: Themes().darkTheme,
-              initialRoute: AppRoutes.bottomNavBar,
+              initialRoute: AppRoutes.personalInformationScreen,
               getPages: AppRoutes.routes,
-              home: BottomNavBar(),
+              home: PersonalInformationScreen(),
             ),
         designSize: const Size(393, 852));
   }
