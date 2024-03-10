@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/themes/app_themes.dart';
 import 'routes/app_routes.dart';
+import 'views/screens/auth/selectroleScreen/selectrole_screen.dart';
 import 'views/screens/bottom_nav_bar/bottom_nav_bar.dart';
 import 'views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 
