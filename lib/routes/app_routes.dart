@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import '../views/screens/Notification/notification_screen.dart';
+import '../views/screens/Task_details/task_details_screen.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
@@ -6,6 +8,7 @@ import '../views/screens/auth/signInScreen/sign_in_screen.dart';
 import '../views/screens/auth/signUpScreen/sign_up_screen.dart';
 import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
 import '../views/screens/bottom_nav_bar/bottom_nav_bar.dart';
+import '../views/screens/payments/payment_screen.dart';
 import '../views/screens/services/corporate_servies_screen.dart';
 import '../views/screens/services/media_services_screen.dart';
 import '../views/screens/services/video_servies_screen.dart';
@@ -34,6 +37,9 @@ class AppRoutes {
   static const String termsConditionScreen = "/terms_condition_screen.dart";
   static const String aboutusScreen = "/aboutus_screen.dart";
   static const String splashScreen = "/splash_screen.dart";
+  static const String paymentScreen = "/PaymentScreen.dart";
+  static const String notificationScreen = "/NotificationScreen.dart";
+  static const String taskDetailsScreen = "/TaskDetailsScreen.dart";
 
 
   static List<GetPage> get routes => [
@@ -53,5 +59,8 @@ class AppRoutes {
         GetPage(name: termsConditionScreen, page: () => TermsConditionScreen()),
         GetPage(name: aboutusScreen, page: () => AboutusScreen()),
         GetPage(name: splashScreen, page: () => SplashScreen()),
+        GetPage(name: paymentScreen, page: () => PaymentScreen()),
+        GetPage(name: notificationScreen, page: () => NotificationScreen()),
+        GetPage(name: taskDetailsScreen, page: () => TaskDetailsScreen()),
       ];
 }

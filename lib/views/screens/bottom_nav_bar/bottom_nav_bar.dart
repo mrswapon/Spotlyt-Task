@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -27,17 +29,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       extendBody: true,
-      
-
+      ///--------------------------body section--------------------------->
       body: pageControll(_index),
-      
-      
+
+
+      ///---------------------------botton nav bar------------------------>
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.white,
-         height: 88.h,
-        color: AppColors.primaryColor,
+
+        backgroundColor: AppColors.scaffoldBg,
+         height: 67.h,
+         color: AppColors.primaryColor,
+        iconPadding: 10,
+
         items:  [
 
           ///-------------------home---------------------->
@@ -69,6 +75,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           });
         },
       ),
+
     );
   }
 
