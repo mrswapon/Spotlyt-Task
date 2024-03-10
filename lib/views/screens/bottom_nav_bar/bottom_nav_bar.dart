@@ -9,7 +9,7 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/screens/home/home_screen.dart';
-import 'package:spotlyt_task/views/screens/profile/profile_screen.dart';
+import 'package:spotlyt_task/views/screens/profile/profileScreen/profile_screen.dart';
 
 import '../../../utils/app_icons.dart';
 import '../task/task_screen.dart';

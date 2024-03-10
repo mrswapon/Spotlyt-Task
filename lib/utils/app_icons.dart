@@ -6,7 +6,7 @@ class AppIcons {
   static const String tiktok = "$path/tiktok.svg";
   static const String youtube = "$path/youtube.svg";
   static const String corporateIcon = "$path/corporate_icon.svg";
-    static const String about = "$path/about.svg";
+  static const String about = "$path/about.svg";
   static const String calendar = "$path/calendar.svg";
   static const String creditCard = "$path/creditCard.svg";
   static const String eye = "$path/eye.svg";
@@ -28,7 +28,5 @@ class AppIcons {
   static const String linkIcon = "$path/linkIcon.svg";
   static const String rightArrow = "$path/rightArrow.svg";
   static const String edit = "$path/edit.svg";
-
-
+  static const String profileEdit = "$path/profileEdit.svg";
 }
-
