@@ -9,6 +9,7 @@ import '../views/screens/auth/signUpScreen/sign_up_screen.dart';
 import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
 import '../views/screens/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screens/payments/payment_screen.dart';
+import '../views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 import '../views/screens/services/corporate_servies_screen.dart';
 import '../views/screens/services/media_services_screen.dart';
 import '../views/screens/services/video_servies_screen.dart';
@@ -40,6 +41,7 @@ class AppRoutes {
   static const String paymentScreen = "/PaymentScreen.dart";
   static const String notificationScreen = "/NotificationScreen.dart";
   static const String taskDetailsScreen = "/TaskDetailsScreen.dart";
+  static const String personalInformationScreen = "/personal_information_screen.dart";
 
 
   static List<GetPage> get routes => [
@@ -62,5 +64,8 @@ class AppRoutes {
         GetPage(name: paymentScreen, page: () => PaymentScreen()),
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
         GetPage(name: taskDetailsScreen, page: () => TaskDetailsScreen()),
-      ];
+        GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
+
+  ];
+
 }

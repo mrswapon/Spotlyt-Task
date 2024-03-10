@@ -55,6 +55,16 @@ class AppString {
   static String oldPassword = "Old password";
   static String reEnterPassword = "Re-enter new password";
 
+  //==========================> Profile Screen <=============================
+  static String profile = "Profile";
+  static String personalInformation = "Personal Information";
+  static String  inviteAndEarn = "Invite & Earn";
+  static String  logOut = "Log out";
+  static String  updateProfile = "Update Profile";
+  static String  inviteFriends = "Invite Friends";
+  static String  inviteYourFriends = "Invite your friends and get Rand 1.0";
+  static String  shareTheLink = "Share the link below or ask them to enter it during they signup. Earn when your friend signs up on our app.";
+
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
 
