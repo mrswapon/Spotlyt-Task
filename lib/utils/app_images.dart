@@ -12,5 +12,6 @@ class AppImages {
   static const String setPasswordOutline = "$path/setpassword_outline.png";
   static const String splashBg = "$path/splashBg.png";
   static const String appLogowhite = "$path/appLogowhite.png";
+  static const String profileImg = "$path/profileImg.png";
 
 }

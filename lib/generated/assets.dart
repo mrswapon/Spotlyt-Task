@@ -8,6 +8,7 @@ class Assets {
   static const String iconsCalendar = 'assets/icons/calendar.svg';
   static const String iconsCorporateIcon = 'assets/icons/corporate_icon.svg';
   static const String iconsCreditCard = 'assets/icons/creditCard.svg';
+  static const String iconsEdit = 'assets/icons/edit.svg';
   static const String iconsEye = 'assets/icons/eye.svg';
   static const String iconsEyeOff = 'assets/icons/eyeOff.svg';
   static const String iconsFacebook = 'assets/icons/facebook.svg';
@@ -38,6 +39,7 @@ class Assets {
   static const String imagesMailOutline = 'assets/images/mail_outline.png';
   static const String imagesPasswordOutline = 'assets/images/password_outline.png';
   static const String imagesProfileImage = 'assets/images/profile_Image.png';
+  static const String imagesProfileImg = 'assets/images/profileImg.png';
   static const String imagesSetpasswordOutline = 'assets/images/setpassword_outline.png';
   static const String imagesSplashBg = 'assets/images/splashBg.png';
 
