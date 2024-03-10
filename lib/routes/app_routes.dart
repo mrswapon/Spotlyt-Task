@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import '../views/screens/Notification/notification_screen.dart';
+import '../views/screens/Task_details/task_details_screen.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
@@ -6,6 +8,7 @@ import '../views/screens/auth/signInScreen/sign_in_screen.dart';
 import '../views/screens/auth/signUpScreen/sign_up_screen.dart';
 import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
 import '../views/screens/bottom_nav_bar/bottom_nav_bar.dart';
+import '../views/screens/payments/payment_screen.dart';
 import '../views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 import '../views/screens/profile/profileScreen/profile_screen.dart';
 import '../views/screens/profile/updateProfileScreen/update_profile_screen.dart';
@@ -37,6 +40,9 @@ class AppRoutes {
   static const String termsConditionScreen = "/terms_condition_screen.dart";
   static const String aboutusScreen = "/aboutus_screen.dart";
   static const String splashScreen = "/splash_screen.dart";
+  static const String paymentScreen = "/PaymentScreen.dart";
+  static const String notificationScreen = "/NotificationScreen.dart";
+  static const String taskDetailsScreen = "/TaskDetailsScreen.dart";
   static const String personalInformationScreen = "/personal_information_screen.dart";
   static const String profileScreen = "/profile_screen.dart";
   static const String updateProfileScreen = "/update_profile_screen.dart";
@@ -62,6 +68,11 @@ class AppRoutes {
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
         GetPage(name: profileScreen, page: () => ProfileScreen()),
         GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen()),
+        GetPage(name: paymentScreen, page: () => PaymentScreen()),
+        GetPage(name: notificationScreen, page: () => NotificationScreen()),
+        GetPage(name: taskDetailsScreen, page: () => TaskDetailsScreen()),
+        GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
 
   ];
+
 }

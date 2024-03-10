@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_images.dart';
@@ -51,7 +52,7 @@ class HomeScreenAppBar extends StatelessWidget {
 
         GestureDetector(
           onTap: () {
-            // Get.toNamed(AppRoutes.notificationScreen);
+             Get.toNamed(AppRoutes.notificationScreen);
           },
           child:Container(
             decoration: BoxDecoration(
