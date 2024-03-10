@@ -74,5 +74,24 @@ class AppString {
   static String addLink = "Add Link";
   static String totalPayable = "Total Payable";
   static String selectTimeline = "Select Timeline";
+
+
+  ///-------------------------payment screen------------------------>
+  static String makePayment = "Make Payment";
+  static String selectPaymentMethod = "Select Payment Method";
+  static String cardHolderName = "Card holder name";
+  static String cardNumber = "Card number";
+
+  ///---------------------task screen------------------------------>
+  static String task = "Task";
+  static String running = "Running";
+  static String completed = "Completed";
+
+
+  ///----------------task details screen------------------------>
+  static String taskDetails = "Task Details";
+  static String taskName = "Task Name:";
+  static String taskLink = "Task Link:";
+  static String taskPost = "Task Post Date:";
 }
 

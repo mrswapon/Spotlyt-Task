@@ -10,6 +10,7 @@ import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../controller/Social_Media/vedio_services_controller.dart';
+import '../../../routes/app_routes.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
 import '../../widgets/custom_cetegory_botton.dart';
@@ -160,7 +161,9 @@ class VideoServicesScreen extends StatelessWidget {
             ),
 
             ///--------------------------Continue botton-------------------------------->
-            CustomButton(title: "Continue", onpress: () {}),
+            CustomButton(title: "Continue", onpress: () {
+              Get.toNamed(AppRoutes.paymentScreen);
+            }),
 
 
             SizedBox(height: 50.h,)

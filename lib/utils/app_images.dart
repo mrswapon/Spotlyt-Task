@@ -12,6 +12,9 @@ class AppImages {
   static const String setPasswordOutline = "$path/setpassword_outline.png";
   static const String splashBg = "$path/splashBg.png";
   static const String appLogowhite = "$path/appLogowhite.png";
+  static const String visaCard = "$path/visa_card.png";
+  static const String masterCard = "$path/master_card.png";
+  static const String paypalCard = "$path/paypal_card.png";
+  static const String taskCardImage = "$path/task_card_image.png";
   static const String profileImg = "$path/profileImg.png";
-
 }
