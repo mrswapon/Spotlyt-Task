@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
-import 'package:spotlyt_task/utils/app_images.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
-
-import '../../../utils/app_colors.dart';
-import '../../../utils/app_icons.dart';
 import '../../../utils/app_strings.dart';
 import '../../widgets/custom_two_botton.dart';
 import 'InnerWidgets/task_card.dart';

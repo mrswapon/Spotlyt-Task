@@ -93,5 +93,10 @@ class AppString {
   static String taskName = "Task Name:";
   static String taskLink = "Task Link:";
   static String taskPost = "Task Post Date:";
+
+
+  ///--------------------------invite and earn screen------------------------->
+   static String inviteYourFriendsAndGetRand = "Invite your friends and get \n Rand 1.0";
+   static String shareTheLinkBeloworAsk = "Share the link below or ask them to enter it \n during they signup. Earn when your friend signs\n up on our app.";
 }
 

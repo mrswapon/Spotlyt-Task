@@ -1,9 +1,32 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+class SplashScreen extends StatefulWidget {
+   SplashScreen({super.key});
+
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+
+  void initState() {
+    super.initState();
+    _navigateToLoginScreen();
+  }
+
+  void _navigateToLoginScreen() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.toNamed(AppRoutes.selectroleScreen);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {

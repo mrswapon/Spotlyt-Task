@@ -17,4 +17,5 @@ class AppImages {
   static const String paypalCard = "$path/paypal_card.png";
   static const String taskCardImage = "$path/task_card_image.png";
   static const String profileImg = "$path/profileImg.png";
+  static const String earnImage = "$path/earn_image.png";
 }
