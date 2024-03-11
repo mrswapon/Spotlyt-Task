@@ -48,7 +48,7 @@ class _ForgotFormState extends State<ForgotForm> {
                   title: AppString.getOTP,
                   onpress: () {
                     if (_formKey.currentState!.validate()) {
-                      Get.toNamed(AppRoutes.resetPasswordScreen);
+                      Get.toNamed(AppRoutes.verifyOtpScreen);
                     }
                   }),
             ],
