@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 import '../../../../utils/app_colors.dart';
@@ -123,7 +124,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               ),
             ),
             const Spacer(),
-            CustomButton(title: AppString.updateProfile, onpress: () {}),
+            CustomButton(title: AppString.updateProfile, onpress: () {
+              Get.back();
+            }),
             SizedBox(height: 69.h),
           ],
         ),

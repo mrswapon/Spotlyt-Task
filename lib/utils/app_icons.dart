@@ -29,4 +29,26 @@ class AppIcons {
   static const String rightArrow = "$path/rightArrow.svg";
   static const String edit = "$path/edit.svg";
   static const String profileEdit = "$path/profileEdit.svg";
+
+
+  /// -------- -------------------add interest screen-------------------------->
+  static const String music = "$path/music.svg";
+  static const String fitness = "$path/fitness.svg";
+  static const String food = "$path/food.svg";
+  static const String tech = "$path/tech.svg";
+  static const String fashion = "$path/fashion.svg";
+  static const String travel = "$path/travel.svg";
+  static const String homes = "$path/home.svg";
+  static const String dIY = "$path/dIY.svg";
+  static const String pet = "$path/pet.svg";
+  static const String movies = "$path/movies.svg";
+  static const String art = "$path/art.svg";
+  static const String career = "$path/career.svg";
+  static const String sports = "$path/sports.svg";
+  static const String book = "$path/book.svg";
+  static const String car = "$path/car.svg";
+  static const String games = "$path/games.svg";
+  static const String shooping = "$path/shooping.svg";
+  static const String finance = "$path/finance.svg";
+  static const String investing = "$path/investing.svg";
 }

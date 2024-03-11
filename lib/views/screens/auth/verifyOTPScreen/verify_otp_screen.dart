@@ -71,7 +71,7 @@ class VerifyOtpScreen extends StatelessWidget {
               //=================================>  Section <===============================
               SizedBox(height: 39.h),
               CustomButton(title: AppString.verify, onpress: () {
-                Get.toNamed(AppRoutes.signInScreen);
+                Get.offAllNamed(AppRoutes.signInScreen);
               })
             ],
           ),

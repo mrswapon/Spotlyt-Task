@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../../utils/app_images.dart';
@@ -109,10 +110,12 @@ class InviteEarnScreen extends StatelessWidget {
             ),
           ),
 
-          Spacer(),
+          const Spacer(),
           ///--------------------------invite friends botton------------------------------><
 
-          CustomButton(title: "Invite Friends", onpress: () {}),
+          CustomButton(title: "Invite Friends", onpress: () {
+            Get.back();
+          }),
 
           SizedBox(
             height: 44.h,
