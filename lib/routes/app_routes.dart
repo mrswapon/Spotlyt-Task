@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../views/screens/Invite_Earn/invite_earn_screen.dart';
 import '../views/screens/Notification/notification_screen.dart';
 import '../views/screens/Task_details/task_details_screen.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
@@ -46,6 +47,7 @@ class AppRoutes {
   static const String personalInformationScreen = "/personal_information_screen.dart";
   static const String profileScreen = "/profile_screen.dart";
   static const String updateProfileScreen = "/update_profile_screen.dart";
+  static const String inviteEarnScreen = "/InviteEarnScreen.dart";
 
 
   static List<GetPage> get routes => [
@@ -72,6 +74,7 @@ class AppRoutes {
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
         GetPage(name: taskDetailsScreen, page: () => TaskDetailsScreen()),
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
+        GetPage(name: inviteEarnScreen, page: () => InviteEarnScreen()),
 
   ];
 

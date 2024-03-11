@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/themes/app_themes.dart';
+import 'package:spotlyt_task/views/screens/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:spotlyt_task/views/screens/splashScreen/splash_screen.dart';
 import 'routes/app_routes.dart';
-import 'views/screens/auth/selectroleScreen/selectrole_screen.dart';
-import 'views/screens/bottom_nav_bar/bottom_nav_bar.dart';
 import 'views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 
 void main() {
@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
               title: 'Spotlyt Task',
               theme: Themes().lightTheme,
               darkTheme: Themes().darkTheme,
-              initialRoute: AppRoutes.personalInformationScreen,
+              initialRoute: AppRoutes.splashScreen,
               getPages: AppRoutes.routes,
-              home: PersonalInformationScreen(),
+              home: SplashScreen(),
             ),
         designSize: const Size(393, 852));
   }

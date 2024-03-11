@@ -100,7 +100,7 @@ class _TextFormSectionState extends State<TextFormSection> {
                   title: AppString.signIn,
                   onpress: () {
                     if (_formKey.currentState!.validate()) {
-                      Get.offAllNamed(AppRoutes.verifyOtpScreen);
+                      Get.offAllNamed(AppRoutes.bottomNavBar);
                     }
                   }),
               SizedBox(height: 235.h),
