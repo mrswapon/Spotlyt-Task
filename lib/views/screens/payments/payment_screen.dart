@@ -128,7 +128,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
             ///-------------------------- make payment botton------------------------------->
             CustomButton(title: AppString.makePayment, onpress: (){
-              Get.toNamed(AppRoutes.bottomNavBar);
+              Get.toNamed(AppRoutes.requesterBottomNavBar);
             }),
 
 

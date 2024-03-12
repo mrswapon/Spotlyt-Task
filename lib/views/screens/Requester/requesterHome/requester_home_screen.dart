@@ -1,16 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
-import '../../../utils/app_icons.dart';
-import 'inner_widgets/cetegories_and_services_card.dart';
-import 'inner_widgets/home_screen_app_bar.dart';
+import '../../../../utils/app_icons.dart';
+import 'inner_widgets/requester_cetegories_and_services_card.dart';
+import 'inner_widgets/requester_home_screen_app_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class RequesterHomeScreen extends StatelessWidget {
+  const RequesterHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

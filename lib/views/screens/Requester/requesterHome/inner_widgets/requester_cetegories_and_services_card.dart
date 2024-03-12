@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_images.dart';
-import '../../../../utils/app_strings.dart';
-import 'cetegory_botton.dart';
-import '../../../widgets/custom_text.dart';
+import 'package:spotlyt_task/views/screens/Requester/requesterHome/inner_widgets/requester_cetegory_botton.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/app_images.dart';
+import '../../../../../utils/app_strings.dart';
+import '../../../../widgets/custom_text.dart';
+
 
 class CetegoriesAndServicesCard extends StatelessWidget {
   VoidCallback? ontap;

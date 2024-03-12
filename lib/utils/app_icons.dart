@@ -21,7 +21,7 @@ class AppIcons {
   static const String setting = "$path/setting.svg";
   static const String share = "$path/share.svg";
   static const String trems = "$path/trems.svg";
-  static const String home = "$path/home.svg";
+  static const String home = "$path/requesterHome.svg";
   static const String task = "$path/task.svg";
   static const String profile = "$path/profile.svg";
   static const String radioButton = "$path/radio_button.svg";
@@ -30,6 +30,7 @@ class AppIcons {
   static const String edit = "$path/edit.svg";
   static const String profileEdit = "$path/profileEdit.svg";
   static const String homeIcon = "$path/homeIcon.svg";
+  static const String submitIcon = "$path/submitIcon.svg";
 
 
   /// -------- -------------------add interest screen-------------------------->
@@ -39,7 +40,7 @@ class AppIcons {
   static const String tech = "$path/tech.svg";
   static const String fashion = "$path/fashion.svg";
   static const String travel = "$path/travel.svg";
-  static const String homes = "$path/home.svg";
+  static const String homes = "$path/requesterHome.svg";
   static const String dIY = "$path/dIY.svg";
   static const String pet = "$path/pet.svg";
   static const String movies = "$path/movies.svg";

@@ -12,8 +12,8 @@ import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_button.dart';
 import 'InnerWidgets/top_profile_card.dart';
 
-class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
+class RequesterProfileScreen extends StatelessWidget {
+  RequesterProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

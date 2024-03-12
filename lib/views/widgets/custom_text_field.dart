@@ -57,7 +57,7 @@ class CustomTextField extends StatelessWidget {
         labelText: labelText,
         hintText: hintText,
         hintStyle:
-            const TextStyle(color: Color(0xFF5C5C5C), fontFamily: 'Lato/R 16'),
+            const TextStyle(color: Color(0xFF5C5C5C), fontFamily: 'Lato/R 16', fontWeight: FontWeight.w400),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(

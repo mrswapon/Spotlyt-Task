@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_icons.dart';
-import '../../../widgets/custom_text.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../widgets/custom_text.dart';
 
 class CetegoryBotton extends StatelessWidget {
   final String? icon;

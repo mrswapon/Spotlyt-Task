@@ -65,6 +65,11 @@ class AppString {
   static String  inviteYourFriends = "Invite your friends and get Rand 1.0";
   static String  shareTheLink = "Share the link below or ask them to enter it during they signup. Earn when your friend signs up on our app.";
   static String  youAreSure = "You sure want to log out your profile?";
+  static String  submitTask = "Submit Task";
+  static String  taskCompleted = "Task Completed";
+  static String  taskName = "Task Name";
+  static String  taskCategory = "Task Category";
+  static String  uploadTaskScreenshot = "Upload Task Screenshot";
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
@@ -91,7 +96,6 @@ class AppString {
 
   ///----------------task details screen------------------------>
   static String taskDetails = "Task Details";
-  static String taskName = "Task Name:";
   static String taskLink = "Task Link:";
   static String taskPost = "Task Post Date:";
 
