@@ -105,7 +105,7 @@ class ProfileScreen extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8.r),
                       border: Border.all(
-                          color: AppColors.primaryColor, width: 3.w)),
+                          color: AppColors.primaryColor)),
                   child: ListTile(
                     onTap: () {
                       //=========================================> Alert Dialog <======================================
