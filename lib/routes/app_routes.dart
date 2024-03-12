@@ -2,17 +2,19 @@ import 'package:get/get.dart';
 import '../views/screens/Add_Interest/add_interest_screen.dart';
 import '../views/screens/Invite_Earn/invite_earn_screen.dart';
 import '../views/screens/Notification/notification_screen.dart';
+import '../views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
+import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav_bar.dart';
 import '../views/screens/Task_details/task_details_screen.dart';
+import '../views/screens/Tasker/submitTaskScreen/submit_task_screen.dart';
+import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
 import '../views/screens/auth/signInScreen/sign_in_screen.dart';
 import '../views/screens/auth/signUpScreen/sign_up_screen.dart';
 import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
-import '../views/screens/bottom_nav_bar/bottom_nav_bar.dart';
 import '../views/screens/payments/payment_screen.dart';
 import '../views/screens/profile/personalInformationScreen/personal_information_screen.dart';
-import '../views/screens/profile/profileScreen/profile_screen.dart';
 import '../views/screens/profile/updateProfileScreen/update_profile_screen.dart';
 import '../views/screens/services/corporate_servies_screen.dart';
 import '../views/screens/services/media_services_screen.dart';
@@ -31,7 +33,7 @@ class AppRoutes {
   static const String verifyOtpScreen = "/verify_otp_screen.dart";
   static const String signInScreen = "/sign_in_screen.dart";
   static const String servicesScreen = "/ServicesScreen.dart";
-  static const String bottomNavBar = "/BottomNavBar.dart";
+  static const String requesterBottomNavBar = "/RequesterBottomNavBar.dart";
   static const String videoServicesScreen = "/VideoServicesScreen.dart";
   static const String corporateServicesScreen = "/CorporateServicesScreen.dart";
   static const String forgotPasswordScreen = "/forgot_password_screen.dart";
@@ -46,10 +48,12 @@ class AppRoutes {
   static const String notificationScreen = "/NotificationScreen.dart";
   static const String taskDetailsScreen = "/TaskDetailsScreen.dart";
   static const String personalInformationScreen = "/personal_information_screen.dart";
-  static const String profileScreen = "/profile_screen.dart";
+  static const String profileScreen = "/tasker_profile_screen.dart";
   static const String updateProfileScreen = "/update_profile_screen.dart";
   static const String inviteEarnScreen = "/InviteEarnScreen.dart";
   static const String addInterestScreen = "/AddInterestScreen.dart";
+  static const String taskerProfileScreen = "/tasker_profile_screen.dart";
+  static const String submitTaskScreen = "/submit_task_screen.dart";
 
 
   static List<GetPage> get routes => [
@@ -58,7 +62,7 @@ class AppRoutes {
         GetPage(name: verifyOtpScreen, page: () => VerifyOtpScreen()),
         GetPage(name: signInScreen, page: () => SignInScreen()),
         GetPage(name: servicesScreen, page: () => MediaServicesScreen()),
-        GetPage(name: bottomNavBar, page: () => BottomNavBar()),
+        GetPage(name: requesterBottomNavBar, page: () => RequesterBottomNavBar()),
         GetPage(name: videoServicesScreen, page: () => VideoServicesScreen()),
         GetPage(name: corporateServicesScreen, page: () => CorporateServicesScreen()),
         GetPage(name: forgotPasswordScreen, page: () => ForgotPasswordScreen()),
@@ -70,7 +74,7 @@ class AppRoutes {
         GetPage(name: aboutusScreen, page: () => AboutusScreen()),
         GetPage(name: splashScreen, page: () => SplashScreen()),
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
-        GetPage(name: profileScreen, page: () => ProfileScreen()),
+        GetPage(name: profileScreen, page: () => RequesterProfileScreen()),
         GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen()),
         GetPage(name: paymentScreen, page: () => PaymentScreen()),
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
@@ -78,7 +82,7 @@ class AppRoutes {
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
         GetPage(name: inviteEarnScreen, page: () => InviteEarnScreen()),
         GetPage(name: addInterestScreen, page: () => AddInterestScreen()),
-
+        GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
+        GetPage(name: submitTaskScreen, page: () => SubmitTaskScreen()),
   ];
-
 }
