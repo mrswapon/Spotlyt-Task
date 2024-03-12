@@ -20,7 +20,7 @@ class HomeScreenAppBar extends StatelessWidget {
         ///---------------------profile image------------------------>
         CircleAvatar(
           radius: 20.r,
-          backgroundImage: const AssetImage(AppImages.sagor),
+          backgroundImage: const AssetImage(AppImages.profileImg),
         ),
         SizedBox(
           width: 12.w,

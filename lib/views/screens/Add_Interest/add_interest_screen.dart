@@ -148,10 +148,10 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                         if (itemsIndex < items.length) {
                           return GestureDetector(
                             onTap: () {
-
                               ///------------------------on tap-------------------------------->
                               setState(() {
                                 final item = items[itemsIndex]["title"];
+
                                 ///---------------------selected list initionly empty --------------->
                                 ///-------------------if selecteditems have item do remove from this list and if selecteditems don't have item do add ---------------->
                                 if (selectedItems.contains(item)) {
@@ -162,16 +162,19 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                               });
                             },
 
-
                             ///--------------------------------items contaier------------------------------------->
                             child: Container(
                               decoration: BoxDecoration(
-                                ///--------------------------------botton color------------------------------->
-                                  color: selectedItems.contains(items[itemsIndex]["title"]) ?  AppColors.primaryColor : Colors.white ,
+
+                                  ///--------------------------------botton color------------------------------->
+                                  color: selectedItems
+                                          .contains(items[itemsIndex]["title"])
+                                      ? AppColors.primaryColor
+                                      : Colors.white,
                                   borderRadius: BorderRadius.circular(16.r),
                                   border: Border.all(
                                     ///----------------------------------border color---------------------------->
-                                      color: AppColors.primaryColor ,
+                                    color: AppColors.primaryColor,
                                   )),
                               child: Row(
                                 children: [
@@ -180,7 +183,10 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                                         EdgeInsets.only(left: 7.w, right: 3.w),
                                     child: SvgPicture.asset(
                                       "${items[itemsIndex]["icon"]}",
-                                        color: selectedItems.contains(items[itemsIndex]["title"]) ?  Colors.white : AppColors.primaryColor ,
+                                      color: selectedItems.contains(
+                                              items[itemsIndex]["title"])
+                                          ? Colors.white
+                                          : AppColors.primaryColor,
                                     ),
                                   ),
                                   CustomText(
@@ -189,7 +195,10 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                                     top: 7.h,
                                     bottom: 7.h,
                                     right: 12.w,
-                                    color: selectedItems.contains(items[itemsIndex]["title"]) ? Colors.white :  AppColors.primaryColor ,
+                                    color: selectedItems.contains(
+                                            items[itemsIndex]["title"])
+                                        ? Colors.white
+                                        : AppColors.primaryColor,
                                   )
                                 ],
                               ),
@@ -210,9 +219,7 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                   Get.offAllNamed(AppRoutes.bottomNavBar);
                 }),
 
-
-
-            SizedBox(height: 44.h,)
+            SizedBox(height: 44.h)
           ],
         ),
       ),
