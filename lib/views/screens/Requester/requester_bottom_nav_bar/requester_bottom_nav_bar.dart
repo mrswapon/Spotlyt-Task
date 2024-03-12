@@ -86,7 +86,7 @@ class _RequesterBottomNavBarState extends State<RequesterBottomNavBar> {
     switch (index){
       case 0 : return RequesterHomeScreen();
       case 1 : return TaskScreen();
-      default : return TaskerProfileScreen();
+      default : return RequesterProfileScreen();
     }
   }
 

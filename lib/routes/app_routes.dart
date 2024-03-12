@@ -7,6 +7,7 @@ import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav
 import '../views/screens/Task_details/task_details_screen.dart';
 import '../views/screens/Tasker/submitTaskScreen/submit_task_screen.dart';
 import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
+import '../views/screens/Tasker/tester_bottom_nav_bar/tester_bottom_nav_bar.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
@@ -54,6 +55,7 @@ class AppRoutes {
   static const String addInterestScreen = "/AddInterestScreen.dart";
   static const String taskerProfileScreen = "/tasker_profile_screen.dart";
   static const String submitTaskScreen = "/submit_task_screen.dart";
+  static const String testerBottomNavBar = "/tester_bottom-nav_bar.dart";
 
 
   static List<GetPage> get routes => [
@@ -84,5 +86,6 @@ class AppRoutes {
         GetPage(name: addInterestScreen, page: () => AddInterestScreen()),
         GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
         GetPage(name: submitTaskScreen, page: () => SubmitTaskScreen()),
+        GetPage(name: testerBottomNavBar, page: () => TesterBottomNavBar()),
   ];
 }

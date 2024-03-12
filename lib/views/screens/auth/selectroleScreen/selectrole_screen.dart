@@ -46,7 +46,9 @@ class SelectroleScreen extends StatelessWidget {
                   title: AppString.tasker,
                   titlecolor: AppColors.primaryColor,
                   color: Colors.white,
-                  onpress: () {}),
+                  onpress: () {
+                    Get.toNamed(AppRoutes.testerBottomNavBar);
+                  }),
             ],
           ),
         ),
