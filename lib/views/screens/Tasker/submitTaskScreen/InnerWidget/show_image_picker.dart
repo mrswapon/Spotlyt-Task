@@ -18,29 +18,24 @@ class ShowImagePicker {
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 4.2,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        submitController.pickImageFromGallery();
-                      },
-                      child: SizedBox(
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.image,
-                              size: 50.w,
-                              color: AppColors.primaryColor,
-                            ),
-                            CustomText(text: 'Gallery')
-                          ],
+              child: Expanded(
+                child: InkWell(
+                  onTap: () {
+                    submitController.pickImageFromGallery();
+                  },
+                  child: SizedBox(
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.image,
+                          size: 50.w,
+                          color: AppColors.primaryColor,
                         ),
-                      ),
+                        CustomText(text: 'Gallery')
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
             ),
           );
