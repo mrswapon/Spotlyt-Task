@@ -29,6 +29,7 @@ class AppIcons {
   static const String rightArrow = "$path/rightArrow.svg";
   static const String edit = "$path/edit.svg";
   static const String profileEdit = "$path/profileEdit.svg";
+  static const String homeIcon = "$path/homeIcon.svg";
 
 
   /// -------- -------------------add interest screen-------------------------->
