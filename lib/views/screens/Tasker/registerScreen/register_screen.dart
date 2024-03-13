@@ -125,7 +125,7 @@ class RegisterScreen extends StatelessWidget {
                             title: AppString.register,
                             onpress: () {
                               if (_formKey.currentState!.validate()) {
-                                Get.offAllNamed(AppRoutes.verifyOtpScreen);
+                                Get.offAllNamed(AppRoutes.testerBottomNavBar);
                               }
                             }),
                         SizedBox(height: 54.h),

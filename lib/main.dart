@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
               title: 'Spotlyt Task',
               theme: Themes().lightTheme,
               darkTheme: Themes().darkTheme,
-              initialRoute: AppRoutes.taskerTaskDetailsScreen,
+              initialRoute: AppRoutes.splashScreen,
               getPages: AppRoutes.routes,
-              home: TaskerTaskDetailsScreen(),
+              home: SplashScreen(),
             ),
         designSize: const Size(393, 852));
   }

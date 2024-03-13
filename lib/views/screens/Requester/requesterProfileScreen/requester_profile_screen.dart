@@ -134,28 +134,30 @@ class RequesterProfileScreen extends StatelessWidget {
                                       children: [
                                         SizedBox(
                                             width: 120.w,
-                                            height: 41.h,
-                                            child: CustomButton(
-                                              title: 'Log Out',
-                                              fontSize: 16.h,
-                                              onpress: () {
-                                                Get.offAllNamed(
-                                                    AppRoutes.signInScreen);
-                                              },
-                                              color: Colors.white,
-                                              titlecolor:
-                                                  AppColors.primaryColor,
+                                            child: Center(
+                                              child: CustomButton(
+                                                title: 'Log Out',
+                                                fontSize: 16.h,
+                                                onpress: () {
+                                                  Get.offAllNamed(
+                                                      AppRoutes.signInScreen);
+                                                },
+                                                color: Colors.white,
+                                                titlecolor:
+                                                    AppColors.primaryColor,
+                                              ),
                                             )),
                                         SizedBox(
                                             width: 120.w,
-                                            height: 41.h,
-                                            child: CustomButton(
-                                                title: 'Cancel',
-                                                fontSize: 16.h,
-                                                color: AppColors.primaryColor,
-                                                onpress: () {
-                                                  Get.back();
-                                                })),
+                                            child: Center(
+                                              child: CustomButton(
+                                                  title: 'Cancel',
+                                                  fontSize: 16.h,
+                                                  color: AppColors.primaryColor,
+                                                  onpress: () {
+                                                    Get.back();
+                                                  }),
+                                            )),
                                       ],
                                     )
                                   ],

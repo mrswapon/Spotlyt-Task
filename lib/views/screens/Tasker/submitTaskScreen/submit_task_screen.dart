@@ -118,7 +118,7 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                   CustomButton(
                       title: AppString.taskCompleted,
                       onpress: () {
-                        Get.toNamed(AppRoutes.verifyOtpScreen);
+                        Get.offAllNamed(AppRoutes.testerBottomNavBar);
                       }),
                   SizedBox(height: 54.h),
                 ],
