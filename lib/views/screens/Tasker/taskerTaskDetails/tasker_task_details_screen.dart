@@ -80,7 +80,6 @@ class TaskerTaskDetailsScreen extends StatelessWidget {
             //=================================> Time Count Section <================================
             const TimeCountSection(),
             const Spacer(),
-
             //==============================> Task Register Now Button <===================================
             CustomButton(
                 title: AppString.taskRegisterNow,
