@@ -5,6 +5,7 @@ import '../views/screens/Notification/notification_screen.dart';
 import '../views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
 import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav_bar.dart';
 import '../views/screens/Task_details/task_details_screen.dart';
+import '../views/screens/Tasker/registerScreen/register_screen.dart';
 import '../views/screens/Tasker/submitTaskScreen/submit_task_screen.dart';
 import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
 import '../views/screens/Tasker/tester_bottom_nav_bar/tester_bottom_nav_bar.dart';
@@ -56,6 +57,7 @@ class AppRoutes {
   static const String taskerProfileScreen = "/tasker_profile_screen.dart";
   static const String submitTaskScreen = "/submit_task_screen.dart";
   static const String testerBottomNavBar = "/tester_bottom-nav_bar.dart";
+  static const String registerScreen = "/register_screen.dart";
 
 
   static List<GetPage> get routes => [
@@ -87,5 +89,6 @@ class AppRoutes {
         GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
         GetPage(name: submitTaskScreen, page: () => SubmitTaskScreen()),
         GetPage(name: testerBottomNavBar, page: () => TesterBottomNavBar()),
+        GetPage(name: registerScreen, page: () => RegisterScreen()),
   ];
 }
