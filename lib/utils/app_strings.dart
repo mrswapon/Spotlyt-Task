@@ -106,7 +106,13 @@ class AppString {
 
 
 
+   ///-------------------------add interest screen---------------------------->
    static String addInterest = "Add Interest";
    static String selectYourInterest = "Select your Interest";
+
+
+   ///-----------------------------------tasker home screen------------------------------------->
+   static String todayTask = "Today's Task";
+   static String yourTask = "Your Task";
 }
 

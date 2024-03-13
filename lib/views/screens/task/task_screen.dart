@@ -49,7 +49,7 @@ class TaskScreen extends StatelessWidget {
                       onTap: (){
                         Get.toNamed(AppRoutes.taskDetailsScreen);
                       },
-                        child: const TaskCard()),
+                        child: TaskCard()),
                   );
                 },
               ),
