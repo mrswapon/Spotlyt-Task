@@ -8,8 +8,8 @@ import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_images.dart';
 import '../../../../widgets/custom_text.dart';
 
-class RequesterHomeScreenAppBar extends StatelessWidget {
-  RequesterHomeScreenAppBar({
+class TaskerHomeScreenAppBar extends StatelessWidget {
+  TaskerHomeScreenAppBar({
     super.key,
   });
 
@@ -52,7 +52,7 @@ class RequesterHomeScreenAppBar extends StatelessWidget {
 
         GestureDetector(
           onTap: () {
-             Get.toNamed(AppRoutes.notificationScreen);
+            Get.toNamed(AppRoutes.notificationScreen);
           },
           child:Container(
             decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class RequesterHomeScreenAppBar extends StatelessWidget {
                   height: 32.h,
                   width: 32.w,
                 ),
-                 Positioned(
+                Positioned(
                   top: 3.h,
                   right: 3.w,
                   child: Badge(

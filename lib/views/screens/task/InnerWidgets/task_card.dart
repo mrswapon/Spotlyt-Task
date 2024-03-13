@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,12 +8,18 @@ import '../../../../utils/app_images.dart';
 import '../../../widgets/custom_text.dart';
 
 class TaskCard extends StatelessWidget {
-  const TaskCard({super.key});
+  final double? weight;
+  final double? bgImageheights;
+  final String? amount;
+
+  const TaskCard({super.key, this.weight, this.bgImageheights, this.amount});
+
+
 
   @override
   Widget build(BuildContext context) {
-    return             Container(
-      width: double.infinity,
+    return Container(
+      width: weight ?? double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         color: Colors.white,
@@ -25,13 +30,10 @@ class TaskCard extends StatelessWidget {
           Container(
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(8.r)
-                )
-            ),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(8.r))),
             child: Image.asset(
               AppImages.taskCardImage,
-              height: 174.h,
+              height: bgImageheights?? 174.h,
             ),
           ),
           Container(
@@ -39,8 +41,6 @@ class TaskCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
-
                 ///-------------------------facebook post 5k like----------------------------->
                 CustomText(
                   text: "Facebook Post 5K Like ",
@@ -48,7 +48,6 @@ class TaskCard extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   bottom: 10.h,
                 ),
-
 
                 ///--------------------------date------------------------------->
                 CustomText(
@@ -59,19 +58,36 @@ class TaskCard extends StatelessWidget {
                   bottom: 14.h,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      AppIcons.calendar,
-                      height: 17.h,
-                      width: 16.w,
-                      color: AppColors.black5C5C5C,
+                    ///-------------------------5 days -------------------------->
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppIcons.calendar,
+                          height: 17.h,
+                          width: 16.w,
+                          color: AppColors.black5C5C5C,
+                        ),
+                        CustomText(
+                            text: "5 Days",
+                            fontsize: 14.h,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.black5C5C5C,
+                            left: 8.w),
+                      ],
                     ),
+
+
+
+                    ///---------------------------amount not equal null amount text------------------------>
+                    amount != null ?
                     CustomText(
-                        text: "5 Days",
+                        text: "$amount",
                         fontsize: 14.h,
                         fontWeight: FontWeight.w500,
                         color: AppColors.black5C5C5C,
-                        left: 8.w),
+                        left: 8.w) : SizedBox(),
                   ],
                 ),
 
@@ -83,7 +99,6 @@ class TaskCard extends StatelessWidget {
                   top: 20.h,
                   bottom: 14.h,
                 ),
-
 
                 ///---------------------------------link-------------------------------------->
                 Container(
@@ -111,4 +126,3 @@ class TaskCard extends StatelessWidget {
     );
   }
 }
-

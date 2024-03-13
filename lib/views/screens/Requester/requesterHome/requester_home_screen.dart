@@ -25,7 +25,7 @@ class RequesterHomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 50.h,
                 ),
-                HomeScreenAppBar(),
+                RequesterHomeScreenAppBar(),
 
                 SizedBox(
                   height: 18.h,

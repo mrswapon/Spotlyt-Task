@@ -42,6 +42,7 @@ dependencies:
   dotted_border: ^2.1.0
   curved_labeled_navigation_bar: ^2.0.2
   image_picker: ^1.0.7
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

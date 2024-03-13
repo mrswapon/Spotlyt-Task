@@ -135,12 +135,14 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
 
             Expanded(
               child: ListView.builder(
+                ///------------------------total items and 4 items a row----------------------------->
                 itemCount: (items.length / 4).ceil(),
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.symmetric(vertical: 6.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ///------------------------4 items a row and when complete 4 items then create new row---------------------------->
                       children: List.generate(4, (i) {
                         final itemsIndex = index * 4 + i;
                         print("-------------$itemsIndex--------------$i");
@@ -152,8 +154,8 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                               setState(() {
                                 final item = items[itemsIndex]["title"];
 
-                                ///---------------------selected list initionly empty --------------->
-                                ///-------------------if selecteditems have item do remove from this list and if selecteditems don't have item do add ---------------->
+                                ///---------------------selected list initially empty --------------->
+                                ///-------------------if selectedItems have item do remove from this list and if selectedItems don't have item do add ---------------->
                                 if (selectedItems.contains(item)) {
                                   selectedItems.remove(item);
                                 } else {
@@ -162,11 +164,11 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                               });
                             },
 
-                            ///--------------------------------items contaier------------------------------------->
+                            ///--------------------------------items Container------------------------------------->
                             child: Container(
                               decoration: BoxDecoration(
 
-                                  ///--------------------------------botton color------------------------------->
+                                  ///--------------------------------Botton color------------------------------->
                                   color: selectedItems
                                           .contains(items[itemsIndex]["title"])
                                       ? AppColors.primaryColor
@@ -178,9 +180,11 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                                   )),
                               child: Row(
                                 children: [
+
+                                  ///--------------------------icon------------------------->
                                   Padding(
                                     padding:
-                                        EdgeInsets.only(left: 7.w, right: 3.w),
+                                        EdgeInsets.only(left: 6.w, right: 3.w),
                                     child: SvgPicture.asset(
                                       "${items[itemsIndex]["icon"]}",
                                       color: selectedItems.contains(
@@ -189,12 +193,14 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                                           : AppColors.primaryColor,
                                     ),
                                   ),
+
+                                  ///----------------------------------title name------------------------------------->
                                   CustomText(
                                     text: "${items[itemsIndex]["title"]}",
-                                    fontsize: 12.h,
+                                    fontsize: 11.5.h,
                                     top: 7.h,
                                     bottom: 7.h,
-                                    right: 12.w,
+                                    right: 11.w,
                                     color: selectedItems.contains(
                                             items[itemsIndex]["title"])
                                         ? Colors.white
@@ -216,7 +222,7 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
             CustomButton(
                 title: "Continue",
                 onpress: () {
-                  Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+                  Get.offAllNamed(AppRoutes.selectroleScreen);
                 }),
 
             SizedBox(height: 44.h)
