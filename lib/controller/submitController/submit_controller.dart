@@ -17,6 +17,6 @@ class SubmitController extends GetxController {
     selectedImage = File(returnImage.path);
     image = File(returnImage.path).readAsBytesSync();
     update();
-    Get.back(); //close the model sheet
+    //Get.back(); //close the model sheet
   }
 }

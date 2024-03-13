@@ -70,6 +70,10 @@ class AppString {
   static String  taskName = "Task Name";
   static String  taskCategory = "Task Category";
   static String  uploadTaskScreenshot = "Upload Task Screenshot";
+  static String  phoneNumber = "Phone number";
+  static String  address = "Address";
+  static String  nid = "NID";
+  static String  register = "Register";
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
