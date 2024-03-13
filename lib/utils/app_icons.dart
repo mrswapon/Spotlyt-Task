@@ -31,6 +31,7 @@ class AppIcons {
   static const String profileEdit = "$path/profileEdit.svg";
   static const String homeIcon = "$path/homeIcon.svg";
   static const String submitIcon = "$path/submitIcon.svg";
+  static const String timeIcon = "$path/timeIcon.svg";
 
 
   /// -------- -------------------add interest screen-------------------------->
