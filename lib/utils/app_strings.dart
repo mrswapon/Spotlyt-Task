@@ -74,6 +74,10 @@ class AppString {
   static String  address = "Address";
   static String  nid = "NID";
   static String  register = "Register";
+  static String  taskRegisterNow = "Task Register Now";
+  static String  startDate = "Start Date";
+  static String  endDate = "End Date";
+  static String  timeLine = "Time Line:";
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";

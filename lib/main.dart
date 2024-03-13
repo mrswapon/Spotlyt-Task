@@ -7,6 +7,7 @@ import 'package:spotlyt_task/themes/app_themes.dart';
 import 'package:spotlyt_task/views/screens/Tasker/registerScreen/register_screen.dart';
 import 'package:spotlyt_task/views/screens/splashScreen/splash_screen.dart';
 import 'routes/app_routes.dart';
+import 'views/screens/Tasker/taskerTaskDetails/tasker_task_details_screen.dart';
 
 void main() {
   runApp(
@@ -31,9 +32,9 @@ class MyApp extends StatelessWidget {
               title: 'Spotlyt Task',
               theme: Themes().lightTheme,
               darkTheme: Themes().darkTheme,
-              initialRoute: AppRoutes.registerScreen,
+              initialRoute: AppRoutes.taskerTaskDetailsScreen,
               getPages: AppRoutes.routes,
-              home: RegisterScreen(),
+              home: TaskerTaskDetailsScreen(),
             ),
         designSize: const Size(393, 852));
   }

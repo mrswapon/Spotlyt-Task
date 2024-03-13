@@ -49,6 +49,7 @@ class Assets {
   static const String iconsTask = 'assets/icons/task.svg';
   static const String iconsTech = 'assets/icons/tech.svg';
   static const String iconsTiktok = 'assets/icons/tiktok.svg';
+  static const String iconsTimeIcon = 'assets/icons/timeIcon.svg';
   static const String iconsTravel = 'assets/icons/travel.svg';
   static const String iconsTrems = 'assets/icons/trems.svg';
   static const String iconsYoutube = 'assets/icons/youtube.svg';
