@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/InnerWidgets/tasker_home_screen_app_bar.dart';
 import 'package:spotlyt_task/views/screens/task/InnerWidgets/task_card.dart';
@@ -48,11 +50,16 @@ class TaskerHomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:  EdgeInsets.only(right: 12.w),
-                    child:  TaskCard(
-                      bgImageheights: 110.h,
-                       weight : 267.w,
-                      amount: "R2000",
-                      // heights: 110,
+                    child:  GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
+                      },
+                      child: TaskCard(
+                        bgImageheights: 110.h,
+                         weight : 267.w,
+                        amount: "R2000",
+                        // heights: 110,
+                      ),
                     ),
                   );
                 },
@@ -78,11 +85,16 @@ class TaskerHomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:  EdgeInsets.only(right: 12.w),
-                    child:  TaskCard(
-                      bgImageheights: 110.h,
-                      weight : 267.w,
-                      amount: "R2000",
-                      // heights: 110,
+                    child:  GestureDetector(
+                      onTap: (){
+                        Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
+                      },
+                      child: TaskCard(
+                        bgImageheights: 110.h,
+                        weight : 267.w,
+                        amount: "R2000",
+                        // heights: 110,
+                      ),
                     ),
                   );
                 },
