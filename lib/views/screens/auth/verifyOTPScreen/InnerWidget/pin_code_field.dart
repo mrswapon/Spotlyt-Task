@@ -33,7 +33,9 @@ class PinCodeField extends StatelessWidget {
           activeColor: AppColors.primaryColor),
       obscureText: false,
       keyboardType: TextInputType.number,
-      onChanged: (value) {},
+      onChanged: (value) {
+        print("------------------------------value: $value");
+      },
     );
   }
 }

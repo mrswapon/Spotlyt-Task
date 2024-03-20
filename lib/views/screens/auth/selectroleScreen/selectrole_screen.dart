@@ -38,7 +38,7 @@ class SelectroleScreen extends StatelessWidget {
               CustomButton(
                   title: AppString.requester,
                   onpress: () {
-                    Get.toNamed(AppRoutes.requesterBottomNavBar);
+                    Get.offAllNamed(AppRoutes.requesterBottomNavBar);
                   }),
 
               SizedBox(height: 16.h),
@@ -47,7 +47,7 @@ class SelectroleScreen extends StatelessWidget {
                   titlecolor: AppColors.primaryColor,
                   color: Colors.white,
                   onpress: () {
-                    Get.toNamed(AppRoutes.testerBottomNavBar);
+                    Get.offAllNamed(AppRoutes.testerBottomNavBar);
                   }),
             ],
           ),

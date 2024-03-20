@@ -22,6 +22,7 @@ class AppIcons {
   static const String share = "$path/share.svg";
   static const String trems = "$path/trems.svg";
   static const String home = "$path/requesterHome.svg";
+  static const String homess = "$path/home.svg";
   static const String task = "$path/task.svg";
   static const String profile = "$path/profile.svg";
   static const String radioButton = "$path/radio_button.svg";

@@ -47,7 +47,7 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
       "title": "Travel",
     },
     {
-      "icon": "${AppIcons.homes}",
+      "icon": "${AppIcons.homess}",
       "title": "Outdoor",
     },
     {
@@ -55,7 +55,7 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
       "title": "DIY",
     },
     {
-      "icon": "${AppIcons.home}",
+      "icon": "${AppIcons.homess}",
       "title": "Houses",
     },
     {
@@ -222,7 +222,7 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
             CustomButton(
                 title: "Continue",
                 onpress: () {
-                  Get.offAllNamed(AppRoutes.selectroleScreen);
+                  Get.toNamed(AppRoutes.selectroleScreen);
                 }),
 
             SizedBox(height: 44.h)

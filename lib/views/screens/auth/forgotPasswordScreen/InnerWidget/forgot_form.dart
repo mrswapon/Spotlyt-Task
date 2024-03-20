@@ -47,9 +47,9 @@ class _ForgotFormState extends State<ForgotForm> {
               CustomButton(
                   title: AppString.getOTP,
                   onpress: () {
-                    if (_formKey.currentState!.validate()) {
+                    // if (_formKey.currentState!.validate()) {
                       Get.toNamed(AppRoutes.verifyOtpScreen);
-                    }
+                    // }
                   }),
             ],
           ),

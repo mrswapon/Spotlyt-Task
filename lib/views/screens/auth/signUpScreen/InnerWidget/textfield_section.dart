@@ -140,9 +140,9 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomButton(
                   title: AppString.signUps,
                   onpress: () {
-                    if (_formKey.currentState!.validate()) {
+                    // if (_formKey.currentState!.validate()) {
                       Get.offAllNamed(AppRoutes.verifyOtpScreen);
-                    }
+                    // }
                   }),
               SizedBox(height: 64.h),
               //===============================> Already have an account Section <===============================
