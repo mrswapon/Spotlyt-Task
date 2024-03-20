@@ -157,7 +157,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   ),
                   SizedBox(width: 5.w),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.toNamed(AppRoutes.signInScreen);
                     },
                     child: CustomText(
@@ -229,20 +229,19 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   ),
                 ),
                 TextSpan(
-                  text: AppString.termsOfServices,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    overflow: TextOverflow.ellipsis,
-                    fontSize: Dimensions.fontSizeDefault,
-                    color: AppColors.primaryColor,
-                    fontFamily: "Lato/R 14",
-                  ),
+                    text: AppString.termsOfServices,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: Dimensions.fontSizeDefault,
+                      color: AppColors.primaryColor,
+                      fontFamily: "Lato/R 14",
+                    ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         //==========================> on tap here <==========================
                         Get.toNamed(AppRoutes.termsConditionScreen);
-                      }
-                ),
+                      }),
                 const TextSpan(
                   text: ' and ',
                   style: TextStyle(
