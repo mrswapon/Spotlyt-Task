@@ -51,7 +51,7 @@ class TaskerHomeScreen extends StatelessWidget {
                     padding: EdgeInsets.only(right: 12.w),
                     child: GestureDetector(
                       onTap: () {
-                        Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
+                        Get.toNamed(AppRoutes.homeCardDetails);
                       },
                       child: TaskerTaskCard(
                         bgImageheights: 110.h,
@@ -85,7 +85,7 @@ class TaskerHomeScreen extends StatelessWidget {
                     padding: EdgeInsets.only(right: 12.w),
                     child: GestureDetector(
                       onTap: () {
-                        Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
+                        Get.toNamed(AppRoutes.homeCardDetails);
                       },
                       child: TaskerTaskCard(
                         bgImageheights: 110.h,
