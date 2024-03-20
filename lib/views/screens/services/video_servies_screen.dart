@@ -216,7 +216,7 @@ class VideoServicesScreen extends StatelessWidget {
   DropdownMenuItem<String> _dropdownMenuItem(String value) {
     return DropdownMenuItem(
       value: value,
-      child: Text(value),
+      child: CustomText(text: value,),
     );
   }
 }

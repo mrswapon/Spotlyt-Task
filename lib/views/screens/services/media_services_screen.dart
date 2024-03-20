@@ -19,8 +19,7 @@ import '../../widgets/custom_quentity_card.dart';
 class MediaServicesScreen extends StatelessWidget {
   MediaServicesScreen({super.key});
 
-  SocialMediaServicesController controller =
-      Get.put(SocialMediaServicesController());
+  SocialMediaServicesController controller = Get.put(SocialMediaServicesController());
   final List<String> interests = ["Music", "Fitness", "Food", "Fashion","Tech", "Travel", "Outdoor", "DIY", "Houses", "Pets", "Movies", 'Art', 'Career', "Sports", 'Books', 'Cars', 'Games','Shopping', 'Finance', 'Investing'];
   List selectedRequestsEmpty = [];
 
@@ -211,7 +210,7 @@ class MediaServicesScreen extends StatelessWidget {
   DropdownMenuItem<String> _dropdownMenuItem(String value) {
     return DropdownMenuItem(
       value: value,
-      child: Text(value),
+      child: CustomText(text: value,),
     );
   }
 }
