@@ -46,7 +46,7 @@ class Assets {
   static const String iconsShooping = 'assets/icons/shooping.svg';
   static const String iconsSports = 'assets/icons/sports.svg';
   static const String iconsSubmitIcon = 'assets/icons/submitIcon.svg';
-  static const String iconsTask = 'assets/icons/task.svg';
+  static const String iconsTask = 'assets/icons/requesterTaskScreen.svg';
   static const String iconsTech = 'assets/icons/tech.svg';
   static const String iconsTiktok = 'assets/icons/tiktok.svg';
   static const String iconsTimeIcon = 'assets/icons/timeIcon.svg';
@@ -54,7 +54,6 @@ class Assets {
   static const String iconsTrems = 'assets/icons/trems.svg';
   static const String iconsYoutube = 'assets/icons/youtube.svg';
   static const String imagesAppLogo = 'assets/images/appLogo.png';
-  static const String imagesAppLogowhite = 'assets/images/appLogowhite.png';
   static const String imagesCardBgImage = 'assets/images/cardBgImage.png';
   static const String imagesEarnImage = 'assets/images/earn_image.png';
   static const String imagesImg = 'assets/images/img.png';

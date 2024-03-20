@@ -4,21 +4,19 @@ import 'package:flutter_svg/svg.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
-import 'package:spotlyt_task/views/screens/Requester/requesterHome/requester_home_screen.dart';
-import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/InnerWidgets/tasker_home_screen_app_bar.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/tasker_home_screen.dart';
 import '../../../../utils/app_icons.dart';
 import '../../Tasker/taskerProfileScreen/tasker_profile_screen.dart';
-import '../../task/task_screen.dart';
+import '../taskerTaskScreen/tasker_task_screen.dart';
 
-class TesterBottomNavBar extends StatefulWidget {
-  const TesterBottomNavBar({super.key});
+class TaskerBottomNavBar extends StatefulWidget {
+  const TaskerBottomNavBar({super.key});
 
   @override
-  State<TesterBottomNavBar> createState() => _TesterBottomNavBarState();
+  State<TaskerBottomNavBar> createState() => _TaskerBottomNavBarState();
 }
 
-class _TesterBottomNavBarState extends State<TesterBottomNavBar> {
+class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
   int _index = 0;
 
   @override
@@ -80,7 +78,7 @@ class _TesterBottomNavBarState extends State<TesterBottomNavBar> {
       case 0:
         return const TaskerHomeScreen();
       case 1:
-        return TaskScreen();
+        return const TaskerTaskScreen();
       default:
         return TaskerProfileScreen();
     }

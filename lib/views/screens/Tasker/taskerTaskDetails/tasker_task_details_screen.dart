@@ -6,7 +6,6 @@ import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
-import 'InnerWidget/time_count_section.dart';
 
 class TaskerTaskDetailsScreen extends StatelessWidget {
   const TaskerTaskDetailsScreen({super.key});
@@ -36,19 +35,19 @@ class TaskerTaskDetailsScreen extends StatelessWidget {
               bottom: 16.h,
               top: 24.h,
             ),
-            //=========================> Facebook Post Like Text  <============================
+            //====================> Facebook Post Like Text  <==================
             CustomText(
               text: "Facebook Post Like ( 5000 )",
               fontWeight: FontWeight.w500,
               bottom: 24.h,
             ),
-            //=========================> Task Link <==================================
+            //=========================> Task Link <============================
             CustomText(
               text: AppString.taskLink,
               fontWeight: FontWeight.w500,
               bottom: 16.h,
             ),
-            //=========================> Task Link Here <============================
+            //=========================> Task Link Here <=======================
             SelectableText(
               "https://www.Facebook.com/Image Post",
               style: TextStyle(
@@ -58,33 +57,25 @@ class TaskerTaskDetailsScreen extends StatelessWidget {
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 24.h),
-            //=========================> Task Post Text <============================
+            //=========================> Task Post Text <=======================
             CustomText(
               text: AppString.taskPost,
               fontWeight: FontWeight.w500,
               bottom: 16.h,
             ),
-            //=========================> Date Text <=================================
+            //========================> Date Text <=============================
             CustomText(
               text: "Friday 01 Feb, 2024",
               fontWeight: FontWeight.w500,
               bottom: 24.h,
             ),
             //SizedBox(height: 24.h),
-            //=========================> Time Line Text <============================
-            CustomText(
-              text: AppString.timeLine,
-              fontWeight: FontWeight.w500,
-              bottom: 24.h,
-            ),
-            //==============================> Time Count Section <============================
-            const TimeCountSection(),
             const Spacer(),
-            //==============================> Task Register Now Button <==========================
+            //=========================> Submit Task Button <===================
             CustomButton(
-                title: AppString.taskRegisterNow,
+                title: AppString.submitTask,
                 onpress: () {
-                  Get.toNamed(AppRoutes.registerScreen);
+                    Get.toNamed(AppRoutes.submitTaskScreen);
                 }),
             SizedBox(height: 54.h)
           ],

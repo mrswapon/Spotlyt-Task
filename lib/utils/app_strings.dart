@@ -1,7 +1,7 @@
 class AppString {
   static const String requestForServices = "Request For Services";
   //==========================> Selectrole Screen <=============================
-  static String areYouLooking = "Are you looking to a task (requester)?";
+  static String areYouLooking = "Are you looking to a requesterTaskScreen (requester)?";
   static String orToEarn = "Or, to earn by completing tasks (tasker)?";
   static String requester = "Requester";
   static String tasker = "Tasker";
@@ -96,13 +96,13 @@ class AppString {
   static String cardHolderName = "Card holder name";
   static String cardNumber = "Card number";
 
-  ///---------------------task screen------------------------------>
+  ///---------------------requesterTaskScreen screen------------------------------>
   static String task = "Task";
   static String running = "Running";
   static String completed = "Completed";
 
 
-  ///----------------task details screen------------------------>
+  ///----------------requesterTaskScreen details screen------------------------>
   static String taskDetails = "Task Details";
   static String taskLink = "Task Link:";
   static String taskPost = "Task Post Date:";

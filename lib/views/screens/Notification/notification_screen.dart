@@ -78,7 +78,7 @@ class NotificationScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Your task has been completed. ",
+                  "Your requesterTaskScreen has been completed. ",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: Dimensions.fontSizeLarge.h,
