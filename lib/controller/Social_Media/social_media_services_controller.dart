@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 import '../../utils/app_icons.dart';
 
 class SocialMediaServicesController extends GetxController {
-  RxInt selectedIndex = 0.obs;
+  RxInt selectedCategory = 0.obs;
 
 
   List requestList = [
@@ -45,8 +46,9 @@ class SocialMediaServicesController extends GetxController {
 
 
 
-  void setSelectedIndex(int index) {
-    selectedIndex.value = index;
+  void setSelectedCategory(int index) {
+    selectedCategory.value = index;
   }
+
 
 }

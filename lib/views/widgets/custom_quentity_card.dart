@@ -1,13 +1,10 @@
 
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
 
 import '../../utils/app_colors.dart';
+
 
 class CustomQuentityCard extends StatelessWidget {
   const CustomQuentityCard({super.key});
@@ -39,7 +36,7 @@ class CustomQuentityCard extends StatelessWidget {
           ),
           ///------------------------------quantity text-----------------------------?
           CustomText(
-            text: "100",
+            text: "1000",
             left: 16.w,
             right: 16.w,
           ),
