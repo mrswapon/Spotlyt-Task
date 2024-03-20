@@ -99,9 +99,9 @@ class _TextFormSectionState extends State<TextFormSection> {
               CustomButton(
                   title: AppString.signIn,
                   onpress: () {
-                    if (_formKey.currentState!.validate()) {
+                    // if (_formKey.currentState!.validate()) {
                       Get.offAllNamed(AppRoutes.addInterestScreen);
-                    }
+                    // }
                   }),
               SizedBox(height: 235.h),
               //===============================> Don’t have an account Section <===============================

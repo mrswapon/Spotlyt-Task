@@ -43,8 +43,6 @@ class VerifyOtpScreen extends StatelessWidget {
                 textAlign: TextAlign.start,
                 maxline: 5,
                 text: AppString.weHaveSent,
-                fontName: 'Lato',
-                fontsize: 16.sp,
               ),
               //=================================> PinCodeField Section <===============================
               SizedBox(height: 24.h),
@@ -56,14 +54,10 @@ class VerifyOtpScreen extends StatelessWidget {
                 children: [
                   CustomText(
                     text: AppString.didntRecieve,
-                    fontName: 'Lato',
-                    fontsize: 16.sp,
                     color: const Color(0xff5C5C5C),
                   ),
                   CustomText(
                     text: AppString.resend,
-                    fontName: 'Lato',
-                    fontsize: 16.sp,
                     color: AppColors.primaryColor,
                   ),
                 ],
