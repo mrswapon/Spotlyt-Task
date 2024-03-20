@@ -71,14 +71,14 @@ class HomeCardDetails extends StatelessWidget {
               fontWeight: FontWeight.w500,
               bottom: 24.h,
             ),
-            //========================> Time Line Text <=============================
+            //========================> Time Line Text <========================
             CustomText(
               text: AppString.timeLine,
               fontWeight: FontWeight.w500,
               bottom: 16.h,
             ),
 
-            //=========================> Time Line Container <===================
+            //=========================> Time Line Container <==================
 
             Container(
               decoration: BoxDecoration(
@@ -90,62 +90,16 @@ class HomeCardDetails extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    //=========================> Start Date Row <===================
-                    Row(
-                      children: [
-                        SvgPicture.asset(AppIcons.timeIcon,
-                            width: 44.w, height: 44.h),
-                        SizedBox(width: 6.w),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText(
-                              text: AppString.startDate,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xff5C5C5C),
-                            ),
-                            SizedBox(height: 6.h),
-                            CustomText(
-                              text: 'Mar 01, 2024',
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    //=========================> End Date Row <===================
-                    Row(
-                      children: [
-                        SvgPicture.asset(AppIcons.timeIcon,
-                            width: 44.w, height: 44.h),
-                        SizedBox(width: 6.w),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText(
-                              text: AppString.endDate,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xff5C5C5C),
-                            ),
-                            SizedBox(height: 6.h),
-                            CustomText(
-                              text: 'Mar 05, 2024',
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
+                    //=======================> Start Date Row <=================
+                    _timeLineRow(AppString.startDate, 'Mar 01, 2024'),
+                    //=======================> End Date Row <===================
+                    _timeLineRow(AppString.endDate, 'Mar 05, 2024'),
                   ],
                 ),
               ),
             ),
             const Spacer(),
-            //=========================> Task Register Button <===================
+            //=========================> Task Register Button <=================
             CustomButton(
                 title: AppString.taskRegisterNow,
                 onpress: () {
@@ -155,6 +109,33 @@ class HomeCardDetails extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  //=========================> Time Line Row Method <===========================
+  _timeLineRow(String title, String time) {
+    return Row(
+      children: [
+        SvgPicture.asset(AppIcons.timeIcon, width: 44.w, height: 44.h),
+        SizedBox(width: 6.w),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomText(
+              text: title,
+              fontWeight: FontWeight.w500,
+              color: const Color(0xff5C5C5C),
+            ),
+            SizedBox(height: 6.h),
+            CustomText(
+              text: time,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+          ],
+        )
+      ],
     );
   }
 }
