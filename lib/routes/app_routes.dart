@@ -3,13 +3,13 @@ import '../views/screens/Add_Interest/add_interest_screen.dart';
 import '../views/screens/Invite_Earn/invite_earn_screen.dart';
 import '../views/screens/Notification/notification_screen.dart';
 import '../views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
+import '../views/screens/Requester/requester_Task_details/requester_task_details_screen.dart';
 import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav_bar.dart';
-import '../views/screens/Task_details/task_details_screen.dart';
 import '../views/screens/Tasker/registerScreen/register_screen.dart';
 import '../views/screens/Tasker/submitTaskScreen/submit_task_screen.dart';
+import '../views/screens/Tasker/taskerBottomNavBar/tasker_bottom_nav_bar.dart';
 import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
 import '../views/screens/Tasker/taskerTaskDetails/tasker_task_details_screen.dart';
-import '../views/screens/Tasker/tester_bottom_nav_bar/tester_bottom_nav_bar.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
@@ -49,7 +49,7 @@ class AppRoutes {
   static const String splashScreen = "/splash_screen.dart";
   static const String paymentScreen = "/PaymentScreen.dart";
   static const String notificationScreen = "/NotificationScreen.dart";
-  static const String taskDetailsScreen = "/TaskDetailsScreen.dart";
+  static const String requesterTaskDetailsScreen = "/RequesterTaskDetailsScreen.dart";
   static const String personalInformationScreen = "/personal_information_screen.dart";
   static const String profileScreen = "/tasker_profile_screen.dart";
   static const String updateProfileScreen = "/update_profile_screen.dart";
@@ -57,7 +57,7 @@ class AppRoutes {
   static const String addInterestScreen = "/AddInterestScreen.dart";
   static const String taskerProfileScreen = "/tasker_profile_screen.dart";
   static const String submitTaskScreen = "/submit_task_screen.dart";
-  static const String testerBottomNavBar = "/tester_bottom-nav_bar.dart";
+  static const String taskerBottomNavBar = "/tasker_bottom-nav_bar.dart";
   static const String registerScreen = "/register_screen.dart";
   static const String taskerTaskDetailsScreen = "/tasker_task_details_screen.dart";
 
@@ -84,13 +84,13 @@ class AppRoutes {
         GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen()),
         GetPage(name: paymentScreen, page: () => PaymentScreen()),
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
-        GetPage(name: taskDetailsScreen, page: () => TaskDetailsScreen()),
+        GetPage(name: requesterTaskDetailsScreen, page: () => RequesterTaskDetailsScreen()),
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
         GetPage(name: inviteEarnScreen, page: () => InviteEarnScreen()),
         GetPage(name: addInterestScreen, page: () => AddInterestScreen()),
         GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
         GetPage(name: submitTaskScreen, page: () => SubmitTaskScreen()),
-        GetPage(name: testerBottomNavBar, page: () => TesterBottomNavBar()),
+        GetPage(name: taskerBottomNavBar, page: () => TaskerBottomNavBar()),
         GetPage(name: registerScreen, page: () => RegisterScreen()),
         GetPage(name: taskerTaskDetailsScreen, page: () => TaskerTaskDetailsScreen()),
   ];

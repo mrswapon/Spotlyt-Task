@@ -50,31 +50,6 @@ class TaskerProfileScreen extends StatelessWidget {
                     height: 16.h,
                   ),
         
-        
-                  //=================================> Submit Task <===================================
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.r),
-                        border: Border.all(color: AppColors.primaryColor)),
-                    child: ListTile(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.submitTaskScreen);
-                      },
-                      title: CustomText(
-                        text: AppString.submitTask,
-                        textAlign: TextAlign.start,
-                      ),
-                      leading: SvgPicture.asset(
-                        AppIcons.submitIcon,
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-        
                   ///--------------------------setting ---------------------------->
                   Container(
                     decoration: BoxDecoration(

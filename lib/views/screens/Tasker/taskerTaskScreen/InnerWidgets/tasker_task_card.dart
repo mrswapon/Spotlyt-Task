@@ -2,20 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_icons.dart';
-import '../../../../utils/app_images.dart';
-import '../../../widgets/custom_text.dart';
+import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/app_icons.dart';
+import '../../../../../utils/app_images.dart';
+import '../../../../widgets/custom_text.dart';
 
-class TaskCard extends StatelessWidget {
+class TaskerTaskCard extends StatelessWidget {
   final double? weight;
   final double? bgImageheights;
   final String? amount;
-
-  const TaskCard({super.key, this.weight, this.bgImageheights, this.amount});
-
-
-
+  const TaskerTaskCard(
+      {super.key, this.weight, this.bgImageheights, this.amount});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +30,7 @@ class TaskCard extends StatelessWidget {
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(8.r))),
             child: Image.asset(
               AppImages.taskCardImage,
-              height: bgImageheights?? 174.h,
+              height: bgImageheights ?? 174.h,
             ),
           ),
           Container(
@@ -78,16 +75,15 @@ class TaskCard extends StatelessWidget {
                       ],
                     ),
 
-
-
                     ///---------------------------amount not equal null amount text------------------------>
-                    amount != null ?
-                    CustomText(
-                        text: "$amount",
-                        fontsize: 14.h,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.black5C5C5C,
-                        left: 8.w) : SizedBox(),
+                    amount != null
+                        ? CustomText(
+                            text: "$amount",
+                            fontsize: 14.h,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.black5C5C5C,
+                            left: 8.w)
+                        : SizedBox(),
                   ],
                 ),
 
