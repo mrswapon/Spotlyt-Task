@@ -43,6 +43,7 @@ dependencies:
   curved_labeled_navigation_bar: ^2.0.2
   image_picker: ^1.0.7
   device_preview: ^1.1.0
+  toggle_switch: ^2.2.2
 
 dev_dependencies:
   flutter_test:
