@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_dimentions.dart';
@@ -22,12 +23,13 @@ class TextfieldSection extends StatefulWidget {
 
 class _TextfieldSectionState extends State<TextfieldSection> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _fullNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passController = TextEditingController();
-  final TextEditingController _rePassController = TextEditingController();
+
+
+  AuthController _authController = Get.put(AuthController());
 
   bool _isChecked = false;
+
+
   bool isObscure = true;
   bool isObscures = true;
 
@@ -44,7 +46,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
-                controller: _fullNameController,
+                controller: _authController.fullNameCtrl,
                 prefixIcon: _customIcons(AppIcons.person),
                 hintText: AppString.fullName,
                 validator: (value) {
@@ -59,7 +61,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
-                controller: _emailController,
+                controller: _authController.emailCtrl,
                 prefixIcon: _customIcons(AppIcons.mail),
                 hintText: AppString.email,
                 validator: (value) {
@@ -75,7 +77,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
                 isObscureText: isObscures,
-                controller: _passController,
+                controller: _authController.passwordCtrl,
                 prefixIcon: _customIcons(AppIcons.lockClosed),
                 sufixicons: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 21.w),
@@ -107,7 +109,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
                 isObscureText: isObscure,
-                controller: _rePassController,
+                controller: _authController.conPasswordCtrl,
                 prefixIcon: _customIcons(AppIcons.lockClosed),
                 sufixicons: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 21.w),
@@ -140,9 +142,10 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomButton(
                   title: AppString.signUps,
                   onpress: () {
-                    // if (_formKey.currentState!.validate()) {
-                      Get.offAllNamed(AppRoutes.verifyOtpScreen);
-                    // }
+                     if (_formKey.currentState!.validate()) {
+                      // _authController.handleSignUp();
+                       Get.toNamed(AppRoutes.verifyOtpScreen);
+                     }
                   }),
               SizedBox(height: 64.h),
               //===============================> Already have an account Section <===============================

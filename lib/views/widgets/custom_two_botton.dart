@@ -12,9 +12,7 @@ class CustomTwoBotton extends StatelessWidget {
 
   RxBool isSelected = true.obs;
 
-  void toggleSelected() {
-    isSelected.value = !isSelected.value;
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,7 @@ class CustomTwoBotton extends StatelessWidget {
             flex: 1,
             child: Obx(() => GestureDetector(
                   onTap: () {
-                    toggleSelected();
+                    isSelected(true);
                   },
 
                   ///---------------------------up comming botton----------------------->
@@ -60,7 +58,7 @@ class CustomTwoBotton extends StatelessWidget {
             flex: 1,
             child: Obx(() => GestureDetector(
                   onTap: () {
-                    toggleSelected();
+                    isSelected(false);
                   },
 
                   ///---------------------------up complete botton----------------------->

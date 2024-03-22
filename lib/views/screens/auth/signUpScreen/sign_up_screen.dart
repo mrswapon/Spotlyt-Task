@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/screens/auth/signUpScreen/InnerWidget/textfield_section.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
@@ -14,10 +15,9 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
   RxBool isSelected = true.obs;
-  void toggleSelected() {
-    isSelected.value = !isSelected.value;
-  }
+   AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       width: 171.w, height: 49.h)),
               SizedBox(height: 42.h),
               //===============================> Role Selected Section <===============================
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -53,7 +54,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     flex: 1,
                     child: Obx(() => GestureDetector(
                           onTap: () {
-                            toggleSelected();
+                            isSelected(true);
+                            authController.role.value = "client";
                           },
                           child: Container(
                             width: double.infinity,
@@ -85,7 +87,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     flex: 1,
                     child: Obx(() => GestureDetector(
                           onTap: () {
-                            toggleSelected();
+                            isSelected(false);
+                            authController.role.value = "client";
                           },
                           child: Container(
                             width: double.infinity,
@@ -114,6 +117,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ],
               ),
+
+
 
               //=================================> Text field Section <===============================
               TextfieldSection(),
