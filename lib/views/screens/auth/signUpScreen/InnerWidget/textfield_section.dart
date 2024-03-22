@@ -39,7 +39,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(height: 64.h),
+              SizedBox(height: 24.h),
               //===============================> Full Name Text-field <===============================
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
