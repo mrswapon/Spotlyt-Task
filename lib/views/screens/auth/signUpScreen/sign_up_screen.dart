@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/screens/auth/signUpScreen/InnerWidget/textfield_section.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 
@@ -58,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           child: Container(
                             width: double.infinity,
-                            margin: EdgeInsets.symmetric(horizontal: 8.w),
+                            margin: EdgeInsets.only(right: 8.w),
                             decoration: BoxDecoration(
                                 color: isSelected.value
                                     ? AppColors.primaryColor
@@ -68,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 borderRadius: BorderRadius.circular(8.r)),
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 50.5.w, vertical: 6.5.h),
+                                  horizontal: 40.5.w, vertical: 6.5.h),
                               child: CustomText(
                                 text: AppString.requester,
                                 fontsize: 14.h,
@@ -90,7 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           child: Container(
                             width: double.infinity,
-                            margin: EdgeInsets.symmetric(horizontal: 8.w),
+                            margin: EdgeInsets.only(left: 8.w),
                             decoration: BoxDecoration(
                                 color: isSelected.value
                                     ? Colors.white
@@ -100,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 borderRadius: BorderRadius.circular(8.r)),
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 50.5.w, vertical: 6.5.h),
+                                  horizontal: 40.5.w, vertical: 6.5.h),
                               child: CustomText(
                                 text: AppString.tasker,
                                 fontsize: 14.h,
