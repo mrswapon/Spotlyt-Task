@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_dimentions.dart';
@@ -21,18 +24,29 @@ class TextfieldSection extends StatefulWidget {
 }
 
 class _TextfieldSectionState extends State<TextfieldSection> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _fullNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passController = TextEditingController();
-  final TextEditingController _rePassController = TextEditingController();
+
+
+  final AuthController _authController = Get.put(AuthController());
 
   bool _isChecked = false;
-  bool isObscure = true;
-  bool isObscures = true;
+
+
+
+  RxBool isObscure = true.obs;
+  RxBool isObscures = true.obs;
+
+  toggleIsObscure(){
+    isObscure.value = !isObscure.value;
+  }
+
+  toggleReIsObscures(){
+    isObscures.value = !isObscures.value;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
     return Column(
       children: [
         Form(
@@ -44,7 +58,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
-                controller: _fullNameController,
+                controller: _authController.fullNameCtrl,
                 prefixIcon: _customIcons(AppIcons.person),
                 hintText: AppString.fullName,
                 validator: (value) {
@@ -59,79 +73,84 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
-                controller: _emailController,
+                controller: _authController.emailCtrl,
                 prefixIcon: _customIcons(AppIcons.mail),
                 hintText: AppString.email,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your user email";
+                  }else if(!emailValidate.hasMatch(value)){
+                    return "Invalid email!";
                   }
                   return null;
                 },
               ),
               SizedBox(height: 16.h),
               //===============================> Password Text-field <===============================
-              CustomTextField(
-                contenpaddingHorizontal: 16.w,
-                contenpaddingVertical: 14.h,
-                isObscureText: isObscures,
-                controller: _passController,
-                prefixIcon: _customIcons(AppIcons.lockClosed),
-                sufixicons: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 21.w),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isObscures = !isObscures;
-                      });
-                    },
-                    child: SvgPicture.asset(
-                      isObscures ? AppIcons.eyeOff : AppIcons.eye,
-                      color: AppColors.primaryColor,
-                      height: 24.h,
-                      width: 24.w,
+              Obx(()=> CustomTextField(
+                  contenpaddingHorizontal: 16.w,
+                  contenpaddingVertical: 14.h,
+                  isObscureText: isObscure.value,
+                  controller: _authController.passwordCtrl,
+                  prefixIcon: _customIcons(AppIcons.lockClosed),
+                  sufixicons: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 21.w),
+                    child: GestureDetector(
+                      onTap: () {
+                        toggleIsObscure();
+                      },
+                      child: SvgPicture.asset(
+                        isObscure.value ? AppIcons.eyeOff : AppIcons.eye,
+                        color: AppColors.primaryColor,
+                        height: 24.h,
+                        width: 24.w,
+                      ),
                     ),
                   ),
+                  hintText: AppString.createPassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your password";
+                    }else if(value.length < 8){
+                      return "Password must be at least 8 characters";
+                    }
+                    return null;
+                  },
                 ),
-                hintText: AppString.createPassword,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter your password";
-                  }
-                  return null;
-                },
               ),
               //===============================> Re-Enter Password Text-field <===============================
               SizedBox(height: 16.h),
-              CustomTextField(
-                contenpaddingHorizontal: 16.w,
-                contenpaddingVertical: 14.h,
-                isObscureText: isObscure,
-                controller: _rePassController,
-                prefixIcon: _customIcons(AppIcons.lockClosed),
-                sufixicons: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 21.w),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isObscure = !isObscure;
-                      });
-                    },
-                    child: SvgPicture.asset(
-                      isObscure ? AppIcons.eyeOff : AppIcons.eye,
-                      color: AppColors.primaryColor,
-                      height: 24.h,
-                      width: 24.w,
+              Obx(()=> CustomTextField(
+                  contenpaddingHorizontal: 16.w,
+                  contenpaddingVertical: 14.h,
+                  isObscureText: isObscures.value,
+                  controller: _authController.conPasswordCtrl,
+                  prefixIcon: _customIcons(AppIcons.lockClosed),
+                  sufixicons: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 21.w),
+                    child: GestureDetector(
+                      onTap: () {
+                        toggleReIsObscures();
+                      },
+                      child: SvgPicture.asset(
+                        isObscures.value ? AppIcons.eyeOff : AppIcons.eye,
+                        color: AppColors.primaryColor,
+                        height: 24.h,
+                        width: 24.w,
+                      ),
                     ),
                   ),
+                  hintText: AppString.reenterPassword,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Please enter again your user password";
+                    }
+                    else if(value == _authController.passwordCtrl){
+                      return "Passwords do not match";
+                    }
+                    return null;
+                  },
                 ),
-                hintText: AppString.reenterPassword,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter again your user password";
-                  }
-                  return null;
-                },
               ),
               SizedBox(height: 14.h),
               _checkbox(),
@@ -140,9 +159,12 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomButton(
                   title: AppString.signUps,
                   onpress: () {
-                    // if (_formKey.currentState!.validate()) {
-                      Get.offAllNamed(AppRoutes.verifyOtpScreen);
-                    // }
+                    if(_isChecked){
+                      if (_formKey.currentState!.validate()) {
+                        // _authController.handleSignUp();
+                        Get.toNamed(AppRoutes.verifyOtpScreen);
+                      }
+                    }
                   }),
               SizedBox(height: 64.h),
               //===============================> Already have an account Section <===============================
@@ -152,8 +174,6 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   CustomText(
                     text: AppString.alreadyHave,
                     fontWeight: FontWeight.w500,
-                    fontsize: 15.h,
-                    fontName: 'Lato',
                   ),
                   SizedBox(width: 5.w),
                   GestureDetector(
@@ -164,8 +184,6 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                       color: AppColors.primaryColor,
                       text: AppString.signIn,
                       fontWeight: FontWeight.w500,
-                      fontsize: 15.h,
-                      fontName: 'Lato',
                     ),
                   )
                 ],
@@ -270,5 +288,16 @@ class _TextfieldSectionState extends State<TextfieldSection> {
         ),
       ],
     );
+  }
+
+
+  static RegExp emailValidate=RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
+
+
+  static  validateTextField(String value) {
+    if (value.isEmpty) {
+      return 'Field is required';
+    }
+    return null;
   }
 }

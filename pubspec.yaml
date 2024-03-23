@@ -43,7 +43,10 @@ dependencies:
   curved_labeled_navigation_bar: ^2.0.2
   image_picker: ^1.0.7
   device_preview: ^1.1.0
-  toggle_switch: ^2.2.2
+  http: ^1.2.1
+  fluttertoast: ^8.2.4
+  shared_preferences: ^2.2.2
+  http_parser: ^4.0.2
 
 dev_dependencies:
   flutter_test:
