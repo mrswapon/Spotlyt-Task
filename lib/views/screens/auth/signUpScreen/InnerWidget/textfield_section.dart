@@ -31,10 +31,9 @@ class _TextfieldSectionState extends State<TextfieldSection> {
   bool _isChecked = false;
 
 
-
+  ///================toggle obscure===============>
   RxBool isObscure = true.obs;
   RxBool isObscures = true.obs;
-
   toggleIsObscure(){
     isObscure.value = !isObscure.value;
   }
@@ -295,18 +294,10 @@ class _TextfieldSectionState extends State<TextfieldSection> {
 
   static RegExp emailValidate=RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
 
-
-  static  validateTextField(String value) {
-    if (value.isEmpty) {
-      return 'Field is required';
-    }
-    return null;
-  }
-
-
   bool _validatePassword(String value) {
     // Regular expression to check for at least 1 letter and 1 number
     RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
     return regex.hasMatch(value);
   }
+
 }

@@ -25,8 +25,8 @@ class PinCodeField extends StatelessWidget {
       autoFocus: false,
       appContext: context,
       length: 6,
-      pinTheme: PinTheme(
 
+      pinTheme: PinTheme(
           shape: PinCodeFieldShape.box,
           borderRadius: BorderRadius.circular(8),
 
@@ -41,7 +41,7 @@ class PinCodeField extends StatelessWidget {
       obscureText: false,
       keyboardType: TextInputType.number,
       onChanged: (value) {
-        print("------------------------------value: $value");
+        print("----value: $value");
       },
     );
   }

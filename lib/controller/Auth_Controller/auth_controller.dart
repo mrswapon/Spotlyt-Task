@@ -10,21 +10,18 @@ import 'package:spotlyt_task/services/api_constants.dart';
 import '../../services/api_checker.dart';
 import '../../services/api_client.dart';
 
-class AuthController extends GetxController{
-
+class AuthController extends GetxController {
   final fullNameCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   final conPasswordCtrl = TextEditingController();
   RxBool isSelectedRole = true.obs;
 
-
-
   var signUpLoading = false.obs;
-  var token="";
+  var token = "";
 
+  ///==================role selected==============>
   RxString role = "".obs;
-
   void updateRole() {
     if (isSelectedRole.value == true) {
       role.value = "client";
@@ -33,31 +30,28 @@ class AuthController extends GetxController{
     }
   }
 
-  ///<=============Sign Up==========>
+  ///<=============Sign Up===========>
   handleSignUp() async {
     signUpLoading(true);
 
-    try{
+    try {
       Map<String, dynamic> body = {
-        "fullName":fullNameCtrl.text.trim(),
-        "email":emailCtrl.text.trim(),
-        "password":passwordCtrl.text,
-        "role":"${role.value}",
+        "fullName": fullNameCtrl.text.trim(),
+        "email": emailCtrl.text.trim(),
+        "password": passwordCtrl.text,
+        "role": "${role.value}",
       };
 
-
-      print("=========================================================> ${role.value}");
-      print("=========================================================> ${body}");
+      print("=================> ${role.value}");
+      print("===================> ${body}");
 
       var headers = {'Content-Type': 'application/json'};
-
 
       Response response = await ApiClient.postData(
           ApiConstants.signUpEndPoint, jsonEncode(body),
           headers: headers);
 
-      print("=========================================================> ${response.body} and ==> ${response.statusCode}");
-
+      print("============> ${response.body} and ==> ${response.statusCode}");
       if (response.statusCode == 201) {
         Fluttertoast.showToast(msg: response.body['message']);
         // token = response.body['token'];
@@ -74,22 +68,14 @@ class AuthController extends GetxController{
       } else {
         ApiChecker.checkApi(response);
       }
-
-
-
-    }catch(e,s){
+    } catch (e, s) {
       print("===> error : $e");
       print("===> error : $s");
     }
     signUpLoading(false);
   }
 
-
-
-
-
-  ///  resend otp
-
+  /// ============== resend otp================>
   var resendOtpLoading = false.obs;
 
   resendOtp(String email) async {
@@ -110,59 +96,32 @@ class AuthController extends GetxController{
     resendOtpLoading(false);
   }
 
-  // var verifyLoading = false.obs;
-  //
-  // verifyEmail(
-  //     Map<String, String?> data,
-  //     String code,
-  //     ) async {
-  //   verifyLoading(true);
-  //   var body = {"email": data['email'], "code": code};
-  //   Map<String, String> header = {'Content-Type': 'application/json'};
-  //   var response = await ApiClient.postData(
-  //       ApiConstants.verifyCode, json.encode(body),
-  //       headers: header);
-  //   if (response.statusCode == 200) {
-  //     if (data['screenType'] == "forgot") {
-  //       Get.toNamed(AppRoutes.setPasswordScreen, arguments: data['email']);
-  //     } else {
-  //       Get.offAllNamed(AppRoutes.bottomNavBar);
-  //     }
-  //   } else {
-  //     Fluttertoast.showToast(msg: response.statusText ?? "");
-  //   }
-  //   verifyLoading(false);
-  // }
-
-
-
+  ///==================otp very=====================>
   TextEditingController otpCtrl = TextEditingController();
   var verifyLoading = false.obs;
 
-  handleOtpVery({required String email, required String otp, required String type}) async {
-    try{
+  handleOtpVery(
+      {required String email,
+      required String otp,
+      required String type}) async {
+    try {
       var body = {'oneTimeCode': otp, 'email': email};
       var headers = {'Content-Type': 'application/x-www-form-urlencoded'};
       verifyLoading(true);
       Response response = await ApiClient.postData(
           ApiConstants.otpVerifyEndPoint, body,
           headers: headers);
-      print("==========================${response.body} and ${response.statusCode}");
+      print("============${response.body} and ${response.statusCode}");
       if (response.statusCode == 200) {
         otpCtrl.clear();
         Get.offAllNamed(AppRoutes.signInScreen);
       } else {
         ApiChecker.checkApi(response);
       }
-
-    }catch(e,s){
+    } catch (e, s) {
       print("===> e : $e");
       print("===> s : $s");
     }
     verifyLoading(false);
   }
-
-
-
-
 }
