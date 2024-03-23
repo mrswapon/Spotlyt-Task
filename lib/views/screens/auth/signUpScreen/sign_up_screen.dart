@@ -118,7 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
 
-
+  
 
               //=================================> Text field Section <===============================
               TextfieldSection(),
