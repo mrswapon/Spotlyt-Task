@@ -1,17 +1,24 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../utils/app_colors.dart';
 
 class PinCodeField extends StatelessWidget {
-  const PinCodeField({
-    super.key,
+
+  TextEditingController otp;
+   PinCodeField({
+     required this.otp,
   });
 
+
+   final authCtrl = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return PinCodeTextField(
-
+      controller:  otp,
       backgroundColor: Colors.transparent,
       cursorColor: AppColors.primaryColor,
       textStyle: const TextStyle(color: Colors.black),

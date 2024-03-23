@@ -113,6 +113,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                       return "Please enter your password";
                     }else if(value.length < 8){
                       return "Password must be at least 8 characters";
+                    }else if(_validatePassword(value)){
+                      return "password must contain at least 1 letter and 1 number";
                     }
                     return null;
                   },
@@ -161,8 +163,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   onpress: () {
                     if(_isChecked){
                       if (_formKey.currentState!.validate()) {
-                        // _authController.handleSignUp();
-                        Get.toNamed(AppRoutes.verifyOtpScreen);
+                         _authController.handleSignUp();
+                        // Get.toNamed(AppRoutes.verifyOtpScreen);
                       }
                     }
                   }),
@@ -299,5 +301,12 @@ class _TextfieldSectionState extends State<TextfieldSection> {
       return 'Field is required';
     }
     return null;
+  }
+
+
+  bool _validatePassword(String value) {
+    // Regular expression to check for at least 1 letter and 1 number
+    RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+    return regex.hasMatch(value);
   }
 }

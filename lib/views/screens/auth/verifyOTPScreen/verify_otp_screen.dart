@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../../../routes/app_routes.dart';
@@ -9,11 +10,22 @@ import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 import 'InnerWidget/pin_code_field.dart';
 
-class VerifyOtpScreen extends StatelessWidget {
-  const VerifyOtpScreen({super.key});
+class VerifyOtpScreen extends StatefulWidget {
+   VerifyOtpScreen({super.key});
+
+  @override
+  State<VerifyOtpScreen> createState() => _VerifyOtpScreenState();
+}
+
+class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
+
+  var prameters = Get.parameters;
+  final _authCtrl = Get.put(AuthController());
+
 
   @override
   Widget build(BuildContext context) {
+    print("=================${prameters["email"]} and ${prameters["screenType"]}");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       //===============================> AppBar Section <===============================
@@ -46,7 +58,7 @@ class VerifyOtpScreen extends StatelessWidget {
               ),
               //=================================> PinCodeField Section <===============================
               SizedBox(height: 24.h),
-              const PinCodeField(),
+               PinCodeField(otp: _authCtrl.otpCtrl),
               //=================================> Didn’t recieve the code? Section <===============================
               SizedBox(height: 16.h),
               Row(
@@ -65,7 +77,12 @@ class VerifyOtpScreen extends StatelessWidget {
               //=================================>  Section <===============================
               SizedBox(height: 39.h),
               CustomButton(title: AppString.verify, onpress: () {
-                Get.offAllNamed(AppRoutes.signInScreen);
+
+                if (_authCtrl.otpCtrl.text.length > 5) {
+                  _authCtrl.handleOtpVery(email: "${prameters["email"]}", otp: _authCtrl.otpCtrl.text, type: "${prameters["screenType"]}");
+                  print("=================${prameters["email"]} and ${prameters["screenType"]}");
+                }
+
               })
             ],
           ),
