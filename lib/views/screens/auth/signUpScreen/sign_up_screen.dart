@@ -16,7 +16,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
 
-  RxBool isSelected = true.obs;
+
    AuthController authController = Get.put(AuthController());
 
   @override
@@ -54,14 +54,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     flex: 1,
                     child: Obx(() => GestureDetector(
                           onTap: () {
-                            isSelected(true);
-                            authController.role.value = "client";
+                            authController.isSelectedRole(true);
+                            authController.role.value = "employee";
                           },
                           child: Container(
                             width: double.infinity,
                             margin: EdgeInsets.only(right: 8.w),
                             decoration: BoxDecoration(
-                                color: isSelected.value
+                                color: authController.isSelectedRole.value
                                     ? AppColors.primaryColor
                                     : Colors.white,
                                 border: Border.all(
@@ -73,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               child: CustomText(
                                 text: AppString.requester,
                                 fontsize: 14.h,
-                                color: isSelected.value
+                                color: authController.isSelectedRole.value
                                     ? Colors.white
                                     : AppColors.primaryColor,
                                 fontWeight: FontWeight.w500,
@@ -87,14 +87,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     flex: 1,
                     child: Obx(() => GestureDetector(
                           onTap: () {
-                            isSelected(false);
+                            authController.isSelectedRole(false);
                             authController.role.value = "client";
                           },
                           child: Container(
                             width: double.infinity,
                             margin: EdgeInsets.only(left: 8.w),
                             decoration: BoxDecoration(
-                                color: isSelected.value
+                                color: authController.isSelectedRole.value
                                     ? Colors.white
                                     : AppColors.primaryColor,
                                 border: Border.all(
@@ -106,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               child: CustomText(
                                 text: AppString.tasker,
                                 fontsize: 14.h,
-                                color: isSelected.value
+                                color: authController.isSelectedRole.value
                                     ? AppColors.primaryColor
                                     : Colors.white,
                                 fontWeight: FontWeight.w500,
