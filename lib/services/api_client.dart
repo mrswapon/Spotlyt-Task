@@ -196,8 +196,7 @@ class ApiClient extends GetxService {
         Uri.parse(ApiConstants.baseUrl + uri),
         body: jsonEncode(body),
         headers: headers ?? mainHeaders,
-      )
-          .timeout(const Duration(seconds: timeoutInSeconds));
+      ).timeout(const Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
       return const Response(statusCode: 1, statusText: noInternetMessage);

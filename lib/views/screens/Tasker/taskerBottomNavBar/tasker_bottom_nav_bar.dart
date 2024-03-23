@@ -76,9 +76,9 @@ class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
   pageControll(int index) {
     switch (index) {
       case 0:
-        return const TaskerHomeScreen();
+        return TaskerHomeScreen();
       case 1:
-        return const TaskerTaskScreen();
+        return TaskerTaskScreen();
       default:
         return TaskerProfileScreen();
     }
