@@ -80,7 +80,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
                 if (_authCtrl.otpCtrl.text.length > 5) {
                   _authCtrl.handleOtpVery(email: "${prameters["email"]}", otp: _authCtrl.otpCtrl.text, type: "${prameters["screenType"]}");
-                  print("=================${prameters["email"]} and ${prameters["screenType"]}");
                 }
 
               })
