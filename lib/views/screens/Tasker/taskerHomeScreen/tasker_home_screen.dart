@@ -5,14 +5,12 @@ import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/InnerWidgets/tasker_home_screen_app_bar.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
-import '../../../../controller/HomeController/home_controller.dart';
 import '../../../../utils/app_strings.dart';
 import '../taskerTaskScreen/InnerWidgets/tasker_task_card.dart';
 
 class TaskerHomeScreen extends StatelessWidget {
- TaskerHomeScreen({super.key});
+ const TaskerHomeScreen({super.key});
 
-  final HomeController _homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
