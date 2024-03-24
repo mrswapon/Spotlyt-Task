@@ -19,6 +19,7 @@ class PinCodeField extends StatelessWidget {
   Widget build(BuildContext context) {
     return PinCodeTextField(
       controller:  otp,
+      autoDisposeControllers: false,
       backgroundColor: Colors.transparent,
       cursorColor: AppColors.primaryColor,
       textStyle: const TextStyle(color: Colors.black),
