@@ -4,11 +4,22 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
+import 'controller/requester_home_controller.dart';
 import 'inner_widgets/requester_cetegories_and_services_card.dart';
 import 'inner_widgets/requester_home_screen_app_bar.dart';
 
 class RequesterHomeScreen extends StatelessWidget {
-  const RequesterHomeScreen({super.key});
+
+ RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+
+
+  RequesterHomeScreen(){
+    requesterHomeController.handleGetHomeData();
+  }
+
 
   @override
   Widget build(BuildContext context) {

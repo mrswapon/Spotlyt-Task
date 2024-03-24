@@ -23,7 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToLoginScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAllNamed(AppRoutes.signInScreen);
+      // Get.offAllNamed(AppRoutes.signInScreen);
+      Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+
     });
   }
 

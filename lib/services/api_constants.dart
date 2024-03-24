@@ -4,4 +4,5 @@ class ApiConstants{
   static const String signUpEndPoint = "/v1/auth/register";
   static const String forgot = "/v1/auth/forgot-password";
   static const String otpVerifyEndPoint = "/v1/auth/verify-email";
+  static const String requesterTaskService = "/v1/tasks/service";
 }
