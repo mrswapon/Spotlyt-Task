@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/helpers/Bindings/prefs_helper.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
+import 'package:spotlyt_task/utils/app_strings.dart';
 
 class SplashScreen extends StatefulWidget {
    SplashScreen({super.key});
@@ -21,12 +23,17 @@ class _SplashScreenState extends State<SplashScreen> {
     _navigateToLoginScreen();
   }
 
-  void _navigateToLoginScreen() {
+  void _navigateToLoginScreen() async{
+    // var data = await PrefsHelper.getString(AppString.bearerToken);
+    // print("=====$data");
     Future.delayed(const Duration(seconds: 3), () {
       // Get.offAllNamed(AppRoutes.signInScreen);
       Get.offAllNamed(AppRoutes.requesterBottomNavBar);
 
     });
+
+
+
   }
 
 

@@ -6,34 +6,35 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
+import 'package:spotlyt_task/utils/app_strings.dart';
 
+import '../../helpers/Bindings/prefs_helper.dart';
 import '../../services/api_checker.dart';
 import '../../services/api_client.dart';
 
 class AuthController extends GetxController {
+
+
+
+
   final fullNameCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   final conPasswordCtrl = TextEditingController();
   RxBool isSelectedRole = true.obs;
-
+  RxString role = "client".obs;
   var signUpLoading = false.obs;
   var token = "";
 
   ///==================role selected==============>
-  RxString role = "".obs;
-  void updateRole() {
-    if (isSelectedRole.value == true) {
-      role.value = "client";
-    } else {
-      role.value = "employee";
-    }
+  void selectRole(String selectedRole) {
+    // Set the selected role
+    role.value = selectedRole;
   }
 
   ///<=============Sign Up===========>
   handleSignUp() async {
     signUpLoading(true);
-
     try {
       Map<String, dynamic> body = {
         "fullName": fullNameCtrl.text.trim(),
@@ -42,7 +43,7 @@ class AuthController extends GetxController {
         "role": "${role.value}",
       };
 
-      print("=================> ${role.value}");
+      print("=================>ROLE ${role.value}");
       print("===================> ${body}");
 
       var headers = {'Content-Type': 'application/json'};
@@ -75,9 +76,10 @@ class AuthController extends GetxController {
     signUpLoading(false);
   }
 
+
+
   /// ============== resend otp================>
   var resendOtpLoading = false.obs;
-
   resendOtp(String email) async {
     resendOtpLoading(true);
     var body = {"email": email};
@@ -85,6 +87,7 @@ class AuthController extends GetxController {
     var response = await ApiClient.postData(
         ApiConstants.forgot, json.encode(body),
         headers: header);
+    print("===> ${response.body}");
     if (response.statusCode == 200) {
     } else {
       Fluttertoast.showToast(
@@ -95,6 +98,7 @@ class AuthController extends GetxController {
     }
     resendOtpLoading(false);
   }
+
 
   ///==================otp very=====================>
   TextEditingController otpCtrl = TextEditingController();
@@ -113,7 +117,10 @@ class AuthController extends GetxController {
           headers: headers);
       print("============${response.body} and ${response.statusCode}");
       if (response.statusCode == 200) {
-        otpCtrl.clear();
+        await PrefsHelper.setString(AppString.role, response.body["data"]['attributes']['user']['role']);
+        var role = response.body["data"]['attributes']['user']['role'];
+        print("===> role : $role");
+        // otpCtrl.clear();
         Get.offAllNamed(AppRoutes.signInScreen);
       } else {
         ApiChecker.checkApi(response);
@@ -124,4 +131,75 @@ class AuthController extends GetxController {
     }
     verifyLoading(false);
   }
+
+
+  /// <====================== Sign in screen =================->
+  TextEditingController signInPassCtrl = TextEditingController();
+  TextEditingController signInEmailCtrl = TextEditingController();
+  var signInLoading =false.obs;
+
+  handleSignIn()async{
+    signInLoading(true);
+    var headers = {
+      //'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
+    };
+    Map<String,dynamic> body={
+      'email': signInEmailCtrl.text.trim(),
+      'password': signInPassCtrl.text.trim()
+    };
+    Response response= await ApiClient.postData(ApiConstants.loginEndPoint,json.encode(body),headers: headers);
+    print("====> ${response.body}");
+    if(response.statusCode==200){
+      // if(response.body['data']['attributes']['role']!="client"&&response.body['data']['attributes']['_id'] != "65fd4000d68df19360700e26"){
+          await  PrefsHelper.setString(AppString.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
+
+         await PrefsHelper.setBool(AppString.isLogged, true);
+         var roles = await PrefsHelper.getString(AppString.role);
+         print("=============roles : $roles");
+         if(roles== "client"){
+           Get.offAllNamed(AppRoutes.addInterestScreen);
+         }else{
+           Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+         }
+        print("====================================================Sagor ");
+        signInEmailCtrl.clear();
+        signInPassCtrl.clear();
+      // }
+    }else{
+      //  ApiChecker.checkApi(response);
+      Fluttertoast.showToast(msg:response.statusText??"");
+    }
+    signInLoading(false);
+  }
+
+
+  ///==================forgot pass word===============>
+  TextEditingController forgetEmailTextCtrl=TextEditingController();
+  TextEditingController forgetConfirmPassTextCtrl=TextEditingController();
+  TextEditingController forgetNewPassTextCtrl=TextEditingController();
+  var forgotLoading = false.obs;
+
+  handleForget()async{
+    forgotLoading(true);
+    var body = {
+      "email":forgetEmailTextCtrl.text.trim(),
+    };
+    var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    var response= await ApiClient.postData(ApiConstants.forgotPasswordEndPoint, json.encode(body),headers: headers);
+    if(response.statusCode==201){
+      Get.toNamed(AppRoutes.verifyOtpScreen, parameters: {
+        "email": forgetEmailTextCtrl.text.trim(),
+        "screenType": "forgorOtp",
+      });
+      forgetEmailTextCtrl.clear();
+    }else{
+      ApiChecker.checkApi(response);
+    }
+    forgotLoading(false);
+  }
+
 }

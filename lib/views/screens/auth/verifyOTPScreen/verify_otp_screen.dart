@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -59,6 +60,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               //=================================> PinCodeField Section <===============================
               SizedBox(height: 24.h),
                PinCodeField(otp: _authCtrl.otpCtrl),
+
               //=================================> Didn’t recieve the code? Section <===============================
               SizedBox(height: 16.h),
               Row(
@@ -68,9 +70,15 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                     text: AppString.didntRecieve,
                     color: const Color(0xff5C5C5C),
                   ),
-                  CustomText(
-                    text: AppString.resend,
-                    color: AppColors.primaryColor,
+                  ///===================resend Otp====================>
+                  GestureDetector(
+                    onTap: (){
+                      _authCtrl.resendOtp("${prameters["email"]}");
+                    },
+                    child: CustomText(
+                      text: AppString.resend,
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                 ],
               ),

@@ -8,15 +8,8 @@ import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
-  @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
-
-
+class SignUpScreen extends StatelessWidget {
+   SignUpScreen({super.key});
    AuthController authController = Get.put(AuthController());
 
   @override
@@ -54,8 +47,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     flex: 1,
                     child: Obx(() => GestureDetector(
                           onTap: () {
+                            // authController.role.value = "employee";
+                            authController.selectRole("client");
                             authController.isSelectedRole(true);
-                            authController.role.value = "employee";
+
                           },
                           child: Container(
                             width: double.infinity,
@@ -87,8 +82,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     flex: 1,
                     child: Obx(() => GestureDetector(
                           onTap: () {
+                            // authController.role.value = "client";
+                            authController.selectRole("employee");
                             authController.isSelectedRole(false);
-                            authController.role.value = "client";
                           },
                           child: Container(
                             width: double.infinity,
