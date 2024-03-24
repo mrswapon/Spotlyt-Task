@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
@@ -18,7 +19,8 @@ class ForgotForm extends StatefulWidget {
 
 class _ForgotFormState extends State<ForgotForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
+  final _authcontroller = Get.put(AuthController());
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,8 +33,8 @@ class _ForgotFormState extends State<ForgotForm> {
               //===============================> Email Text-field <===============================
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
+                controller: _authcontroller.forgetEmailTextCtrl,
                 contenpaddingVertical: 14.h,
-                controller: _emailController,
                 prefixIcon: _customIcons(AppIcons.mail),
                 hintText: AppString.email,
                 validator: (value) {
@@ -47,9 +49,10 @@ class _ForgotFormState extends State<ForgotForm> {
               CustomButton(
                   title: AppString.getOTP,
                   onpress: () {
-                    // if (_formKey.currentState!.validate()) {
-                      Get.toNamed(AppRoutes.verifyOtpScreen);
-                    // }
+                     if (_formKey.currentState!.validate()) {
+                       _authcontroller.handleForget();
+                      // Get.toNamed(AppRoutes.verifyOtpScreen);
+                     }
                   }),
             ],
           ),

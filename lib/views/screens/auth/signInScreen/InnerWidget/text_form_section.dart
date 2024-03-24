@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
@@ -20,8 +21,8 @@ class TextFormSection extends StatefulWidget {
 
 class _TextFormSectionState extends State<TextFormSection> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passController = TextEditingController();
+  final authController = Get.put(AuthController());
+
   bool isObscures = true;
 
   @override
@@ -38,7 +39,7 @@ class _TextFormSectionState extends State<TextFormSection> {
               CustomTextField(
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
-                controller: _emailController,
+                controller: authController.signInEmailCtrl,
                 prefixIcon: _customIcons(AppIcons.mail),
                 hintText: AppString.email,
                 validator: (value) {
@@ -54,7 +55,7 @@ class _TextFormSectionState extends State<TextFormSection> {
                 contenpaddingHorizontal: 16.w,
                 contenpaddingVertical: 14.h,
                 isObscureText: isObscures,
-                controller: _passController,
+                controller: authController.signInPassCtrl,
                 prefixIcon: _customIcons(AppIcons.lockClosed),
                 sufixicons: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 21.w),
@@ -83,7 +84,9 @@ class _TextFormSectionState extends State<TextFormSection> {
               SizedBox(height: 16.h),
               GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoutes.forgotPasswordScreen);
+                  Get.toNamed(AppRoutes.forgotPasswordScreen, parameters: {
+                    "email" : authController.emailCtrl.text
+                  });
                 },
                 child: CustomText(
                   text: AppString.forgotPassword,
@@ -99,9 +102,9 @@ class _TextFormSectionState extends State<TextFormSection> {
               CustomButton(
                   title: AppString.signIn,
                   onpress: () {
-                    // if (_formKey.currentState!.validate()) {
-                      Get.offAllNamed(AppRoutes.addInterestScreen);
-                    // }
+                     if (_formKey.currentState!.validate()) {
+                       authController.handleSignIn();
+                     }
                   }),
               SizedBox(height: 235.h),
               //===============================> Don’t have an account Section <===============================

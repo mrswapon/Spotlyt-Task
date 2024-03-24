@@ -123,5 +123,15 @@ class AppString {
    ///-----------------------------------tasker home screen------------------------------------->
    static String todayTask = "Today's Task";
    static String yourTask = "Your Task";
+
+
+
+
+
+
+   ///=======================Prefs Helper data===============================>
+   static const String bearerToken = "BearerToken";
+   static String isLogged = "IsLogged";
+   static String role = "role";
 }
 
