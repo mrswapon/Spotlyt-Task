@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
-import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_strings.dart';
@@ -46,14 +46,18 @@ class _ForgotFormState extends State<ForgotForm> {
               ),
               //===============================> Sign Up Button <===============================
               SizedBox(height: 44.h),
-              CustomButton(
-                  title: AppString.getOTP,
-                  onpress: () {
-                     if (_formKey.currentState!.validate()) {
-                       _authcontroller.handleForget();
-                      // Get.toNamed(AppRoutes.verifyOtpScreen);
-                     }
-                  }),
+              Obx(()=>
+                  _authcontroller.forgotLoading.value ?
+                     SpinKitCircle(color: Colors.green,size: 60.h,) :
+                  CustomButton(
+                    title: AppString.getOTP,
+                    onpress: () {
+                       if (_formKey.currentState!.validate()) {
+                         _authcontroller.handleForget();
+                        // Get.toNamed(AppRoutes.verifyOtpScreen);
+                       }
+                    }),
+              ),
             ],
           ),
         )

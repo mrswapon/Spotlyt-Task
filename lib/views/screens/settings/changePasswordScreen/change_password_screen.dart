@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_dimentions.dart';
@@ -20,9 +21,10 @@ class ChangePasswordScreen extends StatefulWidget {
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _oldPassController = TextEditingController();
-  final TextEditingController _newPassController = TextEditingController();
-  final TextEditingController _confirmPassController = TextEditingController();
+  // final TextEditingController _oldPassController = TextEditingController();
+  // final TextEditingController _newPassController = TextEditingController();
+  // final TextEditingController _confirmPassController = TextEditingController();
+  AuthController _authController = Get.put(AuthController());
   bool isObscuresOld = true;
   bool isObscure = true;
   bool isObscures = true;
@@ -56,7 +58,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       contenpaddingHorizontal: 16.w,
                       contenpaddingVertical: 14.h,
                       isObscureText: isObscuresOld,
-                      controller: _oldPassController,
+                      controller: _authController.oldPasswordCtrl,
                       prefixIcon: _customIcons(AppIcons.lockClosed),
                       sufixicons: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 21.w),
@@ -88,7 +90,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       contenpaddingHorizontal: 16.w,
                       contenpaddingVertical: 14.h,
                       isObscureText: isObscures,
-                      controller: _newPassController,
+                      controller: _authController.newPasswordCtrl,
                       prefixIcon: _customIcons(AppIcons.lockClosed),
                       sufixicons: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 21.w),
@@ -108,8 +110,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                       hintText: AppString.setNewPassword,
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value == null) {
                           return "Please set new password";
+                        }else if(value.length < 8){
+                          return "Password must be at least 8 characters";
+                        }else if(_validatePassword(value)){
+                          return "password must contain at least 1 letter and 1 number";
                         }
                         return null;
                       },
@@ -120,7 +126,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       contenpaddingHorizontal: 16.w,
                       contenpaddingVertical: 14.h,
                       isObscureText: isObscure,
-                      controller: _confirmPassController,
+                      controller: _authController.confirmPassController,
                       prefixIcon: _customIcons(AppIcons.lockClosed),
                       sufixicons: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 21.w),
@@ -140,8 +146,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                       hintText: AppString.confirmPassword,
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value == null) {
                           return "Please re-enter new password";
+                        }else if(value == _authController.newPasswordCtrl){
+                          return "Passwords do not match";
                         }
                         return null;
                       },
@@ -165,7 +173,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         title: AppString.changePassword,
                         onpress: () {
                           if (_formKey.currentState!.validate()) {
-                            Get.toNamed(AppRoutes.verifyOtpScreen);
+                            _authController.handleChangePassword(_authController.oldPasswordCtrl.text, _authController.newPasswordCtrl.text);
+                            // Get.toNamed(AppRoutes.verifyOtpScreen);
                           }
                         }),
                     SizedBox(height: 74.h),
@@ -192,5 +201,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         width: 24.w,
       ),
     );
+  }
+
+
+  bool _validatePassword(String value) {
+    RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+    return regex.hasMatch(value);
   }
 }

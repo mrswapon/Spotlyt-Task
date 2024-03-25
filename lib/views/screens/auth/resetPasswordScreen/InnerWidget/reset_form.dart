@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
@@ -10,7 +11,8 @@ import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_text_field.dart';
 
 class ResetForm extends StatefulWidget {
-  const ResetForm({super.key});
+   ResetForm({super.key, required this.email});
+  String email;
 
   @override
   State<ResetForm> createState() => _ResetFormState();
@@ -20,6 +22,7 @@ class _ResetFormState extends State<ResetForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _newPassController = TextEditingController();
   final TextEditingController _confirmPassController = TextEditingController();
+  AuthController _authController = Get.put(AuthController());
   bool isObscure = true;
   bool isObscures = true;
 
@@ -101,7 +104,8 @@ class _ResetFormState extends State<ResetForm> {
                   title: AppString.resetPassword,
                   onpress: () {
                     if (_formKey.currentState!.validate()) {
-                      Get.toNamed(AppRoutes.verifyOtpScreen);
+                      _authController.resetPassword(widget.email, _newPassController.text);
+                      // Get.toNamed(AppRoutes.verifyOtpScreen);
                     }
                   }),
             ],
