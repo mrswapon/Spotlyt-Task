@@ -9,7 +9,7 @@ import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
-import '../../../controller/Social_Media/corporate_services_controller.dart';
+import '../../../controller/All_Services_Controller/corporate_services_controller.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
 import '../../widgets/custom_cetegory_botton.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
@@ -7,7 +8,9 @@ import '../../../widgets/custom_text.dart';
 import 'InnerWidget/reset_form.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+   ResetPasswordScreen({super.key});
+
+  var parameter = Get.parameters;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       width: 94.5.w, height: 120.h)),
               //=================================> PinCodeField Section <===============================
               SizedBox(height: 20.h),
-              ResetForm(),
+              ResetForm(email: "${parameter['email']}",),
             ],
           ),
         ),

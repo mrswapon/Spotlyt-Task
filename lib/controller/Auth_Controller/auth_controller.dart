@@ -28,9 +28,9 @@ class AuthController extends GetxController {
 
   ///==================role selected==============>
   void selectRole(String selectedRole) {
-    // Set the selected role
     role.value = selectedRole;
   }
+
 
   ///<=============Sign Up===========>
   handleSignUp() async {
@@ -55,8 +55,6 @@ class AuthController extends GetxController {
       print("============> ${response.body} and ==> ${response.statusCode}");
       if (response.statusCode == 201) {
         Fluttertoast.showToast(msg: response.body['message']);
-        // token = response.body['token'];
-        // debugPrint("====> token : $token");
         Get.toNamed(AppRoutes.verifyOtpScreen, parameters: {
           "email": emailCtrl.text.trim(),
           "screenType": "signup",
@@ -75,6 +73,50 @@ class AuthController extends GetxController {
     }
     signUpLoading(false);
   }
+
+
+
+
+  /// <====================== Sign in screen =================->
+  TextEditingController signInPassCtrl = TextEditingController();
+  TextEditingController signInEmailCtrl = TextEditingController();
+  var signInLoading =false.obs;
+
+  handleSignIn()async{
+    signInLoading(true);
+    var headers = {
+      //'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
+    };
+    Map<String,dynamic> body={
+      'email': signInEmailCtrl.text.trim(),
+      'password': signInPassCtrl.text.trim()
+    };
+    Response response= await ApiClient.postData(ApiConstants.loginEndPoint,json.encode(body),headers: headers);
+    print("====> ${response.body}");
+    if(response.statusCode==200){
+      // if(response.body['data']['attributes']['role']!="client"&&response.body['data']['attributes']['_id'] != "65fd4000d68df19360700e26"){
+      await  PrefsHelper.setString(AppString.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
+
+      await PrefsHelper.setBool(AppString.isLogged, true);
+      var roles = await PrefsHelper.getString(AppString.role);
+      print("=============roles : $roles");
+      if(roles== "client"){
+        Get.offAllNamed(AppRoutes.addInterestScreen);
+      }else{
+        Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+      }
+      print("====================================================Sagor ");
+      signInEmailCtrl.clear();
+      signInPassCtrl.clear();
+      // }
+    }else{
+      //  ApiChecker.checkApi(response);
+      Fluttertoast.showToast(msg:response.statusText??"");
+    }
+    signInLoading(false);
+  }
+
 
 
 
@@ -100,6 +142,7 @@ class AuthController extends GetxController {
   }
 
 
+
   ///==================otp very=====================>
   TextEditingController otpCtrl = TextEditingController();
   var verifyLoading = false.obs;
@@ -120,8 +163,14 @@ class AuthController extends GetxController {
         await PrefsHelper.setString(AppString.role, response.body["data"]['attributes']['user']['role']);
         var role = response.body["data"]['attributes']['user']['role'];
         print("===> role : $role");
-        // otpCtrl.clear();
-        Get.offAllNamed(AppRoutes.signInScreen);
+         otpCtrl.clear();
+
+        if( type ==  "forgetPasswordScreen"){
+          Get.toNamed(AppRoutes.resetPasswordScreen, parameters: {"email" : email});
+        }else{
+          Get.offAllNamed(AppRoutes.signInScreen);
+        }
+
       } else {
         ApiChecker.checkApi(response);
       }
@@ -132,46 +181,6 @@ class AuthController extends GetxController {
     verifyLoading(false);
   }
 
-
-  /// <====================== Sign in screen =================->
-  TextEditingController signInPassCtrl = TextEditingController();
-  TextEditingController signInEmailCtrl = TextEditingController();
-  var signInLoading =false.obs;
-
-  handleSignIn()async{
-    signInLoading(true);
-    var headers = {
-      //'Content-Type': 'application/x-www-form-urlencoded'
-      'Content-Type': 'application/json'
-    };
-    Map<String,dynamic> body={
-      'email': signInEmailCtrl.text.trim(),
-      'password': signInPassCtrl.text.trim()
-    };
-    Response response= await ApiClient.postData(ApiConstants.loginEndPoint,json.encode(body),headers: headers);
-    print("====> ${response.body}");
-    if(response.statusCode==200){
-      // if(response.body['data']['attributes']['role']!="client"&&response.body['data']['attributes']['_id'] != "65fd4000d68df19360700e26"){
-          await  PrefsHelper.setString(AppString.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
-
-         await PrefsHelper.setBool(AppString.isLogged, true);
-         var roles = await PrefsHelper.getString(AppString.role);
-         print("=============roles : $roles");
-         if(roles== "client"){
-           Get.offAllNamed(AppRoutes.addInterestScreen);
-         }else{
-           Get.offAllNamed(AppRoutes.taskerBottomNavBar);
-         }
-        print("====================================================Sagor ");
-        signInEmailCtrl.clear();
-        signInPassCtrl.clear();
-      // }
-    }else{
-      //  ApiChecker.checkApi(response);
-      Fluttertoast.showToast(msg:response.statusText??"");
-    }
-    signInLoading(false);
-  }
 
 
   ///==================forgot pass word===============>
@@ -190,16 +199,80 @@ class AuthController extends GetxController {
       'Content-Type': 'application/json'
     };
     var response= await ApiClient.postData(ApiConstants.forgotPasswordEndPoint, json.encode(body),headers: headers);
-    if(response.statusCode==201){
+    if(response.statusCode==200 || response.statusCode == 201){
+
       Get.toNamed(AppRoutes.verifyOtpScreen, parameters: {
         "email": forgetEmailTextCtrl.text.trim(),
-        "screenType": "forgorOtp",
+        "screenType": "forgetPasswordScreen",
       });
+
       forgetEmailTextCtrl.clear();
     }else{
       ApiChecker.checkApi(response);
     }
     forgotLoading(false);
   }
+
+
+  ///====================handle Change password=========================>
+  var changeLoading = false.obs;
+  TextEditingController oldPasswordCtrl = TextEditingController();
+  TextEditingController newPasswordCtrl = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
+
+
+  handleChangePassword(String oldPassword, String newPassword) async {
+    changeLoading(true);
+    var body = {"oldPassword": oldPassword, "newPassword": newPassword};
+
+    var response = await ApiClient.postData(ApiConstants.changePasswordEndPoint, json.encode(body));
+    print("===============> ${response.body}");
+    if (response.statusCode == 200) {
+      Fluttertoast.showToast(msg: response.body['message'],toastLength:Toast.LENGTH_LONG,gravity: ToastGravity.CENTER,backgroundColor:Colors.green,textColor:Colors.white);
+      Get.offAllNamed(AppRoutes.signInScreen);
+    } else {
+      ApiChecker.checkApi(response);
+    }
+    changeLoading(false);
+  }
+
+
+
+
+  /// <-------------------------- reset password --------------->
+  var resetPasswordLoading = false.obs;
+
+  resetPassword(String email, String password) async {
+    print("=======> $email, and $password");
+    resetPasswordLoading(true);
+    var body = {"email": email, "password": password};
+    Map<String, String> header = {'Content-Type': 'application/json'};
+    var response = await ApiClient.postData(
+        ApiConstants.resetPasswordEndPoint, json.encode(body),
+        headers: header);
+    if (response.statusCode == 200){
+      showDialog(context: Get.context!,
+          barrierDismissible:false,
+          builder:(_)=> AlertDialog(
+            title: const Text("Password Changed!"),
+            content: const Text("Your password has been changed successfully."),
+            actions: [
+              TextButton(
+                  onPressed:(){
+                    Get.back();
+                    Get.back();
+                    Get.back();
+                    Get.back();
+                  }, child:const Text("Ok"))
+            ],
+          ));
+
+    } else {
+      debugPrint("error set password ${response.statusText}");
+      Fluttertoast.showToast(msg: "${response.statusText}",);
+    }
+    resetPasswordLoading(false);
+  }
+
 
 }

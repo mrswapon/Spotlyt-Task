@@ -74,6 +74,8 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                   GestureDetector(
                     onTap: (){
                       _authCtrl.resendOtp("${prameters["email"]}");
+                      _authCtrl.otpCtrl.clear();
+
                     },
                     child: CustomText(
                       text: AppString.resend,

@@ -7,4 +7,6 @@ class ApiConstants{
   static const String requesterTaskService = "/v1/tasks/service";
   static const String loginEndPoint = "/v1/auth/login";
   static const String forgotPasswordEndPoint = "/v1/auth/forgot-password";
+  static const String changePasswordEndPoint = "/v1/auth/change-password";
+  static const String resetPasswordEndPoint = "/v1/auth/reset-password";
 }
