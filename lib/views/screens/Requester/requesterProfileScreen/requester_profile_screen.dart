@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/helpers/Bindings/prefs_helper.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
@@ -16,13 +17,16 @@ import 'InnerWidgets/top_profile_card.dart';
 class RequesterProfileScreen extends StatelessWidget {
   RequesterProfileScreen({super.key});
 
+  ProfileController _profileController = Get.put(ProfileController());
+
   @override
   Widget build(BuildContext context) {
+    _profileController.profileModel;
     return Scaffold(
       body: Column(
         children: [
           ///------------------------------top profile card------------------------------------>
-          TopProfileCard(),
+          const TopProfileCard(),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
