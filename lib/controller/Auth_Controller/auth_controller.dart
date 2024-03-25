@@ -96,6 +96,7 @@ class AuthController extends GetxController {
     print("====> ${response.body}");
     if(response.statusCode==200){
       await  PrefsHelper.setString(AppString.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
+      await  PrefsHelper.setString(AppString.id,response.body['data']['attributes']['user']['id']);
 
       await PrefsHelper.setBool(AppString.isLogged, true);
       String userRole = response.body['data']['attributes']['user']['role'];
