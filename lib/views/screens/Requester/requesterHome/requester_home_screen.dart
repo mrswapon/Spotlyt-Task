@@ -4,16 +4,37 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
+import 'controller/requester_home_controller.dart';
 import 'inner_widgets/requester_cetegories_and_services_card.dart';
 import 'inner_widgets/requester_home_screen_app_bar.dart';
 
-class RequesterHomeScreen extends StatelessWidget {
-  const RequesterHomeScreen({super.key});
+class RequesterHomeScreen extends StatefulWidget {
 
   @override
+  State<RequesterHomeScreen> createState() => _RequesterHomeScreenState();
+}
+
+class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
+ RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    requesterHomeController.requesterTaskService() ;
+  }
+
+  // RequesterHomeScreen(){
+  @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
-      body: Column(
+      body: Obx(() => requesterHomeController.isLoading.value ?
+      const Center(child: CircularProgressIndicator()) :
+      Column(
         children: [
 
           Padding(
@@ -48,34 +69,28 @@ class RequesterHomeScreen extends StatelessWidget {
                       ontap: (){
                         Get.toNamed(AppRoutes.servicesScreen);
                       },
-                      title: "Social Media",
-                      servicesInfo: const [
-                        "  • REQUEST LIKES",
-                        "  • REQUEST FOLLOWERS",
-                        "  • REQUEST COMMENTS",
-                        "  • REQUEST VIEWS",
-                        "  • REQUEST SHARING TO STORY",
-                      ],
-                      categories: const [
+                      title: requesterHomeController.homeScreenModel?.data?.attributes?[0].name,
+                      servicesInfo: requesterHomeController.homeScreenModel?.data?.attributes?[0].description,
+                      categories:  [
                         {
-                          "buttonName": "Facebook",
+                          "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].name,
                           "icon": AppIcons.facebook,
                         },
                         {
-                          "buttonName": "Instagram",
+                          "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[1].name,
                           "icon": AppIcons.instagram,
                         },
                         {
-                          "buttonName": "Tiktok",
+                          "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[2].name,
                           "icon": AppIcons.tiktok,
                         },
                       ],
                     ),
-            
+
                     SizedBox(
                       height: 16.h,
                     ),
-            
+
                     ///-------------------------------Video card--------------------------->
                     CetegoriesAndServicesCard(
                       ontap: (){
@@ -95,11 +110,11 @@ class RequesterHomeScreen extends StatelessWidget {
                         },
                       ],
                     ),
-            
+
                     SizedBox(
                       height: 16.h,
                     ),
-            
+
                     ///-------------------------------Corporate card--------------------------->
                     CetegoriesAndServicesCard(
                       ontap: (){
@@ -128,7 +143,7 @@ class RequesterHomeScreen extends StatelessWidget {
             ),
           )
         ],
-      ),
+      )),
     );
   }
 }

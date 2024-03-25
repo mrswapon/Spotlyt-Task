@@ -27,7 +27,9 @@ class _SplashScreenState extends State<SplashScreen> {
     // var data = await PrefsHelper.getString(AppString.bearerToken);
     // print("=====$data");
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAllNamed(AppRoutes.signInScreen);
+      // Get.offAllNamed(AppRoutes.signInScreen);
+      Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+
     });
 
 
