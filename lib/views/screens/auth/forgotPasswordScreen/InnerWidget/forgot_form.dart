@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
+import 'package:spotlyt_task/views/widgets/custom_loader.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_strings.dart';
@@ -48,7 +49,7 @@ class _ForgotFormState extends State<ForgotForm> {
               SizedBox(height: 44.h),
               Obx(()=>
                   _authcontroller.forgotLoading.value ?
-                     SpinKitCircle(color: Colors.green,size: 60.h,) :
+                     const CustomLoader() :
                   CustomButton(
                     title: AppString.getOTP,
                     onpress: () {

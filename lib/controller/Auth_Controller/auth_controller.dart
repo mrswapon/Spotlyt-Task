@@ -28,9 +28,9 @@ class AuthController extends GetxController {
 
   ///==================role selected==============>
   void selectRole(String selectedRole) {
-    // Set the selected role
     role.value = selectedRole;
   }
+
 
   ///<=============Sign Up===========>
   handleSignUp() async {
@@ -55,8 +55,6 @@ class AuthController extends GetxController {
       print("============> ${response.body} and ==> ${response.statusCode}");
       if (response.statusCode == 201) {
         Fluttertoast.showToast(msg: response.body['message']);
-        // token = response.body['token'];
-        // debugPrint("====> token : $token");
         Get.toNamed(AppRoutes.verifyOtpScreen, parameters: {
           "email": emailCtrl.text.trim(),
           "screenType": "signup",
@@ -75,6 +73,7 @@ class AuthController extends GetxController {
     }
     signUpLoading(false);
   }
+
 
 
 
