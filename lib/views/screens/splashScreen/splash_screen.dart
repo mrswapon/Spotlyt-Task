@@ -26,10 +26,23 @@ class _SplashScreenState extends State<SplashScreen> {
   void _navigateToLoginScreen() async{
     // var data = await PrefsHelper.getString(AppString.bearerToken);
     // print("=====$data");
-    Future.delayed(const Duration(seconds: 3), () {
-       Get.offAllNamed(AppRoutes.signInScreen);
-      // Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+    Future.delayed(const Duration(seconds: 3), () async{
+      bool isLogged = await PrefsHelper.getBool(AppString.isLogged);
+      String token = await PrefsHelper.getString(AppString.bearerToken);
+      String role = await PrefsHelper.getString(AppString.role);
+      print("================>   $isLogged \n $token \n $role");
 
+      if(isLogged){
+        if(token.isNotEmpty){
+          if(role == "client"){
+            Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+          }else{
+            Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+          }
+        }
+      }  else{
+        Get.offAllNamed(AppRoutes.signInScreen);
+      }
     });
 
 

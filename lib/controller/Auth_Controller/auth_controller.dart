@@ -95,13 +95,13 @@ class AuthController extends GetxController {
     Response response= await ApiClient.postData(ApiConstants.loginEndPoint,json.encode(body),headers: headers);
     print("====> ${response.body}");
     if(response.statusCode==200){
-      // if(response.body['data']['attributes']['role']!="client"&&response.body['data']['attributes']['_id'] != "65fd4000d68df19360700e26"){
       await  PrefsHelper.setString(AppString.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
 
       await PrefsHelper.setBool(AppString.isLogged, true);
-      var roles = await PrefsHelper.getString(AppString.role);
-      print("=============roles : $roles");
-      if(roles== "client"){
+      String userRole = response.body['data']['attributes']['user']['role'];
+      await PrefsHelper.setString(AppString.role, userRole);
+
+      if(userRole == "client"){
         Get.offAllNamed(AppRoutes.addInterestScreen);
       }else{
         Get.offAllNamed(AppRoutes.taskerBottomNavBar);
@@ -109,7 +109,6 @@ class AuthController extends GetxController {
       print("====================================================Sagor ");
       signInEmailCtrl.clear();
       signInPassCtrl.clear();
-      // }
     }else{
       //  ApiChecker.checkApi(response);
       Fluttertoast.showToast(msg:response.statusText??"");
