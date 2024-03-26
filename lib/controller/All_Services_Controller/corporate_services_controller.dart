@@ -1,36 +1,38 @@
 import 'package:get/get.dart';
-
 import '../../utils/app_icons.dart';
+import '../../views/screens/Requester/requesterHome/controller/requester_home_controller.dart';
 
+
+RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
 class CorporateServicesController extends GetxController {
   RxInt selectedIndex = 0.obs;
 
 
   List requestList = [
-    {"required": "Surveys",
+    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[0].name,
       "per": "Per Survey",
-      "quantity": "R-0.60"
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[0].price
     },
     {
-      "required": "App Downloads",
+      "required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[1].name,
       "per": "Per Download",
-      "quantity": "R-0.60"
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[1].price
     },
     {
-      "required": "Game Downloads",
+      "required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[2].name,
       "per": "Per Download",
-      "quantity": "R-0.60"
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[2].price
     },
-    {"required": "Request Streaming",
+    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[3].name,
       "per": "Per Stream",
-      "quantity": "R-0.60"
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[3].price
     },
   ];
 
 
   List<Map<String, dynamic>> categories = [
     {
-      'name': 'Corporate',
+      'name': requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].name,
       'icon': AppIcons.corporateIcon,
     },
   ];
@@ -41,5 +43,4 @@ class CorporateServicesController extends GetxController {
   void setSelectedIndex(int index) {
     selectedIndex.value = index;
   }
-
 }
