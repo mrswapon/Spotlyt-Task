@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
+import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
 import 'controller/requester_home_controller.dart';
@@ -33,7 +34,7 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
 
     return Scaffold(
       body: Obx(() => requesterHomeController.isLoading.value ?
-      const Center(child: CircularProgressIndicator()) :
+      const Center(child: CircularProgressIndicator(color: AppColors.primaryColor,)) :
       Column(
         children: [
 
