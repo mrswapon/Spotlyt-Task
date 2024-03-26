@@ -70,7 +70,7 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
                         Get.toNamed(AppRoutes.servicesScreen);
                       },
                       title: requesterHomeController.homeScreenModel?.data?.attributes?[0].name,
-                      servicesInfo: requesterHomeController.homeScreenModel?.data?.attributes?[0].description,
+                      servicesInfo:requesterHomeController.homeScreenModel?.data?.attributes?[0].description,
                       categories:  [
                         {
                           "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].name,
@@ -87,55 +87,39 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
                       ],
                     ),
 
-                    SizedBox(
-                      height: 16.h,
-                    ),
+                    SizedBox(height: 16.h),
 
                     ///-------------------------------Video card--------------------------->
                     CetegoriesAndServicesCard(
                       ontap: (){
                         Get.toNamed(AppRoutes.videoServicesScreen);
                       },
-                      title: "Video",
-                      servicesInfo: const [
-                        "  • REQUEST VIEWS",
-                        "  • REQUEST LIKES",
-                        "  • REQUEST COMMENTS",
-                        "  • REQUEST SUBSCRIBERS",
-                      ],
-                      categories: const [
+                      title: requesterHomeController.homeScreenModel?.data?.attributes?[1].name,
+                      servicesInfo: requesterHomeController.homeScreenModel?.data?.attributes?[1].description,
+                      categories:[
                         {
-                          "buttonName": "Youtube",
+                          "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].name,
                           "icon": AppIcons.youtube,
                         },
                       ],
                     ),
 
-                    SizedBox(
-                      height: 16.h,
-                    ),
+                    SizedBox(height: 16.h),
 
                     ///-------------------------------Corporate card--------------------------->
                     CetegoriesAndServicesCard(
                       ontap: (){
                         Get.toNamed(AppRoutes.corporateServicesScreen);
                       },
-                      title: "Corporate",
-                      servicesInfo: const [
-                        "  • SIGN UP TO SERVICES",
-                        "  • APP DOWNLOADS",
-                        "  • GAME DOWNLOADS",
-                        "  • REQUEST STREAMING",
-                      ],
-                      categories: const [
+                      title: requesterHomeController.homeScreenModel?.data?.attributes?[2].name,
+                      servicesInfo: requesterHomeController.homeScreenModel?.data?.attributes?[2].description,
+                      categories: [
                         {
-                          "buttonName": "Corporate",
+                          "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].name,
                           "icon": AppIcons.corporateIcon,
                         },
                       ],
                     ),
-
-
                     SizedBox(height: 113.h,)
                   ],
                 ),
