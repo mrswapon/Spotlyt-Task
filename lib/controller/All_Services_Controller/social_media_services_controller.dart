@@ -55,6 +55,4 @@ class SocialMediaServicesController extends GetxController {
   void setSelectedCategory(int index) {
     selectedCategory.value = index;
   }
-
-
 }
