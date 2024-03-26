@@ -23,9 +23,9 @@ class CorporateServicesController extends GetxController {
       "per": "Per Download",
       "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[2].price
     },
-    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[3].name,
+    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[4].name,
       "per": "Per Stream",
-      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[3].price
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[4].price
     },
   ];
 
