@@ -15,11 +15,13 @@ import '../../../utils/app_icons.dart';
 import '../../widgets/custom_cetegory_botton.dart';
 import '../../widgets/custom_multi_select_request_card.dart';
 import '../../widgets/custom_quentity_card.dart';
+import '../Requester/requesterHome/controller/requester_home_controller.dart';
 
 class MediaServicesScreen extends StatelessWidget {
   MediaServicesScreen({super.key});
 
   SocialMediaServicesController controller = Get.put(SocialMediaServicesController());
+  RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
   final List<String> interests = ["Music", "Fitness", "Food", "Fashion","Tech", "Travel", "Outdoor", "DIY", "Houses", "Pets", "Movies", 'Art', 'Career', "Sports", 'Books', 'Cars', 'Games','Shopping', 'Finance', 'Investing'];
   List selectedRequestsEmpty = [];
 

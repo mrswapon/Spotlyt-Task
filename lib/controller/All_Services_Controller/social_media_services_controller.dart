@@ -1,44 +1,50 @@
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-
 import '../../utils/app_icons.dart';
+import '../../views/screens/Requester/requesterHome/controller/requester_home_controller.dart';
 
+RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
 class SocialMediaServicesController extends GetxController {
   RxInt selectedCategory = 0.obs;
 
 
   List requestList = [
-    {"required": "Request likes", "per": "Per like", "quantity": "R-0.60"},
+    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[0].name,
+      "per": "Per like",
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[0].price
+    },
     {
-      "required": "Request followers",
+      "required": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[1].name,
       "per": "Per Follower",
-      "quantity": "R-0.60"
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[1].price
     },
     {
-      "required": "Request comments",
+      "required": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[2].name,
       "per": "Per Comment",
-      "quantity": "R-0.60"
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[2].price
     },
-    {"required": "Request views", "per": "Per views", "quantity": "R-0.60"},
+    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[3].name,
+      "per": "Per views",
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[3].price
+    },
     {
-      "required": "Request sharing to story",
+      "required": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[4].name,
       "per": "Per Story",
-      "quantity": "R-0.60"
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].service?[4].price
     },
   ];
 
 
   List<Map<String, dynamic>> categories = [
     {
-      'name': 'Facebook',
+      'name': requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].name,
       'icon': AppIcons.facebook,
     },
     {
-      'name': 'Instagram',
+      'name': requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[1].name,
       'icon': AppIcons.instagram,
     },
     {
-      'name': 'Tiktok',
+      'name': requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[2].name,
       'icon': AppIcons.tiktok,
     },
   ];
