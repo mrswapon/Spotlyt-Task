@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? sufixicons;
   final FormFieldValidator? validator;
 
+
   const CustomTextField({
     super.key,
     required this.contenpaddingHorizontal,
@@ -30,6 +31,7 @@ class CustomTextField extends StatelessWidget {
     this.obscureCharacrter = '*',
     this.filColor,
     this.labelText,
+
   });
 
   @override

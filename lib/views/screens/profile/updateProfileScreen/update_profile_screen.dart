@@ -26,25 +26,23 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
 
   final _nameController = TextEditingController();
-  final _dateOfBirthController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _nidNumberController = TextEditingController();
   final _locationController = TextEditingController();
 
-  Uint8List? _image;
-  File? selectedIMage;
+   Uint8List? _image;
+   File? selectedIMage;
+  var date = 'Year-MM-DD';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: CustomText(
           text: AppString.updateProfile,
-          fontsize: 18.h,
           fontWeight: FontWeight.w500,
-          fontName: 'Lato',
         ),
         centerTitle: true,
       ),
@@ -94,6 +92,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               prefixIcon: _prefixIcon(AppIcons.mail),
             ),
             SizedBox(height: 16.h),
+
+            ///=========================phone number================>
             CustomTextField(
               controller: _phoneNumberController,
               contenpaddingHorizontal: 12.w,
@@ -104,12 +104,31 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             SizedBox(height: 16.h),
 
             ///=======================data picker===========================>
-            CustomTextField(
-              controller: _dateOfBirthController,
-              contenpaddingHorizontal: 12.w,
-              contenpaddingVertical: 16.h,
-              hintText: 'Enter your date of birth',
-              prefixIcon: _prefixIcon(AppIcons.calendar),
+            // CustomTextField(
+            //   controller: _dateOfBirthController,
+            //   contenpaddingHorizontal: 12.w,
+            //   contenpaddingVertical: 16.h,
+            //   hintText: 'Enter your date of birth',
+            //   prefixIcon: _prefixIcon(AppIcons.calendar,
+            //   ),
+            // ),
+
+            Container(
+              height: 59.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4.r),
+                color: Colors.white,
+                border: Border.all(color: AppColors.primaryColor)
+              ),
+              child: ListTile(
+                // contentPadding: EdgeInsets.zero,
+                leading: GestureDetector(
+                    onTap: (){
+                      _selectDate(context);
+                    },
+                    child: SvgPicture.asset(AppIcons.calendar,color: AppColors.primaryColor,)),
+                title: CustomText(text: "$date", textAlign: TextAlign.start,),
+              ),
             ),
             SizedBox(height: 16.h),
             CustomTextField(
@@ -137,8 +156,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   _phoneNumberController.text,
                   _nidNumberController.text,
                   _locationController.text,
-                  selectedIMage,
-                  "dateOfBirth"
+                 _image ?? selectedIMage,
+                  date
               );
             }),
             SizedBox(height: 69.h),
@@ -241,5 +260,25 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       _image = File(returnImage.path).readAsBytesSync();
     });
     // Navigator.of(context).pop();
+  }
+
+
+
+
+  ///----------------------------------calender-------------------------------->
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime.now(),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      });
+      print('Selected date: ${date}');
+    }
   }
 }

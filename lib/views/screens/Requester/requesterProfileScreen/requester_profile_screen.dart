@@ -8,6 +8,7 @@ import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.da
 import 'package:spotlyt_task/helpers/Bindings/prefs_helper.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
+import 'package:spotlyt_task/views/widgets/custom_loader.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
@@ -22,19 +23,15 @@ class RequesterProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     var profileName = _profileController.profileModel!.data!.attributes!.fullName ?? "";
-     var profileUrl = _profileController.profileModel!.data!.attributes!.image!.url ?? "";
-    print("====> ${_profileController.profileModel!.data!.attributes!.fullName}");
-    print("====> ${_profileController.profileModel!.data!.attributes!.image!.url}");
-
+    _profileController.profileModel;
     return Scaffold(
 
-      body: Column(
+      body: Obx(() => _profileController.isProfileLoading.value ? const CustomLoader() : Column(
         children: [
           ///------------------------------top profile card------------------------------------>
-           TopProfileCard(
-            profileName: profileName,
-             profileUrl: profileUrl,
+          TopProfileCard(
+            profileName: _profileController.profileModel?.data?.attributes?.fullName ?? "Name",
+            profileUrl: _profileController.profileModel?.data?.attributes?.image?.url,
           ),
 
           Padding(
@@ -144,7 +141,7 @@ class RequesterProfileScreen extends StatelessWidget {
                                     SizedBox(height: 24.h),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
                                         SizedBox(
                                             width: 120.w,
@@ -162,7 +159,7 @@ class RequesterProfileScreen extends StatelessWidget {
                                                 },
                                                 color: Colors.white,
                                                 titlecolor:
-                                                    AppColors.primaryColor,
+                                                AppColors.primaryColor,
                                               ),
                                             )),
                                         SizedBox(
@@ -188,7 +185,7 @@ class RequesterProfileScreen extends StatelessWidget {
                                         color: AppColors.primaryColor)));
                           });
                     },
-          //==========================================================================================================
+                    //==========================================================================================================
                     title: CustomText(
                       text: AppString.logOut,
                       textAlign: TextAlign.start,
@@ -203,7 +200,7 @@ class RequesterProfileScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      ),)
     );
   }
 }

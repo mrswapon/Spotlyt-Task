@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
+import 'package:spotlyt_task/utils/app_images.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_strings.dart';
 import '../../../../widgets/custom_text.dart';
@@ -40,7 +41,13 @@ class TopProfileCard extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: AppColors.primaryColor)),
-            child:  CircleAvatar(
+            ///------------------image------------------>
+            child: profileUrl == null?
+            const CircleAvatar(
+              backgroundImage: AssetImage(AppImages.no_internet_profile),
+            )
+
+            :CircleAvatar(
               backgroundImage: NetworkImage("${ApiConstants.baseUrl}/$profileUrl"),
             ),
           ),

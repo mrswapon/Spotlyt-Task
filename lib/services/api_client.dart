@@ -6,6 +6,7 @@ import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
+import 'package:spotlyt_task/utils/app_strings.dart';
 import '../helpers/Bindings/prefs_helper.dart';
 import '../models/error_response.dart';
 
@@ -24,7 +25,7 @@ class ApiClient extends GetxService {
 
   static Future<Response> getData(String uri,
       {Map<String, dynamic>? query, Map<String, String>? headers}) async {
-     bearerToken = await PrefsHelper.getString(ApiConstants.bearerToken);
+     bearerToken = await PrefsHelper.getString(AppString.bearerToken);
 
 
     var mainHeaders ={
@@ -203,18 +204,24 @@ class ApiClient extends GetxService {
     }
   }
 
-  static Future<Response> putMultipartData(String uri, Map<String, String> body, {List<MultipartBody>? multipartBody,List<MultipartListBody>? multipartListBody,Map<String, String>? headers}) async {
+
+
+
+
+  static Future<Response> putMultipartData(String uri, Map<String, String> body,
+      {List<MultipartBody>? multipartBody,
+        List<MultipartListBody>? multipartListBody,
+        Map<String, String>? headers}) async {
     try {
-      // bearerToken = await PrefsHelper.getString(ApiConstants.bearerToken);
+      bearerToken = await PrefsHelper.getString(AppString.bearerToken);
 
-
-      var mainHeaders ={
+      var mainHeaders = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer $bearerToken'
       };
 
-      debugPrint('====> API Call: $uri\nHeader: ${headers??mainHeaders}');
-        debugPrint('====> API Body: $body with ${multipartBody?.length} picture');
+      debugPrint('====> API Call: $uri\nHeader: ${headers ?? mainHeaders}');
+      debugPrint('====> API Body: $body with ${multipartBody?.length} picture');
 
       //http.MultipartRequest _request = http.MultipartRequest('POST', Uri.parse("https://b936-114-130-157-130.ngrok-free.app/api/v1/user/profile/store/degree"));
       //_request.headers.addAll(headers ?? mainHeaders);
@@ -228,24 +235,16 @@ class ApiClient extends GetxService {
       //   }
       // }
 
-
-      var request = http.MultipartRequest('PUT', Uri.parse(ApiConstants.baseUrl+uri));
+      var request =
+      http.MultipartRequest('PUT', Uri.parse(ApiConstants.baseUrl + uri));
       request.fields.addAll(body);
 
+      if (multipartBody!.isNotEmpty) {
+        // ignore: avoid_function_literals_in_foreach_calls
+        multipartBody.forEach((element) async {
+          debugPrint("path : ${element.file.path}");
 
-      if(multipartBody!.isNotEmpty){
-        multipartBody.forEach((element)async {
-          // debugPrint("path : ${element.file.path}");
-          // var mimeType = lookupMimeType(element.file.path);
-          //
-          // request.files.add(http.MultipartFile(
-          //   element.key,
-          //   element.file.readAsBytes().asStream(),
-          //   element.file.lengthSync(),
-          //   filename: 'image/video',
-          //   contentType: MediaType.parse(mimeType!),
-          // ));
-          if(element.file.path.contains(".mp4")){
+          if (element.file.path.contains(".mp4")) {
             debugPrint("media type mp4 ==== ${element.file.path}");
             request.files.add(http.MultipartFile(
               element.key,
@@ -254,7 +253,7 @@ class ApiClient extends GetxService {
               filename: 'video.mp4',
               contentType: MediaType('video', 'mp4'),
             ));
-          }else if(element.file.path.contains(".png")){
+          } else if (element.file.path.contains(".png")) {
             debugPrint("media type png ==== ${element.file.path}");
             request.files.add(http.MultipartFile(
               element.key,
@@ -263,42 +262,23 @@ class ApiClient extends GetxService {
               filename: 'image.png',
               contentType: MediaType('image', 'png'),
             ));
-          }else if(element.file.path.contains(".jpg")){
-            debugPrint("media type png ==== ${element.file.path}");
-            request.files.add(http.MultipartFile(
-              element.key,
-              element.file.readAsBytes().asStream(),
-              element.file.lengthSync(),
-              filename: 'image.jpg',
-              contentType: MediaType('image', 'jpg'),
-            ));
-          }else if(element.file.path.contains(".jpeg")){
-            debugPrint("media type jpeg ==== ${element.file.path}");
-            request.files.add(http.MultipartFile(
-              element.key,
-              element.file.readAsBytes().asStream(),
-              element.file.lengthSync(),
-              filename: 'image.jpeg',
-              contentType: MediaType('image', 'jpeg'),
-            ));
           }
 
           //request.files.add(await http.MultipartFile.fromPath(element.key, element.file.path,contentType: MediaType('video', 'mp4')));
-
         });
       }
-
-
-
-
       request.headers.addAll(mainHeaders);
       http.StreamedResponse response = await request.send();
       final content = await response.stream.bytesToString();
       debugPrint(
-          '====> API Response: [${response.statusCode}}] $uri\n${content}');
+          '====> API Response: [${response.statusCode}}] $uri\n$content');
 
-      return  Response(statusCode:response.statusCode, statusText:noInternetMessage,body:content);
+      return Response(
+          statusCode: response.statusCode,
+          statusText: noInternetMessage,
+          body: content);
     } catch (e) {
+      print("====================================e $e") ;
       return const Response(statusCode: 1, statusText: noInternetMessage);
     }
   }
@@ -306,7 +286,10 @@ class ApiClient extends GetxService {
 
 
 
- static  Future<Response> deleteData(String uri,
+
+
+
+  static  Future<Response> deleteData(String uri,
       {Map<String, String>? headers ,dynamic body}) async {
     // bearerToken = await PrefsHelper.getString(ApiConstants.bearerToken);
 
@@ -376,6 +359,11 @@ class ApiClient extends GetxService {
     // log.e("Handle Response error} ");
     return response0;
   }
+
+
+
+
+
 }
 class MultipartBody {
   String key;
