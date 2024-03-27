@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
@@ -9,10 +11,14 @@ import '../../../widgets/custom_text.dart';
 import 'InnerWidget/top_container_section.dart';
 
 class PersonalInformationScreen extends StatelessWidget {
-  const PersonalInformationScreen({super.key});
+  PersonalInformationScreen({super.key});
+
+  ProfileController _profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    var profileName = _profileController.profileModel?.data?.attributes ?? "";
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
@@ -20,8 +26,6 @@ class PersonalInformationScreen extends StatelessWidget {
         leading: const SizedBox(),
         title: CustomText(
           text: AppString.personalInformation,
-          fontName: 'Lato',
-          fontsize: 18.h,
           fontWeight: FontWeight.w500,
         ),
         centerTitle: true,
@@ -32,32 +36,45 @@ class PersonalInformationScreen extends StatelessWidget {
           children: [
             SizedBox(height: 24.h),
             //==================================> TopContainer Section <=================================
-            const TopContainerSection(),
+             TopContainerSection(
+              name: _profileController.profileModel?.data?.attributes?.fullName,
+              image: _profileController.profileModel?.data?.attributes?.image?.url,
+            ),
             SizedBox(height: 24.h),
             //==================================> CustomContainer Section <=================================
 
             SizedBox(height: 24.h),
+
+            ///-----------------------profile name---------------------->
             CustomListTile(
-                title: 'Arnold Bailie', prefixIcon: _prefixIcon(AppIcons.person)),
+                title: '${_profileController.profileModel?.data?.attributes?.fullName}',
+                prefixIcon: _prefixIcon(AppIcons.person)),
             SizedBox(height: 16.h),
+            ///-------------------profile email---------------------->
             CustomListTile(
-                title: 'arnold.07@gmail.com',
+                title: '${_profileController.profileModel?.data?.attributes?.email}',
                 prefixIcon: _prefixIcon(AppIcons.mail)),
             SizedBox(height: 16.h),
+            ///---------------------profile phone number------------------------>
             CustomListTile(
-                title: '(406) 555-0120',
+                title: '${_profileController.profileModel?.data?.attributes?.phoneNumber}',
                 prefixIcon: _prefixIcon(
                   AppIcons.phone,
                 )),
             SizedBox(height: 16.h),
             CustomListTile(
-                title: '20-01-1996', prefixIcon: _prefixIcon(AppIcons.calendar)),
+                title: '${_profileController.profileModel?.data?.attributes?.dataOfBirth}',
+                prefixIcon: _prefixIcon(AppIcons.calendar)),
             SizedBox(height: 16.h),
+            ///--------------------------Nid number------------------------>
             CustomListTile(
-                title: '845633266107207576', prefixIcon: _prefixIcon(AppIcons.creditCard)),
+                title: '${_profileController.profileModel?.data?.attributes?.nidNumber}',
+                prefixIcon: _prefixIcon(AppIcons.creditCard)),
             SizedBox(height: 16.h),
+
+            ///-----------------------------location---------------------->
             CustomListTile(
-              title: '2972 Westheimer Rd. Santa Ana, Illinois 85486 ',
+              title: '${_profileController.profileModel?.data?.attributes?.address}',
               prefixIcon: _prefixIcon(AppIcons.location),
             ),
             SizedBox(height: 16.h),
@@ -66,6 +83,7 @@ class PersonalInformationScreen extends StatelessWidget {
       ),
     );
   }
+
 //===========================================> CustomContainer Section <=================================
 
   _customContainer(String name, String title) {

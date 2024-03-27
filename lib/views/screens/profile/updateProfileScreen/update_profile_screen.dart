@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
@@ -21,6 +22,9 @@ class UpdateProfileScreen extends StatefulWidget {
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
+  final _profileControllor = Get.put(ProfileController());
+
+
   final _nameController = TextEditingController();
   final _dateOfBirthController = TextEditingController();
   final _emailController = TextEditingController();
@@ -98,6 +102,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               prefixIcon: _prefixIcon(AppIcons.phone),
             ),
             SizedBox(height: 16.h),
+
+            ///=======================data picker===========================>
             CustomTextField(
               controller: _dateOfBirthController,
               contenpaddingHorizontal: 12.w,
@@ -124,8 +130,16 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               ),
             ),
             const Spacer(),
+            ///--------------------------update profile button----------------------->
             CustomButton(title: AppString.updateProfile, onpress: () {
-              Get.back();
+              _profileControllor.editProfile(
+                  _nameController.text,
+                  _phoneNumberController.text,
+                  _nidNumberController.text,
+                  _locationController.text,
+                  selectedIMage,
+                  "dateOfBirth"
+              );
             }),
             SizedBox(height: 69.h),
           ],
