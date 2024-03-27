@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
@@ -17,10 +18,46 @@ import '../../widgets/custom_multi_select_request_card.dart';
 import '../../widgets/custom_quentity_card.dart';
 
 
-class VideoServicesScreen extends StatelessWidget {
+class VideoServicesScreen extends StatefulWidget {
   VideoServicesScreen({super.key});
 
+  @override
+  State<VideoServicesScreen> createState() => _VideoServicesScreenState();
+}
+
+class _VideoServicesScreenState extends State<VideoServicesScreen> {
   VideoServicesController controller = Get.put(VideoServicesController());
+
+
+  //=====================================> Load Counter Method <==================================
+  var _counter = 1000;
+ Future _loadCounter() async {
+    setState(() {
+      _counter;
+    });
+  }
+
+//==================================> Increment Counter Method <================================
+ Future _incrementCounter() async {
+    setState(() {
+      _counter+=1000;
+    });
+  }
+
+//==================================> Decrement Counter Method <================================
+ Future _decrementCounter() async {
+    setState(() {
+      _counter-=1000;
+    });
+  }
+
+  @override
+  void initState() {
+    _loadCounter();
+    super.initState();
+  }
+
+
   final List<String> interests = ["Music", "Fitness", "Food", "Fashion","Tech", "Travel", "Outdoor", "DIY", "Houses", "Pets", "Movies", 'Art', 'Career', "Sports", 'Books', 'Cars', 'Games','Shopping', 'Finance', 'Investing'];
 
   List selectedRequestsEmpty = [];
@@ -49,7 +86,7 @@ class VideoServicesScreen extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 bottom: 6.h,
               ),
-        
+
               ///-----------------------------select category botton----------------------->
               SizedBox(
                 height: 30.h,
@@ -60,7 +97,7 @@ class VideoServicesScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     ///--------------------------obx-------------------------------------------???
                     var cetegoryInfo = controller.categories[index];
-        
+
                     return Obx(()=> Padding(
                       padding: EdgeInsets.only(right: 23.w),
                       child: GestureDetector(
@@ -78,7 +115,7 @@ class VideoServicesScreen extends StatelessWidget {
                   },
                 ),
               ),
-        
+
               ///-----------------------------------select the Required service you want--------------------------------------------->
               CustomText(
                 text: AppString.selectTheRequiredServiceyouWant,
@@ -86,16 +123,16 @@ class VideoServicesScreen extends StatelessWidget {
                 top: 27.h,
                 bottom: 16.h,
               ),
-        
+
               ///----------------------------------------select request list view-------------------------->
               CustomMultiSelectRequestCard(
                 requestList: controller.requestList,
                 selectedRequestsEmpty: selectedRequestsEmpty,
               ),
-        
-        
-        
-        
+
+
+
+
               ///-------------------------------------------Add Quantity text---------------------------------------------->
               CustomText(
                 text: AppString.addQuantity,
@@ -103,11 +140,15 @@ class VideoServicesScreen extends StatelessWidget {
                 top: 24.h,
                 bottom: 12.h,
               ),
-        
-        
+
+
               ///-----------------------------Quantity Card-------------------------------?>
-              const CustomQuentityCard(),
-        
+              CustomQuentityCard(
+                decrement:_decrementCounter,
+                increment: _incrementCounter,
+                quantityCounter: _counter,
+              ),
+
               ///-------------------------------------------Add Quantity text---------------------------------------------->
               CustomText(
                 text: AppString.addLink,
@@ -115,8 +156,8 @@ class VideoServicesScreen extends StatelessWidget {
                 top: 16.h,
                 bottom: 12.h,
               ),
-        
-        
+
+
               ///--------------------------------Add Link form-------------------------------->
               TextFormField(
                 decoration: InputDecoration(
@@ -172,12 +213,12 @@ class VideoServicesScreen extends StatelessWidget {
                 ),
               ),
 
-        
+
               SizedBox(
                 height: 26.h,
               ),
-        
-        
+
+
               ///-------------------------------------------Add Quantity text---------------------------------------------->
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -195,17 +236,17 @@ class VideoServicesScreen extends StatelessWidget {
                   ),
                 ],
               ),
-        
+
               SizedBox(
                 height: 20.h,
               ),
-        
+
               ///--------------------------Continue botton-------------------------------->
               CustomButton(title: "Continue", onpress: () {
                 Get.toNamed(AppRoutes.paymentScreen);
               }),
-        
-        
+
+
               SizedBox(height: 50.h,)
             ],
           ),

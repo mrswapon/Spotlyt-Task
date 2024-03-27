@@ -4,8 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
+import 'package:spotlyt_task/views/screens/services/InnerWidget/increment_decrement_controller.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../controller/All_Services_Controller/social_media_services_controller.dart';
@@ -17,12 +19,56 @@ import '../../widgets/custom_multi_select_request_card.dart';
 import '../../widgets/custom_quentity_card.dart';
 import '../Requester/requesterHome/controller/requester_home_controller.dart';
 
-class MediaServicesScreen extends StatelessWidget {
+class MediaServicesScreen extends StatefulWidget {
   MediaServicesScreen({super.key});
 
+  @override
+  State<MediaServicesScreen> createState() => _MediaServicesScreenState();
+}
+
+class _MediaServicesScreenState extends State<MediaServicesScreen> {
   SocialMediaServicesController controller = Get.put(SocialMediaServicesController());
+
   RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
+
+
+
+  //=====================================> Load Counter Method <==================================
+  var _counter = 1000;
+ Future _loadCounter() async {
+
+    setState(() {
+      _counter ?? 1000;
+    });
+  }
+
+//==================================> Increment Counter Method <================================
+  Future _incrementCounter() async {
+    setState(() {
+      _counter+=1000;
+    });
+  }
+
+//==================================> Decrement Counter Method <================================
+  Future _decrementCounter() async {
+    setState(() {
+      _counter-=1000;
+    });
+  }
+
+  @override
+  void initState() {
+    _loadCounter();
+    super.initState();
+  }
+
+
+
+
+
+
   final List<String> interests = ["Music", "Fitness", "Food", "Fashion","Tech", "Travel", "Outdoor", "DIY", "Houses", "Pets", "Movies", 'Art', 'Career', "Sports", 'Books', 'Cars', 'Games','Shopping', 'Finance', 'Investing'];
+
   List selectedRequestsEmpty = [];
 
   @override
@@ -104,7 +150,11 @@ class MediaServicesScreen extends StatelessWidget {
               ),
 
               ///-----------------------------Quantity Card-------------------------------?>
-              const CustomQuentityCard(),
+              CustomQuentityCard(
+                decrement:_decrementCounter,
+                increment: _incrementCounter,
+                 quantityCounter: _counter,
+              ),
 
               ///-------------------------------------------add link text---------------------------------------------->
               CustomText(

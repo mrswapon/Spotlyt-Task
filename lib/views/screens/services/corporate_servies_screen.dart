@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
@@ -16,11 +17,50 @@ import '../../widgets/custom_cetegory_botton.dart';
 import '../../widgets/custom_multi_select_request_card.dart';
 import '../../widgets/custom_quentity_card.dart';
 
-class CorporateServicesScreen extends StatelessWidget {
+class CorporateServicesScreen extends StatefulWidget {
   CorporateServicesScreen({super.key});
 
+  @override
+  State<CorporateServicesScreen> createState() => _CorporateServicesScreenState();
+}
+
+class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
   CorporateServicesController controller =
       Get.put(CorporateServicesController());
+
+
+
+  //=====================================> Load Counter Method <==================================
+  var _counter = 1000;
+ Future _loadCounter() async {
+    setState(() {
+      _counter;
+    });
+  }
+
+//==================================> Increment Counter Method <================================
+ Future _incrementCounter() async {
+    setState(() {
+      _counter+=1000;
+    });
+  }
+
+//==================================> Decrement Counter Method <================================
+ Future _decrementCounter() async {
+    setState(() {
+      _counter-=1000;
+    });
+  }
+
+  @override
+  void initState() {
+    _loadCounter();
+    super.initState();
+  }
+
+
+
+
   final List<String> interests = [
     "Music",
     "Fitness",
@@ -43,6 +83,7 @@ class CorporateServicesScreen extends StatelessWidget {
     'Finance',
     'Investing'
   ];
+
   List selectedRequestsEmpty = [];
 
   @override
@@ -123,7 +164,11 @@ class CorporateServicesScreen extends StatelessWidget {
               ),
 
               ///-----------------------------Quantity Card-------------------------------?>
-              const CustomQuentityCard(),
+              CustomQuentityCard(
+                decrement:_decrementCounter,
+                increment: _incrementCounter,
+                quantityCounter: _counter,
+              ),
 
               ///-------------------------------------------select time line text---------------------------------------------->
               CustomText(
