@@ -18,4 +18,5 @@ class AppImages {
   static const String taskCardImage = "$path/task_card_image.png";
   static const String profileImg = "$path/profileImg.png";
   static const String earnImage = "$path/earn_image.png";
+  static const String no_internet_profile = "$path/no_internet_profile.png";
 }
