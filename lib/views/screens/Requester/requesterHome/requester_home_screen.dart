@@ -5,6 +5,7 @@ import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
+import '../../../widgets/custom_loader.dart';
 import 'controller/requester_home_controller.dart';
 import 'inner_widgets/requester_cetegories_and_services_card.dart';
 import 'inner_widgets/requester_home_screen_app_bar.dart';
@@ -34,10 +35,9 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
 
     return Scaffold(
       body: Obx(() => requesterHomeController.isLoading.value ?
-      const Center(child: CircularProgressIndicator(color: AppColors.primaryColor,)) :
+      const Center(child: CustomLoader()) :
       Column(
         children: [
-
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: Dimensions.paddingSizeDefault.w),
