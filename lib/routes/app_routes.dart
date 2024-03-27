@@ -90,7 +90,7 @@ class AppRoutes {
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
         GetPage(name: inviteEarnScreen, page: () => InviteEarnScreen()),
         GetPage(name: addInterestScreen, page: () => AddInterestScreen()),
-        GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
+        // GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
         GetPage(name: submitTaskScreen, page: () => SubmitTaskScreen()),
         GetPage(name: taskerBottomNavBar, page: () => TaskerBottomNavBar()),
         GetPage(name: registerScreen, page: () => RegisterScreen()),

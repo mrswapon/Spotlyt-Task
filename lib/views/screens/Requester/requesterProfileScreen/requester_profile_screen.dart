@@ -19,14 +19,23 @@ class RequesterProfileScreen extends StatelessWidget {
 
   ProfileController _profileController = Get.put(ProfileController());
 
+
   @override
   Widget build(BuildContext context) {
-    _profileController.profileModel;
+     var profileName = _profileController.profileModel!.data!.attributes!.fullName ?? "";
+     var profileUrl = _profileController.profileModel!.data!.attributes!.image!.url ?? "";
+    print("====> ${_profileController.profileModel!.data!.attributes!.fullName}");
+    print("====> ${_profileController.profileModel!.data!.attributes!.image!.url}");
+
     return Scaffold(
+
       body: Column(
         children: [
           ///------------------------------top profile card------------------------------------>
-          const TopProfileCard(),
+           TopProfileCard(
+            profileName: profileName,
+             profileUrl: profileUrl,
+          ),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),

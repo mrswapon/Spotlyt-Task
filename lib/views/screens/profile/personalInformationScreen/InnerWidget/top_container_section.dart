@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/services/api_constants.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
@@ -9,7 +10,12 @@ import '../../../../../utils/app_images.dart';
 import '../../../../widgets/custom_text.dart';
 
 class TopContainerSection extends StatelessWidget {
-  const TopContainerSection({
+  String? name;
+  String? image;
+
+   TopContainerSection({
+    this.name,
+    this.image,
     super.key,
   });
 
@@ -17,7 +23,7 @@ class TopContainerSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFA0C5A0),
+        color: const Color(0xFFA0C5A0),
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Padding(
@@ -27,19 +33,22 @@ class TopContainerSection extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                ///---------------------------profile image------------------>
                 Container(
                   clipBehavior: Clip.antiAlias,
                   width: 70.w,
                   height: 70.h,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Colors.white),
-                  child: Image.asset(
-                    AppImages.profileImg,
+                  child: Image.network(
+                    "${ApiConstants.baseUrl}/${image}"??"",
                     fit: BoxFit.cover,
                   ),
                 ),
+
+                ///-------------------------profile name----------------------->
                 CustomText(
-                  text: 'Arnold Bailie',
+                  text: '$name'??"",
                   fontsize: 24.sp,
                 ),
                 IconButton(
