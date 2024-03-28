@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
@@ -57,6 +59,7 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
 
           Expanded(
             child: ListView.separated(
+              scrollDirection: Axis.vertical,
               shrinkWrap: true,
               padding:EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w) ,
               itemBuilder: (BuildContext context, int index) { return SizedBox(height: 16.h); },
