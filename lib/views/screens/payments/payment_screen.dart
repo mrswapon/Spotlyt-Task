@@ -135,7 +135,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
             SizedBox(
               height: 24.h,
             ),
-
           ],
         ),
       ),

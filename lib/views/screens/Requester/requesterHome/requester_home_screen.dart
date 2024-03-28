@@ -21,12 +21,12 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-@override
+/*@override
   void initState() {
     // TODO: implement initState
   _requesterHomeController.requesterTaskService();
     super.initState();
-  }
+  }*/
   // RequesterHomeScreen(){
   @override
   Widget build(BuildContext context) {
@@ -56,108 +56,28 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
           ),
 
           Expanded(
-            child: ListView.separated(
+            child: ListView.builder(
               shrinkWrap: true,
-              padding:EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w) ,
-              itemBuilder: (BuildContext context, int index) { return SizedBox(height: 16.h); },
-              separatorBuilder: (BuildContext context, int index) {
-                var serviceData=_requesterHomeController.homeScreenModel?.data?.attributes?[index];
-                debugPrint(_requesterHomeController.homeScreenModel!.data!.attributes!.length.toString());
-                return   CetegoriesAndServicesCard(
-                      ontap: (){
-                    //    Get.toNamed(AppRoutes.servicesScreen,parameters:requesterHomeController.homeScreenModel.data.attributes.);
-                      },
-                      title: serviceData!.name,
-                      servicesInfo:serviceData.description,
-                      categories:serviceData.categories??[],
-                      // categories:  [
-                      //   {
-                      //     "buttonName": serviceData.categories?[0].name,
-                      //     "icon": AppIcons.facebook,
-                      //   },
-                      //   {
-                      //     "buttonName": serviceData.categories?[1].name,
-                      //     "icon": AppIcons.instagram,
-                      //   },
-                      //   {
-                      //     "buttonName": serviceData.categories?[2].name,
-                      //     "icon": AppIcons.tiktok,
-                      //   },
-                      // ],
-                    );
-
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
+              itemCount: _requesterHomeController.homeScreenModel!.data!.attributes!.length,
+              itemBuilder: (BuildContext context, int index) {
+                var serviceData = _requesterHomeController.homeScreenModel?.data?.attributes?[index];
+                debugPrint('=====data>   ${serviceData!.name}');
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.h),
+                  child: CetegoriesAndServicesCard(
+                    ontap: () {
+                       Get.toNamed(AppRoutes.servicesScreen);
+                    },
+                    title: serviceData.name,
+                    servicesInfo: serviceData.description,
+                    categories: serviceData.categories ?? [],
+                  ),
+                );
               },
-              itemCount:_requesterHomeController.homeScreenModel!.data!.attributes!.length,
-              // child: Padding(
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: Dimensions.paddingSizeDefault.w),
-              //
-                // child: Column(
-                //
-                //   children: [
-                //     SizedBox(height: 16.h,),
-                //     ///-------------------------------social media card--------------------------->
-                //     CetegoriesAndServicesCard(
-                //       ontap: (){
-                //         Get.toNamed(AppRoutes.servicesScreen,parameters:requesterHomeController.homeScreenModel.data.attributes.);
-                //       },
-                //       title: requesterHomeController.homeScreenModel?.data?.attributes?[0].name,
-                //       servicesInfo:requesterHomeController.homeScreenModel?.data?.attributes?[0].description,
-                //       categories:  [
-                //         {
-                //           "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[0].name,
-                //           "icon": AppIcons.facebook,
-                //         },
-                //         {
-                //           "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[1].name,
-                //           "icon": AppIcons.instagram,
-                //         },
-                //         {
-                //           "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[0].categories?[2].name,
-                //           "icon": AppIcons.tiktok,
-                //         },
-                //       ],
-                //     ),
-                //
-                //     SizedBox(height: 16.h),
-                //
-                //     ///-------------------------------Video card--------------------------->
-                //     CetegoriesAndServicesCard(
-                //       ontap: (){
-                //         Get.toNamed(AppRoutes.videoServicesScreen);
-                //       },
-                //       title: requesterHomeController.homeScreenModel?.data?.attributes?[1].name,
-                //       servicesInfo: requesterHomeController.homeScreenModel?.data?.attributes?[1].description,
-                //       categories:[
-                //         {
-                //           "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].name,
-                //           "icon": AppIcons.youtube,
-                //         },
-                //       ],
-                //     ),
-                //
-                //     SizedBox(height: 16.h),
-                //
-                //     ///-------------------------------Corporate card--------------------------->
-                //     CetegoriesAndServicesCard(
-                //       ontap: (){
-                //         Get.toNamed(AppRoutes.corporateServicesScreen);
-                //       },
-                //       title: requesterHomeController.homeScreenModel?.data?.attributes?[2].name,
-                //       servicesInfo: requesterHomeController.homeScreenModel?.data?.attributes?[2].description,
-                //       categories: [
-                //         {
-                //           "buttonName": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].name,
-                //           "icon": AppIcons.corporateIcon,
-                //         },
-                //       ],
-                //     ),
-                //     SizedBox(height: 113.h,)
-                //   ],
-                // ),
-           //   ),
             ),
-          )
+          ),
+          SizedBox(height: 67.h,)
         ],
       )),
     );
