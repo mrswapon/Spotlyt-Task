@@ -20,7 +20,7 @@ import '../../widgets/custom_quentity_card.dart';
 import '../Requester/requesterHome/controller/requester_home_controller.dart';
 
 class MediaServicesScreen extends StatefulWidget {
-  MediaServicesScreen({super.key});
+  MediaServicesScreen({super.key,});
 
   @override
   State<MediaServicesScreen> createState() => _MediaServicesScreenState();
@@ -64,6 +64,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
 
 
+  var data= Get.parameters;
 
 
 
@@ -137,7 +138,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///----------------------------------------select request list view-------------------------->
               CustomMultiSelectRequestCard(
-                requestList: controller.requestList,
+                requestList: [],
                 selectedRequestsEmpty: selectedRequestsEmpty,
               ),
 

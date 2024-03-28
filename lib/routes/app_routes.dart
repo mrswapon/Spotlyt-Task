@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../helpers/Bindings/requester_binding.dart';
 import '../views/screens/Add_Interest/add_interest_screen.dart';
 import '../views/screens/Invite_Earn/invite_earn_screen.dart';
 import '../views/screens/Notification/notification_screen.dart';
@@ -70,7 +71,7 @@ class AppRoutes {
         GetPage(name: verifyOtpScreen, page: () => VerifyOtpScreen()),
         GetPage(name: signInScreen, page: () => SignInScreen()),
         GetPage(name: servicesScreen, page: () => MediaServicesScreen()),
-        GetPage(name: requesterBottomNavBar, page: () => RequesterBottomNavBar()),
+        GetPage(name: requesterBottomNavBar, page: () => RequesterBottomNavBar(),binding:InitialRequesterScreenBindings()),
         GetPage(name: videoServicesScreen, page: () => VideoServicesScreen()),
         GetPage(name: corporateServicesScreen, page: () => CorporateServicesScreen()),
         GetPage(name: forgotPasswordScreen, page: () => ForgotPasswordScreen()),

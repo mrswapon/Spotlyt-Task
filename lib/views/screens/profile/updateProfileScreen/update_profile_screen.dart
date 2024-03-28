@@ -156,7 +156,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   _phoneNumberController.text,
                   _nidNumberController.text,
                   _locationController.text,
-                 _image ?? selectedIMage,
+                  selectedIMage,
                   date
               );
             }),

@@ -6,9 +6,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
+import 'package:spotlyt_task/utils/app_constant.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 
-import '../../helpers/Bindings/prefs_helper.dart';
+import '../../helpers/prefs_helper.dart';
 import '../../services/api_checker.dart';
 import '../../services/api_client.dart';
 
@@ -95,15 +96,20 @@ class AuthController extends GetxController {
     Response response= await ApiClient.postData(ApiConstants.loginEndPoint,json.encode(body),headers: headers);
     print("====> ${response.body}");
     if(response.statusCode==200){
-      await  PrefsHelper.setString(AppString.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
-      await  PrefsHelper.setString(AppString.id,response.body['data']['attributes']['user']['id']);
+      await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
+      await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['user']['id']);
 
-      await PrefsHelper.setBool(AppString.isLogged, true);
+      await PrefsHelper.setBool(AppConstants.isLogged, true);
       String userRole = response.body['data']['attributes']['user']['role'];
-      await PrefsHelper.setString(AppString.role, userRole);
+      await PrefsHelper.setString(AppConstants.role, userRole);
 
       if(userRole == "client"){
-        Get.offAllNamed(AppRoutes.addInterestScreen);
+        if(response.body['data']['attributes']['user']['isInterest']){
+          Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+        }else{
+          Get.offAllNamed(AppRoutes.addInterestScreen);
+        }
+
       }else{
         Get.offAllNamed(AppRoutes.taskerBottomNavBar);
       }
@@ -160,7 +166,7 @@ class AuthController extends GetxController {
           headers: headers);
       print("============${response.body} and ${response.statusCode}");
       if (response.statusCode == 200) {
-        await PrefsHelper.setString(AppString.role, response.body["data"]['attributes']['user']['role']);
+        await PrefsHelper.setString(AppConstants.role, response.body["data"]['attributes']['user']['role']);
         var role = response.body["data"]['attributes']['user']['role'];
         print("===> role : $role");
          otpCtrl.clear();
