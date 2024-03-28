@@ -31,8 +31,8 @@ class RequesterProfileScreen extends StatelessWidget {
         children: [
           ///------------------------------top profile card------------------------------------>
           TopProfileCard(
-            profileName: _profileController.profileModel?.data?.attributes?.fullName ?? "Name",
-            profileUrl: _profileController.profileModel?.data?.attributes?.image?.url,
+            profileName: _profileController.profileModel.value.fullName ?? "Name",
+            profileUrl: _profileController.profileModel.value.image?.url,
           ),
 
           Padding(
