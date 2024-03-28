@@ -52,100 +52,43 @@ class ProfileController extends GetxController {
   }
 
   ///======================update profile============================>
-  //  var phoneCode = "+353".obs;
-  // var loading = false.obs;
-  //
-  // editProfile(
-  //     String name, phoneNumber, nidNumber, address, image, dateOfBirth) async {
-  //   var bearerToken = await PrefsHelper.getString(AppString.bearerToken);
-  //   var id = await PrefsHelper.getString(AppString.id);
-  //   var headers = {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': 'Bearer $bearerToken'
-  //   };
-  //   Map<String, String> body = {
-  //     "fullName": "$name",
-  //     "image": AppImages.no_internet_profile,
-  //     "address": "$address",
-  //     "dataOfBirth": "$dateOfBirth",
-  //     "interest": "",
-  //     "isInterest": "false",
-  //     "phoneNumber": phoneNumber,
-  //     "nidNumber": nidNumber,
-  //   };
-  //
-  //   try {
-  //     var response = await ApiClient.putMultipartData(
-  //         "${ApiConstants.profileEndPonint}$id", body,
-  //         headers: headers);
-  //     print("==================this is sagor");
-  //     print(
-  //         "===========response body : ${response.body} \n ${response.statusCode}");
-  //     if (response.statusCode == 200 || response.statusCode == 201) {
-  //       Get.back();
-  //     }
-  //   } catch (e, s) {
-  //     print("===> error e: $e");
-  //     print("===> error s: $s");
-  //   }
-  // }
+   var phoneCode = "+353".obs;
+  var loading = false.obs;
 
+  editProfile(
+      String name, phoneNumber, nidNumber, address, image, dateOfBirth) async {
+    var bearerToken = await PrefsHelper.getString(AppString.bearerToken);
+    var id = await PrefsHelper.getString(AppString.id);
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $bearerToken'
+    };
+    List  multipartBody = image;
+    Map<String, String> body = {
+      "fullName": name,
+      "image": AppImages.no_internet_profile,
+      "address": address,
+      "dataOfBirth": "$dateOfBirth",
+      "interest": "",
+      "isInterest": "false",
+      "phoneNumber": phoneNumber,
+      "nidNumber": nidNumber,
+    };
 
-
-
-
-
-
-
- RxBool loading = false.obs;
-
-
-  editProfile(String name, phoneNumber, nidNumber, address, image, dateOfBirth) async {
-    loading(true);
-      var bearerToken = await PrefsHelper.getString(AppString.bearerToken);
-      var id = await PrefsHelper.getString(AppString.id);
-      var headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $bearerToken'
-      };
-
-      Map<String, String> body = {
-        "fullName": name,
-        "address": address,
-        "dataOfBirth": dateOfBirth,
-        "interest": "",
-        "isInterest": "false",
-        "phoneNumber": phoneNumber,
-        "nidNumber": nidNumber,
-      };
-
-
-
-    var response = await ApiClient.putMultipartData(
-        ApiConstants.profileEndPonint+id, body,
-        headers: headers,
-        multipartBody: image.isEmpty ? [] : image
-        );
-    print("=============response body : ${response.body}");
-    print("=============response body : ${response.statusCode}");
-    if (response.statusCode == 200) {
-
-      await getProfileData();
-      Fluttertoast.showToast(msg: "Profile updated successfully");
-      Get.back();
-    } else {
-      ApiChecker.checkApi(response);
+    try {
+      var response = await ApiClient.putMultipartData(
+          "${ApiConstants.profileEndPonint}$id", body, multipartBody: multipartBody,
+          headers: headers);
+      print(
+          "===========response body : ${response.body} \nand status code : ${response.statusCode}");
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Get.back();
+      }
+    } catch (e, s) {
+      print("===> error e: $e");
+      print("===> error s: $s");
     }
-    loading(false);
   }
-
-
-
-
-
-
-
-
 
 
 
