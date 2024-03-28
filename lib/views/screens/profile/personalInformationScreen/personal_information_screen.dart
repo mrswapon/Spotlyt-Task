@@ -18,7 +18,7 @@ class PersonalInformationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var profileData =_profileController.profileModel?.data?.attributes;
+    var profileData = _profileController.profileModel.value;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -31,68 +31,70 @@ class PersonalInformationScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 27.w),
-        child: Column(
-          children: [
-            SizedBox(height: 24.h),
-            //==================================> TopContainer Section <=================================
-             TopContainerSection(
-               ontap: (){
-                 var data = _profileController.profileModel!.data!.attributes;
-                 Get.toNamed(AppRoutes.updateProfileScreen, parameters: {
-                   "name" : '${data!.fullName}',
-                   "email" : '${data.email}',
-                   "phone" : '${data.phoneNumber}',
-                   "dateOfBirth" : '${data.dataOfBirth}',
-                   "nidNo" : '${data.nidNumber}',
-                   "address" : '${data.address}',
-                   "image" : '${data.image!.url}',
-                 });
-               },
-              name: _profileController.profileModel?.data?.attributes?.fullName,
-              image: _profileController.profileModel?.data?.attributes?.image?.url,
-            ),
-            SizedBox(height: 24.h),
-            //==================================> CustomContainer Section <=================================
+      body: Obx(()=>
+         Padding(
+          padding: EdgeInsets.symmetric(horizontal: 27.w),
+          child: Column(
+            children: [
+              SizedBox(height: 24.h),
+              //==================================> TopContainer Section <=================================
+               TopContainerSection(
+                 ontap: (){
+                   var data = _profileController.profileModel.value;
+                   Get.toNamed(AppRoutes.updateProfileScreen, parameters: {
+                     "name" : '${data.fullName}',
+                     "email" : '${data.email}',
+                     "phone" : '${data.phoneNumber}',
+                     "dateOfBirth" : '${data.dataOfBirth}',
+                     "nidNo" : '${data.nidNumber}',
+                     "address" : '${data.address}',
+                     "image" : '${data.image!.url}',
+                   });
+                 },
+                name: _profileController.profileModel.value.fullName,
+                image: _profileController.profileModel.value.image?.url,
+              ),
+              SizedBox(height: 24.h),
+              //==================================> CustomContainer Section <=================================
 
-            SizedBox(height: 24.h),
+              SizedBox(height: 24.h),
 
-            ///-----------------------profile name---------------------->
-            CustomListTile(
-                title: '${profileData!.fullName}',
-                prefixIcon: _prefixIcon(AppIcons.person)),
-            SizedBox(height: 16.h),
-            ///-------------------profile email---------------------->
-            CustomListTile(
-                title: '${profileData.email}',
-                prefixIcon: _prefixIcon(AppIcons.mail)),
-            SizedBox(height: 16.h),
-            ///---------------------profile phone number------------------------>
-            CustomListTile(
-                title: '${profileData.phoneNumber}',
-                prefixIcon: _prefixIcon(
-                  AppIcons.phone,
-                )),
-            SizedBox(height: 16.h),
-            ///==================date picker==================================>
-            CustomListTile(
-                title: '${profileData.dataOfBirth}',
-                prefixIcon: _prefixIcon(AppIcons.calendar)),
-            SizedBox(height: 16.h),
-            ///--------------------------Nid number------------------------>
-            CustomListTile(
-                title: '${profileData.nidNumber}',
-                prefixIcon: _prefixIcon(AppIcons.creditCard)),
-            SizedBox(height: 16.h),
+              ///-----------------------profile name---------------------->
+              CustomListTile(
+                  title: '${profileData!.fullName}',
+                  prefixIcon: _prefixIcon(AppIcons.person)),
+              SizedBox(height: 16.h),
+              ///-------------------profile email---------------------->
+              CustomListTile(
+                  title: '${profileData.email}',
+                  prefixIcon: _prefixIcon(AppIcons.mail)),
+              SizedBox(height: 16.h),
+              ///---------------------profile phone number------------------------>
+              CustomListTile(
+                  title: '${profileData.phoneNumber}',
+                  prefixIcon: _prefixIcon(
+                    AppIcons.phone,
+                  )),
+              SizedBox(height: 16.h),
+              ///==================date picker==================================>
+              CustomListTile(
+                  title: '${profileData.dataOfBirth}',
+                  prefixIcon: _prefixIcon(AppIcons.calendar)),
+              SizedBox(height: 16.h),
+              ///--------------------------Nid number------------------------>
+              CustomListTile(
+                  title: '${profileData.nidNumber}',
+                  prefixIcon: _prefixIcon(AppIcons.creditCard)),
+              SizedBox(height: 16.h),
 
-            ///-----------------------------location---------------------->
-            CustomListTile(
-              title: '${profileData.address}',
-              prefixIcon: _prefixIcon(AppIcons.location),
-            ),
-            SizedBox(height: 16.h),
-          ],
+              ///-----------------------------location---------------------->
+              CustomListTile(
+                title: '${profileData.address}',
+                prefixIcon: _prefixIcon(AppIcons.location),
+              ),
+              SizedBox(height: 16.h),
+            ],
+          ),
         ),
       ),
     );

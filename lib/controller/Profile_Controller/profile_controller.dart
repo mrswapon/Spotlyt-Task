@@ -25,7 +25,7 @@ class ProfileController extends GetxController {
   }
 
 
-  ProfileModel? profileModel;
+  Rx<ProfileModel> profileModel = ProfileModel().obs;
   RxBool isProfileLoading = false.obs;
 
   getProfileData() async {
@@ -36,7 +36,8 @@ class ProfileController extends GetxController {
         );
       print("=============response : ${response.body}");
       if (response.statusCode == 200) {
-        profileModel = ProfileModel.fromJson(response.body);
+        profileModel.value = ProfileModel.fromJson(response.body['data']['attributes']);
+        profileModel.refresh();
       } else {
         Get.snackbar(
             response.statusCode.toString(), response.statusText ?? "error");
@@ -60,8 +61,6 @@ class ProfileController extends GetxController {
       "fullName": name,
       "address": address,
       "dataOfBirth": "$dateOfBirth",
-      "interest": "",
-      "isInterest": "false",
       "phoneNumber": phoneNumber,
       "nidNumber": nidNumber,
     };
@@ -73,9 +72,10 @@ class ProfileController extends GetxController {
       print(
           "===========response body : ${response.body} \nand status code : ${response.statusCode}");
       if (response.statusCode == 200 || response.statusCode == 201) {
+        profileModel.value = ProfileModel.fromJson(response.body['data']['attributes']);
+        profileModel.refresh();
         Get.back();
-        update();
-        onInit();
+        Get.back();
       }
     } catch (e, s) {
       print("===> error e: $e");

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -41,6 +43,8 @@ class TopContainerSection extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   width: 70.w,
                   height: 70.h,
+                margin: EdgeInsets.only(right: 10.w
+                ),
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Colors.white),
                   child: Image.network(
@@ -50,9 +54,12 @@ class TopContainerSection extends StatelessWidget {
                 ),
 
                 ///-------------------------profile name----------------------->
-                CustomText(
-                  text: '$name'??"",
-                  fontsize: 24.sp,
+                Expanded(
+                  child: CustomText(
+                    text: '$name'??"",
+                    textAlign: TextAlign.start,
+                    fontsize:18.sp,
+                  ),
                 ),
                 IconButton(
                     onPressed: ontap,
