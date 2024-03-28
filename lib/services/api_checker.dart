@@ -2,7 +2,7 @@
 import 'package:get/get.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
-import '../helpers/Bindings/prefs_helper.dart';
+import '../helpers/prefs_helper.dart';
 
 
 
