@@ -10,13 +10,16 @@ import '../../../../../utils/app_images.dart';
 import '../../../../widgets/custom_text.dart';
 
 class TopContainerSection extends StatelessWidget {
-  String? name;
-  String? image;
+ final String? name;
+ final String? image;
+ final VoidCallback? ontap;
+
+
 
    TopContainerSection({
     this.name,
     this.image,
-    super.key,
+     this.ontap
   });
 
   @override
@@ -52,9 +55,7 @@ class TopContainerSection extends StatelessWidget {
                   fontsize: 24.sp,
                 ),
                 IconButton(
-                    onPressed: () {
-                      Get.toNamed(AppRoutes.updateProfileScreen);
-                    },
+                    onPressed: ontap,
                     icon: SvgPicture.asset(
                       AppIcons.edit,
                       color: AppColors.primaryColor,

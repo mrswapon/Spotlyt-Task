@@ -41,6 +41,7 @@ class ProfileController extends GetxController {
         Get.snackbar(
             response.statusCode.toString(), response.statusText ?? "error");
       }
+      update();
     } catch (e, s) {
       print("=============== error e: $e");
       print("=============== error s: $s");
@@ -73,15 +74,13 @@ class ProfileController extends GetxController {
           "===========response body : ${response.body} \nand status code : ${response.statusCode}");
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.back();
+        update();
+        onInit();
       }
     } catch (e, s) {
       print("===> error e: $e");
       print("===> error s: $s");
     }
   }
-
-
-
-
 
 }

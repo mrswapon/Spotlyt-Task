@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
+import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_list_lile.dart';
 import '../../../widgets/custom_text.dart';
@@ -17,7 +18,7 @@ class PersonalInformationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var profileName = _profileController.profileModel?.data?.attributes ?? "";
+    var profileData =_profileController.profileModel?.data?.attributes;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -37,6 +38,18 @@ class PersonalInformationScreen extends StatelessWidget {
             SizedBox(height: 24.h),
             //==================================> TopContainer Section <=================================
              TopContainerSection(
+               ontap: (){
+                 var data = _profileController.profileModel!.data!.attributes;
+                 Get.toNamed(AppRoutes.updateProfileScreen, parameters: {
+                   "name" : '${data!.fullName}',
+                   "email" : '${data.email}',
+                   "phone" : '${data.phoneNumber}',
+                   "dateOfBirth" : '${data.dataOfBirth}',
+                   "nidNo" : '${data.nidNumber}',
+                   "address" : '${data.address}',
+                   "image" : '${data.image!.url}',
+                 });
+               },
               name: _profileController.profileModel?.data?.attributes?.fullName,
               image: _profileController.profileModel?.data?.attributes?.image?.url,
             ),
@@ -47,34 +60,35 @@ class PersonalInformationScreen extends StatelessWidget {
 
             ///-----------------------profile name---------------------->
             CustomListTile(
-                title: '${_profileController.profileModel?.data?.attributes?.fullName}',
+                title: '${profileData!.fullName}',
                 prefixIcon: _prefixIcon(AppIcons.person)),
             SizedBox(height: 16.h),
             ///-------------------profile email---------------------->
             CustomListTile(
-                title: '${_profileController.profileModel?.data?.attributes?.email}',
+                title: '${profileData.email}',
                 prefixIcon: _prefixIcon(AppIcons.mail)),
             SizedBox(height: 16.h),
             ///---------------------profile phone number------------------------>
             CustomListTile(
-                title: '${_profileController.profileModel?.data?.attributes?.phoneNumber}',
+                title: '${profileData.phoneNumber}',
                 prefixIcon: _prefixIcon(
                   AppIcons.phone,
                 )),
             SizedBox(height: 16.h),
+            ///==================date picker==================================>
             CustomListTile(
-                title: '${_profileController.profileModel?.data?.attributes?.dataOfBirth}',
+                title: '${profileData.dataOfBirth}',
                 prefixIcon: _prefixIcon(AppIcons.calendar)),
             SizedBox(height: 16.h),
             ///--------------------------Nid number------------------------>
             CustomListTile(
-                title: '${_profileController.profileModel?.data?.attributes?.nidNumber}',
+                title: '${profileData.nidNumber}',
                 prefixIcon: _prefixIcon(AppIcons.creditCard)),
             SizedBox(height: 16.h),
 
             ///-----------------------------location---------------------->
             CustomListTile(
-              title: '${_profileController.profileModel?.data?.attributes?.address}',
+              title: '${profileData.address}',
               prefixIcon: _prefixIcon(AppIcons.location),
             ),
             SizedBox(height: 16.h),

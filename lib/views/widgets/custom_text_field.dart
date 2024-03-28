@@ -15,6 +15,7 @@ class CustomTextField extends StatelessWidget {
   final double contenpaddingVertical;
   final Widget? sufixicons;
   final FormFieldValidator? validator;
+  final VoidCallback? ontapPrefix;
 
 
   const CustomTextField({
@@ -31,12 +32,14 @@ class CustomTextField extends StatelessWidget {
     this.obscureCharacrter = '*',
     this.filColor,
     this.labelText,
+    this.ontapPrefix
 
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
       controller: controller,
       keyboardType: keyboardType,
       obscureText: isObscureText!,
@@ -50,7 +53,9 @@ class CustomTextField extends StatelessWidget {
             vertical: contenpaddingVertical.toDouble()),
         filled: true,
         fillColor: filColor ?? const Color(0xFFFFFFFF),
-        prefixIcon: prefixIcon,
+        prefixIcon: GestureDetector(
+            onTap: ontapPrefix,
+            child: prefixIcon),
         suffixIcon: sufixicons,
         prefixIconConstraints: BoxConstraints(minHeight: 24.w, minWidth: 24.w),
         errorStyle: const TextStyle(color: Colors.red),
