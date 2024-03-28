@@ -1,11 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:spotlyt_task/helpers/Bindings/prefs_helper.dart';
+import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/models/profile_models.dart';
 import 'package:spotlyt_task/services/api_client.dart';
+import 'package:spotlyt_task/utils/app_constant.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 
@@ -22,21 +25,15 @@ class ProfileController extends GetxController {
   }
 
 
-
   ProfileModel? profileModel;
   RxBool isProfileLoading = false.obs;
 
   getProfileData() async {
     isProfileLoading(true);
     try {
-      String bearerToken = await PrefsHelper.getString(AppString.bearerToken);
-      String id = await PrefsHelper.getString(AppString.id);
-      var headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $bearerToken'
-      };
-      var response = await ApiClient.getData(ApiConstants.profileEndPonint + id,
-          headers: headers);
+      String id = await PrefsHelper.getString(AppConstants.id);
+      var response = await ApiClient.getData(ApiConstants.profileEndPoint(id),
+        );
       print("=============response : ${response.body}");
       if (response.statusCode == 200) {
         profileModel = ProfileModel.fromJson(response.body);
@@ -52,21 +49,14 @@ class ProfileController extends GetxController {
   }
 
   ///======================update profile============================>
-   var phoneCode = "+353".obs;
   var loading = false.obs;
 
   editProfile(
-      String name, phoneNumber, nidNumber, address, image, dateOfBirth) async {
-    var bearerToken = await PrefsHelper.getString(AppString.bearerToken);
-    var id = await PrefsHelper.getString(AppString.id);
-    var headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $bearerToken'
-    };
-    List  multipartBody = image;
+      String name, phoneNumber, nidNumber, address, File?  image, dateOfBirth) async {
+    var id = await PrefsHelper.getString(AppConstants.id);
+    List <MultipartBody> multipartBody =image==null?[]:[MultipartBody("image", image)];
     Map<String, String> body = {
       "fullName": name,
-      "image": AppImages.no_internet_profile,
       "address": address,
       "dataOfBirth": "$dateOfBirth",
       "interest": "",
@@ -76,9 +66,9 @@ class ProfileController extends GetxController {
     };
 
     try {
-      var response = await ApiClient.putMultipartData(
-          "${ApiConstants.profileEndPonint}$id", body, multipartBody: multipartBody,
-          headers: headers);
+      var response = await ApiClient.patchMultipartData(
+         ApiConstants.profileEndPoint(id), body,
+           multipartBody:multipartBody,);
       print(
           "===========response body : ${response.body} \nand status code : ${response.statusCode}");
       if (response.statusCode == 200 || response.statusCode == 201) {

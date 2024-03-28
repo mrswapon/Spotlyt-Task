@@ -8,10 +8,17 @@ import '../../../../../models/requester_home_screen_model.dart';
 
 class RequesterHomeController extends GetxController {
   RequesterHomeScreenModel? homeScreenModel;
+  @override
+  void onInit() {
+    requesterTaskService();
+    super.onInit();
+  }
 
   RxBool isLoading = false.obs;
   final ScrollController categoryScrollController = ScrollController();
   final ScrollController earlyAccessScrollController = ScrollController();
+
+
 
   //=====================> Page Scroll Method <=================================
 

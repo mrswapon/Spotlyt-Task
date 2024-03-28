@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotlyt_task/utils/app_icons.dart';
 import 'package:spotlyt_task/views/screens/Requester/requesterHome/inner_widgets/requester_cetegory_botton.dart';
+import '../../../../../models/requester_home_screen_model.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_images.dart';
 import '../../../../../utils/app_strings.dart';
@@ -11,7 +13,7 @@ class CetegoriesAndServicesCard extends StatelessWidget {
   VoidCallback? ontap;
   final String? title;
   final List? servicesInfo;
-  final List categories;
+  final List<Categories> categories;
 
   CetegoriesAndServicesCard(
       {super.key,
@@ -71,8 +73,8 @@ class CetegoriesAndServicesCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: categories.map((category) {
                       return CetegoryBotton(
-                        icon: category["icon"],
-                        name: category["buttonName"],
+                        icon: category.name=="Facebook"?AppIcons.facebook:category.name=="Youtube"?AppIcons.youtube:category.name=="Tiktok"?AppIcons.tiktok:category.name=="Instagram"?AppIcons.instagram:AppIcons.corporateIcon,
+                        name: category.name,
                       );
                     }).toList(),
                   ),

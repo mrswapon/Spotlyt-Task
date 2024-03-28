@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:spotlyt_task/helpers/Bindings/prefs_helper.dart';
+import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
+
+import '../../../utils/app_constant.dart';
 
 class SplashScreen extends StatefulWidget {
    SplashScreen({super.key});
@@ -27,9 +29,9 @@ class _SplashScreenState extends State<SplashScreen> {
     // var data = await PrefsHelper.getString(AppString.bearerToken);
     // print("=====$data");
     Future.delayed(const Duration(seconds: 3), () async{
-      bool isLogged = await PrefsHelper.getBool(AppString.isLogged);
-      String token = await PrefsHelper.getString(AppString.bearerToken);
-      String role = await PrefsHelper.getString(AppString.role);
+      bool isLogged = await PrefsHelper.getBool(AppConstants.isLogged);
+      String token = await PrefsHelper.getString(AppConstants.bearerToken);
+      String role = await PrefsHelper.getString(AppConstants.role);
       print("================>   $isLogged \n $token \n $role");
 
       if(isLogged){
