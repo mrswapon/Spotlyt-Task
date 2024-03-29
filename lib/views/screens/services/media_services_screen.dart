@@ -20,23 +20,24 @@ import '../../widgets/custom_quentity_card.dart';
 import '../Requester/requesterHome/controller/requester_home_controller.dart';
 
 class MediaServicesScreen extends StatefulWidget {
-  MediaServicesScreen({super.key,});
+  MediaServicesScreen({
+    super.key,
+  });
 
   @override
   State<MediaServicesScreen> createState() => _MediaServicesScreenState();
 }
 
 class _MediaServicesScreenState extends State<MediaServicesScreen> {
-  SocialMediaServicesController controller = Get.put(SocialMediaServicesController());
+  SocialMediaServicesController controller =
+      Get.put(SocialMediaServicesController());
 
-  RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
-
-
+  RequesterHomeController requesterHomeController =
+      Get.put(RequesterHomeController());
 
   //=====================================> Load Counter Method <==================================
   var _counter = 1000;
- Future _loadCounter() async {
-
+  Future _loadCounter() async {
     setState(() {
       _counter ?? 1000;
     });
@@ -45,14 +46,14 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 //==================================> Increment Counter Method <================================
   Future _incrementCounter() async {
     setState(() {
-      _counter+=1000;
+      _counter += 1000;
     });
   }
 
 //==================================> Decrement Counter Method <================================
   Future _decrementCounter() async {
     setState(() {
-      _counter-=1000;
+      _counter -= 1000;
     });
   }
 
@@ -62,14 +63,30 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
     super.initState();
   }
 
+  var data = Get.parameters;
 
-
-  var data= Get.parameters;
-
-
-
-
-  final List<String> interests = ["Music", "Fitness", "Food", "Fashion","Tech", "Travel", "Outdoor", "DIY", "Houses", "Pets", "Movies", 'Art', 'Career', "Sports", 'Books', 'Cars', 'Games','Shopping', 'Finance', 'Investing'];
+  final List<String> interests = [
+    "Music",
+    "Fitness",
+    "Food",
+    "Fashion",
+    "Tech",
+    "Travel",
+    "Outdoor",
+    "DIY",
+    "Houses",
+    "Pets",
+    "Movies",
+    'Art',
+    'Career',
+    "Sports",
+    'Books',
+    'Cars',
+    'Games',
+    'Shopping',
+    'Finance',
+    'Investing'
+  ];
 
   List selectedRequestsEmpty = [];
 
@@ -154,9 +171,9 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///-----------------------------Quantity Card-------------------------------?>
               CustomQuentityCard(
-                decrement:_decrementCounter,
+                decrement: _decrementCounter,
                 increment: _incrementCounter,
-                 quantityCounter: _counter,
+                quantityCounter: _counter,
               ),
 
               ///-------------------------------------------add link text---------------------------------------------->
@@ -265,7 +282,9 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   DropdownMenuItem<String> _dropdownMenuItem(String value) {
     return DropdownMenuItem(
       value: value,
-      child: CustomText(text: value,),
+      child: CustomText(
+        text: value,
+      ),
     );
   }
 }
