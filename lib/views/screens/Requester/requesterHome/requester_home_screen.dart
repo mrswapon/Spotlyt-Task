@@ -69,7 +69,13 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
                   padding: EdgeInsets.symmetric(vertical: 16.h),
                   child: CetegoriesAndServicesCard(
                     ontap: () {
-                       Get.toNamed(AppRoutes.servicesScreen);
+                      if(index==0){
+                        Get.toNamed(AppRoutes.servicesScreen);
+                      }else if (index==1){
+                        Get.toNamed(AppRoutes.videoServicesScreen);
+                      }else{
+                        Get.toNamed(AppRoutes.corporateServicesScreen);
+                      }
                     },
                     title: serviceData.name,
                     servicesInfo: serviceData.description,
