@@ -195,7 +195,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           _profileControllor.editProfile(
                               _nameController.text,
                               _phoneNumberController.text,
-                              _nidNumberController.text,
+                               _nidNumberController.text,
                               _locationController.text,
                               selectedIMage,
                               dateCtrl.text);

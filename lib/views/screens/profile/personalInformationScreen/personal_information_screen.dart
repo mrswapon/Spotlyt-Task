@@ -78,7 +78,7 @@ class PersonalInformationScreen extends StatelessWidget {
               SizedBox(height: 16.h),
               ///==================date picker==================================>
               CustomListTile(
-                  title: profileData.dataOfBirth!.isEmpty ? "MM/DD/Year" : '${profileData.dataOfBirth}',
+                  title: profileData.dataOfBirth == null ? "MM/DD/Year" : '${profileData.dataOfBirth}',
                   prefixIcon: _prefixIcon(AppIcons.calendar)),
               SizedBox(height: 16.h),
               ///--------------------------Nid number------------------------>
@@ -89,7 +89,7 @@ class PersonalInformationScreen extends StatelessWidget {
 
               ///-----------------------------location---------------------->
               CustomListTile(
-                title: profileData.address!.isEmpty ? 'Your address' : '${profileData.address}',
+                title: profileData.address == null ? 'Your address' : '${profileData.address}',
                 prefixIcon: _prefixIcon(AppIcons.location),
               ),
               SizedBox(height: 16.h),

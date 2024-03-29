@@ -23,7 +23,8 @@ class NoInternetScreen extends StatelessWidget {
             ElevatedButton(onPressed:onTap,
               style:ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
-                  minimumSize: Size(Get.width/1.6,40.h),
+                   minimumSize: const Size(20, 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   shape:RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(34.r),
@@ -32,7 +33,7 @@ class NoInternetScreen extends StatelessWidget {
                   )
 
 
-              ), child:const Text("Try Again",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500,color: Colors.white),),
+              ), child: Text("Try Again",style: TextStyle(fontSize: 14.h,fontWeight: FontWeight.w500,color: Colors.white),),
 
 
             )
