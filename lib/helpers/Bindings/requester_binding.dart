@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
-import 'package:spotlyt_task/views/screens/Requester/requesterHome/controller/requester_home_controller.dart';
+import 'package:spotlyt_task/controller/requesterController/requester_home_controller.dart';
 
 class InitialRequesterScreenBindings implements Bindings {
 
