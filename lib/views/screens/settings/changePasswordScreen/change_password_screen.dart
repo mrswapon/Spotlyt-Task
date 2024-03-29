@@ -154,7 +154,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     SizedBox(height: 16.h),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(AppRoutes.forgotPasswordScreen);
+                        Get.toNamed(AppRoutes.forgotPasswordScreen, parameters: {
+                          "email" : _authController.emailCtrl.text
+                        });
+                        // Get.toNamed(AppRoutes.forgotPasswordScreen);
                       },
                       child: CustomText(
                         text: AppString.forgotPassword,

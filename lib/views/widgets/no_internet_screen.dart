@@ -3,10 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../utils/app_colors.dart';
 import '../../utils/app_icons.dart';
-import '../../utils/app_images.dart';
 
 class NoInternetScreen extends StatelessWidget {
   const NoInternetScreen({super.key,required this.onTap});
@@ -18,8 +16,7 @@ class NoInternetScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-             SvgPicture.asset(AppIcons.noInternetImage),
+            SvgPicture.asset(AppIcons.noInternetImage, color: AppColors.black5C5C5C,height: 50.h, width: 150.w,),
             SizedBox(height: 20.h,),
             Text("No internet!",style:TextStyle(fontWeight: FontWeight.w500,fontSize:16.sp),),
             SizedBox(height: 20.h,),

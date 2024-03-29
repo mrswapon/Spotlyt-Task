@@ -42,17 +42,19 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     // TODO: implement initState
     super.initState();
     setState(() {
-      _nameController.text = parameter['name']!;
+      _nameController.text = parameter['name']! == "null" ? "" : parameter['name']!;
       _emailController.text = parameter['email']!;
-      _phoneNumberController.text = parameter['phone']!;
-      _nidNumberController.text = parameter['nidNo']!;
-      dateCtrl.text = parameter['dateOfBirth']!;
-      _locationController.text = parameter['address']!;
+      _phoneNumberController.text = parameter['phone']! == 'null' ? "" : parameter['phone']!;
+      _nidNumberController.text = parameter['nidNo']! == 'null' ? "" : parameter['nidNo']!;
+      dateCtrl.text = parameter['dateOfBirth'] == 'null' ? "" : parameter['dateOfBirth']!;
+      _locationController.text = parameter['address']! == 'null' ? "" : parameter['address']!;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    var profileData = _profileControllor.profileModel.value;
+
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
@@ -108,15 +110,15 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                       prefixIcon: _prefixIcon(AppIcons.person),
                     ),
                     SizedBox(height: 16.h),
-                    CustomTextField(
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      contenpaddingHorizontal: 12.w,
-                      contenpaddingVertical: 16.h,
-                      hintText: 'Enter your email',
-                      prefixIcon: _prefixIcon(AppIcons.mail),
-                    ),
-                    SizedBox(height: 16.h),
+                    // CustomTextField(
+                    //   controller:  _emailController,
+                    //   keyboardType: TextInputType.emailAddress,
+                    //   contenpaddingHorizontal: 12.w,
+                    //   contenpaddingVertical: 16.h,
+                    //   hintText: 'Enter your email',
+                    //   prefixIcon: _prefixIcon(AppIcons.mail),
+                    // ),
+                    // SizedBox(height: 16.h),
 
                     ///=========================phone number================>
                     CustomTextField(
@@ -124,7 +126,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                       controller: _phoneNumberController,
                       contenpaddingHorizontal: 12.w,
                       contenpaddingVertical: 16.h,
-                      hintText: '(406) 555-0120',
+                      hintText: '(000) 000-0000',
                       prefixIcon: _prefixIcon(AppIcons.phone),
                     ),
                     SizedBox(height: 16.h),
@@ -313,7 +315,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     if (pickedDate != null) {
       setState(() {
         dateCtrl.text =
-            "${pickedDate.year}/${pickedDate.month}/${pickedDate.day}";
+            "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
         // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
       });
       print('Selected date: ${dateCtrl.text}');
