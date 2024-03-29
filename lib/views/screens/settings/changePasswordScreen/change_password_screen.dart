@@ -21,9 +21,6 @@ class ChangePasswordScreen extends StatefulWidget {
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // final TextEditingController _oldPassController = TextEditingController();
-  // final TextEditingController _newPassController = TextEditingController();
-  // final TextEditingController _confirmPassController = TextEditingController();
   AuthController _authController = Get.put(AuthController());
   bool isObscuresOld = true;
   bool isObscure = true;
