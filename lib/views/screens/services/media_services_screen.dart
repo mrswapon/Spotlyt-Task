@@ -140,7 +140,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///----------------------------------------select request list view-------------------------->
               CustomMultiSelectRequestCard(
-                requestList: [],
+                requestList: controller.requestList,
                 selectedRequestsEmpty: selectedRequestsEmpty,
               ),
 
