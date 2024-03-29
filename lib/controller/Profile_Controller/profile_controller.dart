@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,12 +10,9 @@ import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/models/profile_models.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/utils/app_constant.dart';
-import 'package:spotlyt_task/utils/app_images.dart';
-import 'package:spotlyt_task/utils/app_strings.dart';
-
-import '../../services/api_checker.dart';
 import '../../services/api_constants.dart';
-import '../../utils/app_colors.dart';
+
+
 
 class ProfileController extends GetxController {
   @override
@@ -25,10 +23,15 @@ class ProfileController extends GetxController {
   }
 
 
+
+
+
+  final rxRequestStatus = Status.loading.obs;
   Rx<ProfileModel> profileModel = ProfileModel().obs;
   RxBool isProfileLoading = false.obs;
 
   getProfileData() async {
+    rxRequestStatus.value = Status.loading;
     isProfileLoading(true);
     try {
       String id = await PrefsHelper.getString(AppConstants.id);
@@ -37,8 +40,16 @@ class ProfileController extends GetxController {
       print("=============response : ${response.body}");
       if (response.statusCode == 200) {
         profileModel.value = ProfileModel.fromJson(response.body['data']['attributes']);
+        rxRequestStatus.value = Status.completed;
         profileModel.refresh();
+
+
       } else {
+        if(response.statusText == ApiClient.noInternetMessage){
+          rxRequestStatus.value = Status.internetError;
+        }else{
+          rxRequestStatus.value = Status.error;
+        }
         Get.snackbar(
             response.statusCode.toString(), response.statusText ?? "error");
       }

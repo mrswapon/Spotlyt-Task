@@ -14,7 +14,7 @@ import 'InnerWidget/top_container_section.dart';
 class PersonalInformationScreen extends StatelessWidget {
   PersonalInformationScreen({super.key});
 
-  ProfileController _profileController = Get.put(ProfileController());
+  final ProfileController _profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class PersonalInformationScreen extends StatelessWidget {
 
               ///-----------------------profile name---------------------->
               CustomListTile(
-                  title: '${profileData!.fullName}',
+                  title: '${profileData.fullName}',
                   prefixIcon: _prefixIcon(AppIcons.person)),
               SizedBox(height: 16.h),
               ///-------------------profile email---------------------->
