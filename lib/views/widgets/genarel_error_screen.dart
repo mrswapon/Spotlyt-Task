@@ -25,7 +25,8 @@ class GeneralErrorScreen extends StatelessWidget {
             ElevatedButton(onPressed:onTap,
               style:ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
-                  minimumSize: Size(Get.width/1.6,40.h),
+                  minimumSize: const Size(20, 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   shape:RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(32.r),
