@@ -19,12 +19,12 @@ class VideoServicesController extends GetxController {
     },
     {
       "required": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].service?[2].name,
-      "per": "Per Comment",
+      "per": "Per comment",
       "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].service?[2].price
     },
-    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].service?[3].name,
+    {"required": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].service?[4].name,
       "per": "Per subscribe",
-      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].service?[3].price
+      "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[1].categories?[0].service?[4].price
     },
   ];
 

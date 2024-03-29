@@ -10,21 +10,21 @@ class CorporateServicesController extends GetxController {
 
   List requestList = [
     {"required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[0].name,
-      "per": "Per Survey",
+      "per": "Per survey",
       "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[0].price
     },
     {
       "required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[1].name,
-      "per": "Per Download",
+      "per": "Per download",
       "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[1].price
     },
     {
       "required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[2].name,
-      "per": "Per Download",
+      "per": "Per download",
       "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[2].price
     },
     {"required": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[4].name,
-      "per": "Per Stream",
+      "per": "Per stream",
       "quantity": requesterHomeController.homeScreenModel?.data?.attributes?[2].categories?[0].service?[4].price
     },
   ];
