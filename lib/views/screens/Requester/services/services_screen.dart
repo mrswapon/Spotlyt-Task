@@ -5,90 +5,49 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
-import '../../../controller/All_Services_Controller/corporate_services_controller.dart';
-import '../../../utils/app_colors.dart';
-import '../../../utils/app_icons.dart';
-import '../../widgets/custom_cetegory_botton.dart';
-import '../../widgets/custom_multi_select_request_card.dart';
-import '../../widgets/custom_quentity_card.dart';
 
-class CorporateServicesScreen extends StatefulWidget {
-  CorporateServicesScreen({super.key});
+import '../../../../controller/requesterController/services_controller.dart';
+import '../../../../models/requester_home_screen_model.dart';
+import '../../../../routes/app_routes.dart';
+import '../../../../utils/app_colors.dart';
+import '../../../../utils/app_icons.dart';
+import '../../../widgets/custom_cetegory_botton.dart';
+import '../../../widgets/custom_multi_select_request_card.dart';
+import '../../../widgets/custom_quentity_card.dart';
+import '../../../../controller/requesterController/requester_home_controller.dart';
+
+
+class MediaServicesScreen extends StatefulWidget {
+  MediaServicesScreen({super.key,});
 
   @override
-  State<CorporateServicesScreen> createState() => _CorporateServicesScreenState();
+  State<MediaServicesScreen> createState() => _MediaServicesScreenState();
 }
 
-class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
-  CorporateServicesController controller =
-      Get.put(CorporateServicesController());
+class _MediaServicesScreenState extends State<MediaServicesScreen> {
+  ServiceController controller = Get.put(ServiceController());
 
-
-
-  //=====================================> Load Counter Method <==================================
-  var _counter = 1000;
- Future _loadCounter() async {
-    setState(() {
-      _counter;
-    });
-  }
-
-//==================================> Increment Counter Method <================================
- Future _incrementCounter() async {
-    setState(() {
-      _counter+=1000;
-    });
-  }
-
-//==================================> Decrement Counter Method <================================
- Future _decrementCounter() async {
-    setState(() {
-      _counter-=1000;
-    });
-  }
-
-  @override
-  void initState() {
-    _loadCounter();
-    super.initState();
-  }
+  RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
 
 
 
 
-  final List<String> interests = [
-    "Music",
-    "Fitness",
-    "Food",
-    "Fashion",
-    "Tech",
-    "Travel",
-    "Outdoor",
-    "DIY",
-    "Houses",
-    "Pets",
-    "Movies",
-    'Art',
-    'Career',
-    "Sports",
-    'Books',
-    'Cars',
-    'Games',
-    'Shopping',
-    'Finance',
-    'Investing'
-  ];
 
-  List selectedRequestsEmpty = [];
+  Attributes attributes= Get.arguments as Attributes;
+
+
+
+
+  final List<String> interests = ["Music", "Fitness", "Food", "Fashion","Tech", "Travel", "Outdoor", "DIY", "Houses", "Pets", "Movies", 'Art', 'Career', "Sports", 'Books', 'Cars', 'Games','Shopping', 'Finance', 'Investing'];
+
+
 
   @override
   Widget build(BuildContext context) {
-    print("===================================$selectedRequestsEmpty");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -117,22 +76,24 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: controller.categories.length,
+                  itemCount:attributes.categories!.length,
                   itemBuilder: (BuildContext context, int index) {
                     ///--------------------------obx-------------------------------------------???
-                    var cetegoryInfo = controller.categories[index];
+                    var category = attributes.categories![index];
 
                     return Obx(
                       () => Padding(
                         padding: EdgeInsets.only(right: 23.w),
                         child: GestureDetector(
                           onTap: () {
-                            controller.setSelectedIndex(index);
+                            controller.setSelectedCategory(index);
+                            controller.selectedServiceIndex.value=0;
                           },
                           child: CustomCetegoryBotton(
-                            isSelected: controller.selectedIndex.value == index,
-                            name: "${cetegoryInfo["name"]}",
-                            icon: "${cetegoryInfo["icon"]}",
+                            isSelected:
+                                controller.selectedCategoryIndex.value == index,
+                            name: "${category.name}",
+                            icon:category.name=="Facebook"?AppIcons.facebook:category.name=="Youtube"?AppIcons.youtube:category.name=="Tiktok"?AppIcons.tiktok:category.name=="Instagram"?AppIcons.instagram:AppIcons.corporateIcon,
                           ),
                         ),
                       ),
@@ -150,10 +111,17 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
               ),
 
               ///----------------------------------------select request list view-------------------------->
-              CustomMultiSelectRequestCard(
-                requestList: controller.requestList,
-                selectedRequestsEmpty: selectedRequestsEmpty,
-              ),
+
+                 Obx(()=>
+                    CustomMultiSelectRequestCard(
+                    requestList: attributes.categories?[controller.selectedCategoryIndex.value].service??[],
+                    onTap: (index){
+                        controller.selectedServiceIndex.value=index;
+                    },
+                     initSelect: controller.selectedServiceIndex.value,
+                                   ),
+                 ),
+
 
               ///-------------------------------------------Add Quantity text---------------------------------------------->
               CustomText(
@@ -164,13 +132,15 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
               ),
 
               ///-----------------------------Quantity Card-------------------------------?>
-              CustomQuentityCard(
-                decrement:_decrementCounter,
-                increment: _incrementCounter,
-                quantityCounter: _counter,
+              Obx(()=>
+                 CustomQuentityCard(
+                  decrement:controller.decrementQuantity,
+                  increment:controller.incrementQuantity,
+                   quantityCounter:controller.quantity.value,
+                ),
               ),
-
               ///-------------------------------------------select time line text---------------------------------------------->
+              if(attributes.name=="Corporate")
               CustomText(
                 text: AppString.selectTimeline,
                 fontWeight: FontWeight.w500,
@@ -179,6 +149,7 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
               ),
 
               ///--------------------------------select time line form-------------------------------->
+           if(attributes.name=="Corporate")
               Row(
                 children: [
                   Expanded(
@@ -231,7 +202,7 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
               CustomText(
                 text: AppString.addLink,
                 fontWeight: FontWeight.w500,
-                top: 24.h,
+                top: 16.h,
                 bottom: 12.h,
               ),
 
@@ -263,7 +234,8 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
                 bottom: 12.h,
               ),
 
-              ///-------------------------Add dropdown------------------>
+              ///-------------------------Add Interest------------------>
+
               SizedBox(
                 child: DropdownButtonFormField(
                   icon: const Icon(Icons.keyboard_arrow_down_sharp,
@@ -290,6 +262,7 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
                 height: 26.h,
               ),
 
+              ///----------------------------------------------------------------------------------------->
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -319,7 +292,7 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
                   }),
 
               SizedBox(
-                height: 30.h,
+                height: 50.h,
               )
             ],
           ),
@@ -331,9 +304,7 @@ class _CorporateServicesScreenState extends State<CorporateServicesScreen> {
   DropdownMenuItem<String> _dropdownMenuItem(String value) {
     return DropdownMenuItem(
       value: value,
-      child: CustomText(
-        text: "$value",
-      ),
+      child: CustomText(text: value,),
     );
   }
 }

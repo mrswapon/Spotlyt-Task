@@ -125,12 +125,14 @@ class Service {
   String? name;
   double? price;
   String? sId;
+  String? subTitle;
 
   Service({this.name, this.price, this.sId});
 
   Service.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     price = json['price'];
+    subTitle = json['sobTitle'];
     sId = json['_id'];
   }
 
