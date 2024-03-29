@@ -8,7 +8,7 @@ import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../widgets/custom_loader.dart';
-import 'controller/requester_home_controller.dart';
+import '../../../../controller/requesterController/requester_home_controller.dart';
 import 'inner_widgets/requester_cetegories_and_services_card.dart';
 import 'inner_widgets/requester_home_screen_app_bar.dart';
 
@@ -69,7 +69,7 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
                   padding: EdgeInsets.symmetric(vertical: 16.h),
                   child: CetegoriesAndServicesCard(
                     ontap: () {
-                       Get.toNamed(AppRoutes.servicesScreen);
+                        Get.toNamed(AppRoutes.servicesScreen,arguments:serviceData);
                     },
                     title: serviceData.name,
                     servicesInfo: serviceData.description,
