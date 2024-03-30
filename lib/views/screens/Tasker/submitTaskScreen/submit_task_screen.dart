@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -39,93 +40,91 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: Dimensions.paddingSizeLarge),
-          child: Column(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  //===============================> Task Name Text-field <===============================
-                  CustomTextField(
-                    contenpaddingHorizontal: 16.w,
-                    contenpaddingVertical: 14.h,
-                    controller: _taskNameController,
-                    hintText: AppString.taskName,
-                  ),
-                  SizedBox(height: 16.h),
-                  //===============================> Task Category Text-field <===============================
-                  CustomTextField(
-                    contenpaddingHorizontal: 16.w,
-                    contenpaddingVertical: 14.h,
-                    controller: _taskCategoryController,
-                    hintText: AppString.taskCategory,
-                  ),
-                  SizedBox(height: 16.h),
-                  //=====================================> Upload Your Task Section <======================================
-                  Center(
-                    child: Column(
-                      children: [
-                        widget.submitController.image != null
-                            ? Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.r),
-                                    border: Border.all(
-                                        width: 1.w,
-                                        color: AppColors.primaryColor)),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 95.w, vertical: 9.h),
-                                  child: Image.memory(
-                                    widget.submitController.image!,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              )
-                            : Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.r),
-                                    border: Border.all(
-                                        width: 1.w,
-                                        color: AppColors.primaryColor)),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 16.w, vertical: 97.h),
-                                  child: Column(
-                                    children: [
-                                      GestureDetector(
-                                          onTap: () {
-                                            widget.submitController
-                                                .pickImageFromGallery();
-                                          },
-                                          child: Icon(Icons.add_circle_outline,
-                                              weight: 30.w, size: 30.h)),
-                                      CustomText(
-                                        top: 6.h,
-                                        text: AppString.uploadTaskScreenshot,
-                                        color: Colors.grey,
-                                      )
-                                    ],
-                                  ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: Dimensions.paddingSizeLarge),
+        child: Column(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                //===============================> Task Name Text-field <===============================
+                // CustomTextField(
+                //   contenpaddingHorizontal: 16.w,
+                //   contenpaddingVertical: 14.h,
+                //   controller: _taskNameController,
+                //   hintText: AppString.taskName,
+                // ),
+                // SizedBox(height: 16.h),
+                // //===============================> Task Category Text-field <===============================
+                // CustomTextField(
+                //   contenpaddingHorizontal: 16.w,
+                //   contenpaddingVertical: 14.h,
+                //   controller: _taskCategoryController,
+                //   hintText: AppString.taskCategory,
+                // ),
+                SizedBox(height: 16.h),
+                //=====================================> Upload Your Task Section <======================================
+                Center(
+                  child: Column(
+                    children: [
+                      widget.submitController.image != null
+                          ? Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  border: Border.all(
+                                      width: 1.w,
+                                      color: AppColors.primaryColor)),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 95.w, vertical: 9.h),
+                                child: Image.memory(
+                                  widget.submitController.image!,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                      ],
-                    ),
+                            )
+                          : Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  border: Border.all(
+                                      width: 1.w,
+                                      color: AppColors.primaryColor)),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w, vertical: 97.h),
+                                child: Column(
+                                  children: [
+                                    GestureDetector(
+                                        onTap: () {
+                                          widget.submitController
+                                              .pickImageFromGallery();
+                                        },
+                                        child: Icon(Icons.add_circle_outline,
+                                            weight: 30.w, size: 30.h)),
+                                    CustomText(
+                                      top: 6.h,
+                                      text: AppString.uploadTaskScreenshot,
+                                      color: Colors.grey,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                    ],
                   ),
-                  SizedBox(height: 239.h),
-                  //===============================> Change Password Button <===============================
-                  CustomButton(
-                      title: AppString.taskCompleted,
-                      onpress: () {
-                        Get.offAllNamed(AppRoutes.taskerBottomNavBar);
-                      }),
-                  SizedBox(height: 54.h),
-                ],
-              )
-            ],
-          ),
+                ),
+                SizedBox(height: 239.h),
+                //===============================> task completed Button <===============================
+                CustomButton(
+                    title: AppString.taskCompleted,
+                    onpress: () {
+                      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+                    }),
+                SizedBox(height: 54.h),
+              ],
+            )
+          ],
         ),
       ),
     );
