@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
@@ -339,11 +340,12 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     text: AppString.totalPayable,
                     fontWeight: FontWeight.w500,
                   ),
-                  CustomText(
-                    text: "R 3600",
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.primaryColor,
-                    fontsize: 18.h,
+                  Obx(()=> CustomText(
+                      text: "R ${controller.quantity.value*0.6}",
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryColor,
+                      fontsize: 18.h,
+                    ),
                   ),
                 ],
               ),
@@ -383,8 +385,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(1950),
-      lastDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(3050),
     );
     if (pickedDate != null) {
       setState(() {
@@ -401,8 +403,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(1950),
-      lastDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(3050),
     );
     if (pickedDate != null) {
       setState(() {
