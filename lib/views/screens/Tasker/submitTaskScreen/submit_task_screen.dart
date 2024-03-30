@@ -72,6 +72,7 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                           ? Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.r),
+                                  color: Colors.white,
                                   border: Border.all(
                                       width: 1.w,
                                       color: AppColors.primaryColor)),
@@ -87,6 +88,7 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                           : Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.r),
+                                  color: Colors.white,
                                   border: Border.all(
                                       width: 1.w,
                                       color: AppColors.primaryColor)),
@@ -114,10 +116,10 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 239.h),
+                SizedBox(height: 340.h),
                 //===============================> task completed Button <===============================
                 CustomButton(
-                    title: AppString.taskCompleted,
+                    title: AppString.submitTask,
                     onpress: () {
                       Get.offAllNamed(AppRoutes.taskerBottomNavBar);
                     }),

@@ -11,8 +11,7 @@ import '../../../../utils/app_strings.dart';
 import '../taskerTaskScreen/InnerWidgets/tasker_task_card.dart';
 
 class TaskerHomeScreen extends StatelessWidget {
- const TaskerHomeScreen({super.key});
-
+  const TaskerHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +44,10 @@ class TaskerHomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   bottom: 16.h,
                 ),
-
-
-
                 GestureDetector(
-                  onTap: (){
-                    Get.toNamed(AppRoutes.todayTaskScreen, parameters: {
-                      "screenType" : "todaysTask"
-                    });
+                  onTap: () {
+                    Get.toNamed(AppRoutes.todayOrAllTaskScreen,
+                        parameters: {"screenType": "todaysTask"});
                   },
                   child: CustomText(
                     text: AppString.seeAll,
@@ -94,7 +89,10 @@ class TaskerHomeScreen extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 16.h,),
+            SizedBox(
+              height: 16.h,
+            ),
+
             ///-----------------------------------all Task ------------------------------------->
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,13 +102,10 @@ class TaskerHomeScreen extends StatelessWidget {
                   fontsize: 20.h,
                   fontWeight: FontWeight.w600,
                 ),
-
-
                 GestureDetector(
-                  onTap: (){
-                    Get.toNamed(AppRoutes.todayTaskScreen, parameters: {
-                      "screenType" : "allTask"
-                    });
+                  onTap: () {
+                    Get.toNamed(AppRoutes.todayOrAllTaskScreen,
+                        parameters: {"screenType": "allTask"});
                   },
                   child: CustomText(
                     text: AppString.seeAll,
@@ -121,7 +116,9 @@ class TaskerHomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16.h,),
+            SizedBox(
+              height: 16.h,
+            ),
 
             ///----------------------------Your task listview----------------------------->
             SizedBox(

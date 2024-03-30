@@ -32,24 +32,43 @@ class TaskerTaskDetailsScreen extends StatelessWidget {
             CustomText(
               text: AppString.taskName,
               fontWeight: FontWeight.w500,
-              bottom: 16.h,
+              bottom: 12.h,
               top: 24.h,
             ),
             //====================> Facebook Post Like Text  <==================
             CustomText(
-              text: "Facebook Post Like ( 5000 )",
-              fontWeight: FontWeight.w500,
-              bottom: 24.h,
+              text: "Facebook Post Like",
+              fontWeight: FontWeight.w600,
+              bottom: 16.h,
             ),
-            //=========================> Task Link <============================
+
+
+            //=========================> Task price <============================
+            CustomText(
+              text: AppString.taskPrice,
+              fontWeight: FontWeight.w500,
+              bottom: 10.h,
+            ),
+            //=========================> Task price Ropi <=======================
+            SelectableText(
+              "R 0.30",
+              style: TextStyle(
+                  fontSize: 16.h,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xff0FD726)),
+              textAlign: TextAlign.start,
+            ),
+
+            ///=====================task link===========================>
             CustomText(
               text: AppString.taskLink,
               fontWeight: FontWeight.w500,
-              bottom: 16.h,
+              bottom: 10.h,
+              top: 16.h,
             ),
             //=========================> Task Link Here <=======================
             SelectableText(
-              "https://www.Facebook.com/Image Post",
+              "https://www.Facebook.com/Image \nPost",
               style: TextStyle(
                   fontSize: 16.h,
                   fontWeight: FontWeight.w500,
@@ -61,12 +80,12 @@ class TaskerTaskDetailsScreen extends StatelessWidget {
             CustomText(
               text: AppString.taskPost,
               fontWeight: FontWeight.w500,
-              bottom: 16.h,
+              bottom: 10.h,
             ),
             //========================> Date Text <=============================
             CustomText(
               text: "Friday 01 Feb, 2024",
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               bottom: 24.h,
             ),
             //SizedBox(height: 24.h),
