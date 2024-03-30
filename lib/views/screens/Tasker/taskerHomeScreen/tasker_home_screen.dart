@@ -50,7 +50,9 @@ class TaskerHomeScreen extends StatelessWidget {
 
                 GestureDetector(
                   onTap: (){
-                    Get.toNamed(AppRoutes.todayTaskScreen);
+                    Get.toNamed(AppRoutes.todayTaskScreen, parameters: {
+                      "screenType" : "todaysTask"
+                    });
                   },
                   child: CustomText(
                     text: AppString.seeAll,
@@ -92,6 +94,7 @@ class TaskerHomeScreen extends StatelessWidget {
               ),
             ),
 
+            SizedBox(height: 16.h,),
             ///-----------------------------------all Task ------------------------------------->
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,25 +103,25 @@ class TaskerHomeScreen extends StatelessWidget {
                   text: AppString.allTask,
                   fontsize: 20.h,
                   fontWeight: FontWeight.w600,
-                  bottom: 16.h,
-                  top: 24.h,
                 ),
 
 
                 GestureDetector(
                   onTap: (){
-
+                    Get.toNamed(AppRoutes.todayTaskScreen, parameters: {
+                      "screenType" : "allTask"
+                    });
                   },
                   child: CustomText(
                     text: AppString.seeAll,
                     fontsize: 15.h,
                     fontWeight: FontWeight.w500,
                     color: AppColors.primaryColor,
-                    bottom: 16.h,
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 16.h,),
 
             ///----------------------------Your task listview----------------------------->
             SizedBox(

@@ -6,25 +6,31 @@ import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerTaskScreen/InnerWidgets/tasker_task_card.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
 
-class TodayTaskScreen extends StatelessWidget {
-  const TodayTaskScreen({super.key});
+class TodayOrAllTaskScreen extends StatelessWidget {
+  TodayOrAllTaskScreen({super.key});
 
+  var parameter = Get.parameters;
+
+  ///=============================Show today task or All Task Screen with screen Type==========================>
+  ///===================This is got from Getx parameter=========================>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: CustomText(text: AppString.todaysTask,fontWeight: FontWeight.w500,),),
-
-
-
+      appBar: AppBar(
+        title: CustomText(
+          text: parameter['screenType'] == "todaysTask" ?  AppString.todaysTask : AppString.allTask,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
             return Padding(
-              padding:  EdgeInsets.only(bottom: 16.h),
+              padding: EdgeInsets.only(bottom: 16.h),
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   Get.toNamed(AppRoutes.homeCardDetails);
                 },
                 child: const TaskerTaskCard(
