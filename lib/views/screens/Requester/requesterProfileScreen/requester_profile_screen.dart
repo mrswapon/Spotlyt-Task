@@ -14,6 +14,7 @@ import '../../../../utils/app_constant.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_button.dart';
+import '../../../widgets/genarel_error_screen.dart';
 import '../../../widgets/no_internet_screen.dart';
 import 'InnerWidgets/top_profile_card.dart';
 
@@ -31,10 +32,10 @@ class RequesterProfileScreen extends StatelessWidget {
           return const CustomLoader();
         case Status.internetError:
           return NoInternetScreen(onTap: () {
-            _profileController.getProfileData();
+             _profileController.getProfileData();
           });
         case Status.error:
-          return NoInternetScreen(onTap: () {
+          return GeneralErrorScreen(onTap: ()async {
             _profileController.getProfileData();
           });
         case Status.completed:

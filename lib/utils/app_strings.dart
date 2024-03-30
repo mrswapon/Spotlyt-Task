@@ -122,7 +122,12 @@ class AppString {
 
    ///-----------------------------------tasker home screen------------------------------------->
    static String todayTask = "Today's Task";
-   static String yourTask = "Your Task";
+   static String allTask = "All Task";
+   static String seeAll = "See All";
+
+
+
+   static String todaysTask = "Today’s Task";
 
 
 
