@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
+import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/InnerWidgets/tasker_home_screen_app_bar.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
@@ -34,11 +36,31 @@ class TaskerHomeScreen extends StatelessWidget {
             ),
 
             ///-----------------------------------today's task ------------------------------------->
-            CustomText(
-              text: AppString.todayTask,
-              fontsize: 20.h,
-              fontWeight: FontWeight.w600,
-              bottom: 16.h,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(
+                  text: AppString.todayTask,
+                  fontsize: 20.h,
+                  fontWeight: FontWeight.w600,
+                  bottom: 16.h,
+                ),
+
+
+
+                GestureDetector(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.todayTaskScreen);
+                  },
+                  child: CustomText(
+                    text: AppString.seeAll,
+                    fontsize: 15.h,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primaryColor,
+                    bottom: 16.h,
+                  ),
+                ),
+              ],
             ),
 
             ///----------------------------today's task listview----------------------------->
@@ -70,13 +92,32 @@ class TaskerHomeScreen extends StatelessWidget {
               ),
             ),
 
-            ///-----------------------------------Your Task ------------------------------------->
-            CustomText(
-              text: AppString.yourTask,
-              fontsize: 20.h,
-              fontWeight: FontWeight.w600,
-              bottom: 16.h,
-              top: 24.h,
+            ///-----------------------------------all Task ------------------------------------->
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(
+                  text: AppString.allTask,
+                  fontsize: 20.h,
+                  fontWeight: FontWeight.w600,
+                  bottom: 16.h,
+                  top: 24.h,
+                ),
+
+
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: CustomText(
+                    text: AppString.seeAll,
+                    fontsize: 15.h,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primaryColor,
+                    bottom: 16.h,
+                  ),
+                ),
+              ],
             ),
 
             ///----------------------------Your task listview----------------------------->
