@@ -32,7 +32,7 @@ class CustomTwoBotton extends StatelessWidget {
                     isSelected(true);
                   },
 
-                  ///---------------------------up comming botton----------------------->
+                  ///---------------------------Submitted botton----------------------->
                   child: Container(
                     decoration: BoxDecoration(
                         color: isSelected.value
@@ -43,7 +43,7 @@ class CustomTwoBotton extends StatelessWidget {
                             topLeft: Radius.circular(8.r))),
                     child: Center(
                       child: CustomText(
-                        text: AppString.running,
+                        text: AppString.submitted,
                         fontsize: 20.h,
                         color: isSelected.value
                             ? Colors.white
@@ -61,7 +61,7 @@ class CustomTwoBotton extends StatelessWidget {
                     isSelected(false);
                   },
 
-                  ///---------------------------up complete botton----------------------->
+                  ///-------------------------- completed botton----------------------->
                   child: Container(
                     decoration: BoxDecoration(
                         color: isSelected.value

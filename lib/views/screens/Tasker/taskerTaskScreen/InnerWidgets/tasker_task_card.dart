@@ -15,8 +15,19 @@ class TaskerTaskCard extends StatelessWidget {
   final double? weight;
   final double? bgImageheights;
   final String? amount;
+  final String? taskCompleteAmount;
+
   const TaskerTaskCard(
-      {super.key, this.weight, this.bgImageheights, this.amount, this.faceBookPost, this.date, this.days, this.postLink});
+      {super.key,
+      this.weight,
+      this.bgImageheights,
+      this.amount,
+      this.faceBookPost,
+      this.date,
+      this.days,
+      this.postLink,
+      this.taskCompleteAmount});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,26 +69,34 @@ class TaskerTaskCard extends StatelessWidget {
                   color: AppColors.black5C5C5C,
                   bottom: 14.h,
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ///-------------------------5 days -------------------------->
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          AppIcons.calendar,
-                          height: 17.h,
-                          width: 16.w,
-                          color: AppColors.black5C5C5C,
-                        ),
-                        CustomText(
-                            text: days ?? "5 Days",
+                    taskCompleteAmount != null
+                        ? CustomText(
+                            text: "$taskCompleteAmount",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.black5C5C5C,
-                            left: 8.w),
-                      ],
-                    ),
+                            color: AppColors.primaryColor,
+                    )
+                        : Row(
+                            children: [
+                              SvgPicture.asset(
+                                AppIcons.calendar,
+                                height: 17.h,
+                                width: 16.w,
+                                color: AppColors.black5C5C5C,
+                              ),
+                              CustomText(
+                                  text: days ?? "5 Days",
+                                  fontsize: 14.h,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.black5C5C5C,
+                                  left: 8.w),
+                            ],
+                          ),
 
                     ///---------------------------amount not equal null amount text------------------------>
                     amount != null

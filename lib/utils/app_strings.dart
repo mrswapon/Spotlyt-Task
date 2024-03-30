@@ -46,6 +46,8 @@ class AppString {
 
 //==========================> Settings Screen <=============================
   static String settings = "Settings";
+  static String getVerfied = "Get Verified";
+  static String wallet = "Wallet";
   static String changePassword = "Change Password";
   static String privacyPolicys = "Privacy policy";
   static String termsAndConditions = "Terms & Conditions";
@@ -100,6 +102,7 @@ class AppString {
   ///---------------------requesterTaskScreen screen------------------------------>
   static String task = "Task";
   static String running = "Running";
+  static String submitted = "Submitted";
   static String completed = "Completed";
 
 
@@ -128,6 +131,7 @@ class AppString {
 
 
    static String todaysTask = "Today’s Task";
+   static String taskPrice = "Task Price:";
 
 
 

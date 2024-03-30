@@ -46,7 +46,12 @@ class TaskerTaskScreen extends StatelessWidget {
                         onTap: () {
                           Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
                         },
-                        child:  TaskerTaskCard()),
+                        child:  const TaskerTaskCard(
+                          faceBookPost: "Facebook Post Like ",
+                          date: "Friday 01 Feb, 2024",
+                          taskCompleteAmount: "R 0.30",
+                          postLink: "https://www.Facebook.com/Image \n Post",
+                        )),
                   );
                 },
               ),

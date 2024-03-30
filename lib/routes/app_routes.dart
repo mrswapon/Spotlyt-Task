@@ -13,7 +13,7 @@ import '../views/screens/Tasker/taskerBottomNavBar/tasker_bottom_nav_bar.dart';
 import '../views/screens/Tasker/taskerHomeScreen/InnerWidgets/home_card_details.dart';
 import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
 import '../views/screens/Tasker/taskerTaskDetails/tasker_task_details_screen.dart';
-import '../views/screens/Tasker/today_task/today_task_screen.dart';
+import '../views/screens/Tasker/todayOrAll_task/today_task_screen.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
@@ -62,7 +62,7 @@ class AppRoutes {
   static const String registerScreen = "/register_screen.dart";
   static const String taskerTaskDetailsScreen = "/tasker_task_details_screen.dart";
   static const String homeCardDetails = "/HomeCardDetails.dart";
-  static const String todayTaskScreen = "/TodayTaskScreen.dart";
+  static const String todayOrAllTaskScreen = "/TodayOrAllTaskScreen.dart";
 
 
   static List<GetPage> get routes => [
@@ -89,12 +89,12 @@ class AppRoutes {
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
         GetPage(name: inviteEarnScreen, page: () => InviteEarnScreen()),
         GetPage(name: addInterestScreen, page: () => AddInterestScreen()),
-        // GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
+         GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
         GetPage(name: submitTaskScreen, page: () => SubmitTaskScreen()),
         GetPage(name: taskerBottomNavBar, page: () => TaskerBottomNavBar()),
         GetPage(name: registerScreen, page: () => RegisterScreen()),
         GetPage(name: taskerTaskDetailsScreen, page: () => TaskerTaskDetailsScreen()),
         GetPage(name: homeCardDetails, page: () => HomeCardDetails()),
-        GetPage(name: todayTaskScreen, page: () => TodayTaskScreen()),
+        GetPage(name: todayOrAllTaskScreen, page: () => TodayOrAllTaskScreen()),
   ];
 }
