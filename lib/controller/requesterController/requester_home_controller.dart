@@ -4,7 +4,7 @@ import 'package:get/get_rx/get_rx.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
-import '../../../../../models/requester_home_screen_model.dart';
+import '../../models/requester_home_screen_model.dart';
 
 class RequesterHomeController extends GetxController {
   RequesterHomeScreenModel? homeScreenModel;

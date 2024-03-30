@@ -7,4 +7,8 @@ class AppConstants{
   static String id = "id";
 
 
+
+
 }
+
+enum Status { loading, completed, error, internetError }

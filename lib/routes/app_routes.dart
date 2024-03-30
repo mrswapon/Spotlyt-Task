@@ -6,6 +6,7 @@ import '../views/screens/Notification/notification_screen.dart';
 import '../views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
 import '../views/screens/Requester/requester_Task_details/requester_task_details_screen.dart';
 import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav_bar.dart';
+import '../views/screens/Requester/services/services_screen.dart';
 import '../views/screens/Tasker/registerScreen/register_screen.dart';
 import '../views/screens/Tasker/submitTaskScreen/submit_task_screen.dart';
 import '../views/screens/Tasker/taskerBottomNavBar/tasker_bottom_nav_bar.dart';
@@ -21,9 +22,6 @@ import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
 import '../views/screens/payments/payment_screen.dart';
 import '../views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 import '../views/screens/profile/updateProfileScreen/update_profile_screen.dart';
-import '../views/screens/services/corporate_servies_screen.dart';
-import '../views/screens/services/media_services_screen.dart';
-import '../views/screens/services/video_servies_screen.dart';
 import '../views/screens/settings/aboutusScreen/aboutus_screen.dart';
 import '../views/screens/settings/changePasswordScreen/change_password_screen.dart';
 import '../views/screens/settings/privacyPolicyScreen/privacy_policy_screen.dart';
@@ -72,8 +70,6 @@ class AppRoutes {
         GetPage(name: signInScreen, page: () => SignInScreen()),
         GetPage(name: servicesScreen, page: () => MediaServicesScreen()),
         GetPage(name: requesterBottomNavBar, page: () => RequesterBottomNavBar(),binding:InitialRequesterScreenBindings()),
-        GetPage(name: videoServicesScreen, page: () => VideoServicesScreen()),
-        GetPage(name: corporateServicesScreen, page: () => CorporateServicesScreen()),
         GetPage(name: forgotPasswordScreen, page: () => ForgotPasswordScreen()),
         GetPage(name: resetPasswordScreen, page: () => ResetPasswordScreen()),
         GetPage(name: settingsScreen, page: () => SettingsScreen()),

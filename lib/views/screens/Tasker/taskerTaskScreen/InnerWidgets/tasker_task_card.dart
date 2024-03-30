@@ -8,11 +8,15 @@ import '../../../../../utils/app_images.dart';
 import '../../../../widgets/custom_text.dart';
 
 class TaskerTaskCard extends StatelessWidget {
+  final String? faceBookPost;
+  final String? date;
+  final String? days;
+  final String? postLink;
   final double? weight;
   final double? bgImageheights;
   final String? amount;
   const TaskerTaskCard(
-      {super.key, this.weight, this.bgImageheights, this.amount});
+      {super.key, this.weight, this.bgImageheights, this.amount, this.faceBookPost, this.date, this.days, this.postLink});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +44,7 @@ class TaskerTaskCard extends StatelessWidget {
               children: [
                 ///-------------------------facebook post 5k like----------------------------->
                 CustomText(
-                  text: "Facebook Post 5K Like ",
+                  text: faceBookPost ?? "Facebook Post Like ",
                   fontsize: 22.h,
                   fontWeight: FontWeight.w600,
                   bottom: 10.h,
@@ -48,7 +52,7 @@ class TaskerTaskCard extends StatelessWidget {
 
                 ///--------------------------date------------------------------->
                 CustomText(
-                  text: "Friday 01 Feb, 2024",
+                  text: date ?? "Friday 01 Feb, 2024",
                   fontsize: 14.h,
                   fontWeight: FontWeight.w500,
                   color: AppColors.black5C5C5C,
@@ -67,7 +71,7 @@ class TaskerTaskCard extends StatelessWidget {
                           color: AppColors.black5C5C5C,
                         ),
                         CustomText(
-                            text: "5 Days",
+                            text: days ?? "5 Days",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.black5C5C5C,
@@ -83,7 +87,7 @@ class TaskerTaskCard extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: AppColors.black5C5C5C,
                             left: 8.w)
-                        : SizedBox(),
+                        : const SizedBox(),
                   ],
                 ),
 
@@ -103,7 +107,7 @@ class TaskerTaskCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4.r),
                       color: AppColors.primaryColor),
                   child: CustomText(
-                    text: "https://www.Facebook.com/Image \n Post",
+                    text: postLink ?? "https://www.Facebook.com/Image \n Post",
                     color: Colors.white,
                     fontsize: 12.h,
                     textAlign: TextAlign.start,
