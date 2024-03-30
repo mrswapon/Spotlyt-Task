@@ -20,9 +20,10 @@ import '../../../widgets/custom_multi_select_request_card.dart';
 import '../../../widgets/custom_quentity_card.dart';
 import '../../../../controller/requesterController/requester_home_controller.dart';
 
-
 class MediaServicesScreen extends StatefulWidget {
-  MediaServicesScreen({super.key,});
+  MediaServicesScreen({
+    super.key,
+  });
 
   @override
   State<MediaServicesScreen> createState() => _MediaServicesScreenState();
@@ -31,20 +32,62 @@ class MediaServicesScreen extends StatefulWidget {
 class _MediaServicesScreenState extends State<MediaServicesScreen> {
   ServiceController controller = Get.put(ServiceController());
 
-  RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
+  RequesterHomeController requesterHomeController =
+      Get.put(RequesterHomeController());
 
+  //=====================================> Load Counter Method <==================================
+  var _counter = 1000;
+  Future _loadCounter() async {
+    setState(() {
+      _counter ?? 1000;
+    });
+  }
 
+//==================================> Increment Counter Method <================================
+  Future _incrementCounter() async {
+    setState(() {
+      _counter += 1000;
+    });
+  }
 
+//==================================> Decrement Counter Method <================================
+  Future _decrementCounter() async {
+    setState(() {
+      _counter -= 1000;
+    });
+  }
 
+  @override
+  void initState() {
+    _loadCounter();
+    super.initState();
+  }
 
-  Attributes attributes= Get.arguments as Attributes;
+  var data = Get.parameters;
+  Attributes attributes = Get.arguments as Attributes;
 
-
-
-
-  final List<String> interests = ["Music", "Fitness", "Food", "Fashion","Tech", "Travel", "Outdoor", "DIY", "Houses", "Pets", "Movies", 'Art', 'Career', "Sports", 'Books', 'Cars', 'Games','Shopping', 'Finance', 'Investing'];
-
-
+  final List<String> interests = [
+    "Music",
+    "Fitness",
+    "Food",
+    "Fashion",
+    "Tech",
+    "Travel",
+    "Outdoor",
+    "DIY",
+    "Houses",
+    "Pets",
+    "Movies",
+    'Art',
+    'Career',
+    "Sports",
+    'Books',
+    'Cars',
+    'Games',
+    'Shopping',
+    'Finance',
+    'Investing'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +119,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount:attributes.categories!.length,
+                  itemCount: attributes.categories!.length,
                   itemBuilder: (BuildContext context, int index) {
                     ///--------------------------obx-------------------------------------------???
                     var category = attributes.categories![index];
@@ -87,13 +130,21 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                         child: GestureDetector(
                           onTap: () {
                             controller.setSelectedCategory(index);
-                            controller.selectedServiceIndex.value=0;
+                            controller.selectedServiceIndex.value = 0;
                           },
                           child: CustomCetegoryBotton(
                             isSelected:
                                 controller.selectedCategoryIndex.value == index,
                             name: "${category.name}",
-                            icon:category.name=="Facebook"?AppIcons.facebook:category.name=="Youtube"?AppIcons.youtube:category.name=="Tiktok"?AppIcons.tiktok:category.name=="Instagram"?AppIcons.instagram:AppIcons.corporateIcon,
+                            icon: category.name == "Facebook"
+                                ? AppIcons.facebook
+                                : category.name == "Youtube"
+                                    ? AppIcons.youtube
+                                    : category.name == "Tiktok"
+                                        ? AppIcons.tiktok
+                                        : category.name == "Instagram"
+                                            ? AppIcons.instagram
+                                            : AppIcons.corporateIcon,
                           ),
                         ),
                       ),
@@ -112,16 +163,18 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///----------------------------------------select request list view-------------------------->
 
-                 Obx(()=>
-                    CustomMultiSelectRequestCard(
-                    requestList: attributes.categories?[controller.selectedCategoryIndex.value].service??[],
-                    onTap: (index){
-                        controller.selectedServiceIndex.value=index;
-                    },
-                     initSelect: controller.selectedServiceIndex.value,
-                                   ),
-                 ),
-
+              Obx(
+                () => CustomMultiSelectRequestCard(
+                  requestList: attributes
+                          .categories?[controller.selectedCategoryIndex.value]
+                          .service ??
+                      [],
+                  onTap: (index) {
+                    controller.selectedServiceIndex.value = index;
+                  },
+                  initSelect: controller.selectedServiceIndex.value,
+                ),
+              ),
 
               ///-------------------------------------------Add Quantity text---------------------------------------------->
               CustomText(
@@ -132,71 +185,72 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               ),
 
               ///-----------------------------Quantity Card-------------------------------?>
-              Obx(()=>
-                 CustomQuentityCard(
-                  decrement:controller.decrementQuantity,
-                  increment:controller.incrementQuantity,
-                   quantityCounter:controller.quantity.value,
+              Obx(
+                () => CustomQuentityCard(
+                  decrement: controller.decrementQuantity,
+                  increment: controller.incrementQuantity,
+                  quantityCounter: controller.quantity.value,
                 ),
               ),
+
               ///-------------------------------------------select time line text---------------------------------------------->
-              if(attributes.name=="Corporate")
-              CustomText(
-                text: AppString.selectTimeline,
-                fontWeight: FontWeight.w500,
-                top: 16.h,
-                bottom: 12.h,
-              ),
+              if (attributes.name == "Corporate")
+                CustomText(
+                  text: AppString.selectTimeline,
+                  fontWeight: FontWeight.w500,
+                  top: 16.h,
+                  bottom: 12.h,
+                ),
 
               ///--------------------------------select time line form-------------------------------->
-           if(attributes.name=="Corporate")
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          suffixIcon: SizedBox(
-                            child: Padding(
-                              padding: EdgeInsets.all(16.r),
-                              child: SvgPicture.asset(
-                                AppIcons.calendar,
-                                width: 18.w,
-                                height: 18.h,
+              if (attributes.name == "Corporate")
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            suffixIcon: SizedBox(
+                              child: Padding(
+                                padding: EdgeInsets.all(16.r),
+                                child: SvgPicture.asset(
+                                  AppIcons.calendar,
+                                  width: 18.w,
+                                  height: 18.h,
+                                ),
                               ),
                             ),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 15.h),
-                          filled: true,
-                          fillColor: AppColors.fillColorGreen,
-                          hintText: "Start Date"),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 20.w, vertical: 15.h),
+                            filled: true,
+                            fillColor: AppColors.fillColorGreen,
+                            hintText: "Start Date"),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 17.w,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          suffixIcon: SizedBox(
-                            child: Padding(
-                              padding: EdgeInsets.all(16.r),
-                              child: SvgPicture.asset(
-                                AppIcons.calendar,
-                                width: 18.w,
-                                height: 18.h,
+                    SizedBox(
+                      width: 17.w,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            suffixIcon: SizedBox(
+                              child: Padding(
+                                padding: EdgeInsets.all(16.r),
+                                child: SvgPicture.asset(
+                                  AppIcons.calendar,
+                                  width: 18.w,
+                                  height: 18.h,
+                                ),
                               ),
                             ),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 15.h),
-                          filled: true,
-                          fillColor: AppColors.fillColorGreen,
-                          hintText: "End Date"),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 20.w, vertical: 15.h),
+                            filled: true,
+                            fillColor: AppColors.fillColorGreen,
+                            hintText: "End Date"),
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
 
               ///-------------------------------------------add link text---------------------------------------------->
               CustomText(
@@ -304,7 +358,9 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   DropdownMenuItem<String> _dropdownMenuItem(String value) {
     return DropdownMenuItem(
       value: value,
-      child: CustomText(text: value,),
+      child: CustomText(
+        text: value,
+      ),
     );
   }
 }
