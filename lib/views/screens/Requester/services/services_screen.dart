@@ -31,6 +31,8 @@ class MediaServicesScreen extends StatefulWidget {
 
 class _MediaServicesScreenState extends State<MediaServicesScreen> {
   ServiceController controller = Get.put(ServiceController());
+  final startDateCtrl = TextEditingController();
+  final endDateCtrl = TextEditingController();
 
   RequesterHomeController requesterHomeController =
       Get.put(RequesterHomeController());
@@ -208,14 +210,20 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   children: [
                     Expanded(
                       child: TextFormField(
+                        controller: startDateCtrl,
                         decoration: InputDecoration(
                             suffixIcon: SizedBox(
                               child: Padding(
                                 padding: EdgeInsets.all(16.r),
-                                child: SvgPicture.asset(
-                                  AppIcons.calendar,
-                                  width: 18.w,
-                                  height: 18.h,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _startDate(context);
+                                  },
+                                  child: SvgPicture.asset(
+                                    AppIcons.calendar,
+                                    width: 18.w,
+                                    height: 18.h,
+                                  ),
                                 ),
                               ),
                             ),
@@ -231,14 +239,20 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        controller: endDateCtrl,
                         decoration: InputDecoration(
                             suffixIcon: SizedBox(
                               child: Padding(
                                 padding: EdgeInsets.all(16.r),
-                                child: SvgPicture.asset(
-                                  AppIcons.calendar,
-                                  width: 18.w,
-                                  height: 18.h,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _endDate(context);
+                                  },
+                                  child: SvgPicture.asset(
+                                    AppIcons.calendar,
+                                    width: 18.w,
+                                    height: 18.h,
+                                  ),
                                 ),
                               ),
                             ),
@@ -358,9 +372,45 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   DropdownMenuItem<String> _dropdownMenuItem(String value) {
     return DropdownMenuItem(
       value: value,
-      child: CustomText(
-        text: value,
-      ),
+        child: CustomText(
+          text: value,
+        ),
     );
+  }
+
+  //===================> Picked Start Date TimeLine Function <==================
+  Future<void> _startDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime.now(),
+    );
+    if (pickedDate != null) {
+      setState(() {
+        startDateCtrl.text =
+            "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      });
+      print('Selected date: ${startDateCtrl.text}');
+    }
+  }
+
+  //======================> Picked End Date TimeLine Function <=================
+  Future<void> _endDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime.now(),
+    );
+    if (pickedDate != null) {
+      setState(() {
+        endDateCtrl.text =
+            "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      });
+      print('Selected date: ${endDateCtrl.text}');
+    }
   }
 }
