@@ -42,6 +42,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
     isObscures.value = !isObscures.value;
   }
 
+
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -112,8 +113,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                       return "Please enter your password";
                     }else if(value.length < 8){
                       return "Password must be at least 8 characters";
-                    }else if(_validatePassword(value)){
-                      return "password must contain at least 1 letter and 1 number";
+                    }else if(!_validatePassword(value)){
+                      return "Insecure password detected.";
                     }
                     return null;
                   },
@@ -295,8 +296,9 @@ class _TextfieldSectionState extends State<TextfieldSection> {
   static RegExp emailValidate=RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
 
   bool _validatePassword(String value) {
-         RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
-        //    RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
+         // RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+         // RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
+          RegExp regex = RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
        return regex.hasMatch(value);
   }
 

@@ -132,6 +132,7 @@ class AppString {
 
    static String todaysTask = "Today’s Task";
    static String taskPrice = "Task Price:";
+   static String totalBalance = "Total balance";
 
 
 
