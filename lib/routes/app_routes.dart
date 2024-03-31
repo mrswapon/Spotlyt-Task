@@ -15,6 +15,7 @@ import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
 import '../views/screens/Tasker/taskerTaskDetails/tasker_task_details_screen.dart';
 import '../views/screens/Tasker/todayOrAll_task/today_task_screen.dart';
 import '../views/screens/Tasker/wallet/tasker_wallet.dart';
+import '../views/screens/Tasker/wallet/withdrawal_history.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
@@ -65,6 +66,7 @@ class AppRoutes {
   static const String homeCardDetails = "/HomeCardDetails.dart";
   static const String todayOrAllTaskScreen = "/TodayOrAllTaskScreen.dart";
   static const String taskerWalletScreen = "/TaskerWalletScreen.dart";
+  static const String withdrawalHistory = "/withdrawal_history.dart";
 
 
   static List<GetPage> get routes => [
@@ -99,5 +101,6 @@ class AppRoutes {
         GetPage(name: homeCardDetails, page: () => HomeCardDetails()),
         GetPage(name: todayOrAllTaskScreen, page: () => TodayOrAllTaskScreen()),
         GetPage(name: taskerWalletScreen, page: () => TaskerWalletScreen()),
+        GetPage(name: withdrawalHistory, page: () => WithdrawalHistory()),
   ];
 }

@@ -86,6 +86,7 @@ class AppString {
   static String  seeAllHistory = "See all history";
   static String  withDrawal = "Withdrawal";
   static String  requestForWithdraw = "Request for withdraw";
+  static String  withdrawalHistory = "Withdrawal History";
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";

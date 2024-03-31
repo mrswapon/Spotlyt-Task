@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
-
 import '../../../../utils/app_icons.dart';
 
 class TaskerWalletScreen extends StatelessWidget {
@@ -59,16 +60,12 @@ class TaskerWalletScreen extends StatelessWidget {
               text: AppString.minimumWithdrawal,
               fontsize: 14.h,
               color: Colors.black),
-          SizedBox(
-            height: 12.h,
-          ),
+          SizedBox(height: 12.h),
           CustomText(
               text: AppString.maximumWithdrawal,
               fontsize: 14.h,
               color: Colors.black),
-          SizedBox(
-            height: 24.h,
-          ),
+          SizedBox(height: 24.h),
           //==========================> Last Withdrawal Row Button <============================
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,8 +74,11 @@ class TaskerWalletScreen extends StatelessWidget {
                   text: AppString.lastWithdrawal,
                   fontWeight: FontWeight.w600,
                   color: Colors.black),
+              //======================> See All History Button <==========================
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.withdrawalHistory);
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.r),
@@ -116,7 +116,7 @@ class TaskerWalletScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomText(
-                            text: 'Withdrawal',
+                            text: AppString.withDrawal,
                             fontWeight: FontWeight.w600,
                             color: Colors.black,
                           ),
