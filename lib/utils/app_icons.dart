@@ -35,6 +35,7 @@ class AppIcons {
   static const String timeIcon = "$path/timeIcon.svg";
   static const String wallet = "$path/wallet.svg";
   static const String veryfy = "$path/badge-check.svg";
+  static const String withDrawIcon = "$path/withDrawIcon.svg";
 
 
   /// -------- -------------------add interest screen-------------------------->

@@ -80,6 +80,12 @@ class AppString {
   static String  startDate = "Start Date";
   static String  endDate = "End Date";
   static String  timeLine = "Time Line:";
+  static String  minimumWithdrawal = "Minimum Withdrawal - R 20";
+  static String  maximumWithdrawal = "Maximum Withdrawal - R 10000";
+  static String  lastWithdrawal = "Last Withdrawal";
+  static String  seeAllHistory = "See all history";
+  static String  withDrawal = "Withdrawal";
+  static String  requestForWithdraw = "Request for withdraw";
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
