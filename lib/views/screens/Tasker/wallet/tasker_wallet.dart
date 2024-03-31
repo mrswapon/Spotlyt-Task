@@ -154,7 +154,9 @@ class TaskerWalletScreen extends StatelessWidget {
             ),
           ),
           //========================> Request for withdraw Button <=================
-          CustomButton(title: AppString.requestForWithdraw, onpress: () {}),
+          CustomButton(title: AppString.requestForWithdraw, onpress: () {
+            Get.toNamed(AppRoutes.withdrawBalanceScreen);
+          }),
           SizedBox(height: 24.h)
         ]),
       ),
