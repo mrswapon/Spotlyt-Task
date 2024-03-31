@@ -5,6 +5,7 @@ class Assets {
   static const String fontsLato = 'assets/fonts/Lato.ttf';
   static const String iconsAbout = 'assets/icons/about.svg';
   static const String iconsArt = 'assets/icons/art.svg';
+  static const String iconsBadgeCheck = 'assets/icons/badge-check.svg';
   static const String iconsBellIcon = 'assets/icons/bell_icon.svg';
   static const String iconsBook = 'assets/icons/book.svg';
   static const String iconsCalendar = 'assets/icons/calendar.svg';
@@ -33,6 +34,7 @@ class Assets {
   static const String iconsMail = 'assets/icons/mail.svg';
   static const String iconsMovies = 'assets/icons/movies.svg';
   static const String iconsMusic = 'assets/icons/music.svg';
+  static const String iconsNoInternet = 'assets/icons/no_internet.svg';
   static const String iconsPerson = 'assets/icons/person.svg';
   static const String iconsPet = 'assets/icons/pet.svg';
   static const String iconsPhone = 'assets/icons/phone.svg';
@@ -46,12 +48,14 @@ class Assets {
   static const String iconsShooping = 'assets/icons/shooping.svg';
   static const String iconsSports = 'assets/icons/sports.svg';
   static const String iconsSubmitIcon = 'assets/icons/submitIcon.svg';
-  static const String iconsTask = 'assets/icons/requesterTaskScreen.svg';
+  static const String iconsTask = 'assets/icons/task.svg';
   static const String iconsTech = 'assets/icons/tech.svg';
   static const String iconsTiktok = 'assets/icons/tiktok.svg';
   static const String iconsTimeIcon = 'assets/icons/timeIcon.svg';
   static const String iconsTravel = 'assets/icons/travel.svg';
   static const String iconsTrems = 'assets/icons/trems.svg';
+  static const String iconsWallet = 'assets/icons/wallet.svg';
+  static const String iconsWithDrawalIcon = 'assets/icons/withDrawIcon.svg';
   static const String iconsYoutube = 'assets/icons/youtube.svg';
   static const String imagesAppLogo = 'assets/images/appLogo.png';
   static const String imagesCardBgImage = 'assets/images/cardBgImage.png';
@@ -60,6 +64,7 @@ class Assets {
   static const String imagesImg1 = 'assets/images/img_1.png';
   static const String imagesMailOutline = 'assets/images/mail_outline.png';
   static const String imagesMasterCard = 'assets/images/master_card.png';
+  static const String imagesNoInternetProfile = 'assets/images/no_internet_profile.png';
   static const String imagesPasswordOutline = 'assets/images/password_outline.png';
   static const String imagesPaypalCard = 'assets/images/paypal_card.png';
   static const String imagesProfileImage = 'assets/images/profile_Image.png';
