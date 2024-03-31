@@ -80,6 +80,8 @@ class AppString {
   static String  startDate = "Start Date";
   static String  endDate = "End Date";
   static String  timeLine = "Time Line:";
+
+  //================================> Wallet Screen <===========================
   static String  minimumWithdrawal = "Minimum Withdrawal - R 20";
   static String  maximumWithdrawal = "Maximum Withdrawal - R 10000";
   static String  lastWithdrawal = "Last Withdrawal";
@@ -87,6 +89,13 @@ class AppString {
   static String  withDrawal = "Withdrawal";
   static String  requestForWithdraw = "Request for withdraw";
   static String  withdrawalHistory = "Withdrawal History";
+  static String  withdrawalBalance = "Withdraw Balance";
+  static String  pleaseProvide = "Please provide the following information for the withdrawal";
+  static String  bankName = "Bank Name";
+  static String  accountType = "Account Type";
+  static String  accountNumber = "Account Number";
+  static String  withdrawalAmount = "Withdrawal Amount";
+  static String  withdraw = "Withdraw";
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
