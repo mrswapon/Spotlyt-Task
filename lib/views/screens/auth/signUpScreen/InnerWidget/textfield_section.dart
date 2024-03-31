@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
@@ -24,24 +24,22 @@ class TextfieldSection extends StatefulWidget {
 }
 
 class _TextfieldSectionState extends State<TextfieldSection> {
-
-
   final AuthController _authController = Get.put(AuthController());
 
   bool _isChecked = false;
-
+  bool isCheckboxError = false;
 
   ///================toggle obscure===============>
   RxBool isObscure = true.obs;
   RxBool isObscures = true.obs;
 
-  toggleIsObscure(){
+  toggleIsObscure() {
     isObscure.value = !isObscure.value;
   }
-  toggleReIsObscures(){
+
+  toggleReIsObscures() {
     isObscures.value = !isObscures.value;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +77,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter your user email";
-                  }else if(!emailValidate.hasMatch(value)){
+                  } else if (!emailValidate.hasMatch(value)) {
                     return "Invalid email!";
                   }
                   return null;
@@ -87,7 +85,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               ),
               SizedBox(height: 16.h),
               //===============================> Password Text-field <===============================
-              Obx(()=> CustomTextField(
+              Obx(
+                () => CustomTextField(
                   contenpaddingHorizontal: 16.w,
                   contenpaddingVertical: 14.h,
                   isObscureText: isObscure.value,
@@ -111,9 +110,9 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Please enter your password";
-                    }else if(value.length < 8){
+                    } else if (value.length < 8) {
                       return "Password must be at least 8 characters";
-                    }else if(!_validatePassword(value)){
+                    } else if (!_validatePassword(value)) {
                       return "Insecure password detected.";
                     }
                     return null;
@@ -122,7 +121,8 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               ),
               //===============================> Re-Enter Password Text-field <===============================
               SizedBox(height: 16.h),
-              Obx(()=> CustomTextField(
+              Obx(
+                () => CustomTextField(
                   contenpaddingHorizontal: 16.w,
                   contenpaddingVertical: 14.h,
                   isObscureText: isObscures.value,
@@ -146,8 +146,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   validator: (value) {
                     if (value.isEmpty) {
                       return "Please enter again your user password";
-                    }
-                    else if(value == _authController.passwordCtrl){
+                    } else if (value == _authController.passwordCtrl) {
                       return "Passwords do not match";
                     }
                     return null;
@@ -161,13 +160,19 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomButton(
                   title: AppString.signUps,
                   onpress: () {
-                    if(_isChecked){
-                      if (_formKey.currentState!.validate()) {
-                         _authController.handleSignUp();
-                        // Get.toNamed(AppRoutes.verifyOtpScreen);
+                    if (_formKey.currentState!.validate()) {
+                      if (_isChecked) {
+                        _authController.handleSignUp();
+                      } else {
+                        setState(() {
+                          isCheckboxError = true;
+                        });
                       }
                     }
                   }),
+
+
+
               SizedBox(height: 64.h),
               //===============================> Already have an account Section <===============================
               Row(
@@ -220,6 +225,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
         Checkbox(
           value: _isChecked,
           activeColor: AppColors.primaryColor,
+          isError: isCheckboxError,
           onChanged: (bool? value) {
             setState(() {
               _isChecked = value!;
@@ -292,14 +298,13 @@ class _TextfieldSectionState extends State<TextfieldSection> {
     );
   }
 
-
-  static RegExp emailValidate=RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
+  static RegExp emailValidate =
+      RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
 
   bool _validatePassword(String value) {
-         // RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
-         // RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
-          RegExp regex = RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
-       return regex.hasMatch(value);
+    // RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+    RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
+    // RegExp regex = RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+    return regex.hasMatch(value);
   }
-
 }
