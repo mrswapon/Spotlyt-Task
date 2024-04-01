@@ -8,7 +8,7 @@ import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_button.dart';
-import 'InnerWidgets/top_profile_card.dart';
+import '../../Requester/requesterProfileScreen/InnerWidgets/top_profile_card.dart';
 
 class TaskerProfileScreen extends StatelessWidget {
   TaskerProfileScreen({super.key});
