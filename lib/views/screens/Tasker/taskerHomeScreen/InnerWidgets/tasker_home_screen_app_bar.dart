@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
@@ -9,9 +10,10 @@ import '../../../../../utils/app_images.dart';
 import '../../../../widgets/custom_text.dart';
 
 class TaskerHomeScreenAppBar extends StatelessWidget {
-  TaskerHomeScreenAppBar({
+   TaskerHomeScreenAppBar({
     super.key,
   });
+
 
   @override
   Widget build(BuildContext context) {

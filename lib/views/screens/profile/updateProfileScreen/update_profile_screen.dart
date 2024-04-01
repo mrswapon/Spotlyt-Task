@@ -163,17 +163,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     //     title: CustomText(text: "$date", textAlign: TextAlign.start,),
                     //   ),
                     // ),
-                    SizedBox(height: 16.h),
-
-                    ///========================NID Number======================>
-                    CustomTextField(
-                      keyboardType: TextInputType.number,
-                      controller: _nidNumberController,
-                      contenpaddingHorizontal: 12.w,
-                      contenpaddingVertical: 16.h,
-                      hintText: 'NID Number',
-                      prefixIcon: _prefixIcon(AppIcons.creditCard),
-                    ),
+                    // SizedBox(height: 16.h),
+                    //
+                    // ///========================NID Number======================>
+                    // CustomTextField(
+                    //   keyboardType: TextInputType.number,
+                    //   controller: _nidNumberController,
+                    //   contenpaddingHorizontal: 12.w,
+                    //   contenpaddingVertical: 16.h,
+                    //   hintText: 'NID Number',
+                    //   prefixIcon: _prefixIcon(AppIcons.creditCard),
+                    // ),
                     SizedBox(height: 16.h),
 
                     ///========================location========================>?
