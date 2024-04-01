@@ -7,13 +7,13 @@ import '../views/screens/Requester/requesterProfileScreen/requester_profile_scre
 import '../views/screens/Requester/requester_Task_details/requester_task_details_screen.dart';
 import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav_bar.dart';
 import '../views/screens/Requester/services/services_screen.dart';
-import '../views/screens/Tasker/registerScreen/register_screen.dart';
 import '../views/screens/Tasker/submitTaskScreen/submit_task_screen.dart';
 import '../views/screens/Tasker/taskerBottomNavBar/tasker_bottom_nav_bar.dart';
 import '../views/screens/Tasker/taskerHomeScreen/InnerWidgets/home_card_details.dart';
 import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
 import '../views/screens/Tasker/taskerTaskDetails/tasker_task_details_screen.dart';
 import '../views/screens/Tasker/todayOrAll_task/today_task_screen.dart';
+import '../views/screens/Tasker/verifyScreen/verify_screen.dart';
 import '../views/screens/Tasker/wallet/tasker_wallet.dart';
 import '../views/screens/Tasker/wallet/withdraw_balance_screen.dart';
 import '../views/screens/Tasker/wallet/withdrawal_history.dart';
@@ -62,7 +62,7 @@ class AppRoutes {
   static const String taskerProfileScreen = "/tasker_profile_screen.dart";
   static const String submitTaskScreen = "/submit_task_screen.dart";
   static const String taskerBottomNavBar = "/tasker_bottom-nav_bar.dart";
-  static const String registerScreen = "/register_screen.dart";
+  static const String verifyScreen = "/verify_screen.dart";
   static const String taskerTaskDetailsScreen = "/tasker_task_details_screen.dart";
   static const String homeCardDetails = "/HomeCardDetails.dart";
   static const String todayOrAllTaskScreen = "/TodayOrAllTaskScreen.dart";
@@ -98,7 +98,7 @@ class AppRoutes {
          GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
         GetPage(name: submitTaskScreen, page: () => SubmitTaskScreen()),
         GetPage(name: taskerBottomNavBar, page: () => TaskerBottomNavBar()),
-        GetPage(name: registerScreen, page: () => RegisterScreen()),
+        GetPage(name: verifyScreen, page: () => VerifyScreen()),
         GetPage(name: taskerTaskDetailsScreen, page: () => TaskerTaskDetailsScreen()),
         GetPage(name: homeCardDetails, page: () => HomeCardDetails()),
         GetPage(name: todayOrAllTaskScreen, page: () => TodayOrAllTaskScreen()),

@@ -96,6 +96,7 @@ class AppString {
   static String  accountNumber = "Account Number";
   static String  withdrawalAmount = "Withdrawal Amount";
   static String  withdraw = "Withdraw";
+  static String  verifys = "Verify";
 
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
