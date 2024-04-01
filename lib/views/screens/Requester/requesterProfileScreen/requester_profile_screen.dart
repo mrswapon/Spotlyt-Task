@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -18,32 +20,14 @@ import '../../../widgets/genarel_error_screen.dart';
 import '../../../widgets/no_internet_screen.dart';
 import 'InnerWidgets/top_profile_card.dart';
 
-class RequesterProfileScreen extends StatefulWidget {
-
-
+class RequesterProfileScreen extends StatelessWidget {
   RequesterProfileScreen({super.key});
 
-  @override
-  State<RequesterProfileScreen> createState() => _RequesterProfileScreenState();
-}
-
-class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
   final ProfileController _profileController = Get.put(ProfileController());
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _initPrefs();
-  }
-  String? role;
-
-  Future <void> _initPrefs() async {
-  role = await PrefsHelper.getString(AppConstants.role);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    print("=====================================================role dd : ${_profileController.profileModel.value.role}");
     _profileController.profileModel;
     return Scaffold(body: Obx(() {
       switch (_profileController.rxRequestStatus.value) {
@@ -63,13 +47,15 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
               children: [
                 ///------------------------------top profile card------------------------------------>
                 TopProfileCard(
-                  height: 280.h,
-                  profileName: _profileController.profileModel.value.fullName ?? "Name",
+                  height: _profileController.role != "employee" ? null : 280.h,
+                  profileName:
+                      _profileController.profileModel.value.fullName ?? "Name",
                   profileUrl: _profileController.profileModel.value.image?.url,
                 ),
-            
+
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
                   child: Column(
                     children: [
                       ///--------------------------personal information---------------------------->
@@ -92,18 +78,16 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
                           ),
                         ),
                       ),
-            
-                      ///==================== If This is Tasker Column================>
-                      if(_profileController.profileModel.value.role != "employee" || role != "employee")
-            
-                           const SizedBox()
-            
-                          else Column(
+
+                      ///==================== If This is Tasker show 2 filled ================>
+                      _profileController.role != "employee"
+                          ? const SizedBox()
+                          : Column(
                               children: [
                                 SizedBox(
                                   height: 16.h,
                                 ),
-            
+
                                 ///--------------------------Get Verified ---------------------------->
                                 Container(
                                   decoration: BoxDecoration(
@@ -125,11 +109,11 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
                                     ),
                                   ),
                                 ),
-            
+
                                 SizedBox(
                                   height: 16.h,
                                 ),
-            
+
                                 ///--------------------------Wallet ---------------------------->
                                 Container(
                                   decoration: BoxDecoration(
@@ -153,11 +137,11 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
                                 ),
                               ],
                             ),
-            
+
                       SizedBox(
                         height: 16.h,
                       ),
-            
+
                       ///--------------------------setting ---------------------------->
                       Container(
                         decoration: BoxDecoration(
@@ -181,7 +165,7 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
                       SizedBox(
                         height: 16.h,
                       ),
-            
+
                       ///--------------------------Invite & Earn---------------------------->
                       Container(
                         decoration: BoxDecoration(
@@ -205,7 +189,7 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
                       SizedBox(
                         height: 16.h,
                       ),
-            
+
                       ///--------------------------log out---------------------------->
                       Container(
                         decoration: BoxDecoration(
@@ -245,23 +229,25 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
                                                       title: 'Log Out',
                                                       fontSize: 16.h,
                                                       onpress: () async {
-                                                        await PrefsHelper.remove(
-                                                            AppConstants
+                                                        await PrefsHelper
+                                                            .remove(AppConstants
                                                                 .isLogged);
-                                                        await PrefsHelper.remove(
-                                                            AppConstants.role);
-                                                        await PrefsHelper.remove(
-                                                            AppConstants
+                                                        await PrefsHelper
+                                                            .remove(AppConstants
+                                                                .role);
+                                                        await PrefsHelper
+                                                            .remove(AppConstants
                                                                 .isLogged);
-                                                        await PrefsHelper.remove(
-                                                            AppConstants
+                                                        await PrefsHelper
+                                                            .remove(AppConstants
                                                                 .bearerToken);
-                                                        Get.offAllNamed(AppRoutes
-                                                            .signInScreen);
+                                                        Get.offAllNamed(
+                                                            AppRoutes
+                                                                .signInScreen);
                                                       },
                                                       color: Colors.white,
-                                                      titlecolor:
-                                                          AppColors.primaryColor,
+                                                      titlecolor: AppColors
+                                                          .primaryColor,
                                                     ),
                                                   )),
                                               SizedBox(
@@ -300,11 +286,12 @@ class _RequesterProfileScreenState extends State<RequesterProfileScreen> {
                           ),
                         ),
                       ),
-            
-            
-                      role != "employee" ?
-                          SizedBox() :
-                      SizedBox(height: 60.h,)
+
+                      _profileController.role != "employee"
+                          ? SizedBox()
+                          : SizedBox(
+                              height: 60.h,
+                            )
                     ],
                   ),
                 ),

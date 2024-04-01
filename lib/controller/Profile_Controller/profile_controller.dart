@@ -20,6 +20,7 @@ class ProfileController extends GetxController {
     getProfileData();
   }
 
+  var role;
 
 
 
@@ -33,6 +34,7 @@ class ProfileController extends GetxController {
     isProfileLoading(true);
     try {
       String id = await PrefsHelper.getString(AppConstants.id);
+       role = await PrefsHelper.getString(AppConstants.role);
       var response = await ApiClient.getData(ApiConstants.profileEndPoint(id),
         );
       print("=============response : ${response.body}");
