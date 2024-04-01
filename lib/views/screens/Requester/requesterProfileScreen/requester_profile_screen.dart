@@ -27,7 +27,7 @@ class RequesterProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("=====================================================role dd : ${_profileController.profileModel.value.role}");
+    print("=====================================================role : ${_profileController.profileModel.value.role}");
     _profileController.profileModel;
     return Scaffold(body: Obx(() {
       switch (_profileController.rxRequestStatus.value) {

@@ -34,8 +34,6 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
   // RequesterHomeScreen(){
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       body: Obx(() => _requesterHomeController.isLoading.value ?
       const Center(child: CustomLoader()) :
