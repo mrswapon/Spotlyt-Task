@@ -103,7 +103,7 @@ class HomeCardDetails extends StatelessWidget {
             CustomButton(
                 title: AppString.taskRegisterNow,
                 onpress: () {
-                  Get.toNamed(AppRoutes.registerScreen);
+                  Get.toNamed(AppRoutes.verifyScreen);
                 }),
             SizedBox(height: 54.h)
           ],

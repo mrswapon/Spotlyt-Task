@@ -11,8 +11,8 @@ import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text.dart';
 import '../../../widgets/custom_text_field.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class VerifyScreen extends StatelessWidget {
+  VerifyScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();

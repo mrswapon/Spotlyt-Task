@@ -38,6 +38,7 @@ class WithdrawBalanceScreen extends StatelessWidget {
                     SizedBox(height: 24.h),
                     CustomText(
                       maxline: 2,
+                      textAlign: TextAlign.start,
                       text: AppString.pleaseProvide,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
