@@ -10,18 +10,19 @@ import '../../../../widgets/custom_text.dart';
 class TopProfileCard extends StatelessWidget {
   final String? profileName;
   final String? profileUrl;
+  final double? height;
 
-  const TopProfileCard({super.key, this.profileName, this.profileUrl});
+  const TopProfileCard({super.key, this.profileName, this.profileUrl, this. height});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 337.h,
+      height: height ?? 337.h,
       width: double.infinity,
       decoration: BoxDecoration(
           color: const Color(0xffA0C5A0),
           border:
-              const Border(bottom: BorderSide(color: AppColors.primaryColor)),
+              const Border(bottom: BorderSide(color: AppColors.primaryColor,width: 1.80)),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(24.r),
             bottomRight: Radius.circular(24.r),

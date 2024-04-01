@@ -13,13 +13,15 @@ import 'inner_widgets/requester_cetegories_and_services_card.dart';
 import 'inner_widgets/requester_home_screen_app_bar.dart';
 
 class RequesterHomeScreen extends StatefulWidget {
+  const RequesterHomeScreen({super.key});
+
 
   @override
   State<RequesterHomeScreen> createState() => _RequesterHomeScreenState();
 }
 
 class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
- RequesterHomeController _requesterHomeController = Get.put(RequesterHomeController());
+ final RequesterHomeController _requesterHomeController = Get.put(RequesterHomeController());
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
