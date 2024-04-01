@@ -81,7 +81,7 @@ class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
       case 1:
         return TaskerTaskScreen();
       default:
-        return TaskerProfileScreen();
+        return RequesterProfileScreen();
     }
   }
 }
