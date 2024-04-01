@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -160,6 +159,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomButton(
                   title: AppString.signUps,
                   onpress: () {
+
                     if (_formKey.currentState!.validate()) {
                       if (_isChecked) {
                         _authController.handleSignUp();
