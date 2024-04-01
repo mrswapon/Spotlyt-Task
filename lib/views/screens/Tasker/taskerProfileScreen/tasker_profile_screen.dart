@@ -58,7 +58,7 @@ class TaskerProfileScreen extends StatelessWidget {
                         border: Border.all(color: AppColors.primaryColor)),
                     child: ListTile(
                       onTap: () {
-                        // Get.toNamed(AppRoutes.settingsScreen);
+                        Get.toNamed(AppRoutes.verifyScreen);
                       },
                       title: CustomText(
                         text: AppString.getVerfied,

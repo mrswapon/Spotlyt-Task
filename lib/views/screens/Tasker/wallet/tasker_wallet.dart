@@ -81,6 +81,7 @@ class TaskerWalletScreen extends StatelessWidget {
                 },
                 child: Container(
                   decoration: BoxDecoration(
+                    color: Colors.white,
                       borderRadius: BorderRadius.circular(4.r),
                       border: Border.all(
                           color: AppColors.primaryColor, width: 1.sp)),
