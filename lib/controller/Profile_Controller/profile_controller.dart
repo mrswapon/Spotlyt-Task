@@ -23,8 +23,6 @@ class ProfileController extends GetxController {
   var role;
 
 
-
-
   final rxRequestStatus = Status.loading.obs;
   Rx<ProfileModel> profileModel = ProfileModel().obs;
   RxBool isProfileLoading = false.obs;
