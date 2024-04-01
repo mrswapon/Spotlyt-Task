@@ -53,7 +53,7 @@ class CustomTextField extends StatelessWidget {
             vertical: contenpaddingVertical.toDouble()),
         filled: true,
         fillColor: filColor ?? const Color(0xFFFFFFFF),
-        prefixIcon: GestureDetector(
+        prefixIcon: prefixIcon == null ? null : GestureDetector(
             onTap: ontapPrefix,
             child: prefixIcon),
         suffixIcon: sufixicons,

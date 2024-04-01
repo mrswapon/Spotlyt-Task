@@ -57,13 +57,13 @@ class TaskerProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.r),
                         border: Border.all(color: AppColors.primaryColor)),
                     child: ListTile(
-                        onTap: () {
-                          // Get.toNamed(AppRoutes.settingsScreen);
-                        },
-                        title: CustomText(
-                          text: AppString.getVerfied,
-                          textAlign: TextAlign.start,
-                        ),
+                      onTap: () {
+                        // Get.toNamed(AppRoutes.settingsScreen);
+                      },
+                      title: CustomText(
+                        text: AppString.getVerfied,
+                        textAlign: TextAlign.start,
+                      ),
                       leading: SvgPicture.asset(
                         AppIcons.veryfy,
                         color: AppColors.primaryColor,
@@ -231,10 +231,9 @@ class TaskerProfileScreen extends StatelessWidget {
                     ),
                   ),
 
-
-
-
-                  // const SizedBox(height: 60,)
+                  SizedBox(
+                    height: 60.h,
+                  )
                 ],
               ),
             ),
