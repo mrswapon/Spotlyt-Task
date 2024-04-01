@@ -26,7 +26,7 @@ class VerifyScreen extends StatelessWidget {
       extendBody: true,
       appBar: AppBar(
         title: CustomText(
-          text: AppString.register,
+          text: AppString.verify,
           fontsize: 18.h,
           fontWeight: FontWeight.w500,
         ),
@@ -119,10 +119,10 @@ class VerifyScreen extends StatelessWidget {
                             return null;
                           },
                         ),
-                        //===============================> Register Button <===============================
+                        //===============================> Verify Button <===============================
                         SizedBox(height: 254.h),
                         CustomButton(
-                            title: AppString.register,
+                            title: AppString.verify,
                             onpress: () {
                               if (_formKey.currentState!.validate()) {
                                 Get.offAllNamed(AppRoutes.taskerBottomNavBar);
