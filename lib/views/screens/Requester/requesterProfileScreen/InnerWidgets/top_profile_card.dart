@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 import '../../../../../utils/app_colors.dart';
+import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_strings.dart';
 import '../../../../widgets/custom_text.dart';
 
@@ -11,8 +13,9 @@ class TopProfileCard extends StatelessWidget {
   final String? profileName;
   final String? profileUrl;
   final double? height;
+  final int? badge;
 
-  const TopProfileCard({super.key, this.profileName, this.profileUrl, this. height});
+  const TopProfileCard({super.key, this.profileName, this.profileUrl, this. height, this.badge});
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +56,19 @@ class TopProfileCard extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: CustomText(
-              text: "$profileName" ?? "",
-              fontsize: 18.h,
-              fontWeight: FontWeight.w500,
-              top: 5.h,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomText(
+                  text: "$profileName" ?? "",
+                  fontsize: 18.h,
+                  fontWeight: FontWeight.w500,
+                  // top: 5.h,
+                ),
+
+                SizedBox(width: 4.w,),
+                SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,),
+              ],
             ),
           ),
         ],
