@@ -10,7 +10,6 @@ import '../views/screens/Requester/services/services_screen.dart';
 import '../views/screens/Tasker/submitTaskScreen/submit_task_screen.dart';
 import '../views/screens/Tasker/taskerBottomNavBar/tasker_bottom_nav_bar.dart';
 import '../views/screens/Tasker/taskerHomeScreen/InnerWidgets/home_card_details.dart';
-import '../views/screens/Tasker/taskerProfileScreen/tasker_profile_screen.dart';
 import '../views/screens/Tasker/taskerTaskDetails/tasker_task_details_screen.dart';
 import '../views/screens/Tasker/todayOrAll_task/today_task_screen.dart';
 import '../views/screens/Tasker/verifyScreen/verify_screen.dart';
@@ -86,9 +85,9 @@ class AppRoutes {
         GetPage(name: termsConditionScreen, page: () => TermsConditionScreen()),
         GetPage(name: aboutusScreen, page: () => AboutusScreen()),
         GetPage(name: splashScreen, page: () => SplashScreen()),
-        GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
+        GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen(), transition: Transition.cupertinoDialog, transitionDuration: const Duration(milliseconds: 450)),
         GetPage(name: profileScreen, page: () => RequesterProfileScreen()),
-        GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen()),
+        GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen(), transition: Transition.cupertinoDialog, transitionDuration: const Duration(milliseconds: 450)),
         GetPage(name: paymentScreen, page: () => PaymentScreen()),
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
         GetPage(name: requesterTaskDetailsScreen, page: () => RequesterTaskDetailsScreen()),
