@@ -56,6 +56,7 @@ class RequesterProfileScreen extends StatelessWidget {
                   profileName:
                       _profileController.profileModel.value.fullName ?? "Name",
                   profileUrl: _profileController.profileModel.value.image?.url,
+                  badge: _profileController.profileModel.value.nidNumber
                 ),
 
                 Padding(
