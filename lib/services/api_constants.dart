@@ -8,5 +8,6 @@ class ApiConstants{
   static const String forgotPasswordEndPoint = "/v1/auth/forgot-password";
   static const String changePasswordEndPoint = "/v1/auth/change-password";
   static const String resetPasswordEndPoint = "/v1/auth/reset-password";
+  static const String nidverifyEndPoint = "/v1/users/verifyNid";
   static  String profileEndPoint(String id) => "/v1/users/$id";
 }

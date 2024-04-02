@@ -54,7 +54,7 @@ class ApiClient extends GetxService {
 
   static Future<Response> postData(String uri, dynamic body,
       {Map<String, String>? headers}) async {
-       // bearerToken = await PrefsHelper.getString(ApiConstants.bearerToken);
+       bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
 
 
     var mainHeaders ={
@@ -76,6 +76,7 @@ class ApiClient extends GetxService {
       debugPrint("==========> Response Post Method :------ : ${response.statusCode}");
       return handleResponse(response, uri);
     } catch (e) {
+      print("===> $e");
       return const Response(statusCode: 1, statusText: noInternetMessage);
     }
   }
