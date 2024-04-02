@@ -108,8 +108,7 @@ class ProfileController extends GetxController {
     };
     
     var response = await ApiClient.postData(ApiConstants.nidverifyEndPoint, body, headers: headers);
-    print("==========> verify nid response :  ${response.body} and : status : ${response.statusCode}");
-    if(response.statusCode == 200){
+    if(response.statusCode == 200 || response.statusCode == 201){
       Get.toNamed(AppRoutes.profileScreen);
     }
   }

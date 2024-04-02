@@ -1,14 +1,9 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/helpers/prefs_helper.dart';
-import 'package:spotlyt_task/models/profile_models.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/widgets/custom_loader.dart';
@@ -28,7 +23,8 @@ class RequesterProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("=====================================================role : ${_profileController.profileModel.value.role}");
+    print(
+        "=====================================================role : ${_profileController.profileModel.value.role}");
     _profileController.profileModel;
     var profileData = _profileController.profileModel.value;
 
@@ -37,23 +33,13 @@ class RequesterProfileScreen extends StatelessWidget {
         case Status.loading:
           return const CustomLoader();
         case Status.internetError:
-          return NoInternetScreen(onTap: () async{
-            await PrefsHelper
-                .remove(AppConstants
-                .isLogged);
-            await PrefsHelper
-                .remove(AppConstants
-                .role);
-            await PrefsHelper
-                .remove(AppConstants
-                .isLogged);
-            await PrefsHelper
-                .remove(AppConstants
-                .bearerToken);
-            
-            Get.offAllNamed(
-                AppRoutes
-                    .signInScreen);
+          return NoInternetScreen(onTap: () async {
+            await PrefsHelper.remove(AppConstants.isLogged);
+            await PrefsHelper.remove(AppConstants.role);
+            await PrefsHelper.remove(AppConstants.isLogged);
+            await PrefsHelper.remove(AppConstants.bearerToken);
+
+            Get.offAllNamed(AppRoutes.signInScreen);
             _profileController.getProfileData();
           });
         case Status.error:
@@ -98,36 +84,43 @@ class RequesterProfileScreen extends StatelessWidget {
                         ),
                       ),
 
-                      ///==================== If This is Tasker show 2 filled ================>
+                      ///==================== If This is Tasker show 2 filled verify and wallet================>
                       _profileController.role != "employee"
                           ? const SizedBox()
                           : Column(
                               children: [
-                                SizedBox(
-                                  height: 16.h,
-                                ),
+                                _profileController.profileModel.value.nidNumber != null
+                                    ? const SizedBox()
+                                    : SizedBox(
+                                        height: 16.h,
+                                      ),
 
                                 ///--------------------------Get Verified ---------------------------->
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(8.r),
-                                      border: Border.all(
-                                          color: AppColors.primaryColor)),
-                                  child: ListTile(
-                                    onTap: () {
-                                      Get.toNamed(AppRoutes.verifyScreen, arguments : profileData);
-                                    },
-                                    title: CustomText(
-                                      text: AppString.getVerfied,
-                                      textAlign: TextAlign.start,
-                                    ),
-                                    leading: SvgPicture.asset(
-                                      AppIcons.veryfy,
-                                      color: AppColors.primaryColor,
-                                    ),
-                                  ),
-                                ),
+                                ///============user already verify NID then show a Badge beside of profile name===============>
+                                _profileController.profileModel.value.nidNumber != null
+                                    ? const SizedBox()
+                                    : Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8.r),
+                                            border: Border.all(
+                                                color: AppColors.primaryColor)),
+                                        child: ListTile(
+                                          onTap: () {
+                                            Get.toNamed(AppRoutes.verifyScreen,
+                                                arguments: profileData);
+                                          },
+                                          title: CustomText(
+                                            text: AppString.getVerfied,
+                                            textAlign: TextAlign.start,
+                                          ),
+                                          leading: SvgPicture.asset(
+                                            AppIcons.veryfy,
+                                            color: AppColors.primaryColor,
+                                          ),
+                                        ),
+                                      ),
 
                                 SizedBox(
                                   height: 16.h,
