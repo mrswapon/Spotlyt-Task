@@ -34,6 +34,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   ServiceController controller = Get.put(ServiceController());
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
+  final addLinkCtrl = TextEditingController();
 
   RequesterHomeController requesterHomeController =
       Get.put(RequesterHomeController());
@@ -192,6 +193,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   decrement: controller.decrementQuantity,
                   increment: controller.incrementQuantity,
                   quantityCounter: controller.quantity.value,
+
                 ),
               ),
 
@@ -276,6 +278,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///--------------------------------Add Link form-------------------------------->
               TextFormField(
+                controller: addLinkCtrl,
                 decoration: InputDecoration(
                     prefixIcon: SizedBox(
                       child: Padding(
@@ -309,7 +312,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   icon: const Icon(Icons.keyboard_arrow_down_sharp,
                       color: Colors.black),
                   onChanged: (value) {
-                    print("====> $value");
+                    print("====> interest :  $value");
                   },
                   decoration: InputDecoration(
                     contentPadding:
