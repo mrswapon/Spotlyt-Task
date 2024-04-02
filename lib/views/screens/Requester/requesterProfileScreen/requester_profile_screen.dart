@@ -47,7 +47,7 @@ class RequesterProfileScreen extends StatelessWidget {
               children: [
                 ///------------------------------top profile card------------------------------------>
                 TopProfileCard(
-                  height: _profileController.role != "employee" ? null : 280.h,
+                  height: _profileController.role != "employee" ? null : 300.h,
                   profileName:
                       _profileController.profileModel.value.fullName ?? "Name",
                   profileUrl: _profileController.profileModel.value.image?.url,

@@ -24,7 +24,7 @@ class PersonalInformationScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       extendBody: true,
       appBar: AppBar(
-        leading: const SizedBox(),
+        // leading: const SizedBox(),
         title: CustomText(
           text: AppString.personalInformation,
           fontWeight: FontWeight.w500,
