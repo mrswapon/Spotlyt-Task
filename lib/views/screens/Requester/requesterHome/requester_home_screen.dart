@@ -25,13 +25,7 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-/*@override
-  void initState() {
-    // TODO: implement initState
-  _requesterHomeController.requesterTaskService();
-    super.initState();
-  }*/
-  // RequesterHomeScreen(){
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

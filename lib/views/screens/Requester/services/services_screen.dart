@@ -136,8 +136,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                             controller.selectedServiceIndex.value = 0;
                           },
                           child: CustomCetegoryBotton(
-                            isSelected:
-                                controller.selectedCategoryIndex.value == index,
+                            isSelected: controller.selectedCategoryIndex.value == index,
                             name: "${category.name}",
                             icon: category.name == "Facebook"
                                 ? AppIcons.facebook

@@ -97,7 +97,7 @@ class RequesterProfileScreen extends StatelessWidget {
                                           color: AppColors.primaryColor)),
                                   child: ListTile(
                                     onTap: () {
-                                      // Get.toNamed(AppRoutes.settingsScreen);
+                                      Get.toNamed(AppRoutes.settingsScreen);
                                     },
                                     title: CustomText(
                                       text: AppString.getVerfied,
