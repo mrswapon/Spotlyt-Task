@@ -67,6 +67,7 @@ class TopProfileCard extends StatelessWidget {
                 ),
 
                 SizedBox(width: 4.w,),
+                badge == null ? const SizedBox() :
                 SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,),
               ],
             ),

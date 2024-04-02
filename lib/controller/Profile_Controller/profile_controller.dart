@@ -109,6 +109,8 @@ class ProfileController extends GetxController {
     
     var response = await ApiClient.postData(ApiConstants.nidverifyEndPoint, body, headers: headers);
     if(response.statusCode == 200 || response.statusCode == 201){
+      profileModel.value = ProfileModel.fromJson(response.body['data']['attributes']);
+      profileModel.refresh();
       Get.toNamed(AppRoutes.profileScreen);
     }
   }
