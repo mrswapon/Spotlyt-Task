@@ -11,8 +11,8 @@ import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text.dart';
 import '../../../widgets/custom_text_field.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class VerifyScreen extends StatelessWidget {
+  VerifyScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -26,7 +26,7 @@ class RegisterScreen extends StatelessWidget {
       extendBody: true,
       appBar: AppBar(
         title: CustomText(
-          text: AppString.register,
+          text: AppString.verify,
           fontsize: 18.h,
           fontWeight: FontWeight.w500,
         ),
@@ -119,10 +119,10 @@ class RegisterScreen extends StatelessWidget {
                             return null;
                           },
                         ),
-                        //===============================> Register Button <===============================
+                        //===============================> Verify Button <===============================
                         SizedBox(height: 254.h),
                         CustomButton(
-                            title: AppString.register,
+                            title: AppString.verify,
                             onpress: () {
                               if (_formKey.currentState!.validate()) {
                                 Get.offAllNamed(AppRoutes.taskerBottomNavBar);
