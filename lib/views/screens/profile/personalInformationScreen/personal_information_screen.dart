@@ -100,31 +100,7 @@ class PersonalInformationScreen extends StatelessWidget {
     );
   }
 
-//===========================================> CustomContainer Section <=================================
 
-  _customContainer(String name, String title) {
-    return Container(
-      width: 165.w,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.r),
-          color: Colors.white,
-          border: Border.all(width: 1.w, color: AppColors.primaryColor)),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 9.h),
-        child: Column(
-          children: [
-            CustomText(
-              text: name,
-            ),
-            CustomText(
-              text: title,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   _prefixIcon(String icon) {
     return SvgPicture.asset(icon, color: AppColors.primaryColor);

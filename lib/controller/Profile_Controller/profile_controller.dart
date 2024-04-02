@@ -1,11 +1,13 @@
 
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/models/profile_models.dart';
+import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/utils/app_constant.dart';
 import '../../services/api_constants.dart';
@@ -89,6 +91,26 @@ class ProfileController extends GetxController {
     } catch (e, s) {
       print("===> error e: $e");
       print("===> error s: $s");
+    }
+  }
+
+
+  TextEditingController nidCtrl = TextEditingController();
+  handleNidVerify()async{
+    var bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
+
+    var headers = {
+       'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer $bearerToken'
+    };
+    var body = {
+      'nidNumber' : nidCtrl.text.toString()
+    };
+    
+    var response = await ApiClient.postData(ApiConstants.nidverifyEndPoint, body, headers: headers);
+    print("==========> verify nid response :  ${response.body} and : status : ${response.statusCode}");
+    if(response.statusCode == 200){
+      Get.toNamed(AppRoutes.profileScreen);
     }
   }
 

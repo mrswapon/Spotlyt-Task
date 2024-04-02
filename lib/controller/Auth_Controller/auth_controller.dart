@@ -82,6 +82,7 @@ class AuthController extends GetxController {
   TextEditingController signInEmailCtrl = TextEditingController();
   var signInLoading =false.obs;
 
+
   handleSignIn()async{
     signInLoading(true);
     var headers = {
@@ -102,6 +103,7 @@ class AuthController extends GetxController {
       String userRole = response.body['data']['attributes']['user']['role'];
       await PrefsHelper.setString(AppConstants.role, userRole);
 
+
       if(userRole == "client"){
         if(response.body['data']['attributes']['user']['isInterest']){
           Get.offAllNamed(AppRoutes.requesterBottomNavBar);
@@ -115,7 +117,7 @@ class AuthController extends GetxController {
       print("====================================================Sagor ");
       signInEmailCtrl.clear();
       signInPassCtrl.clear();
-    }else{
+    } else{
       //  ApiChecker.checkApi(response);
       Fluttertoast.showToast(msg:response.statusText??"");
     }

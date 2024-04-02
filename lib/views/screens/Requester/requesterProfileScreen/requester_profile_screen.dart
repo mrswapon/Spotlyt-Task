@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/helpers/prefs_helper.dart';
+import 'package:spotlyt_task/models/profile_models.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/widgets/custom_loader.dart';
@@ -29,12 +30,30 @@ class RequesterProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print("=====================================================role : ${_profileController.profileModel.value.role}");
     _profileController.profileModel;
+    var profileData = _profileController.profileModel.value;
+
     return Scaffold(body: Obx(() {
       switch (_profileController.rxRequestStatus.value) {
         case Status.loading:
           return const CustomLoader();
         case Status.internetError:
-          return NoInternetScreen(onTap: () {
+          return NoInternetScreen(onTap: () async{
+            await PrefsHelper
+                .remove(AppConstants
+                .isLogged);
+            await PrefsHelper
+                .remove(AppConstants
+                .role);
+            await PrefsHelper
+                .remove(AppConstants
+                .isLogged);
+            await PrefsHelper
+                .remove(AppConstants
+                .bearerToken);
+            
+            Get.offAllNamed(
+                AppRoutes
+                    .signInScreen);
             _profileController.getProfileData();
           });
         case Status.error:
@@ -97,7 +116,7 @@ class RequesterProfileScreen extends StatelessWidget {
                                           color: AppColors.primaryColor)),
                                   child: ListTile(
                                     onTap: () {
-                                      // Get.toNamed(AppRoutes.settingsScreen);
+                                      Get.toNamed(AppRoutes.verifyScreen, arguments : profileData);
                                     },
                                     title: CustomText(
                                       text: AppString.getVerfied,
