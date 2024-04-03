@@ -13,5 +13,7 @@ class ApiConstants{
   static const String withdrawEidPoint = "/v1/withdrawal";
   static const String requesterSubmitTaskEndPoint = "";
   static const String privacyPolicyEndPoint = "/v1/privacy/";
+  static const String termsConditionsEndPoint = "/v1/terms";
+  static const String aboutUsEndPoint = "/v1/about";
   static  String profileEndPoint(String id) => "/v1/users/$id";
 }

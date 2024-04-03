@@ -2,18 +2,21 @@ import 'package:get/get.dart';
 import '../../services/api_client.dart';
 import '../../services/api_constants.dart';
 
-class PrivacyPolicyController extends GetxController {
+class AboutUsController extends GetxController{
+
   RxBool isLoading = false.obs;
   RxString content = ''.obs;
+
   @override
   void onInit() {
-    getPrivacy();
+    getAboutUs();
     super.onInit();
   }
-//==============================> Get Privacy Policy Method <==========================
-  getPrivacy() async {
+//==============================> Get About Us Method <==========================
+  getAboutUs() async {
     isLoading.value = true;
-    var response = await ApiClient.getData(ApiConstants.privacyPolicyEndPoint);
+    var response =
+    await ApiClient.getData(ApiConstants.aboutUsEndPoint);
     print('=====. response : ${response.body}');
     if (response.statusCode == 200) {
       var data = response.body;

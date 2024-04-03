@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/aboutUsController/about_us_controller.dart';
 
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 
 class AboutusScreen extends StatelessWidget {
-  const AboutusScreen({super.key});
+  AboutusScreen({super.key});
+  final AboutUsController _aboutUsController = Get.put(AboutUsController());
 
   @override
   Widget build(BuildContext context) {
+    _aboutUsController;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,

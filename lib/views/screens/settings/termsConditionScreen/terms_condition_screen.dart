@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/termsConditionsController/terms_conditions_controller.dart';
 
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 
 class TermsConditionScreen extends StatelessWidget {
-  const TermsConditionScreen({super.key});
+ TermsConditionScreen({super.key});
+  final TermsConditionsController _termsConditionsController = Get.put( TermsConditionsController());
 
   @override
   Widget build(BuildContext context) {
+    _termsConditionsController;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
