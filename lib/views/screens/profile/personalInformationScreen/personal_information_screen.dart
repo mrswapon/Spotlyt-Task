@@ -31,26 +31,26 @@ class PersonalInformationScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Obx(()=>
-         Padding(
+      body: Obx(
+        () => Padding(
           padding: EdgeInsets.symmetric(horizontal: 27.w),
           child: Column(
             children: [
               SizedBox(height: 24.h),
               //==================================> TopContainer Section <=================================
-               TopContainerSection(
-                 ontap: (){
-                   var data = _profileController.profileModel.value;
-                   Get.toNamed(AppRoutes.updateProfileScreen, parameters: {
-                     "name" : '${data.fullName}',
-                     "email" : '${data.email}',
-                     "phone" : '${data.phoneNumber}',
-                     "dateOfBirth" : '${data.dataOfBirth}',
-                     "nidNo" : '${data.nidNumber}',
-                     "address" : '${data.address}',
-                     "image" : '${data.image!.url}',
-                   });
-                 },
+              TopContainerSection(
+                ontap: () {
+                  var data = _profileController.profileModel.value;
+                  Get.toNamed(AppRoutes.updateProfileScreen, parameters: {
+                    "name": '${data.fullName}',
+                    "email": '${data.email}',
+                    "phone": '${data.phoneNumber}',
+                    "dateOfBirth": '${data.dataOfBirth}',
+                    "nidNo": '${data.nidNumber}',
+                    "address": '${data.address}',
+                    "image": '${data.image!.url}',
+                  });
+                },
                 name: _profileController.profileModel.value.fullName,
                 image: _profileController.profileModel.value.image?.url,
               ),
@@ -64,32 +64,53 @@ class PersonalInformationScreen extends StatelessWidget {
                   title: '${profileData.fullName}',
                   prefixIcon: _prefixIcon(AppIcons.person)),
               SizedBox(height: 16.h),
+
               ///-------------------profile email---------------------->
               CustomListTile(
                   title: '${profileData.email}',
                   prefixIcon: _prefixIcon(AppIcons.mail)),
               SizedBox(height: 16.h),
+
               ///---------------------profile phone number------------------------>
               CustomListTile(
-                  title: profileData.phoneNumber == null ? "(000) 000-0000" : '${profileData.phoneNumber}',
+                  title: profileData.phoneNumber == null
+                      ? "(000) 000-0000"
+                      : '${profileData.phoneNumber}',
                   prefixIcon: _prefixIcon(
                     AppIcons.phone,
                   )),
               SizedBox(height: 16.h),
+
               ///==================date picker==================================>
               CustomListTile(
-                  title: profileData.dataOfBirth == null || profileData.dataOfBirth!.isEmpty ? "MM/DD/Year" : '${profileData.dataOfBirth}',
+                  title: profileData.dataOfBirth == null ||
+                          profileData.dataOfBirth!.isEmpty
+                      ? "MM/DD/Year"
+                      : '${profileData.dataOfBirth}',
                   prefixIcon: _prefixIcon(AppIcons.calendar)),
-              SizedBox(height: 16.h),
+
+
+              ///======================if role is clint show nid or if role is employee don't show nid field=============L>
+              profileData.role != "employee"
+                  ? const SizedBox()
+                  : SizedBox(height: 16.h),
+
               ///--------------------------Nid number------------------------>
-              CustomListTile(
-                  title: profileData.nidNumber == null ? "NID Number" : '${profileData.nidNumber}',
-                  prefixIcon: _prefixIcon(AppIcons.creditCard)),
+              profileData.role != "employee"
+                  ? const SizedBox()
+                  : CustomListTile(
+                      title: profileData.nidNumber == null
+                          ? "NID Number"
+                          : '${profileData.nidNumber}',
+                      prefixIcon: _prefixIcon(AppIcons.creditCard)),
               SizedBox(height: 16.h),
 
               ///-----------------------------location---------------------->
               CustomListTile(
-                title: profileData.address == null || profileData.address!.isEmpty  ? 'Your address' : '${profileData.address}',
+                title:
+                    profileData.address == null || profileData.address!.isEmpty
+                        ? 'Your address'
+                        : '${profileData.address}',
                 prefixIcon: _prefixIcon(AppIcons.location),
               ),
               SizedBox(height: 16.h),
@@ -99,8 +120,6 @@ class PersonalInformationScreen extends StatelessWidget {
       ),
     );
   }
-
-
 
   _prefixIcon(String icon) {
     return SvgPicture.asset(icon, color: AppColors.primaryColor);
