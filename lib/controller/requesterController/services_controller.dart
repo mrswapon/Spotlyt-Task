@@ -34,7 +34,7 @@ class ServiceController extends GetxController {
     selectedCategoryIndex.value = index;
   }
 
-//==================================> Submit Task Function <================================
+//==================================> Submit Task Method <================================
 
   requesterSubmitTask() async {
     try {
