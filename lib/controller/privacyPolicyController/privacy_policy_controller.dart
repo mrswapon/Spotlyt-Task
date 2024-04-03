@@ -10,15 +10,15 @@ class PrivacyPolicyController extends GetxController {
     getPrivacy();
     super.onInit();
   }
+
 //==============================> Get Privacy Policy Method <==========================
   getPrivacy() async {
     isLoading.value = true;
     var response = await ApiClient.getData(ApiConstants.privacyPolicyEndPoint);
-    print('=====. response : ${response.body}');
     if (response.statusCode == 200) {
       var data = response.body;
-      var attributes = data['data']['attributes'];
-      print('=========(_) $attributes');
+      var attributes = data['data']['attributes'][0]['content'];
+      content.value = attributes;
     } else {
       Get.snackbar(
           response.statusCode.toString(), response.statusText ?? "error");
