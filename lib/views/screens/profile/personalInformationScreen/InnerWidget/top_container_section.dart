@@ -28,11 +28,12 @@ class TopContainerSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        border: Border.all(color: AppColors.primaryColor),
         color: const Color(0xFFA0C5A0),
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 11.h),
         child: Column(
           children: [
             Row(

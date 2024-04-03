@@ -24,7 +24,7 @@ class InviteEarnScreen extends StatelessWidget {
    void _copyToClipboard(BuildContext context) {
      Clipboard.setData(ClipboardData(text: _inviteAndEernController.referrals.value));
      ScaffoldMessenger.of(context).showSnackBar(
-       const SnackBar(content: Text('Link copied to clipboard')),
+       const SnackBar(content: Text('Code copied to clipboard')),
      );
    }
 
