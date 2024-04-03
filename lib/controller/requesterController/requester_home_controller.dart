@@ -18,8 +18,6 @@ class RequesterHomeController extends GetxController {
   final ScrollController categoryScrollController = ScrollController();
   final ScrollController earlyAccessScrollController = ScrollController();
 
-
-
   //=====================> Page Scroll Method <=================================
 
   requesterTaskService() async {

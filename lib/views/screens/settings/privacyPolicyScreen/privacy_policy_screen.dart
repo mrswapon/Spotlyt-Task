@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/privacyPolicyController/privacy_policy_controller.dart';
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
-  const PrivacyPolicyScreen({super.key});
+   PrivacyPolicyScreen({super.key});
+
+ final PrivacyPolicyController _policyController = Get.put(PrivacyPolicyController());
 
   @override
   Widget build(BuildContext context) {
+    _policyController;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
