@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../controller/withdraw_balance_controller/withdraw_balance_controller.dart';
 import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_button.dart';
@@ -9,12 +10,15 @@ import '../../../widgets/custom_text_field.dart';
 
 class WithdrawBalanceScreen extends StatelessWidget {
   WithdrawBalanceScreen({super.key});
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _bankNameController = TextEditingController();
   final TextEditingController _accountTypeController = TextEditingController();
-  final TextEditingController _accountNumberController =
-      TextEditingController();
+  final TextEditingController _accountNumberController =TextEditingController();
   final TextEditingController _amountController = TextEditingController();
+
+
+  final WithDrawBalanceController _withDrawBalanceController = Get.put(WithDrawBalanceController());
 
   @override
   Widget build(BuildContext context) {
@@ -101,13 +105,22 @@ class WithdrawBalanceScreen extends StatelessWidget {
                     ),
 
                     //===============================> Withdraw Button <===============================
-                    SizedBox(height: 292.h),
+                    SizedBox(height: 200.h),
                     CustomButton(
                         title: AppString.withdraw,
                         onpress: () {
-                          //if (_formKey.currentState!.validate()) {
-                          Get.offAllNamed(AppRoutes.taskerBottomNavBar);
-                          // }
+                          if (_formKey.currentState!.validate()) {
+                            // var accountNumber = int.parse(_accountNumberController.text);
+                            // var amount = int.parse(_amountController.text);
+                            _withDrawBalanceController.postWithDrawBalance(
+                                _bankNameController.text,
+                                _accountTypeController.text,
+                                _accountNumberController.text,
+                                _amountController.text
+                                // accountNumber,
+                                // amount
+                            );
+                          }
                         }),
                     SizedBox(height: 24.h),
                   ],
