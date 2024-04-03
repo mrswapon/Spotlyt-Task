@@ -15,67 +15,63 @@ import 'inner_widgets/requester_home_screen_app_bar.dart';
 class RequesterHomeScreen extends StatefulWidget {
   const RequesterHomeScreen({super.key});
 
-
   @override
   State<RequesterHomeScreen> createState() => _RequesterHomeScreenState();
 }
 
 class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
- final RequesterHomeController _requesterHomeController = Get.put(RequesterHomeController());
-
+  final RequesterHomeController _requesterHomeController =
+      Get.put(RequesterHomeController());
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => _requesterHomeController.isLoading.value ?
-      const Center(child: CustomLoader()) :
-      Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.paddingSizeDefault.w),
-            child: Column(
+      body: Obx(() => _requesterHomeController.isLoading.value
+          ? const Center(child: CustomLoader())
+          : Column(
               children: [
-                ///---------------------------------app bar section------------------------------>
-                SizedBox(
-                  height: 50.h,
-                ),
-                RequesterHomeScreenAppBar(),
-
-                SizedBox(
-                  height: 18.h,
-                ),
-              ],
-            ),
-          ),
-
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
-              itemCount: _requesterHomeController.homeScreenModel!.data!.attributes!.length,
-              itemBuilder: (BuildContext context, int index) {
-                var serviceData = _requesterHomeController.homeScreenModel?.data?.attributes?[index];
-                debugPrint('=====data>   ${serviceData!.name}');
-                return Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.h),
-                  child: CetegoriesAndServicesCard(
-                    ontap: () {
-                        Get.toNamed(AppRoutes.servicesScreen,arguments:serviceData);
-                    },
-                    title: serviceData.name,
-                    servicesInfo: serviceData.description,
-                    categories: serviceData.categories ?? [],
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.paddingSizeDefault.w),
+                  child: Column(
+                    children: [
+                      ///---------------------------------app bar section------------------------------>
+                      SizedBox(height: 50.h),
+                      RequesterHomeScreenAppBar(),
+                      SizedBox(height: 18.h),
+                    ],
                   ),
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 67.h,)
-        ],
-      )),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.paddingSizeDefault.w),
+                    itemCount: _requesterHomeController
+                        .homeScreenModel!.data!.attributes!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      var serviceData = _requesterHomeController
+                          .homeScreenModel?.data?.attributes?[index];
+                      debugPrint('=====data>   ${serviceData!.name}');
+                      return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16.h),
+                        child: CetegoriesAndServicesCard(
+                          ontap: () {
+                            Get.toNamed(AppRoutes.servicesScreen,
+                                arguments: serviceData);
+                          },
+                          title: serviceData.name,
+                          servicesInfo: serviceData.description,
+                          categories: serviceData.categories ?? [],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 67.h)
+              ],
+            )),
     );
   }
 }
