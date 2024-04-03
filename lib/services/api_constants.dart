@@ -9,6 +9,7 @@ class ApiConstants{
   static const String changePasswordEndPoint = "/v1/auth/change-password";
   static const String resetPasswordEndPoint = "/v1/auth/reset-password";
   static const String nidverifyEndPoint = "/v1/users/verifyNid";
+  static const String inviteandEernEndPoint = "/v1/referral/my";
   static const String requesterSubmitTaskEndPoint = "";
   static  String profileEndPoint(String id) => "/v1/users/$id";
 }

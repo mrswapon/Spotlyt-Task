@@ -1,20 +1,38 @@
+import 'dart:ffi';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
+import 'package:spotlyt_task/views/screens/Invite_Earn/InnerWidgets/invite_earn_controller.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../../utils/app_images.dart';
 import '../../../utils/app_strings.dart';
 import '../../widgets/custom_text.dart';
 
 class InviteEarnScreen extends StatelessWidget {
-  const InviteEarnScreen({super.key});
+   InviteEarnScreen({super.key});
+
+
+  final InviteAndEernController _inviteAndEernController = Get.put(InviteAndEernController());
+
+
+   void _copyToClipboard(BuildContext context) {
+     Clipboard.setData(ClipboardData(text: _inviteAndEernController.referrals.value));
+     ScaffoldMessenger.of(context).showSnackBar(
+       const SnackBar(content: Text('Link copied to clipboard')),
+     );
+   }
 
   @override
   Widget build(BuildContext context) {
+     _inviteAndEernController.referrals.value;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       ///---------------------------------app bar------------------------------>
       appBar: AppBar(
         title: CustomText(
@@ -75,33 +93,46 @@ class InviteEarnScreen extends StatelessWidget {
                   ),
                   width: double.infinity,
                   height: 56.h,
-                  child:  Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomText(
-                            text: "Link",
-                            fontsize: 18.h,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.primaryColor,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.copy,
-                                color: AppColors.primaryColor,
+                  child:  Obx(()=>
+                     Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
+                             SelectableText(
+                              '${_inviteAndEernController.referrals}',
+                               style: TextStyle(fontSize: 18.h, fontWeight: FontWeight.w600, color: AppColors.primaryColor),
+                            ),
+                            // CustomText(
+                            //   // text: "Link",
+                            //   text: "${_inviteAndEernController.referrals}",
+                            //   fontsize: 18.h,
+                            //   fontWeight: FontWeight.w600,
+                            //   color: AppColors.primaryColor,
+                            // ),
+                            GestureDetector(
+                              onTap: (){
+                                _copyToClipboard(context);
+                              },
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.copy,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                  CustomText(
+                                    text: "Copy Code",
+                                    fontsize: 14.h,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                ],
                               ),
-                              CustomText(
-                                text: "Copy Link",
-                                fontsize: 14.h,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryColor,
-                              ),
-                            ],
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

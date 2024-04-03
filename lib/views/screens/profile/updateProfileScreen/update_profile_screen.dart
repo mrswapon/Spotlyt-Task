@@ -222,7 +222,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     );
   }
 
-  //==================================> ShowImagePickerOption Function <===============================
+  ///==================================> ShowImagePickerOption Function <===============================
 
   void showImagePickerOption(BuildContext context) {
     showModalBottomSheet(
