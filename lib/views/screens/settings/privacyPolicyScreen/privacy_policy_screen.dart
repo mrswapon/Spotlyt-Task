@@ -29,8 +29,8 @@ class PrivacyPolicyScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: Dimensions.paddingSizeLarge),
+          padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
           child: Column(
             children: [
               //===========================================> Text Section <=============================================
@@ -39,7 +39,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                   textAlign: TextAlign.start,
                   text: _policyController.content.value,
                   fontsize: 14.h,
-                  maxline: 30,
+                  maxline: 1000,
                 ),
               ),
             ],
