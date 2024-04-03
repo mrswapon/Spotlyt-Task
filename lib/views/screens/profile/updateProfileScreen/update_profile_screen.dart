@@ -177,15 +177,15 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     SizedBox(height: 16.h),
 
                     ///========================location========================>?
-                    CustomTextField(
-                      controller: _locationController,
-                      contenpaddingHorizontal: 12.w,
-                      contenpaddingVertical: 16.h,
-                      hintText: "Enter your location",
-                      prefixIcon: _prefixIcon(
-                        AppIcons.location,
-                      ),
-                    ),
+                    // CustomTextField(
+                    //   controller: _locationController,
+                    //   contenpaddingHorizontal: 12.w,
+                    //   contenpaddingVertical: 16.h,
+                    //   hintText: "Enter your location",
+                    //   prefixIcon: _prefixIcon(
+                    //     AppIcons.location,
+                    //   ),
+                    // ),
                     const Spacer(),
 
                     ///--------------------------update profile button----------------------->

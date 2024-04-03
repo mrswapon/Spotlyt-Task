@@ -38,12 +38,16 @@ class RequesterProfileScreen extends StatelessWidget {
             await PrefsHelper.remove(AppConstants.role);
             await PrefsHelper.remove(AppConstants.isLogged);
             await PrefsHelper.remove(AppConstants.bearerToken);
-
             Get.offAllNamed(AppRoutes.signInScreen);
             _profileController.getProfileData();
           });
         case Status.error:
           return GeneralErrorScreen(onTap: () async {
+            await PrefsHelper.remove(AppConstants.isLogged);
+            await PrefsHelper.remove(AppConstants.role);
+            await PrefsHelper.remove(AppConstants.isLogged);
+            await PrefsHelper.remove(AppConstants.bearerToken);
+            Get.offAllNamed(AppRoutes.signInScreen);
             _profileController.getProfileData();
           });
         case Status.completed:
@@ -52,7 +56,7 @@ class RequesterProfileScreen extends StatelessWidget {
               children: [
                 ///------------------------------top profile card------------------------------------>
                 TopProfileCard(
-                  height: _profileController.role != "employee" ? null : 300.h,
+                  height: _profileController.role != "employee" ? null : 310.h,
                   profileName:
                       _profileController.profileModel.value.fullName ?? "Name",
                   profileUrl: _profileController.profileModel.value.image?.url,

@@ -78,6 +78,7 @@ class WithdrawBalanceScreen extends StatelessWidget {
                     SizedBox(height: 16.h),
                     //===============================> Account Number Text-field <===============================
                     CustomTextField(
+                      keyboardType: TextInputType.number,
                       contenpaddingHorizontal: 16.w,
                       contenpaddingVertical: 16.h,
                       controller: _accountNumberController,
@@ -92,6 +93,7 @@ class WithdrawBalanceScreen extends StatelessWidget {
                     //===============================> Withdrawal Amount Text-field <===============================
                     SizedBox(height: 16.h),
                     CustomTextField(
+                      keyboardType: TextInputType.number,
                       contenpaddingHorizontal: 16.w,
                       contenpaddingVertical: 16.h,
                       controller: _amountController,

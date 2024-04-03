@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/models/profile_models.dart';
-import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_icons.dart';
@@ -14,7 +13,7 @@ import '../../../widgets/custom_text.dart';
 import '../../../widgets/custom_text_field.dart';
 
 class VerifyScreen extends StatefulWidget {
-  VerifyScreen({super.key});
+  const VerifyScreen({super.key});
 
   @override
   State<VerifyScreen> createState() => _VerifyScreenState();
@@ -28,7 +27,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _nidController = TextEditingController();
+
 
   var data = Get.arguments as ProfileModel;
 
@@ -45,7 +44,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
   @override
   Widget build(BuildContext context) {
 
-    print("====<> profile data : ${data.fullName}");
+    debugPrint("====<> profile data : ${data.fullName}");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
@@ -179,7 +178,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       padding: EdgeInsets.symmetric(horizontal: 21.w),
       child: SvgPicture.asset(
         icon,
-        color: AppColors.primaryColor,
+         color: AppColors.primaryColor,
         height: 24.h,
         width: 24.w,
       ),
