@@ -31,13 +31,13 @@ class MediaServicesScreen extends StatefulWidget {
 }
 
 class _MediaServicesScreenState extends State<MediaServicesScreen> {
-  ServiceController controller = Get.put(ServiceController());
+   ServiceController controller = Get.put(ServiceController());
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
   final addLinkCtrl = TextEditingController();
 
-  RequesterHomeController requesterHomeController =
-      Get.put(RequesterHomeController());
+  final RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
+
 
   //=====================================> Load Counter Method <==================================
   var _counter = 1000;
@@ -47,7 +47,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
     });
   }
 
-//==================================> Increment Counter Method <================================
+/*//==================================> Increment Counter Method <================================
   Future _incrementCounter() async {
     setState(() {
       _counter += 1000;
@@ -59,7 +59,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
     setState(() {
       _counter -= 1000;
     });
-  }
+  }*/
 
   @override
   void initState() {
@@ -95,6 +95,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -164,7 +165,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                 bottom: 16.h,
               ),
 
-              ///----------------------------------------select request list view-------------------------->
+              ///----------------------------------------select required service list view-------------------------->
 
               Obx(
                 () => CustomMultiSelectRequestCard(
@@ -212,7 +213,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   children: [
                     Expanded(
                       child: TextFormField(
-                        controller: startDateCtrl,
+                        controller: controller.startDateCtrl,
                         decoration: InputDecoration(
                             suffixIcon: SizedBox(
                               child: Padding(
@@ -241,7 +242,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
-                        controller: endDateCtrl,
+                        controller: controller.endDateCtrl,
                         decoration: InputDecoration(
                             suffixIcon: SizedBox(
                               child: Padding(
@@ -278,7 +279,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///--------------------------------Add Link form-------------------------------->
               TextFormField(
-                controller: addLinkCtrl,
+                controller: controller.addLinkCtrl,
                 decoration: InputDecoration(
                     prefixIcon: SizedBox(
                       child: Padding(
@@ -306,6 +307,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               ),
 
               ///-------------------------Add Interest------------------>
+
+
 
               SizedBox(
                 child: DropdownButtonFormField(
@@ -342,12 +345,15 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     text: AppString.totalPayable,
                     fontWeight: FontWeight.w500,
                   ),
-                  Obx(()=> CustomText(
-                      text: "R ${controller.quantity.value*0.6}",
+                  Obx((){
+                    var totalBalance = controller.quantity.value*0.60;
+                    return CustomText(
+                      text: "R ${totalBalance}",
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor,
                       fontsize: 18.h,
-                    ),
+                    );
+  }
                   ),
                 ],
               ),
@@ -360,7 +366,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               CustomButton(
                   title: "Continue",
                   onpress: () {
-                    Get.toNamed(AppRoutes.paymentScreen);
+                    // Get.toNamed(AppRoutes.paymentScreen);
+                   controller.requesterSubmitTask();
                   }),
 
               SizedBox(

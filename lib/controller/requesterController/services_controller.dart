@@ -17,7 +17,7 @@ class ServiceController extends GetxController {
   RxInt selectedCategoryIndex = 0.obs;
   RxInt selectedServiceIndex = 0.obs;
   RxString interest = "".obs;
-  var quantity = 1000.obs;
+  RxInt quantity = 1000.obs;
   RxInt totalPayable = 0.obs;
 
 //==================================> Increment Counter Method <================================
@@ -41,13 +41,14 @@ class ServiceController extends GetxController {
       Map<String, dynamic> body = {
         "category": selectedCategoryIndex.value.toString(),
         "service": selectedServiceIndex.value.toString(),
-        "addQuantity": quantity,
+        "addQuantity": quantity.value,
         "startDate": startDateCtrl.text,
         "endDate": endDateCtrl.text,
         "addLink": addLinkCtrl.text.trim(),
-        "addInterest": interest,
-        "totalPayable": totalPayable,
+        "addInterest": interest.value,
+        "totalPayable": totalPayable.value,
       };
+      print('=============================> $body');
       Response response = await ApiClient.postData(
           ApiConstants.requesterSubmitTaskEndPoint, jsonEncode(body));
 
