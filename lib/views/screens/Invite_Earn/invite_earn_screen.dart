@@ -1,10 +1,6 @@
-import 'dart:ffi';
-
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
@@ -81,7 +77,7 @@ class InviteEarnScreen extends StatelessWidget {
             child: Center(
               child: DottedBorder(
                 padding: const EdgeInsets.all(0),
-                dashPattern: [12,5],
+                dashPattern: const [12,5],
                 color: Colors.green,
                 strokeWidth: 1,
                 borderType: BorderType.RRect,

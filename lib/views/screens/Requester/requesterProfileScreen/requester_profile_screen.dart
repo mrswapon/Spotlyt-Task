@@ -56,12 +56,16 @@ class RequesterProfileScreen extends StatelessWidget {
               children: [
                 ///------------------------------top profile card------------------------------------>
                 TopProfileCard(
-                  height: _profileController.role != "employee" ? null : 310.h,
-                  profileName:
-                      _profileController.profileModel.value.fullName ?? "Name",
-                  profileUrl: _profileController.profileModel.value.image?.url,
-                  badge: _profileController.profileModel.value.nidNumber
-                ),
+                    height:
+                        _profileController.profileModel.value.role != "employee"
+                            ? null
+                            : 310.h,
+                    profileName:
+                        _profileController.profileModel.value.fullName ??
+                            "Name",
+                    profileUrl:
+                        _profileController.profileModel.value.image?.url,
+                    badge: _profileController.profileModel.value.nidStatus),
 
                 Padding(
                   padding:
@@ -90,11 +94,13 @@ class RequesterProfileScreen extends StatelessWidget {
                       ),
 
                       ///==================== If This is Tasker show 2 filled verify and wallet================>
-                      _profileController.role != "employee"
+                      _profileController.profileModel.value.role != "employee"
                           ? const SizedBox()
                           : Column(
                               children: [
-                                _profileController.profileModel.value.nidNumber != null
+                                _profileController
+                                            .profileModel.value.nidNumber !=
+                                        null
                                     ? const SizedBox()
                                     : SizedBox(
                                         height: 16.h,
@@ -102,9 +108,12 @@ class RequesterProfileScreen extends StatelessWidget {
 
                                 ///--------------------------Get Verified ---------------------------->
                                 ///============user already verify NID then show a Badge beside of profile name===============>
-                                _profileController.profileModel.value.nidNumber != null
-                                    ? const SizedBox()
-                                    : Container(
+
+                                Obx(() {
+                                  switch (_profileController.profileModel.value.nidStatus) {
+                                    case "approved":return const SizedBox();
+                                    case "pending":return const SizedBox();
+                                    default:return Container(
                                         decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
@@ -125,7 +134,9 @@ class RequesterProfileScreen extends StatelessWidget {
                                             color: AppColors.primaryColor,
                                           ),
                                         ),
-                                      ),
+                                      );
+                                  }
+                                }),
 
                                 SizedBox(
                                   height: 16.h,
@@ -304,7 +315,7 @@ class RequesterProfileScreen extends StatelessWidget {
                         ),
                       ),
 
-                      _profileController.role != "employee"
+                      _profileController.profileModel.value.role != "employee"
                           ? SizedBox()
                           : SizedBox(
                               height: 60.h,

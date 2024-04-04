@@ -7,14 +7,17 @@ import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/InnerWidgets/tasker_home_screen_app_bar.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
+import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
 import '../../../../utils/app_strings.dart';
 import '../taskerTaskScreen/InnerWidgets/tasker_task_card.dart';
 
 class TaskerHomeScreen extends StatelessWidget {
-  const TaskerHomeScreen({super.key});
+   TaskerHomeScreen({super.key});
+    // TaskerHomeController _taskerHomeController = Get.put(TaskerHomeController());
 
   @override
   Widget build(BuildContext context) {
+     // _taskerHomeController.taskerHomeModel.value;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
