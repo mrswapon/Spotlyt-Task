@@ -7,6 +7,7 @@ class ProfileModel {
   final int? rand;
   final List<String>? interest;
   final bool? isEmailVerified;
+  final String? nidStatus;
   final bool? isResetPassword;
   final bool? isInterest;
   final bool? isProfileCompleted;
@@ -25,6 +26,7 @@ class ProfileModel {
     this.rand,
     this.interest,
     this.isEmailVerified,
+    this.nidStatus,
     this.isResetPassword,
     this.isInterest,
     this.isProfileCompleted,
@@ -43,6 +45,7 @@ class ProfileModel {
     role: json["role"],
     rand: json["rand"],
     interest: json["interest"] == null ? [] : List<String>.from(json["interest"]!.map((x) => x)),
+    nidStatus: json["nidStatus"],
     isEmailVerified: json["isEmailVerified"],
     isResetPassword: json["isResetPassword"],
     isInterest: json["isInterest"],
@@ -62,6 +65,7 @@ class ProfileModel {
     "role": role,
     "rand": rand,
     "interest": interest == null ? [] : List<dynamic>.from(interest!.map((x) => x)),
+    "nidStatus": nidStatus,
     "isEmailVerified": isEmailVerified,
     "isResetPassword": isResetPassword,
     "isInterest": isInterest,

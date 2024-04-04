@@ -22,43 +22,33 @@ class ProfileController extends GetxController {
     getProfileData();
   }
 
-  var role;
+
 
 
   final rxRequestStatus = Status.loading.obs;
+  void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
+
   Rx<ProfileModel> profileModel = ProfileModel().obs;
   RxBool isProfileLoading = false.obs;
 
   getProfileData() async {
-    rxRequestStatus.value = Status.loading;
-    isProfileLoading(true);
-    try {
+    setRxRequestStatus(Status.loading);
       String id = await PrefsHelper.getString(AppConstants.id);
-       role = await PrefsHelper.getString(AppConstants.role);
       var response = await ApiClient.getData(ApiConstants.profileEndPoint(id),
         );
       print("=============response : ${response.body}");
       if (response.statusCode == 200) {
         profileModel.value = ProfileModel.fromJson(response.body['data']['attributes']);
-        rxRequestStatus.value = Status.completed;
         profileModel.refresh();
-
-
+        setRxRequestStatus(Status.completed);
       } else {
         if(response.statusText == ApiClient.noInternetMessage){
-          rxRequestStatus.value = Status.internetError;
+          setRxRequestStatus(Status.internetError);
         }else{
-          rxRequestStatus.value = Status.error;
+          setRxRequestStatus(Status.error);
         }
-        Get.snackbar(
-            response.statusCode.toString(), response.statusText ?? "error");
       }
       update();
-    } catch (e, s) {
-      print("=============== error e: $e");
-      print("=============== error s: $s");
-    }
-    isProfileLoading(false);
   }
 
   ///======================update profile============================>
@@ -76,7 +66,6 @@ class ProfileController extends GetxController {
       "nidNumber": nidNumber,
     };
 
-    try {
       var response = await ApiClient.patchMultipartData(
          ApiConstants.profileEndPoint(id), body,
            multipartBody:multipartBody,);
@@ -88,10 +77,7 @@ class ProfileController extends GetxController {
         Get.back();
         Get.back();
       }
-    } catch (e, s) {
-      print("===> error e: $e");
-      print("===> error s: $s");
-    }
+
   }
 
 

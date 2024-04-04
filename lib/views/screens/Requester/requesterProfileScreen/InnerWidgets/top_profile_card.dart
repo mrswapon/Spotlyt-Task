@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 import '../../../../../utils/app_colors.dart';
@@ -13,7 +14,7 @@ class TopProfileCard extends StatelessWidget {
   final String? profileName;
   final String? profileUrl;
   final double? height;
-  final int? badge;
+  final String? badge;
 
   const TopProfileCard({super.key, this.profileName, this.profileUrl, this. height, this.badge});
 
@@ -67,8 +68,16 @@ class TopProfileCard extends StatelessWidget {
                 ),
 
                 SizedBox(width: 4.w,),
-                badge == null ? const SizedBox() :
+                if (badge == "cancelled")
+                  const SizedBox()
+                else if (badge == "pending")
+                  const SizedBox()
+                else if (badge == "unverified")
+                    const SizedBox()
+                else if(badge == "approved")
                 SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,),
+                // badge == null ? const SizedBox() :
+                // SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,),
               ],
             ),
           ),
@@ -77,3 +86,13 @@ class TopProfileCard extends StatelessWidget {
     );
   }
 }
+
+
+// Obx(() {
+// switch(badge){
+// case "cancelled":return const SizedBox();
+// case "pending":return const SizedBox();
+// case "unverified":return const SizedBox();
+// default:return  SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,);
+// }
+// }),

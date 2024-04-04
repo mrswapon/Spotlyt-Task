@@ -16,4 +16,8 @@ class ApiConstants{
   static const String termsConditionsEndPoint = "/v1/terms";
   static const String aboutUsEndPoint = "/v1/about";
   static  String profileEndPoint(String id) => "/v1/users/$id";
+
+
+  ///======================tasker end point==========================>
+  static const String taskerHomeEidPoint = "/v1/tasks/home";
 }

@@ -29,22 +29,27 @@ class _VerifyScreenState extends State<VerifyScreen> {
   final TextEditingController _addressController = TextEditingController();
 
 
-  var data = Get.arguments as ProfileModel;
+
 
 
   @override
   void initState() {
-    _fullNameController.text = data.fullName!;
-    _emailController.text = data.email!;
-      _phoneController.text = data.phoneNumber != null ? data.phoneNumber.toString() : "";
-      _addressController.text = data.address ?? "";
 
+    initProfileData();
      super.initState();
+  }
+
+  initProfileData(){
+    var data=_profileController.profileModel.value;
+    _fullNameController.text =data.fullName!;
+    _emailController.text = data.email!;
+    _phoneController.text = data.phoneNumber != null ? data.phoneNumber.toString() : "";
+    _addressController.text = data.address ?? "";
+
   }
   @override
   Widget build(BuildContext context) {
 
-    debugPrint("====<> profile data : ${data.fullName}");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
