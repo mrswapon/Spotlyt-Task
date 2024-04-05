@@ -17,11 +17,7 @@ class TaskerHomeModel {
     data: json["data"] == null ? null : Data.fromJson(json["data"]),
   );
 
-  Map<String, dynamic> toJson() => {
-    "code": code,
-    "message": message,
-    "data": data?.toJson(),
-  };
+
 }
 
 class Data {
@@ -35,9 +31,7 @@ class Data {
     attributes: json["attributes"] == null ? null : Attributes.fromJson(json["attributes"]),
   );
 
-  Map<String, dynamic> toJson() => {
-    "attributes": attributes?.toJson(),
-  };
+
 }
 
 class Attributes {
@@ -63,18 +57,12 @@ class Attributes {
     totalResults: json["totalResults"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "tasks": tasks == null ? [] : List<dynamic>.from(tasks!.map((x) => x.toJson())),
-    "page": page,
-    "limit": limit,
-    "totalPages": totalPages,
-    "totalResults": totalResults,
-  };
+
 }
 
 class Task {
   final String? id;
-  final Name? name;
+  final String? name;
   final String? taskLink;
   final UserId? userId;
   final String? type;
@@ -103,7 +91,7 @@ class Task {
 
   factory Task.fromJson(Map<String, dynamic> json) => Task(
     id: json["_id"],
-    name: nameValues.map[json["name"]]!,
+    name: json["name"],
     taskLink: json["taskLink"],
     userId: json["userId"] == null ? null : UserId.fromJson(json["userId"]),
     type: json["type"],
@@ -116,35 +104,10 @@ class Task {
     v: json["__v"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "_id": id,
-    "name": nameValues.reverse[name],
-    "taskLink": taskLink,
-    "userId": userId?.toJson(),
-    "type": type,
-    "serviceId": serviceId?.toJson(),
-    "status": status,
-    "quantity": quantity,
-    "price": price,
-    "createdAt": createdAt?.toIso8601String(),
-    "updatedAt": updatedAt?.toIso8601String(),
-    "__v": v,
-  };
+
 }
 
-enum Name {
-  REQUEST_COMMENTS,
-  REQUEST_FOLLOWERS,
-  REQUEST_LIKES,
-  REQUEST_SHARING_TO_STORY
-}
 
-final nameValues = EnumValues({
-  "Request Comments": Name.REQUEST_COMMENTS,
-  "Request Followers": Name.REQUEST_FOLLOWERS,
-  "Request Likes": Name.REQUEST_LIKES,
-  "Request sharing to story": Name.REQUEST_SHARING_TO_STORY
-});
 
 class ServiceId {
   final String? id;
@@ -175,15 +138,7 @@ class ServiceId {
     v: json["__v"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "_id": id,
-    "id": serviceIdId,
-    "name": name,
-    "type": type,
-    "description": description == null ? [] : List<dynamic>.from(description!.map((x) => x)),
-    "Categories": categories == null ? [] : List<dynamic>.from(categories!.map((x) => x.toJson())),
-    "__v": v,
-  };
+
 }
 
 class Category {
@@ -206,18 +161,13 @@ class Category {
     id: json["_id"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "id": categoryId,
-    "name": name,
-    "service": service == null ? [] : List<dynamic>.from(service!.map((x) => x.toJson())),
-    "_id": id,
-  };
+
 }
 
 class Service {
-  final Name? name;
+  final String? name;
   final double? price;
-  final SobTitle? sobTitle;
+  final String? sobTitle;
   final String? id;
 
   Service({
@@ -228,33 +178,15 @@ class Service {
   });
 
   factory Service.fromJson(Map<String, dynamic> json) => Service(
-    name: nameValues.map[json["name"]]!,
+    name:json["name"]!,
     price: json["price"]?.toDouble(),
-    sobTitle: sobTitleValues.map[json["sobTitle"]]!,
+    sobTitle: json["sobTitle"],
     id: json["_id"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "name": nameValues.reverse[name],
-    "price": price,
-    "sobTitle": sobTitleValues.reverse[sobTitle],
-    "_id": id,
-  };
+
 }
 
-enum SobTitle {
-  PER_COMMENT,
-  PER_FOLLOWER,
-  PER_LIKE,
-  PER_STORY
-}
-
-final sobTitleValues = EnumValues({
-  "Per Comment": SobTitle.PER_COMMENT,
-  "Per Follower": SobTitle.PER_FOLLOWER,
-  "Per Like": SobTitle.PER_LIKE,
-  "Per Story": SobTitle.PER_STORY
-});
 
 class UserId {
   final String? fullName;
@@ -368,14 +300,3 @@ class Image {
   };
 }
 
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
-}

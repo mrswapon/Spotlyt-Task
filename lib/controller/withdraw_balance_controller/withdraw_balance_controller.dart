@@ -26,7 +26,7 @@ class WithDrawBalanceController extends GetxController{
     var reponse = await ApiClient.postData(ApiConstants.withdrawEidPoint, body, headers: headers);
 
     if(reponse.statusCode == 200 || reponse.statusCode == 201){
-      Get.toNamed(AppRoutes.taskerProfileScreen);
+      Get.offAllNamed(AppRoutes.taskerProfileScreen);
     }
   }
 }

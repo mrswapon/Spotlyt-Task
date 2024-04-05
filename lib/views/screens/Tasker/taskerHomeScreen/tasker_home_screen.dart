@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:intl/intl.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
@@ -12,13 +14,12 @@ import '../../../../utils/app_strings.dart';
 import '../taskerTaskScreen/InnerWidgets/tasker_task_card.dart';
 
 class TaskerHomeScreen extends StatelessWidget {
-   TaskerHomeScreen({super.key});
-     TaskerHomeController _taskerHomeController = Get.put(TaskerHomeController());
+  TaskerHomeScreen({super.key});
+  final TaskerHomeController _taskerHomeController =
+      Get.put(TaskerHomeController());
 
   @override
   Widget build(BuildContext context) {
-     var taskData = _taskerHomeController.taskerHomeModel.value;
-     print("s================================================== ==========> ${taskData.data?.attributes?.tasks}");
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -31,14 +32,14 @@ class TaskerHomeScreen extends StatelessWidget {
               SizedBox(
                 height: 50.h,
               ),
-          
+
               ///----------------------------------tasker home screen app bar-------------------------->
               TaskerHomeScreenAppBar(),
-          
+
               SizedBox(
                 height: 28.h,
               ),
-          
+
               ///-----------------------------------today's task ------------------------------------->
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,40 +65,46 @@ class TaskerHomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-          
+
               ///----------------------------today's task listview----------------------------->
-              SizedBox(
-                height: 250.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 7,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(right: 12.w),
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.toNamed(AppRoutes.homeCardDetails);
-                        },
-                        child: TaskerTaskCard(
-                          bgImageheights: 110.h,
-                          weight: 267.w,
-                          amount: "R2000",
-                          faceBookPost: "${taskData.data?.attributes?.tasks?[0].name}",
-                          date: "Friday 01 Feb, 2024",
-                          days: "5 Days",
-                          postLink: "https://www.Facebook.com/Image \n Post",
-                          // heights: 110,
+              Obx(()=>
+                 SizedBox(
+                  height: 250.h,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?.length,
+                    itemBuilder: (context, index) {
+                      var taskData = _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?[index];
+                      DateTime? createdAt = taskData?.createdAt;
+                      // var formattedDate = DateFormat.yMMMMd().add_jms().format(createdAt);
+                      var formattedDate = createdAt != null ? DateFormat.yMMMMd().add_jms().format(createdAt) : 'Unknown';
+                      return Padding(
+                        padding: EdgeInsets.only(right: 12.w),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.homeCardDetails);
+                          },
+                          child: TaskerTaskCard(
+                            bgImageheights: 110.h,
+                            weight: 267.w,
+                            taskCompleteAmount: "R ${taskData?.price}",
+                            faceBookPost : taskData?.name,
+                            date: formattedDate,
+                            days: "5 Days",
+                            postLink: '${taskData?.taskLink}\nPost',
+                            // heights: 110,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
-          
+
               SizedBox(
                 height: 16.h,
               ),
-          
+
               ///-----------------------------------all Task ------------------------------------->
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,29 +131,32 @@ class TaskerHomeScreen extends StatelessWidget {
               SizedBox(
                 height: 16.h,
               ),
-          
+
               ///----------------------------Your task listview----------------------------->
-              SizedBox(
-                height: 250.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 7,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(right: 12.w),
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.toNamed(AppRoutes.homeCardDetails);
-                        },
-                        child: TaskerTaskCard(
-                          bgImageheights: 110.h,
-                          weight: 267.w,
-                          amount: "R2000",
-                          // heights: 110,
+              Obx(()=> SizedBox(
+                  height: 250.h,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?.length,
+                    itemBuilder: (context, index) {
+                      var todayTaskDate = _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?[index];
+                      return Padding(
+                        padding: EdgeInsets.only(right: 12.w),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.homeCardDetails);
+                          },
+                          child: TaskerTaskCard(
+                            bgImageheights: 110.h,
+                            weight: 267.w,
+                            amount: "R2000",
+                            faceBookPost: todayTaskDate?.name,
+                            // heights: 110,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               )
             ],
