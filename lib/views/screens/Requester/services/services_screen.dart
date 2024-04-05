@@ -31,35 +31,21 @@ class MediaServicesScreen extends StatefulWidget {
 }
 
 class _MediaServicesScreenState extends State<MediaServicesScreen> {
-   ServiceController controller = Get.put(ServiceController());
+  final ServiceController _serviceController = Get.put(ServiceController());
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
   final addLinkCtrl = TextEditingController();
 
-  final RequesterHomeController requesterHomeController = Get.put(RequesterHomeController());
-
+  final RequesterHomeController requesterHomeController =
+      Get.put(RequesterHomeController());
 
   //=====================================> Load Counter Method <==================================
-  var _counter = 1000;
+  final _counter = 1000;
   Future _loadCounter() async {
     setState(() {
       _counter ?? 1000;
     });
   }
-
-/*//==================================> Increment Counter Method <================================
-  Future _incrementCounter() async {
-    setState(() {
-      _counter += 1000;
-    });
-  }
-
-//==================================> Decrement Counter Method <================================
-  Future _decrementCounter() async {
-    setState(() {
-      _counter -= 1000;
-    });
-  }*/
 
   @override
   void initState() {
@@ -95,7 +81,6 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -134,11 +119,12 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                         padding: EdgeInsets.only(right: 23.w),
                         child: GestureDetector(
                           onTap: () {
-                            controller.setSelectedCategory(index);
-                            controller.selectedServiceIndex.value = 0;
+                            _serviceController.setSelectedCategory(index);
+                            _serviceController.selectedServiceIndex.value = 0;
                           },
                           child: CustomCetegoryBotton(
-                            isSelected: controller.selectedCategoryIndex.value == index,
+                            isSelected:
+                                _serviceController.selectedCategoryIndex.value == index,
                             name: "${category.name}",
                             icon: category.name == "Facebook"
                                 ? AppIcons.facebook
@@ -170,13 +156,13 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               Obx(
                 () => CustomMultiSelectRequestCard(
                   requestList: attributes
-                          .categories?[controller.selectedCategoryIndex.value]
+                          .categories?[_serviceController.selectedCategoryIndex.value]
                           .service ??
                       [],
                   onTap: (index) {
-                    controller.selectedServiceIndex.value = index;
+                    _serviceController.selectedServiceIndex.value = index;
                   },
-                  initSelect: controller.selectedServiceIndex.value,
+                  initSelect: _serviceController.selectedServiceIndex.value,
                 ),
               ),
 
@@ -191,10 +177,9 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               ///-----------------------------Quantity Card-------------------------------?>
               Obx(
                 () => CustomQuentityCard(
-                  decrement: controller.decrementQuantity,
-                  increment: controller.incrementQuantity,
-                  quantityCounter: controller.quantity.value,
-
+                  decrement: _serviceController.decrementQuantity,
+                  increment: _serviceController.incrementQuantity,
+                  quantityCounter: _serviceController.quantity.value,
                 ),
               ),
 
@@ -213,14 +198,14 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   children: [
                     Expanded(
                       child: TextFormField(
-                        controller: controller.startDateCtrl,
+                        controller: _serviceController.startDateCtrl,
                         decoration: InputDecoration(
                             suffixIcon: SizedBox(
                               child: Padding(
                                 padding: EdgeInsets.all(16.r),
                                 child: GestureDetector(
                                   onTap: () {
-                                    _startDate(context);
+                                    _serviceController.startDate(context);
                                   },
                                   child: SvgPicture.asset(
                                     AppIcons.calendar,
@@ -237,19 +222,17 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                             hintText: "Start Date"),
                       ),
                     ),
-                    SizedBox(
-                      width: 17.w,
-                    ),
+                    SizedBox(width: 17.w),
                     Expanded(
                       child: TextFormField(
-                        controller: controller.endDateCtrl,
+                        controller: _serviceController.endDateCtrl,
                         decoration: InputDecoration(
                             suffixIcon: SizedBox(
                               child: Padding(
                                 padding: EdgeInsets.all(16.r),
                                 child: GestureDetector(
                                   onTap: () {
-                                    _endDate(context);
+                                    _serviceController.endDate(context);
                                   },
                                   child: SvgPicture.asset(
                                     AppIcons.calendar,
@@ -279,7 +262,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///--------------------------------Add Link form-------------------------------->
               TextFormField(
-                controller: controller.addLinkCtrl,
+                controller: _serviceController.addLinkCtrl,
                 decoration: InputDecoration(
                     prefixIcon: SizedBox(
                       child: Padding(
@@ -308,8 +291,6 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
               ///-------------------------Add Interest------------------>
 
-
-
               SizedBox(
                 child: DropdownButtonFormField(
                   icon: const Icon(Icons.keyboard_arrow_down_sharp,
@@ -332,9 +313,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                 ),
               ),
 
-              SizedBox(
-                height: 26.h,
-              ),
+              SizedBox(height: 26.h),
 
               ///----------------------------------------------------------------------------------------->
               Row(
@@ -345,16 +324,14 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     text: AppString.totalPayable,
                     fontWeight: FontWeight.w500,
                   ),
-                  Obx((){
-                    var totalBalance = controller.quantity.value*0.60;
+                  Obx(() {
                     return CustomText(
-                      text: "R ${totalBalance}",
+                      text: "R ${_serviceController.quantity.value*0.60}",
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor,
                       fontsize: 18.h,
                     );
-  }
-                  ),
+                  }),
                 ],
               ),
 
@@ -367,12 +344,10 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   title: "Continue",
                   onpress: () {
                     // Get.toNamed(AppRoutes.paymentScreen);
-                   controller.requesterSubmitTask();
+                    _serviceController.requesterSubmitTask();
                   }),
 
-              SizedBox(
-                height: 50.h,
-              )
+              SizedBox(height: 50.h)
             ],
           ),
         ),
@@ -383,45 +358,45 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   DropdownMenuItem<String> _dropdownMenuItem(String value) {
     return DropdownMenuItem(
       value: value,
-        child: CustomText(
-          text: value,
-        ),
+      child: CustomText(
+        text: value,
+      ),
     );
   }
 
-  //===================> Picked Start Date TimeLine Function <==================
-  Future<void> _startDate(BuildContext context) async {
-    final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(3050),
-    );
-    if (pickedDate != null) {
-      setState(() {
-        startDateCtrl.text =
-            "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
-        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
-      });
-      print('Selected date: ${startDateCtrl.text}');
-    }
-  }
-
-  //======================> Picked End Date TimeLine Function <=================
-  Future<void> _endDate(BuildContext context) async {
-    final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(3050),
-    );
-    if (pickedDate != null) {
-      setState(() {
-        endDateCtrl.text =
-            "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
-        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
-      });
-      print('Selected date: ${endDateCtrl.text}');
-    }
-  }
+  // //===================> Picked Start Date TimeLine Function <==================
+  // Future<void> _startDate(BuildContext context) async {
+  //   final DateTime? pickedDate = await showDatePicker(
+  //     context: context,
+  //     initialDate: DateTime.now(),
+  //     firstDate: DateTime.now(),
+  //     lastDate: DateTime(3050),
+  //   );
+  //   if (pickedDate != null) {
+  //     setState(() {
+  //       startDateCtrl.text =
+  //           "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+  //       // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+  //     });
+  //     print('Selected date: ${startDateCtrl.text}');
+  //   }
+  // }
+  //
+  // //======================> Picked End Date TimeLine Function <=================
+  // Future<void> _endDate(BuildContext context) async {
+  //   final DateTime? pickedDate = await showDatePicker(
+  //     context: context,
+  //     initialDate: DateTime.now(),
+  //     firstDate: DateTime.now(),
+  //     lastDate: DateTime(3050),
+  //   );
+  //   if (pickedDate != null) {
+  //     setState(() {
+  //       endDateCtrl.text =
+  //           "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+  //       // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+  //     });
+  //     print('Selected date: ${endDateCtrl.text}');
+  //   }
+  // }
 }

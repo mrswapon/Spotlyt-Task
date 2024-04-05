@@ -18,7 +18,7 @@ class ServiceController extends GetxController {
   RxInt selectedServiceIndex = 0.obs;
   RxString interest = "".obs;
   RxInt quantity = 1000.obs;
-  RxInt totalPayable = 0.obs;
+  double totalPayable = 0;
 
 //==================================> Increment Counter Method <================================
   incrementQuantity() {
@@ -27,30 +27,30 @@ class ServiceController extends GetxController {
 
 //==================================> Decrement Counter Method <================================
   Future decrementQuantity() async {
-    quantity.value -= 1000;
+    if (quantity > 1000) {
+      quantity.value -= 1000;
+    } else {
+      print('Counter cannot be decremented further.');
+    }
   }
 
   void setSelectedCategory(int index) {
     selectedCategoryIndex.value = index;
   }
-
 //==================================> Submit Task Method <================================
 
   requesterSubmitTask() async {
     try {
-      Map<String, dynamic> body = {
-        "category": selectedCategoryIndex.value.toString(),
-        "service": selectedServiceIndex.value.toString(),
-        "addQuantity": quantity.value,
-        "startDate": startDateCtrl.text,
-        "endDate": endDateCtrl.text,
-        "addLink": addLinkCtrl.text.trim(),
-        "addInterest": interest.value,
-        "totalPayable": totalPayable.value,
+      var body = {
+        "name": selectedCategoryIndex.value.toString(),
+        "taskLink":"www.ululu.com/ululu",
+        "serviceId":"660cf6acb495b5582d2eb18a",
+        "quantity":quantity.value,
+        "price":quantity.value*0.60,
       };
       print('=============================> $body');
       Response response = await ApiClient.postData(
-          ApiConstants.requesterSubmitTaskEndPoint, jsonEncode(body));
+          ApiConstants.requesterSubmitTaskEndPoint, body);
 
       print("============> ${response.body} and ==> ${response.statusCode}");
       if (response.statusCode == 201) {
@@ -61,6 +61,43 @@ class ServiceController extends GetxController {
     } catch (e, s) {
       print("===> error : $e");
       print("===> error : $s");
+    }
+  }
+
+
+  //===================> Picked Start Date TimeLine Function <==================
+  Future<void> startDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(3050),
+    );
+    if (pickedDate != null) {
+      // setState(() {
+        startDateCtrl.text =
+        "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      // });
+      print('Selected date: ${startDateCtrl.text}');
+    }
+  }
+
+  //======================> Picked End Date TimeLine Function <=================
+  Future<void> endDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(3050),
+    );
+    if (pickedDate != null) {
+      // setState(() {
+        endDateCtrl.text =
+        "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      // });
+      print('Selected date: ${endDateCtrl.text}');
     }
   }
 }
