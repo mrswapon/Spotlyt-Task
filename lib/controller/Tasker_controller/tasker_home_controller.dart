@@ -1,4 +1,6 @@
-import 'dart:ffi';
+
+
+import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
@@ -8,7 +10,7 @@ import '../../utils/app_constant.dart';
 
 class TaskerHomeController extends GetxController{
 
- Rx<TaskerHomeModel> taskerHomeModel = TaskerHomeModel().obs;
+
 
   @override
   void onInit() {
@@ -16,16 +18,20 @@ class TaskerHomeController extends GetxController{
     super.onInit();
     getTaskerHomeData();
   }
-
-  final rxRequestStatus = Status.loading.obs;
-  void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
+  Rx<TaskerHomeModel> taskerHomeModel = TaskerHomeModel().obs;
+  // final rxRequestStatus = Status.loading.obs;
+  // void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
 
   getTaskerHomeData()async{
     var response = await ApiClient.getData(ApiConstants.taskerHomeEidPoint);
 
     if(response.statusCode == 200){
-      print("===> repose : ${response.body}");
-      taskerHomeModel.value = TaskerHomeModel.fromJson(response.body['data']);
+      taskerHomeModel.value = TaskerHomeModel.fromJson(response.body["data"]["attributes"]);
+      print("=====> tasker model : ${taskerHomeModel.value.data?.attributes?.tasks}");
+
+      refresh();
+
+
     }
   }
 
