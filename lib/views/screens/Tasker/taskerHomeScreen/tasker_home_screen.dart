@@ -72,11 +72,10 @@ class TaskerHomeScreen extends StatelessWidget {
                   height: 250.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?.length,
+                    itemCount: _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?.length,
                     itemBuilder: (context, index) {
-                      var taskData = _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?[index];
+                      var taskData = _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?[index];
                       DateTime? createdAt = taskData?.createdAt;
-                      // var formattedDate = DateFormat.yMMMMd().add_jms().format(createdAt);
                       var formattedDate = createdAt != null ? DateFormat.yMMMMd().add_jms().format(createdAt) : 'Unknown';
                       return Padding(
                         padding: EdgeInsets.only(right: 12.w),
@@ -137,9 +136,9 @@ class TaskerHomeScreen extends StatelessWidget {
                   height: 250.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?.length,
+                    itemCount: _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?.length,
                     itemBuilder: (context, index) {
-                      var todayTaskDate = _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?[index];
+                      var todayTaskDate = _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?[index];
                       return Padding(
                         padding: EdgeInsets.only(right: 12.w),
                         child: GestureDetector(

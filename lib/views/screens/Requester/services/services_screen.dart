@@ -157,8 +157,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                 () => CustomMultiSelectRequestCard(
                   requestList: attributes
                           .categories?[_serviceController.selectedCategoryIndex.value]
-                          .service ??
-                      [],
+                          .service ?? [],
                   onTap: (index) {
                     _serviceController.selectedServiceIndex.value = index;
                   },
@@ -343,8 +342,10 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               CustomButton(
                   title: "Continue",
                   onpress: () {
-                    // Get.toNamed(AppRoutes.paymentScreen);
-                    _serviceController.requesterSubmitTask();
+                    _serviceController.requesterSubmitTask(
+                      "${requesterHomeController.homeScreenModel?.data?.attributes?[0].name}",
+                         requesterHomeController.homeScreenModel?.data?.attributes?[0].sId
+                    );
                   }),
 
               SizedBox(height: 50.h)
@@ -363,40 +364,4 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
       ),
     );
   }
-
-  // //===================> Picked Start Date TimeLine Function <==================
-  // Future<void> _startDate(BuildContext context) async {
-  //   final DateTime? pickedDate = await showDatePicker(
-  //     context: context,
-  //     initialDate: DateTime.now(),
-  //     firstDate: DateTime.now(),
-  //     lastDate: DateTime(3050),
-  //   );
-  //   if (pickedDate != null) {
-  //     setState(() {
-  //       startDateCtrl.text =
-  //           "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
-  //       // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
-  //     });
-  //     print('Selected date: ${startDateCtrl.text}');
-  //   }
-  // }
-  //
-  // //======================> Picked End Date TimeLine Function <=================
-  // Future<void> _endDate(BuildContext context) async {
-  //   final DateTime? pickedDate = await showDatePicker(
-  //     context: context,
-  //     initialDate: DateTime.now(),
-  //     firstDate: DateTime.now(),
-  //     lastDate: DateTime(3050),
-  //   );
-  //   if (pickedDate != null) {
-  //     setState(() {
-  //       endDateCtrl.text =
-  //           "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
-  //       // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
-  //     });
-  //     print('Selected date: ${endDateCtrl.text}');
-  //   }
-  // }
 }
