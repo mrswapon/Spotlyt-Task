@@ -25,7 +25,8 @@ class InviteAndEernController extends GetxController {
     if (response.statusCode == 200) {
       var responseData = response.body;
 
-      var data = responseData['data']['attributes']['referrals'][0]['referralCode'];
+      var data = responseData['data']['attributes']['referrals'][0]['userId']['referralCode'];
+      print("===> $data");
       referrals.value =  data;
       print("====> data: $data");
     }

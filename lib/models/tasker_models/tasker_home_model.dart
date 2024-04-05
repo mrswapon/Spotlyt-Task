@@ -1,4 +1,78 @@
+
+
 class TaskerHomeModel {
+  final int? code;
+  final String? message;
+  final Data? data;
+
+  TaskerHomeModel({
+    this.code,
+    this.message,
+    this.data,
+  });
+
+  factory TaskerHomeModel.fromJson(Map<String, dynamic> json) => TaskerHomeModel(
+    code: json["code"],
+    message: json["message"],
+    data: json["data"] == null ? null : Data.fromJson(json["data"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "code": code,
+    "message": message,
+    "data": data?.toJson(),
+  };
+}
+
+class Data {
+  final Attributes? attributes;
+
+  Data({
+    this.attributes,
+  });
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    attributes: json["attributes"] == null ? null : Attributes.fromJson(json["attributes"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "attributes": attributes?.toJson(),
+  };
+}
+
+class Attributes {
+  final List<Task>? tasks;
+  final int? page;
+  final int? limit;
+  final int? totalPages;
+  final int? totalResults;
+
+  Attributes({
+    this.tasks,
+    this.page,
+    this.limit,
+    this.totalPages,
+    this.totalResults,
+  });
+
+  factory Attributes.fromJson(Map<String, dynamic> json) => Attributes(
+    tasks: json["tasks"] == null ? [] : List<Task>.from(json["tasks"]!.map((x) => Task.fromJson(x))),
+    page: json["page"],
+    limit: json["limit"],
+    totalPages: json["totalPages"],
+    totalResults: json["totalResults"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "tasks": tasks == null ? [] : List<dynamic>.from(tasks!.map((x) => x.toJson())),
+    "page": page,
+    "limit": limit,
+    "totalPages": totalPages,
+    "totalResults": totalResults,
+  };
+}
+
+class Task {
   final String? id;
   final Name? name;
   final String? taskLink;
@@ -12,7 +86,7 @@ class TaskerHomeModel {
   final DateTime? updatedAt;
   final int? v;
 
-  TaskerHomeModel({
+  Task({
     this.id,
     this.name,
     this.taskLink,
@@ -27,7 +101,7 @@ class TaskerHomeModel {
     this.v,
   });
 
-  factory TaskerHomeModel.fromJson(Map<String, dynamic> json) => TaskerHomeModel(
+  factory Task.fromJson(Map<String, dynamic> json) => Task(
     id: json["_id"],
     name: nameValues.map[json["name"]]!,
     taskLink: json["taskLink"],

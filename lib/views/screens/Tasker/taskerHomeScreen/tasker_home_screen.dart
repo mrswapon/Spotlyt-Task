@@ -13,11 +13,12 @@ import '../taskerTaskScreen/InnerWidgets/tasker_task_card.dart';
 
 class TaskerHomeScreen extends StatelessWidget {
    TaskerHomeScreen({super.key});
-    // TaskerHomeController _taskerHomeController = Get.put(TaskerHomeController());
+     TaskerHomeController _taskerHomeController = Get.put(TaskerHomeController());
 
   @override
   Widget build(BuildContext context) {
-     // _taskerHomeController.taskerHomeModel.value;
+     var taskData = _taskerHomeController.taskerHomeModel.value;
+     print("s================================================== ==========> ${taskData.data?.attributes?.tasks}");
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -81,7 +82,7 @@ class TaskerHomeScreen extends StatelessWidget {
                           bgImageheights: 110.h,
                           weight: 267.w,
                           amount: "R2000",
-                          faceBookPost: "Facebook Post Like ",
+                          faceBookPost: "${taskData.data?.attributes?.tasks?[0].name}",
                           date: "Friday 01 Feb, 2024",
                           days: "5 Days",
                           postLink: "https://www.Facebook.com/Image \n Post",
