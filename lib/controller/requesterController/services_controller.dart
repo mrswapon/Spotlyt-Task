@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/helpers/prefs_helper.dart';
+import 'package:spotlyt_task/utils/app_constant.dart';
 import '../../routes/app_routes.dart';
 import '../../services/api_checker.dart';
 import '../../services/api_client.dart';
@@ -39,21 +41,26 @@ class ServiceController extends GetxController {
   }
 //==================================> Submit Task Method <================================
 
-  requesterSubmitTask() async {
+  requesterSubmitTask(String taskName, serviceId) async {
+    String bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
+    var headers ={
+       'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer $bearerToken'
+    };
     try {
       var body = {
-        "name": selectedCategoryIndex.value.toString(),
-        "taskLink":"www.ululu.com/ululu",
-        "serviceId":"660cf6acb495b5582d2eb18a",
-        "quantity":quantity.value,
-        "price":quantity.value*0.60,
+        "name": "$taskName",
+        "taskLink": addLinkCtrl.text,
+        "serviceId":"${serviceId}",
+        "quantity": "${quantity.value}",
+        "price": "${quantity.value*0.60}",
       };
       print('=============================> $body');
       Response response = await ApiClient.postData(
-          ApiConstants.requesterSubmitTaskEndPoint, body);
+          ApiConstants.requesterSubmitTaskEndPoint, body, headers: headers);
 
       print("============> ${response.body} and ==> ${response.statusCode}");
-      if (response.statusCode == 201) {
+      if (response.statusCode == 201 || response.statusCode == 200) {
         Fluttertoast.showToast(msg: response.body['message']);
       } else {
         ApiChecker.checkApi(response);

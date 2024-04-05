@@ -20,6 +20,8 @@ class TaskerHomeController extends GetxController {
   final rxRequestStatus = Status.loading.obs;
   void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
 
+
+
   getTaskerHomeDataAll() async {
     var response = await ApiClient.getData(ApiConstants.taskerHomeEidPoint);
 
