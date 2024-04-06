@@ -20,6 +20,7 @@ import '../../../widgets/custom_cetegory_botton.dart';
 import '../../../widgets/custom_multi_select_request_card.dart';
 import '../../../widgets/custom_quentity_card.dart';
 import '../../../../controller/requesterController/requester_home_controller.dart';
+import '../../../widgets/custom_text_field.dart';
 
 class MediaServicesScreen extends StatefulWidget {
   MediaServicesScreen({
@@ -31,6 +32,7 @@ class MediaServicesScreen extends StatefulWidget {
 }
 
 class _MediaServicesScreenState extends State<MediaServicesScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final ServiceController _serviceController = Get.put(ServiceController());
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
@@ -38,7 +40,6 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
   final RequesterHomeController requesterHomeController =
       Get.put(RequesterHomeController());
-
 
   //=====================================> Load Counter Method <==================================
   final _counter = 1000;
@@ -124,8 +125,9 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                             _serviceController.selectedServiceIndex.value = 0;
                           },
                           child: CustomCetegoryBotton(
-                            isSelected:
-                                _serviceController.selectedCategoryIndex.value == index,
+                            isSelected: _serviceController
+                                    .selectedCategoryIndex.value ==
+                                index,
                             name: "${category.name}",
                             icon: category.name == "Facebook"
                                 ? AppIcons.facebook
@@ -157,8 +159,10 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               Obx(
                 () => CustomMultiSelectRequestCard(
                   requestList: attributes
-                          .categories?[_serviceController.selectedCategoryIndex.value]
-                          .service ?? [],
+                          .categories?[
+                              _serviceController.selectedCategoryIndex.value]
+                          .service ??
+                      [],
                   onTap: (index) {
                     _serviceController.selectedServiceIndex.value = index;
                   },
@@ -261,24 +265,34 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               ),
 
               ///--------------------------------Add Link form-------------------------------->
-              TextFormField(
-                controller: _serviceController.addLinkCtrl,
-                decoration: InputDecoration(
-                    prefixIcon: SizedBox(
-                      child: Padding(
-                        padding: EdgeInsets.all(20.r),
-                        child: SvgPicture.asset(
-                          AppIcons.linkIcon,
-                          width: 18.w,
-                          height: 18.h,
-                        ),
+
+              Form(
+                key: _formKey,
+                child: Column(children: [
+                  SizedBox(height: 24.h),
+                  //===============================> Full Name Text-field <===============================
+                  CustomTextField(
+                    contenpaddingHorizontal: 20.w,
+                    contenpaddingVertical: 15.h,
+                    controller: _serviceController.addLinkCtrl,
+                    filColor: AppColors.fillColorGreen,
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(20.r),
+                      child: SvgPicture.asset(
+                        AppIcons.linkIcon,
+                        width: 18.w,
+                        height: 18.h,
                       ),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-                    filled: true,
-                    fillColor: AppColors.fillColorGreen,
-                    hintText: "https://"),
+                    hintText: "https://",
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Enter the valid link";
+                      }
+                      return null;
+                    },
+                  ),
+                ]),
               ),
 
               ///-------------------------------------------add interest---------------------------------------------->
@@ -326,7 +340,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   ),
                   Obx(() {
                     return CustomText(
-                      text: "R ${_serviceController.quantity.value*0.60}",
+                      text: "R ${_serviceController.quantity.value * 0.60}",
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor,
                       fontsize: 18.h,
@@ -343,11 +357,21 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               CustomButton(
                   title: "Continue",
                   onpress: () {
+                    if(_formKey.currentState!.validate()){
                     _serviceController.requesterSubmitTask(
                       "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
-                        attributes.sId,
-                        attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].price??0.0,
+                      attributes.sId,
+                      attributes
+                              .categories![_serviceController
+                                  .selectedCategoryIndex.value]
+                              .service![
+                                  _serviceController.selectedServiceIndex.value]
+                              .price ??
+                          0.0,
                     );
+                    }else{
+                      print('enter the link');
+                    }
                   }),
 
               SizedBox(height: 50.h)
