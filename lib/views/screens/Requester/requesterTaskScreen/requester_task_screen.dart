@@ -13,7 +13,7 @@ import 'InnerWidgets/requester_task_card.dart';
 class RequesterTaskScreen extends StatelessWidget {
   RequesterTaskScreen({Key? key}) : super(key: key);
   final TaskerHomeController _taskerHomeController =
-  Get.put(TaskerHomeController());
+      Get.put(TaskerHomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,48 +26,31 @@ class RequesterTaskScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
+        padding:
+            EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
         child: Column(
           children: [
             SizedBox(height: 24.h),
             CustomTwoBotton(),
             SizedBox(height: 16.h),
             Expanded(
-              child: Obx(() {
-                return ListView.builder(
-                  itemCount: _taskerHomeController.taskerHomeModelAll.value?.data?.attributes?.tasks?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final taskList = _taskerHomeController.taskerHomeModelAll.value?.data?.attributes?.tasks;
-                    if (taskList != null && taskList.isNotEmpty) {
-                      final allTaskDate = taskList[index];
-                      final createdAt = allTaskDate?.createdAt;
-                      final formattedDate = createdAt != null ? DateFormat.yMMMMd().add_jms().format(createdAt) : 'Unknown';
-                      return Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 16.h,
-                          top: index == 0 ? 16.h : 0,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.requesterTaskDetailsScreen);
-                          },
-                          child: RequesterTaskCard(
-                            bgImageheights: 110.h,
-                            weight: 267.w,
-                            taskCompleteAmount: "${allTaskDate!.price}",
-                            faceBookPost: allTaskDate.name,
-                            postLink: "${allTaskDate.taskLink}\n",
-                            date: formattedDate,
-                          ),
-                        ),
-                      );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
+                child: ListView.builder(
+              itemCount: 12,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    bottom: 16.h,
+                    top: index == 0 ? 16.h : 0,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.requesterTaskDetailsScreen);
+                    },
+                    child: RequesterTaskCard(),
+                  ),
                 );
-              }),
-            ),
+              },
+            )),
           ],
         ),
       ),
