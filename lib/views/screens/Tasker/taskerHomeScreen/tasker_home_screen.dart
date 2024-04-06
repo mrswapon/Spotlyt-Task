@@ -138,7 +138,9 @@ class TaskerHomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?.length,
                     itemBuilder: (context, index) {
-                      var todayTaskDate = _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?[index];
+                      var allTaskDate = _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?[index];
+                      DateTime? createdAt = allTaskDate?.createdAt;
+                      var formattedDate = createdAt != null ? DateFormat.yMMMMd().add_jms().format(createdAt) : 'Unknown';
                       return Padding(
                         padding: EdgeInsets.only(right: 12.w),
                         child: GestureDetector(
@@ -148,8 +150,10 @@ class TaskerHomeScreen extends StatelessWidget {
                           child: TaskerTaskCard(
                             bgImageheights: 110.h,
                             weight: 267.w,
-                            amount: "R2000",
-                            faceBookPost: todayTaskDate?.name,
+                            taskCompleteAmount: "${allTaskDate!.price}",
+                            faceBookPost: allTaskDate.name,
+                            postLink: "${allTaskDate.taskLink}\n",
+                            date: formattedDate,
                             // heights: 110,
                           ),
                         ),
