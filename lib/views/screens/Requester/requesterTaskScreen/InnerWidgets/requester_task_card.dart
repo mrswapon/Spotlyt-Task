@@ -11,9 +11,22 @@ class RequesterTaskCard extends StatelessWidget {
   final double? weight;
   final double? bgImageheights;
   final String? amount;
+  final String? faceBookPost;
+  final String? date;
+  final String? days;
+  final String? postLink;
+  final String? taskCompleteAmount;
 
   const RequesterTaskCard(
-      {super.key, this.weight, this.bgImageheights, this.amount});
+      {super.key,
+      this.weight,
+      this.bgImageheights,
+      this.amount,
+      this.faceBookPost,
+      this.date,
+      this.days,
+      this.postLink,
+      this.taskCompleteAmount});
 
   @override
   Widget build(BuildContext context) {
