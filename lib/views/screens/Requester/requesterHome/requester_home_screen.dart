@@ -60,6 +60,9 @@ class _RequesterHomeScreenState extends State<RequesterHomeScreen> {
                           ontap: () {
                             Get.toNamed(AppRoutes.servicesScreen,
                                 arguments: serviceData);
+                            print("=====> ${serviceData.id}");
+                            print("=====> ${serviceData.name}");
+                            print("=====> ${serviceData.sId}");
                           },
                           title: serviceData.name,
                           servicesInfo: serviceData.description,

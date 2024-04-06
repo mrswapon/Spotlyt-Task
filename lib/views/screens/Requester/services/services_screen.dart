@@ -39,6 +39,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   final RequesterHomeController requesterHomeController =
       Get.put(RequesterHomeController());
 
+
   //=====================================> Load Counter Method <==================================
   final _counter = 1000;
   Future _loadCounter() async {
@@ -178,7 +179,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                 () => CustomQuentityCard(
                   decrement: _serviceController.decrementQuantity,
                   increment: _serviceController.incrementQuantity,
-                  quantityCounter: _serviceController.quantity.value,
+                  quantityCounter: _serviceController.quantity.value.toInt(),
                 ),
               ),
 
@@ -342,9 +343,13 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               CustomButton(
                   title: "Continue",
                   onpress: () {
+
+
+
                     _serviceController.requesterSubmitTask(
-                      "${requesterHomeController.homeScreenModel?.data?.attributes?[0].name}",
-                         requesterHomeController.homeScreenModel?.data?.attributes?[0].sId
+                      "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value]}",
+                        attributes.sId,
+                        attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].price??0.0,
                     );
                   }),
 

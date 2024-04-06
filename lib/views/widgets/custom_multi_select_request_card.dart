@@ -10,27 +10,24 @@ import '../../utils/app_icons.dart';
 import 'custom_text.dart';
 
 class CustomMultiSelectRequestCard extends StatefulWidget {
+
+
   List<Service> requestList;
   final Function(int index) onTap;
   int initSelect;
 
-  CustomMultiSelectRequestCard(
-      {super.key, required this.requestList,required this.onTap,required this.initSelect});
+  CustomMultiSelectRequestCard({super.key, required this.requestList,required this.onTap,required this.initSelect});
 
   @override
-  State<CustomMultiSelectRequestCard> createState() =>
-      _CustomMultiSelectRequestCardState();
+  State<CustomMultiSelectRequestCard> createState() => _CustomMultiSelectRequestCardState();
 }
 
-class _CustomMultiSelectRequestCardState
-    extends State<CustomMultiSelectRequestCard> {
-
-
+class _CustomMultiSelectRequestCardState extends State<CustomMultiSelectRequestCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: widget.requestList.length * 32.h,
           child: ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -39,6 +36,9 @@ class _CustomMultiSelectRequestCardState
               ///--------------------------------
               var services = widget.requestList[index];
               bool isSelected = widget.initSelect == index;
+
+
+
               return Padding(
                 padding: EdgeInsets.only(bottom: 12.h),
                 child: GestureDetector(
