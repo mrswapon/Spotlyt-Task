@@ -37,6 +37,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
   final addLinkCtrl = TextEditingController();
+  bool _isValidUrl = true;
 
   final RequesterHomeController requesterHomeController =
       Get.put(RequesterHomeController());
@@ -287,6 +288,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Enter the valid link";
+                      } else if (!isValidUrl(value)) {
+                        return "Invalid url";
                       }
                       return null;
                     },
@@ -356,19 +359,19 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               CustomButton(
                   title: "Continue",
                   onpress: () {
-                    if(_formKey.currentState!.validate()){
-                    _serviceController.requesterSubmitTask(
-                      "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
-                      attributes.sId,
-                      attributes
-                              .categories![_serviceController
-                                  .selectedCategoryIndex.value]
-                              .service![
-                                  _serviceController.selectedServiceIndex.value]
-                              .price ??
-                          0.0,
-                    );
-                    }else{
+                    if (_formKey.currentState!.validate()) {
+                      _serviceController.requesterSubmitTask(
+                        "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
+                        attributes.sId,
+                        attributes
+                                .categories![_serviceController
+                                    .selectedCategoryIndex.value]
+                                .service![_serviceController
+                                    .selectedServiceIndex.value]
+                                .price ??
+                            0.0,
+                      );
+                    } else {
                       print('enter the link');
                     }
                   }),
@@ -388,5 +391,17 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
         text: value,
       ),
     );
+  }
+
+  bool isValidUrl(String url) {
+    final RegExp urlRegExp = RegExp(
+      r'^(?:http|https):\/\/'
+      r'(?:(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}|'
+      r'(?:\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}))'
+      r'(?::\d+)?'
+      r'(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$',
+    );
+
+    return urlRegExp.hasMatch(url);
   }
 }
