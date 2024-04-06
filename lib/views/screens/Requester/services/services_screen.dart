@@ -343,11 +343,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               CustomButton(
                   title: "Continue",
                   onpress: () {
-
-
-
                     _serviceController.requesterSubmitTask(
-                      "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value]}",
+                      "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
                         attributes.sId,
                         attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].price??0.0,
                     );
