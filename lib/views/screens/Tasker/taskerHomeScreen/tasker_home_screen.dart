@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
@@ -15,6 +16,7 @@ import '../taskerTaskScreen/InnerWidgets/tasker_task_card.dart';
 
 class TaskerHomeScreen extends StatelessWidget {
   TaskerHomeScreen({super.key});
+
   final TaskerHomeController _taskerHomeController =
       Get.put(TaskerHomeController());
 
@@ -67,16 +69,23 @@ class TaskerHomeScreen extends StatelessWidget {
               ),
 
               ///----------------------------today's task listview----------------------------->
-              Obx(()=>
-                 SizedBox(
+              Obx(
+                () => SizedBox(
                   height: 250.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?.length,
+                    itemCount: _taskerHomeController.taskerHomeModelToday.value
+                        .data?.attributes?.tasks?.length,
                     itemBuilder: (context, index) {
                       var taskData = _taskerHomeController.taskerHomeModelToday.value.data?.attributes?.tasks?[index];
-                      DateTime? createdAt = taskData?.createdAt;
-                      var formattedDate = createdAt != null ? DateFormat.yMMMMd().add_jms().format(createdAt) : 'Unknown';
+                      var date = taskData?.createdAt;
+                      var formatDates = '';
+                      if (date != null) {
+                        formatDates =
+                            DateFormat('EEEE dd MMM, yyyy').format(date);
+                      } else {
+                        null;
+                      }
                       return Padding(
                         padding: EdgeInsets.only(right: 12.w),
                         child: GestureDetector(
@@ -87,8 +96,8 @@ class TaskerHomeScreen extends StatelessWidget {
                             bgImageheights: 110.h,
                             weight: 267.w,
                             taskCompleteAmount: "R ${taskData?.price}",
-                            faceBookPost : taskData?.name,
-                            date: formattedDate,
+                            faceBookPost: taskData?.name,
+                            date: "$formatDates",
                             days: "5 Days",
                             postLink: '${taskData?.taskLink}\nPost',
                             // heights: 110,
@@ -132,28 +141,35 @@ class TaskerHomeScreen extends StatelessWidget {
               ),
 
               ///----------------------------Your task listview----------------------------->
-              Obx(()=> SizedBox(
+              Obx(
+                () => SizedBox(
                   height: 250.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?.length,
                     itemBuilder: (context, index) {
                       var allTaskDate = _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?[index];
-                      DateTime? createdAt = allTaskDate?.createdAt;
-                      var formattedDate = createdAt != null ? DateFormat.yMMMMd().add_jms().format(createdAt) : 'Unknown';
+                      var date = allTaskDate?.createdAt;
+                      var formatDate = '';
+                      if (date != null) {
+                        formatDate =
+                            DateFormat('EEEE dd MMM, yyyy').format(date);
+                      } else {
+                        null;
+                      }
                       return Padding(
                         padding: EdgeInsets.only(right: 12.w),
                         child: GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
+                            Get.toNamed(AppRoutes.taskerTaskDetailsScreen, arguments : allTaskDate);
                           },
                           child: TaskerTaskCard(
                             bgImageheights: 110.h,
                             weight: 267.w,
-                            taskCompleteAmount: "${allTaskDate!.price}",
-                            faceBookPost: allTaskDate.name,
-                            postLink: "${allTaskDate.taskLink}\n",
-                            date: formattedDate,
+                            taskCompleteAmount: "${allTaskDate?.price}" ?? "",
+                            faceBookPost: allTaskDate?.name ?? "",
+                            postLink: "${allTaskDate?.taskLink}\n" ?? "",
+                            date: "$formatDate",
                             // heights: 110,
                           ),
                         ),
