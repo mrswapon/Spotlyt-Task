@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/utils/app_constant.dart';
 import '../../routes/app_routes.dart';
@@ -19,7 +20,7 @@ class ServiceController extends GetxController {
   RxInt selectedCategoryIndex = 0.obs;
   RxInt selectedServiceIndex = 0.obs;
   RxString interest = "".obs;
-  RxInt quantity = 1000.obs;
+  RxDouble quantity = 1000.0.obs;
   double totalPayable = 0;
 
 //==================================> Increment Counter Method <================================
@@ -41,23 +42,19 @@ class ServiceController extends GetxController {
   }
 //==================================> Submit Task Method <================================
 
-  requesterSubmitTask(String taskName, serviceId) async {
-    String bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
-    var headers ={
-       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Bearer $bearerToken'
-    };
+  requesterSubmitTask(String taskName, serviceId,price) async {
+
     try {
       var body = {
         "name": taskName,
         "taskLink": addLinkCtrl.text,
         "serviceId":"$serviceId",
         "quantity": "${quantity.value}",
-        "price": "${quantity.value*0.60}",
+        "price": "$price",
       };
       print('=============================> $body');
       Response response = await ApiClient.postData(
-          ApiConstants.requesterSubmitTaskEndPoint, body, headers: headers);
+          ApiConstants.requesterSubmitTaskEndPoint,body);
 
       print("============> ${response.body} and ==> ${response.statusCode}");
       if (response.statusCode == 201 || response.statusCode == 200) {
