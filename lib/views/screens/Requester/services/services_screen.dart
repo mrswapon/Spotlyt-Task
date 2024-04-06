@@ -343,8 +343,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   title: "Continue",
                   onpress: () {
                     _serviceController.requesterSubmitTask(
-                      "${requesterHomeController.homeScreenModel?.data?.attributes?[0].name}",
-                         requesterHomeController.homeScreenModel?.data?.attributes?[0].sId
+                      "${requesterHomeController.homeScreenModel?.data?.attributes?[1].name}",
+                      "${requesterHomeController.homeScreenModel?.data?.attributes?[1].sId}",
                     );
                   }),
 

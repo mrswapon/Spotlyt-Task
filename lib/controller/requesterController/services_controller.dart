@@ -49,9 +49,9 @@ class ServiceController extends GetxController {
     };
     try {
       var body = {
-        "name": "$taskName",
+        "name": taskName,
         "taskLink": addLinkCtrl.text,
-        "serviceId":"${serviceId}",
+        "serviceId":"$serviceId",
         "quantity": "${quantity.value}",
         "price": "${quantity.value*0.60}",
       };
