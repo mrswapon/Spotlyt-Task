@@ -269,7 +269,6 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               Form(
                 key: _formKey,
                 child: Column(children: [
-                  SizedBox(height: 24.h),
                   //===============================> Full Name Text-field <===============================
                   CustomTextField(
                     contenpaddingHorizontal: 20.w,
