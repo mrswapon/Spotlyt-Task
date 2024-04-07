@@ -37,7 +37,6 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
   final addLinkCtrl = TextEditingController();
-  bool _isValidUrl = true;
 
   final RequesterHomeController requesterHomeController =
       Get.put(RequesterHomeController());
@@ -270,7 +269,6 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
               Form(
                 key: _formKey,
                 child: Column(children: [
-                  //===============================> Full Name Text-field <===============================
                   CustomTextField(
                     contenpaddingHorizontal: 20.w,
                     contenpaddingVertical: 15.h,
@@ -401,7 +399,6 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
       r'(?::\d+)?'
       r'(?:\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$',
     );
-
     return urlRegExp.hasMatch(url);
   }
 }
