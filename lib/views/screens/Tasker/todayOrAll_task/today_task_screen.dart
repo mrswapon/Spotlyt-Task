@@ -55,7 +55,7 @@ class TodayOrAllTaskScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 16.h),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoutes.homeCardDetails);
+                  Get.toNamed(AppRoutes.taskerTaskDetailsScreen, arguments : taskData);
                 },
                 child: TaskerTaskCard(
                   amount: "R2000",

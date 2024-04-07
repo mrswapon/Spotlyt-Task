@@ -21,17 +21,26 @@ class TaskerHomeController extends GetxController {
   Rx<TaskerHomeModel> taskerHomeModelAll = TaskerHomeModel().obs;
   Rx<TaskerHomeModel> taskerHomeModelToday = TaskerHomeModel().obs;
 
-  final rxRequestStatus = Status.loading.obs;
 
+  final rxRequestStatus = Status.loading.obs;
   void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
 
-  getTaskerHomeDataAll() async {
-    var response = await ApiClient.getData(ApiConstants.taskerHomeEidPoint);
 
+
+  getTaskerHomeDataAll() async {
+    setRxRequestStatus(Status.loading);
+
+    var response = await ApiClient.getData(ApiConstants.taskerHomeEidPoint);
     if (response.statusCode == 200) {
       taskerHomeModelAll.value = TaskerHomeModel.fromJson(response.body);
-
+      setRxRequestStatus(Status.completed);
       refresh();
+    } else {
+      if(response.statusText == ApiClient.noInternetMessage){
+        setRxRequestStatus(Status.internetError);
+      }else{
+        setRxRequestStatus(Status.error);
+      }
     }
   }
 
@@ -55,9 +64,7 @@ class TaskerHomeController extends GetxController {
     if (response.statusCode == 200) {
       var taskId = response.body['data']['attributes']['_id'];
       print("==============================> id : $taskId");
-      Get.toNamed(AppRoutes.submitTaskScreen, parameters: {
-        'taskId': taskId,
-      });
+      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
     }
   }
 

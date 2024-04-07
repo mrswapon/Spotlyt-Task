@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:spotlyt_task/controller/Tasker_controller/tasker_task_controller.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
@@ -9,7 +11,9 @@ import '../../../widgets/custom_two_botton.dart';
 import 'InnerWidgets/tasker_task_card.dart';
 
 class TaskerTaskScreen extends StatelessWidget {
-  const TaskerTaskScreen({super.key});
+  TaskerTaskScreen({super.key});
+
+  final _taskerTaskController = Get.put(TaskerTaskController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,38 +27,54 @@ class TaskerTaskScreen extends StatelessWidget {
       ),
       body: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
+        EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
         child: Column(
           children: [
             SizedBox(
               height: 24.h,
             ),
+
             ///------------------------two botton-----------------------------<
             CustomTwoBotton(),
             SizedBox(
               height: 16.h,
             ),
 
-            Expanded(
-              child: ListView.builder(
-                itemCount: 12,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                        bottom: 16.h, top: index == 0 ? 16.h : 0),
-                    child: GestureDetector(
-                        onTap: () {
-                          Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
-                        },
-                        child:  const TaskerTaskCard(
-                          faceBookPost: "Facebook Post Like ",
-                          date: "Friday 01 Feb, 2024",
-                          taskCompleteAmount: "R 0.30",
-                          postLink: "https://www.Facebook.com/Image \n Post",
-                        )),
-                  );
-                },
-              ),
+            Obx(() =>
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?.length,
+                    itemBuilder: (context, index) {
+                      var taskerTask = _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?[index];
+
+
+                      ///==================date formed================>
+                      var date = taskerTask?.createdAt;
+                      var formatDates = '';
+                      if (date != null) {
+                        var parsedDate = DateTime.parse(date);
+                        formatDates = DateFormat('EEEE dd MMM, yyyy').format(parsedDate);
+                      } else {
+                        formatDates = 'Date is not available';
+                      }
+
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            bottom: 16.h, top: index == 0 ? 16.h : 0),
+                        child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.taskerTaskDetailsScreen);
+                            },
+                            child: TaskerTaskCard(
+                              faceBookPost: "${taskerTask?.name}",
+                              date: formatDates,
+                              taskCompleteAmount: "${taskerTask?.price}",
+                              postLink: "${taskerTask?.taskId?.taskLink}",
+                            )),
+                      );
+                    },
+                  ),
+                ),
             )
           ],
         ),
