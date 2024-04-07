@@ -11,10 +11,7 @@ import 'custom_text.dart';
 class CustomTwoBotton extends StatelessWidget {
   CustomTwoBotton({super.key});
 
-
-
   final _taskerTaskController = Get.put(TaskerTaskController());
-
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +29,8 @@ class CustomTwoBotton extends StatelessWidget {
             child: Obx(() => GestureDetector(
                   onTap: () {
                     _taskerTaskController.isSelected(true);
+                    _taskerTaskController.setStatus("submitted");
+                   _taskerTaskController.taskerTaskGet();
                   },
 
                   ///---------------------------Submitted botton----------------------->
@@ -61,6 +60,8 @@ class CustomTwoBotton extends StatelessWidget {
             child: Obx(() => GestureDetector(
                   onTap: () {
                     _taskerTaskController.isSelected(false);
+                    _taskerTaskController.setStatus("accepted");
+                    _taskerTaskController.taskerTaskGet();
                   },
 
                   ///-------------------------- completed botton----------------------->

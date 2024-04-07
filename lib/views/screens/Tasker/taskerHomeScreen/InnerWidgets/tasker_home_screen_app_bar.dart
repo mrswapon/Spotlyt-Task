@@ -33,7 +33,7 @@ class TaskerHomeScreenAppBar extends StatelessWidget {
               : CircleAvatar(
                   radius: 20.r,
                   backgroundImage: NetworkImage(
-                      "${ApiConstants.baseUrl}/${profileData.image!.url}"),
+                      "${ApiConstants.imageBaseUrl}${profileData.image!.url}"),
                 ),
           SizedBox(
             width: 12.w,

@@ -86,7 +86,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               : CircleAvatar(
                                   radius: 60.r,
                                   backgroundImage: NetworkImage(
-                                      '${ApiConstants.baseUrl}${parameter['image']}'),
+                                      '${ApiConstants.imageBaseUrl}${parameter['image']}'),
                                 ),
                           Positioned(
                               bottom: 12.h,

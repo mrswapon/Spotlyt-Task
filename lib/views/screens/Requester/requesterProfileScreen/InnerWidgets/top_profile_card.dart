@@ -20,7 +20,9 @@ class TopProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
+
       height: height ?? 337.h,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -53,7 +55,7 @@ class TopProfileCard extends StatelessWidget {
             )
 
             :CircleAvatar(
-              backgroundImage: NetworkImage("${ApiConstants.baseUrl}/$profileUrl"),
+              backgroundImage: NetworkImage("${ApiConstants.imageBaseUrl}$profileUrl"),
             ),
           ),
           Expanded(
