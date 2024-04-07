@@ -49,7 +49,7 @@ class TopContainerSection extends StatelessWidget {
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Colors.white),
                   child: Image.network(
-                    "${ApiConstants.baseUrl}/${image}"??"",
+                    "${ApiConstants.imageBaseUrl}${image}"??"",
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -1,5 +1,9 @@
 class ApiConstants{
   static const String baseUrl = "http://103.145.138.54:3232/v1/";
+  static const String imageBaseUrl="http://103.145.138.54:3232/";
+
+
+
   static const String signUpEndPoint = "/auth/register";
   static const String forgot = "/auth/forgot-password";
   static const String otpVerifyEndPoint = "/auth/verify-email";
@@ -13,7 +17,7 @@ class ApiConstants{
   static const String withdrawEidPoint = "/withdrawal";
   static const String requesterSubmitTaskEndPoint = "/tasks";
   static  String taskRegisterEndPoint = "/tasks/register";
-  static String allTaskGetApi(String status)=>"/v1/tasks/register?status=$status";
+  static String allTaskGetApi(String status)=>"/tasks/register?status=$status";
   static const String privacyPolicyEndPoint = "/privacy/";
   static const String termsConditionsEndPoint = "/terms";
   static const String aboutUsEndPoint = "/about";
