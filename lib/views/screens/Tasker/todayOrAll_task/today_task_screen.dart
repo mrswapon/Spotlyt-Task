@@ -43,20 +43,24 @@ class TodayOrAllTaskScreen extends StatelessWidget {
                     .taskerHomeModelToday.value.data?.attributes?.tasks![index]
                 : _taskerHomeController
                     .taskerHomeModelAll.value.data?.attributes?.tasks?[index];
-            DateTime? createdAt = taskData?.createdAt;
-            var formattedDate = createdAt != null
-                ? DateFormat.yMMMMd().add_jms().format(createdAt)
-                : 'Unknown';
+            var date = taskData?.createdAt;
+            var formatDate = '';
+            if (date != null) {
+              formatDate =
+                  DateFormat('EEEE dd MMM, yyyy').format(date);
+            } else {
+              null;
+            }
             return Padding(
               padding: EdgeInsets.only(bottom: 16.h),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoutes.homeCardDetails);
+                  Get.toNamed(AppRoutes.taskerTaskDetailsScreen, arguments : taskData);
                 },
                 child: TaskerTaskCard(
                   amount: "R2000",
                   faceBookPost: "${taskData?.name}",
-                  date: formattedDate,
+                  date: "$formatDate",
                   postLink: taskData?.taskLink,
                 ),
               ),

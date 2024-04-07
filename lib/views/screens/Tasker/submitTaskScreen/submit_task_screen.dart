@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
 import '../../../../controller/submitController/submit_controller.dart';
 import '../../../../routes/app_routes.dart';
 import '../../../../utils/app_colors.dart';
@@ -26,6 +29,9 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
   ShowImagePicker showImagePicker = ShowImagePicker();
   final TextEditingController _taskNameController = TextEditingController();
   final TextEditingController _taskCategoryController = TextEditingController();
+  final  _taskerHomeController= Get.put(TaskerHomeController());
+
+  var parameter = Get.parameters;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +127,8 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                 CustomButton(
                     title: AppString.submitTask,
                     onpress: () {
-                      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+                      print("==============> ddd ${parameter['taskId']}");
+                      _taskerHomeController.summitTask("${parameter['taskId']}", widget.submitController.selectedImage as File);
                     }),
                 SizedBox(height: 54.h),
               ],

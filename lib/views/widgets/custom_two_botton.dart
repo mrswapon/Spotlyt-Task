@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Tasker_controller/tasker_task_controller.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_dimentions.dart';
@@ -10,8 +11,9 @@ import 'custom_text.dart';
 class CustomTwoBotton extends StatelessWidget {
   CustomTwoBotton({super.key});
 
-  RxBool isSelected = true.obs;
 
+
+  final _taskerTaskController = Get.put(TaskerTaskController());
 
 
   @override
@@ -29,13 +31,13 @@ class CustomTwoBotton extends StatelessWidget {
             flex: 1,
             child: Obx(() => GestureDetector(
                   onTap: () {
-                    isSelected(true);
+                    _taskerTaskController.isSelected(true);
                   },
 
                   ///---------------------------Submitted botton----------------------->
                   child: Container(
                     decoration: BoxDecoration(
-                        color: isSelected.value
+                        color: _taskerTaskController.isSelected.value
                             ? AppColors.primaryColor
                             : Colors.white,
                         borderRadius: BorderRadius.only(
@@ -45,7 +47,7 @@ class CustomTwoBotton extends StatelessWidget {
                       child: CustomText(
                         text: AppString.submitted,
                         fontsize: 20.h,
-                        color: isSelected.value
+                        color: _taskerTaskController.isSelected.value
                             ? Colors.white
                             : AppColors.primaryColor,
                         fontWeight: FontWeight.w500,
@@ -58,13 +60,13 @@ class CustomTwoBotton extends StatelessWidget {
             flex: 1,
             child: Obx(() => GestureDetector(
                   onTap: () {
-                    isSelected(false);
+                    _taskerTaskController.isSelected(false);
                   },
 
                   ///-------------------------- completed botton----------------------->
                   child: Container(
                     decoration: BoxDecoration(
-                        color: isSelected.value
+                        color: _taskerTaskController.isSelected.value
                             ? Colors.white
                             : AppColors.primaryColor,
                         borderRadius: BorderRadius.only(
@@ -74,7 +76,7 @@ class CustomTwoBotton extends StatelessWidget {
                       child: CustomText(
                         text: AppString.completed,
                         fontsize: 20.h,
-                        color: isSelected.value
+                        color: _taskerTaskController.isSelected.value
                             ? AppColors.primaryColor
                             : Colors.white,
                         fontWeight: FontWeight.w500,

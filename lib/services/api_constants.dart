@@ -1,23 +1,25 @@
 class ApiConstants{
-  static const String baseUrl = "http://103.145.138.54:3232";
-  static const String signUpEndPoint = "/v1/auth/register";
-  static const String forgot = "/v1/auth/forgot-password";
-  static const String otpVerifyEndPoint = "/v1/auth/verify-email";
-  static const String requesterTaskService = "/v1/tasks/service";
-  static const String loginEndPoint = "/v1/auth/login";
-  static const String forgotPasswordEndPoint = "/v1/auth/forgot-password";
-  static const String changePasswordEndPoint = "/v1/auth/change-password";
-  static const String resetPasswordEndPoint = "/v1/auth/reset-password";
-  static const String nidverifyEndPoint = "/v1/users/verifyNid";
-  static const String inviteandEernEndPoint = "/v1/referral/my";
-  static const String withdrawEidPoint = "/v1/withdrawal";
-  static const String requesterSubmitTaskEndPoint = "/v1/tasks";
-  static const String privacyPolicyEndPoint = "/v1/privacy/";
-  static const String termsConditionsEndPoint = "/v1/terms";
-  static const String aboutUsEndPoint = "/v1/about";
-  static  String profileEndPoint(String id) => "/v1/users/$id";
+  static const String baseUrl = "http://103.145.138.54:3232/v1/";
+  static const String signUpEndPoint = "/auth/register";
+  static const String forgot = "/auth/forgot-password";
+  static const String otpVerifyEndPoint = "/auth/verify-email";
+  static const String requesterTaskService = "/tasks/service";
+  static const String loginEndPoint = "/auth/login";
+  static const String forgotPasswordEndPoint = "/auth/forgot-password";
+  static const String changePasswordEndPoint = "/auth/change-password";
+  static const String resetPasswordEndPoint = "/auth/reset-password";
+  static const String nidverifyEndPoint = "/users/verifyNid";
+  static const String inviteandEernEndPoint = "/referral/my";
+  static const String withdrawEidPoint = "/withdrawal";
+  static const String requesterSubmitTaskEndPoint = "/tasks";
+  static  String taskRegisterEndPoint = "/tasks/register";
+  static String allTaskGetApi(String status)=>"/v1/tasks/register?status=$status";
+  static const String privacyPolicyEndPoint = "/privacy/";
+  static const String termsConditionsEndPoint = "/terms";
+  static const String aboutUsEndPoint = "/about";
+  static  String profileEndPoint(String id) => "/users/$id";
 
 
   ///======================tasker end point==========================>
-  static const String taskerHomeEidPoint = "/v1/tasks/home";
+  static const String taskerHomeEidPoint = "/tasks/home";
 }
