@@ -19,9 +19,11 @@ class CustomTwoBotton extends StatelessWidget {
       height: 44.h,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.red,
+          // color: Colors.red,
           borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(color: AppColors.primaryColor)),
+          // border: Border.all(color: AppColors.primaryColor)
+      ),
+
       child: Row(
         children: [
           Expanded(

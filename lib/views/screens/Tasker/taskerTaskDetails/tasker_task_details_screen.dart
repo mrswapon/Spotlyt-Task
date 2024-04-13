@@ -14,14 +14,15 @@ class TaskerTaskDetailsScreen extends StatefulWidget {
   const TaskerTaskDetailsScreen({super.key});
 
   @override
-  State<TaskerTaskDetailsScreen> createState() => _TaskerTaskDetailsScreenState();
+  State<TaskerTaskDetailsScreen> createState() =>
+      _TaskerTaskDetailsScreenState();
 }
 
 class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
-  final  _taskerHomeController= Get.put(TaskerHomeController());
+  final _taskerHomeController = Get.put(TaskerHomeController());
 
   Map<String, PreviewData> datas = {};
-
+  var parameters = Get.parameters;
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +53,11 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               ),
               //====================> Facebook Post Like Text  <==================
               CustomText(
-                text: "Facebook Post Like",
+                text: "${taskDetails?.name}",
                 fontWeight: FontWeight.w600,
                 bottom: 16.h,
               ),
-        
-        
+
               //=========================> Task price <============================
               CustomText(
                 text: AppString.taskPrice,
@@ -66,14 +66,14 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               ),
               //=========================> Task price Rope <=======================
               SelectableText(
-                "R 0.30",
+                "${taskDetails.price}",
                 style: TextStyle(
                     fontSize: 16.h,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xff0FD726)),
                 textAlign: TextAlign.start,
               ),
-        
+
               ///=====================task link===========================>
               CustomText(
                 text: AppString.taskLink,
@@ -82,37 +82,49 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 top: 16.h,
               ),
               //=========================> Task Link Here <=======================
-          Container(
-            key: const ValueKey("https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk"),
-            margin: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
+              Container(
+                // key: const ValueKey("https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk"),
+                key: parameters['screenType'] == "taskerTaskScreen"
+                    ? ValueKey("${taskDetails?.taskId?.taskLink}")
+                    : ValueKey("${taskDetails?.taskLink}"),
+                margin: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  color: Color(0xfff7f7f8),
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  child: LinkPreview(
+                    enableAnimation: true,
+                    onPreviewDataFetched: (data) {
+                      setState(() {
+                        datas = {
+                          ...datas,
+                          parameters['screenType'] == "taskerTaskScreen"
+                              ? "${taskDetails?.taskId?.taskLink}"
+                              : "${taskDetails?.taskLink}": data,
+                          // "https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk":data,
+                        };
+                      });
+                    },
+                    // previewData: datas['https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk'],
+                    previewData: datas[
+                        parameters['screenType'] == "taskerTaskScreen"
+                            ? "${taskDetails?.taskId?.taskLink}"
+                            : "${taskDetails?.taskLink}"],
+                    // text:"https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk",
+                    text: parameters['screenType'] == "taskerTaskScreen"
+                        ? "${taskDetails?.taskId?.taskLink}"
+                        : "${taskDetails?.taskLink}",
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                ),
               ),
-              color: Color(0xfff7f7f8),
-            ),
-            child: ClipRRect(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(20),
-              ),
-              child: LinkPreview(
-                enableAnimation: true,
-                onPreviewDataFetched: (data) {
-                  setState(() {
-                    datas = {
-                      ...datas,
-                      "https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk":data,
-                    };
-                  });
-                },
-                previewData: datas['https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk'],
-                text:"https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk",
-                width: MediaQuery.of(context).size.width,
-              ),
-            ),
-          ),
-        
-        
+
               // SelectableText(
               //   "https://www.Facebook.com/Image \nPost",
               //   style: TextStyle(
@@ -137,10 +149,13 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               //SizedBox(height: 24.h),
 
               //=========================> Submit Task Button <===================
-              CustomButton(
+              parameters['screenType'] == "taskerTaskScreen" ? const SizedBox() :  CustomButton(
                   title: AppString.taskRegisterNow,
                   onpress: () {
-                      _taskerHomeController.taskRegister("${taskDetails.name}", taskDetails.id, "${taskDetails.price}");
+                    _taskerHomeController.taskRegister(
+                        "${taskDetails.name}",
+                        "${taskDetails?.id}",
+                        "${taskDetails.price}");
                   }),
               SizedBox(height: 54.h)
             ],
