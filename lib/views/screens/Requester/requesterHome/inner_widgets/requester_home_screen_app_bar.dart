@@ -35,7 +35,7 @@ class RequesterHomeScreenAppBar extends StatelessWidget {
               : CircleAvatar(
                   radius: 20.r,
                   backgroundImage: NetworkImage(
-                      "${ApiConstants.baseUrl}/${_profileData.image?.url}"),
+                      "${ApiConstants.imageBaseUrl}${_profileData.image?.url}"),
                 ),
           SizedBox(
             width: 12.w,

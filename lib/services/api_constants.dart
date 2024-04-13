@@ -24,6 +24,8 @@ class ApiConstants{
   static  String profileEndPoint(String id) => "/users/$id";
   static String interestApi="/users/interest";
 
+  ///  requester task api
+  static String requesterTaskApi(String status,String page )=>"/tasks?status=$status&page=$page";
 
   ///======================tasker end point==========================>
   static const String taskerHomeEidPoint = "/tasks/home";
