@@ -96,24 +96,26 @@ class AuthController extends GetxController {
     Response response= await ApiClient.postData(ApiConstants.loginEndPoint,json.encode(body),headers: headers);
     print("====> ${response.body}");
     if(response.statusCode==200){
+
       await  PrefsHelper.setString(AppConstants.bearerToken,response.body['data']['attributes']['tokens']['access']['token']);
       await  PrefsHelper.setString(AppConstants.id,response.body['data']['attributes']['user']['id']);
 
-      await PrefsHelper.setBool(AppConstants.isLogged, true);
       String userRole = response.body['data']['attributes']['user']['role'];
       await PrefsHelper.setString(AppConstants.role, userRole);
 
 
-      if(userRole == "client"){
+      if(userRole == Role.employee.name){
         if(response.body['data']['attributes']['user']['isInterest']){
-          Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+          Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+          await PrefsHelper.setBool(AppConstants.isLogged, true);
         }else{
           Get.offAllNamed(AppRoutes.addInterestScreen);
         }
-
-      }else{
-        Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+      }else if(userRole == Role.client.name){
+        Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+        await PrefsHelper.setBool(AppConstants.isLogged, true);
       }
+
       print("====================================================Sagor ");
       signInEmailCtrl.clear();
       signInPassCtrl.clear();

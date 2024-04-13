@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:spotlyt_task/helpers/prefs_helper.dart';
+import 'package:spotlyt_task/models/interest_model.dart';
 import 'package:spotlyt_task/utils/app_constant.dart';
 import '../../routes/app_routes.dart';
 import '../../services/api_checker.dart';
@@ -17,24 +19,42 @@ class ServiceController extends GetxController {
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
   final addLinkCtrl = TextEditingController();
+  final quantityCtrl = TextEditingController();
   RxInt selectedCategoryIndex = 0.obs;
+
   RxInt selectedServiceIndex = 0.obs;
   RxString interest = "".obs;
-  RxDouble quantity = 1000.0.obs;
-  double totalPayable = 0;
+  RxDouble totalPayable = 0.0.obs;
 
-//==================================> Increment Counter Method <================================
-  incrementQuantity() {
-    quantity.value += 1000;
+  void calculateTotalPrice(double price) {
+    int? quantity = int.tryParse(quantityCtrl.text);
+    if (quantity != null) {
+      totalPayable.value = quantity * price;
+      debugPrint("Total Price :${totalPayable.value}");
+    } else {
+      // Handle invalid quantity input
+      totalPayable.value = 0.0;
+    }
   }
 
-//==================================> Decrement Counter Method <================================
-  Future decrementQuantity() async {
-    if (quantity > 1000) {
-      quantity.value -= 1000;
-    } else {
-      print('Counter cannot be decremented further.');
+//==================================> Get Interested <================================
+
+  RxList<Interest> interestList = <Interest>[].obs;
+  late Interest selectInterest;
+
+  var loading=false.obs;
+
+  getInterest()async{
+    loading(true);
+    var response = await ApiClient.getData(ApiConstants.interestApi);
+    if(response.statusCode==200){
+      interestList.value=List<Interest>.from(response.body['data']['attributes'].map((item) => Interest.fromJson(item)));
+      loading(false);
+    }else{
+      ApiChecker.checkApi(response);
     }
+
+
   }
 
   void setSelectedCategory(int index) {
@@ -42,32 +62,24 @@ class ServiceController extends GetxController {
   }
 //==================================> Submit Task Method <================================
 
-  requesterSubmitTask(String taskName, serviceId,price) async {
-
-    try {
-      var body = {
-        "name": taskName,
-        "taskLink": addLinkCtrl.text,
-        "serviceId":"$serviceId",
-        "quantity": "${quantity.value}",
-        "price": "$price",
-      };
-      print('=============================> $body');
-      Response response = await ApiClient.postData(
-          ApiConstants.requesterSubmitTaskEndPoint,body);
-
-      print("============> ${response.body} and ==> ${response.statusCode}");
-      if (response.statusCode == 201 || response.statusCode == 200) {
-        Fluttertoast.showToast(msg: response.body['message']);
-      } else {
-        ApiChecker.checkApi(response);
-      }
-    } catch (e, s) {
-      print("===> error : $e");
-      print("===> error : $s");
+  requesterSubmitTask(String taskName, serviceId, price) async {
+    var body = {
+      "name": taskName,
+      "taskLink": addLinkCtrl.text,
+      "serviceId": "$serviceId",
+      "quantity": quantityCtrl.text,
+      "price": "$price",
+    };
+    print('=============================> $body');
+    Response response = await ApiClient.postData(
+        ApiConstants.requesterSubmitTaskEndPoint, body);
+    print("============> ${response.body} and ==> ${response.statusCode}");
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      Fluttertoast.showToast(msg: response.body['message']);
+    } else {
+      ApiChecker.checkApi(response);
     }
   }
-
 
   //===================> Picked Start Date TimeLine Function <==================
   Future<void> startDate(BuildContext context) async {
@@ -79,9 +91,9 @@ class ServiceController extends GetxController {
     );
     if (pickedDate != null) {
       // setState(() {
-        startDateCtrl.text =
-        "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
-        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      startDateCtrl.text =
+          "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+      // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
       // });
       print('Selected date: ${startDateCtrl.text}');
     }
@@ -97,9 +109,9 @@ class ServiceController extends GetxController {
     );
     if (pickedDate != null) {
       // setState(() {
-        endDateCtrl.text =
-        "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
-        // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+      endDateCtrl.text =
+          "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+      // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
       // });
       print('Selected date: ${endDateCtrl.text}');
     }

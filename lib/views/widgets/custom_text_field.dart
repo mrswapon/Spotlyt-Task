@@ -16,6 +16,9 @@ class CustomTextField extends StatelessWidget {
   final Widget? sufixicons;
   final FormFieldValidator? validator;
   final VoidCallback? ontapPrefix;
+  final String? helperText;
+  final AutovalidateMode? autovalidateMode;
+  final Function(String value)? onChanged;
 
 
   const CustomTextField({
@@ -32,17 +35,21 @@ class CustomTextField extends StatelessWidget {
     this.obscureCharacrter = '*',
     this.filColor,
     this.labelText,
-    this.ontapPrefix
+    this.ontapPrefix,
+    this.helperText,
+    this.autovalidateMode,
+    this.onChanged,
 
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
+      onChanged: onChanged,
       controller: controller,
       keyboardType: keyboardType,
       obscureText: isObscureText!,
+      autovalidateMode: autovalidateMode,
       obscuringCharacter: obscureCharacrter!,
       validator: validator,
       cursorColor: AppColors.primaryColor,
@@ -52,11 +59,13 @@ class CustomTextField extends StatelessWidget {
             horizontal: contenpaddingHorizontal.toDouble(),
             vertical: contenpaddingVertical.toDouble()),
         filled: true,
+
         fillColor: filColor ?? const Color(0xFFFFFFFF),
         prefixIcon: prefixIcon == null ? null : GestureDetector(
             onTap: ontapPrefix,
             child: prefixIcon),
         suffixIcon: sufixicons,
+        helperText: helperText,
         prefixIconConstraints: BoxConstraints(minHeight: 24.w, minWidth: 24.w),
         errorStyle: const TextStyle(color: Colors.red),
         suffixIconColor: AppColors.primaryColor,
