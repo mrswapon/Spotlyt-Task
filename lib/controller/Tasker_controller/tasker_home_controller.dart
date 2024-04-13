@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
