@@ -222,7 +222,7 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
             CustomButton(
                 title: "Continue",
                 onpress: () {
-                  Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+                  Get.offAllNamed(AppRoutes.taskerBottomNavBar);
                 }),
 
             SizedBox(height: 44.h)
