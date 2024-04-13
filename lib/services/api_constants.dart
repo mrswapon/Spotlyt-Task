@@ -1,5 +1,5 @@
 class ApiConstants{
-  static const String baseUrl = "http://103.145.138.54:3232/v1/";
+  static const String baseUrl = "http://103.145.138.54:3232/v1";
   static const String imageBaseUrl="http://103.145.138.54:3232/";
 
 
@@ -22,6 +22,7 @@ class ApiConstants{
   static const String termsConditionsEndPoint = "/terms";
   static const String aboutUsEndPoint = "/about";
   static  String profileEndPoint(String id) => "/users/$id";
+  static String interestApi="/users/interest";
 
 
   ///======================tasker end point==========================>
