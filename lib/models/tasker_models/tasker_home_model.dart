@@ -36,7 +36,7 @@ class Data {
 
 class Attributes {
   final List<Task>? tasks;
-  final int? page;
+  final String? page;
   final int? limit;
   final int? totalPages;
   final int? totalResults;

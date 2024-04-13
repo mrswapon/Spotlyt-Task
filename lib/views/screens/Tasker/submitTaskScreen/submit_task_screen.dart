@@ -128,7 +128,7 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                     title: AppString.submitTask,
                     onpress: () {
                       print("==============> ddd ${parameter['taskId']}");
-                      _taskerHomeController.summitTask("${parameter['taskId']}", widget.submitController.selectedImage as File);
+                      _taskerHomeController.submitTask("${parameter['taskId']}", widget.submitController.selectedImage as File);
                     }),
                 SizedBox(height: 54.h),
               ],

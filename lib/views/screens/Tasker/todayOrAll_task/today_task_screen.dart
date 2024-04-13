@@ -10,11 +10,21 @@ import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
 
 class TodayOrAllTaskScreen extends StatelessWidget {
-  TodayOrAllTaskScreen({super.key});
+
 
   final _taskerHomeController = Get.put(TaskerHomeController());
-
   var parameter = Get.parameters;
+  ScrollController scrollController = ScrollController();
+
+  TodayOrAllTaskScreen() {
+    /// loading new data when the user scrolls down
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        _taskerHomeController.loadMore();
+      }
+    });
+  }
 
   ///=============================Show today task or All Task Screen with screen Type==========================>
   ///===================This is got from Getx parameter=========================>
@@ -32,6 +42,7 @@ class TodayOrAllTaskScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
         child: ListView.builder(
+          controller: scrollController,
           itemCount: parameter['screenType'] == "todaysTask"
               ? _taskerHomeController
                   .taskerHomeModelToday.value.data?.attributes?.tasks?.length
@@ -60,7 +71,7 @@ class TodayOrAllTaskScreen extends StatelessWidget {
                 child: TaskerTaskCard(
                   amount: "R2000",
                   faceBookPost: "${taskData?.name}",
-                  date: "$formatDate",
+                  date: formatDate,
                   postLink: taskData?.taskLink,
                 ),
               ),
