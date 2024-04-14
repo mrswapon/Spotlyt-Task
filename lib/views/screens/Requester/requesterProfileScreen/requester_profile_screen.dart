@@ -144,7 +144,7 @@ class RequesterProfileScreen extends StatelessWidget {
                           showDialog(
                               context: context,
                               builder: (context) {
-                                return AleartDialog();
+                                return LogoutDialog();
                               });
                         },
                         title: AppString.logOut,

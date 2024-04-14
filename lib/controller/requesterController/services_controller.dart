@@ -5,23 +5,24 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/models/interest_model.dart';
-import 'package:spotlyt_task/utils/app_constant.dart';
-import '../../routes/app_routes.dart';
+import 'package:spotlyt_task/services/payment_service.dart';
 import '../../services/api_checker.dart';
 import '../../services/api_client.dart';
 import '../../services/api_constants.dart';
-import '../../utils/app_icons.dart';
-import 'requester_home_controller.dart';
+import '../../views/screens/payments/cancel_payment.dart';
+import '../../views/screens/payments/error_payment.dart';
+import '../../views/screens/payments/payment_web_view.dart';
+import '../../views/screens/payments/success_payment.dart';
+
 
 class ServiceController extends GetxController {
+  PaymentService paymentService= PaymentService();
   final startDateCtrl = TextEditingController();
   final endDateCtrl = TextEditingController();
   final addLinkCtrl = TextEditingController();
   final quantityCtrl = TextEditingController();
   RxInt selectedCategoryIndex = 0.obs;
-
   RxInt selectedServiceIndex = 0.obs;
   RxString interest = "".obs;
   RxDouble totalPayable = 0.0.obs;
@@ -80,6 +81,41 @@ class ServiceController extends GetxController {
       ApiChecker.checkApi(response);
     }
   }
+
+  ///  payment Ozow
+var paymentLoading=false.obs;
+
+  makePayment(String taskName, serviceId, price)async{
+    paymentLoading(true);
+    var data = {
+      "name": taskName,
+      "taskLink": addLinkCtrl.text,
+      "serviceId": "$serviceId",
+      "quantity": quantityCtrl.text,
+      "price": "$price",
+    };
+
+    var response= await paymentService.makePaymentRequest(amount:0.08, serviceInfo: data,);
+    if(response.runtimeType !=int){
+      var responseData = jsonDecode(response);
+      print(responseData);
+      var successResponseUrl = responseData['url']; // Assuming the URL is in a 'url' field of the response
+      if (successResponseUrl != null && successResponseUrl.isNotEmpty) {
+        //  await launchUrl(Uri.parse(successResponseUrl),mode: LaunchMode.inAppWebView); // Opens successResponseUrl in the default browser
+        Get.to(OzowPaymentUI(paymentLink:successResponseUrl,serviceInfo:data,));
+        print(successResponseUrl);
+      } else {
+        print('No valid URL found in the response.');
+      }
+    }
+    paymentLoading(false);
+
+
+
+  }
+
+
+
 
   //===================> Picked Start Date TimeLine Function <==================
   Future<void> startDate(BuildContext context) async {

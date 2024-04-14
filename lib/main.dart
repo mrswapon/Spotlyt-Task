@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Spotlyt Task',
               theme: Themes().lightTheme,
-              darkTheme: Themes().darkTheme,
+            //  darkTheme: Themes().darkTheme,
               initialRoute: AppRoutes.splashScreen,
               getPages: AppRoutes.routes,
               home: SplashScreen(),

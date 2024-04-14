@@ -85,7 +85,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+   //   resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: CustomText(
           text: AppString.requestForServices,
@@ -413,25 +413,28 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   ),
 
                   ///--------------------------Continue botton-------------------------------->
-                  CustomButton(
-                      title: "Continue",
-                      onpress: () {
-                        if (_formKey.currentState!.validate()) {
-                          _serviceController.requesterSubmitTask(
-                            "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
-                            attributes.sId,
-                            attributes
-                                    .categories![_serviceController
-                                        .selectedCategoryIndex.value]
-                                    .service![_serviceController
-                                        .selectedServiceIndex.value]
-                                    .price ??
-                                0.0,
-                          );
-                        } else {
-                          print('enter the link');
-                        }
-                      }),
+                  Obx(()=>
+                     CustomButton(
+                       loading: _serviceController.paymentLoading.value,
+                        title: "Continue",
+                        onpress: () {
+                          if (_formKey.currentState!.validate()) {
+                            _serviceController.makePayment(
+                              "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
+                              attributes.sId,
+                              attributes
+                                      .categories![_serviceController
+                                          .selectedCategoryIndex.value]
+                                      .service![_serviceController
+                                          .selectedServiceIndex.value]
+                                      .price ??
+                                  0.0,
+                            );
+                          } else {
+                            print('enter the link');
+                          }
+                        }),
+                  ),
 
                   SizedBox(height: 50.h)
                 ],

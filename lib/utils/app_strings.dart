@@ -66,7 +66,7 @@ class AppString {
   static String  inviteFriends = "Invite Friends";
   static String  inviteYourFriends = "Invite your friends and get Rand 1.0";
   static String  shareTheLink = "Share the link below or ask them to enter it during they signup. Earn when your friend signs up on our app.";
-  static String  youAreSure = "You sure want to log out your profile?";
+  static String  youAreSure = "Are you sure that you want to log out?";
   static String  submitTask = "Submit Task";
   static String  taskCompleted = "Task Completed";
   static String  taskName = "Task Name";

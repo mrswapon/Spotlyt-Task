@@ -56,6 +56,8 @@ dependencies:
   connectivity_plus: ^5.0.2
   intl:
   flutter_link_previewer: ^3.2.2
+  webview_flutter: ^4.7.0
+  crypto: ^3.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
