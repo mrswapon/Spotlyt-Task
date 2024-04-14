@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -11,8 +10,8 @@ import '../../../../../utils/app_strings.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_text.dart';
 
-class AleartDialog extends StatelessWidget {
-  const AleartDialog({
+class LogoutDialog extends StatelessWidget {
+  const LogoutDialog({
     super.key,
   });
 
@@ -21,53 +20,50 @@ class AleartDialog extends StatelessWidget {
     return AlertDialog(
         backgroundColor: Colors.white,
         contentPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 26.h),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomText(
-              text: AppString.youAreSure,
-              fontsize: 16.sp,
-              maxline: 3,
-              color: Colors.black,
-              fontName: 'Lato',
-              fontWeight: FontWeight.w500,
-            ),
-            SizedBox(height: 24.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                    width: 120.w,
-                    child: Center(
-                      child: CustomButton(
-                        title: 'Log Out',
-                        fontSize: 16.h,
-                        onpress: () async {
-                          await PrefsHelper.remove(AppConstants.isLogged);
-                          await PrefsHelper.remove(AppConstants.role);
-                          await PrefsHelper.remove(AppConstants.isLogged);
-                          await PrefsHelper.remove(AppConstants.bearerToken);
-                          Get.offAllNamed(AppRoutes.signInScreen);
-                        },
-                        color: Colors.white,
-                        titlecolor: AppColors.primaryColor,
-                      ),
-                    )),
-                SizedBox(
-                    width: 120.w,
-                    child: Center(
-                      child: CustomButton(
-                          title: 'Cancel',
-                          fontSize: 16.h,
-                          color: AppColors.primaryColor,
-                          onpress: () {
-                            Get.back();
-                          }),
-                    )),
-              ],
-            )
-          ],
+        title: Text("Confirm Logout!",style: TextStyle(fontSize: 16.sp,fontWeight:FontWeight.w600),),
+        content: CustomText(
+          text: AppString.youAreSure,
+          fontsize: 16.sp,
+          maxline: 3,
+          color: Colors.black,
+          fontName: 'Lato',
+          fontWeight: FontWeight.w500,
         ),
+        actions: [
+          TextButton(onPressed:(){}, child:Text("No",style: TextStyle(fontSize: 14.sp,color:Colors.grey),)),
+          TextButton(onPressed:(){}, child:Text("Yes",style:TextStyle(fontSize:14.sp,color:AppColors.primaryColor),)),
+          // OutlinedButton(
+          //     style: OutlinedButton.styleFrom(
+          //       shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.circular(8.r),
+          //       ),
+          //       side: const BorderSide(
+          //         color: AppColors.primaryColor,
+          //         width: 1,
+          //       ),
+          //       padding: EdgeInsets.zero,
+          //       minimumSize: Size(120.w, 41.h),
+          //     ),
+          //     onPressed: () {},
+          //     child: Text(
+          //       "Logout",
+          //       style: TextStyle(
+          //           fontSize: 14.sp, color: AppColors.primaryColor),
+          //     )),
+          // SizedBox(width: 20.w,),
+          // ElevatedButton(
+          //     style: ElevatedButton.styleFrom(
+          //         padding: EdgeInsets.zero,
+          //         minimumSize: Size(120.w, 41.h),
+          //         textStyle:
+          //         TextStyle(fontSize: 14.sp, color: Colors.white)),
+          //     child: const Text(
+          //       "Cancel",
+          //     ),
+          //     onPressed: () {
+          //       //Get.back();
+          //     }),
+        ],
         elevation: 12.0,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.r),

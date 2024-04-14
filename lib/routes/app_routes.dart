@@ -18,11 +18,9 @@ import '../views/screens/Tasker/wallet/withdraw_balance_screen.dart';
 import '../views/screens/Tasker/wallet/withdrawal_history.dart';
 import '../views/screens/auth/forgotPasswordScreen/forgot_password_screen.dart';
 import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
-import '../views/screens/auth/selectroleScreen/selectrole_screen.dart';
 import '../views/screens/auth/signInScreen/sign_in_screen.dart';
 import '../views/screens/auth/signUpScreen/sign_up_screen.dart';
 import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
-import '../views/screens/payments/payment_screen.dart';
 import '../views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 import '../views/screens/profile/updateProfileScreen/update_profile_screen.dart';
 import '../views/screens/settings/aboutusScreen/aboutus_screen.dart';
@@ -34,7 +32,6 @@ import '../views/screens/splashScreen/splash_screen.dart';
 
 
 class AppRoutes {
-  static const String selectroleScreen = "/selectrole_screen.dart";
   static const String signUpScreen = "/sign_up_screen.dart";
   static const String verifyOtpScreen = "/verify_otp_screen.dart";
   static const String signInScreen = "/sign_in_screen.dart";
@@ -71,7 +68,6 @@ class AppRoutes {
 
 
   static List<GetPage> get routes => [
-        GetPage(name: selectroleScreen, page: () => SelectroleScreen()),
         GetPage(name: signUpScreen, page: () => SignUpScreen()),
         GetPage(name: verifyOtpScreen, page: () => VerifyOtpScreen()),
         GetPage(name: signInScreen, page: () => SignInScreen()),
@@ -88,7 +84,6 @@ class AppRoutes {
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen(), transition: Transition.cupertinoDialog, transitionDuration: const Duration(milliseconds: 450)),
         GetPage(name: profileScreen, page: () => RequesterProfileScreen()),
         GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen(), transition: Transition.cupertinoDialog, transitionDuration: const Duration(milliseconds: 450)),
-        GetPage(name: paymentScreen, page: () => PaymentScreen()),
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
         GetPage(name: requesterTaskDetailsScreen, page: () => RequesterTaskDetailsScreen()),
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
