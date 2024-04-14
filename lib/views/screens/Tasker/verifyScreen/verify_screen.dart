@@ -21,35 +21,30 @@ class VerifyScreen extends StatefulWidget {
 
 class _VerifyScreenState extends State<VerifyScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
- final ProfileController _profileController = Get.put(ProfileController());
+  final ProfileController _profileController = Get.put(ProfileController());
 
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
-
-
-
-
   @override
   void initState() {
-
     initProfileData();
-     super.initState();
+    super.initState();
   }
 
-  initProfileData(){
-    var data=_profileController.profileModel.value;
-    _fullNameController.text =data.fullName!;
+  initProfileData() {
+    var data = _profileController.profileModel.value;
+    _fullNameController.text = data.fullName!;
     _emailController.text = data.email!;
-    _phoneController.text = data.phoneNumber != null ? data.phoneNumber.toString() : "";
+    _phoneController.text =
+        data.phoneNumber != null ? data.phoneNumber.toString() : "";
     _addressController.text = data.address ?? "";
-
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
@@ -63,7 +58,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       ),
       body: Obx(() {
         _profileController.profileModel.value;
-      return  SingleChildScrollView(
+        return SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: Dimensions.paddingSizeLarge),
@@ -105,37 +100,46 @@ class _VerifyScreenState extends State<VerifyScreen> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 16.h),
-                          //===============================> Phone Number Text-field <===============================
-                          CustomTextField(
-                            keyboardType: TextInputType.number,
-                            contenpaddingHorizontal: 16.w,
-                            contenpaddingVertical: 14.h,
-                            controller: _phoneController,
-                            prefixIcon: _customIcons(AppIcons.phone),
-                            hintText: AppString.phoneNumber,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter your phone number";
-                              }
-                              return null;
-                            },
-                          ),
-                          //===============================> Address Text-field <===============================
-                          SizedBox(height: 16.h),
-                          CustomTextField(
-                            contenpaddingHorizontal: 16.w,
-                            contenpaddingVertical: 14.h,
-                            controller: _addressController,
-                            prefixIcon: _customIcons(AppIcons.location),
-                            hintText: AppString.address,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter your address";
-                              }
-                              return null;
-                            },
-                          ),
+
+                          _profileController.profileModel.value.phoneNumber == null
+                              ? const SizedBox()
+                              : Column(
+                                  children: [
+                                    SizedBox(height: 16.h),
+                                    //===============================> Phone Number Text-field <===============================
+                                    CustomTextField(
+                                      keyboardType: TextInputType.number,
+                                      contenpaddingHorizontal: 16.w,
+                                      contenpaddingVertical: 14.h,
+                                      controller: _phoneController,
+                                      prefixIcon: _customIcons(AppIcons.phone),
+                                      hintText: AppString.phoneNumber,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return "Please enter your phone number";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    //===============================> Address Text-field <===============================
+                                    SizedBox(height: 16.h),
+                                    CustomTextField(
+                                      contenpaddingHorizontal: 16.w,
+                                      contenpaddingVertical: 14.h,
+                                      controller: _addressController,
+                                      prefixIcon:
+                                          _customIcons(AppIcons.location),
+                                      hintText: AppString.address,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return "Please enter your address";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                  ],
+                                ),
+
                           //===============================> Nid Number Text-field <===============================
                           SizedBox(height: 16.h),
                           CustomTextField(
@@ -183,7 +187,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       padding: EdgeInsets.symmetric(horizontal: 21.w),
       child: SvgPicture.asset(
         icon,
-         color: AppColors.primaryColor,
+        color: AppColors.primaryColor,
         height: 24.h,
         width: 24.w,
       ),

@@ -23,6 +23,7 @@ class ApiConstants{
   static const String aboutUsEndPoint = "/about";
   static  String profileEndPoint(String id) => "/users/$id";
   static String interestApi="/users/interest";
+  static String walletEndPoint = "/withdrawal/my";
 
   ///  requester task api
   static String requesterTaskApi(String status,String page )=>"/tasks?status=$status&page=$page";
