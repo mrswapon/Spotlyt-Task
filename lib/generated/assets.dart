@@ -55,7 +55,7 @@ class Assets {
   static const String iconsTravel = 'assets/icons/travel.svg';
   static const String iconsTrems = 'assets/icons/trems.svg';
   static const String iconsWallet = 'assets/icons/wallet.svg';
-  static const String iconsWithDrawalIcon = 'assets/icons/withDrawIcon.svg';
+  static const String iconsWithDrawIcon = 'assets/icons/withDrawIcon.svg';
   static const String iconsYoutube = 'assets/icons/youtube.svg';
   static const String imagesAppLogo = 'assets/images/appLogo.png';
   static const String imagesCardBgImage = 'assets/images/cardBgImage.png';

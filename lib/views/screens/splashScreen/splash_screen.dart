@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
             //=======================================> App Logo Section <==========================================
             child: Center(
                 child:
-                    Image.asset(AppImages.appLogo, width: 168.w, height: 48.h)),
+                    Image.asset(AppImages.appLogo, width: 168.w, height: 48.h,color: Colors.white,)),
           ),
         ],
       ),
