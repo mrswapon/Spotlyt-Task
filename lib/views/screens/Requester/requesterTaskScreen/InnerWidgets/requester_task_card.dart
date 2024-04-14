@@ -117,16 +117,16 @@ class RequesterTaskCard extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.r),
                       color: AppColors.primaryColor),
-                  child: CustomText(
-                    text: postLink ?? "https://www.Facebook.com/Image \n Post",
-                    color: Colors.white,
-                    fontsize: 12.h,
-                    textAlign: TextAlign.start,
-                    maxline: 10,
-                    top: 10.h,
-                    bottom: 10.h,
-                    left: 16.w,
-                    right: 16.w,
+                  child: Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                    child: CustomText(
+                      text: postLink ?? "https://www.Facebook.com/Image \n Post",
+                      color: Colors.white,
+                      fontsize: 12.h,
+                      textAlign: TextAlign.start,
+                      textOverflow: TextOverflow.ellipsis,
+                      maxline: 2,
+                    ),
                   ),
                 )
               ],
