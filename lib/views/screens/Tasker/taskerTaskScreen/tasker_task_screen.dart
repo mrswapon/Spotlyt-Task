@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:intl/intl.dart';
 import 'package:spotlyt_task/controller/Tasker_controller/tasker_task_controller.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
@@ -19,6 +20,7 @@ class TaskerTaskScreen extends StatelessWidget {
   TaskerTaskScreen({super.key});
 
   final _taskerTaskController = Get.put(TaskerTaskController());
+  RxInt tabBarIndex = 0.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +45,17 @@ class TaskerTaskScreen extends StatelessWidget {
             ///=======================On Tap Tap Bar =============================>
             onTap: (value) {
               if(value == 0){
+                tabBarIndex.value = 0;
                 _taskerTaskController.isSelected(true);
                 _taskerTaskController.setStatus("pending");
                 _taskerTaskController.taskerTaskGet();
               }else if(value ==1){
+                tabBarIndex.value = 1;
                 _taskerTaskController.isSelected(true);
                 _taskerTaskController.setStatus("submitted");
                 _taskerTaskController.taskerTaskGet();
               }else if(value == 2){
+                tabBarIndex.value = 2;
                 _taskerTaskController.isSelected(true);
                 _taskerTaskController.setStatus("Completed");
                 _taskerTaskController.taskerTaskGet();
@@ -114,8 +119,11 @@ class TaskerTaskScreen extends StatelessWidget {
                                   bottom: 16.h, top: index == 0 ? 16.h : 0),
                               child: GestureDetector(
                                   onTap: () {
+                                    print("============sId ${taskerTask?.sId}");
                                     Get.toNamed(AppRoutes.taskerTaskDetailsScreen ,arguments: taskerTask, parameters: {
-                                      "screenType" : "taskerTaskScreen"
+                                      "screenType" : "taskerTaskScreen",
+                                      'tabBarIndex' : '$tabBarIndex',
+                                      'sId' : "${taskerTask?.sId}",
                                     });
                                   },
                                   child: TaskerTaskCard(

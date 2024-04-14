@@ -69,7 +69,7 @@ class TodayOrAllTaskScreen extends StatelessWidget {
                   Get.toNamed(AppRoutes.taskerTaskDetailsScreen, arguments : taskData);
                 },
                 child: TaskerTaskCard(
-                  amount: "R2000",
+                  amount: "R${taskData?.price}",
                   faceBookPost: "${taskData?.name}",
                   date: formatDate,
                   postLink: taskData?.taskLink,

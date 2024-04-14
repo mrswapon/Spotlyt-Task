@@ -4,18 +4,29 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:intl/intl.dart';
+import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
+import 'package:spotlyt_task/controller/Tasker_controller/wallet_controller.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_strings.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
+import 'package:spotlyt_task/views/widgets/custom_loader.dart';
 import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../../utils/app_icons.dart';
 
 class TaskerWalletScreen extends StatelessWidget {
-  const TaskerWalletScreen({super.key});
+  TaskerWalletScreen({super.key});
+
+  final WalletController _walletController = Get.put(WalletController());
+  final ProfileController _profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    _walletController.walletModel;
+    var walletLength =
+        _walletController.walletModel.value.data?.attributes?.length ?? 0;
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
@@ -44,7 +55,7 @@ class TaskerWalletScreen extends StatelessWidget {
                 children: [
                   CustomText(text: AppString.totalBalance, fontsize: 24.h),
                   CustomText(
-                      text: "R 55.50",
+                      text: "R ${_profileController.profileModel.value.rand}",
                       fontsize: 30.h,
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor),
@@ -81,7 +92,7 @@ class TaskerWalletScreen extends StatelessWidget {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(4.r),
                       border: Border.all(
                           color: AppColors.primaryColor, width: 1.sp)),
@@ -99,66 +110,94 @@ class TaskerWalletScreen extends StatelessWidget {
             ],
           ),
           //======================> List View Item Section <======================
-          Expanded(
-            child: ListView.builder(
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.h),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppIcons.withDrawIcon,
-                        width: 48.w,
-                        height: 48.h,
-                      ),
-                      SizedBox(width: 12.w),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            text: AppString.withDrawal,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+          Obx(
+            () => _walletController.walletLoading.value
+                ? const CustomLoader()
+                : Expanded(
+                    child: ListView.builder(
+                      itemCount: (_walletController.walletModel.value.data?.attributes?.length ?? 0) <= 3
+                          ? _walletController
+                              .walletModel.value.data?.attributes?.length
+                          : _walletController.walletModel.value.data?.attributes
+                              ?.sublist(0, 3)
+                              .length,
+                      itemBuilder: (context, index) {
+                        var walletData = _walletController
+                            .walletModel.value.data?.attributes![index];
+                        var date = walletData?.createdAt;
+                        var formatDate = '';
+                        if (date != null) {
+                          formatDate =
+                              DateFormat('EEEE dd MMM, yyyy').format(date);
+                        } else {
+                          null;
+                        }
+                        return Padding(
+                          padding: EdgeInsets.symmetric(vertical: 16.h),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                AppIcons.withDrawIcon,
+                                width: 48.w,
+                                height: 48.h,
+                              ),
+                              SizedBox(width: 12.w),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                    text: AppString.withDrawal,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                  ),
+                                  SizedBox(height: 6.h),
+                                  CustomText(
+                                    text: formatDate,
+                                    fontWeight: FontWeight.w500,
+                                    fontsize: 12.h,
+                                    color: Colors.grey,
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  ///==============================withdrawal Amount ======================>
+                                  CustomText(
+                                    text: '-\$${walletData?.withdrawalAmount}',
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.red,
+                                  ),
+                                  SizedBox(height: 6.h),
+
+                                  ///============================Status ===============================>
+                                  CustomText(
+                                    text: '${walletData?.status}',
+                                    fontWeight: FontWeight.w500,
+                                    fontsize: 12.h,
+                                    color: walletData?.status == "Pending"
+                                        ? Colors.red
+                                        : walletData?.status == "Completed"
+                                            ? AppColors.primaryColor
+                                            : Colors.black,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          SizedBox(height: 6.h),
-                          CustomText(
-                            text: '2024 Jan 16',
-                            fontWeight: FontWeight.w500,
-                            fontsize: 12.h,
-                            color: Colors.grey,
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          CustomText(
-                            text: '-\$120',
-                            fontWeight: FontWeight.w600,
-                            color: Colors.red,
-                          ),
-                          SizedBox(height: 6.h),
-                          CustomText(
-                            text: 'Pending',
-                            fontWeight: FontWeight.w500,
-                            fontsize: 12.h,
-                            color: Colors.red,
-                          ),
-                        ],
-                      ),
-                    ],
+                        );
+                      },
+                    ),
                   ),
-                );
-              },
-            ),
           ),
           //========================> Request for withdraw Button <=================
-          CustomButton(title: AppString.requestForWithdraw, onpress: () {
-            Get.toNamed(AppRoutes.withdrawBalanceScreen);
-          }),
-          SizedBox(height: 24.h)
+          CustomButton(
+              title: AppString.requestForWithdraw,
+              onpress: () {
+                Get.toNamed(AppRoutes.withdrawBalanceScreen);
+              }),
+          SizedBox(height: 15.h)
         ]),
       ),
     );

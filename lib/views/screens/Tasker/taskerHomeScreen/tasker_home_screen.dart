@@ -83,7 +83,7 @@ class TaskerHomeScreen extends StatelessWidget {
                   ///----------------------------today's task listview----------------------------->
                   Obx(
                         () => SizedBox(
-                      height: 250.h,
+                      height: 257.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: _taskerHomeController.taskerHomeModelToday.value
@@ -107,7 +107,7 @@ class TaskerHomeScreen extends StatelessWidget {
                               child: TaskerTaskCard(
                                 bgImageheights: 110.h,
                                 weight: 267.w,
-                                taskCompleteAmount: "R ${taskData?.price}",
+                                taskCompleteAmount: "${taskData?.price}",
                                 faceBookPost: taskData?.name,
                                 date: formatDates,
                                 days: "5 Days",
@@ -155,7 +155,7 @@ class TaskerHomeScreen extends StatelessWidget {
                   ///----------------------------Your task listview----------------------------->
                   Obx(
                         () => SizedBox(
-                      height: 250.h,
+                      height: 257.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: _taskerHomeController.taskerHomeModelAll.value.data?.attributes?.tasks?.length,

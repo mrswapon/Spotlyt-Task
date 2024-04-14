@@ -13,6 +13,7 @@ class TaskerHomeController extends GetxController {
   int page = 1;
   var totalPage=(-1);
   var currentPage=(-1);
+  var taskRegId = "".obs;
 
 
   @override
@@ -75,8 +76,8 @@ class TaskerHomeController extends GetxController {
     var body = {"name": name, "taskId": taskId, "price": price};
     var response = await ApiClient.postData(ApiConstants.taskRegisterEndPoint, body);
     if (response.statusCode == 200) {
-      var taskId = response.body['data']['attributes']['_id'];
-      print("==============================> id : $taskId");
+       taskRegId.value = response.body['data']['attributes']['_id'];
+      print("==============================> id for submitted: $taskId");
       Get.offAllNamed(AppRoutes.taskerBottomNavBar);
     }
   }

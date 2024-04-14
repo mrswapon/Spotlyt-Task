@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -49,7 +51,7 @@ class TaskerTaskCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(20.r),
+            padding: EdgeInsets.all(17.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -76,7 +78,7 @@ class TaskerTaskCard extends StatelessWidget {
                     ///-------------------------5 days -------------------------->
                     taskCompleteAmount != null
                         ? CustomText(
-                            text: "$taskCompleteAmount",
+                            text: "R $taskCompleteAmount",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryColor,
@@ -101,7 +103,7 @@ class TaskerTaskCard extends StatelessWidget {
                     ///---------------------------amount not equal null amount text------------------------>
                     amount != null
                         ? CustomText(
-                            text: "$amount",
+                            text: "R $amount",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.black5C5C5C,
@@ -125,16 +127,16 @@ class TaskerTaskCard extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.r),
                       color: AppColors.primaryColor),
-                  child: CustomText(
-                    text: postLink ?? "https://www.Facebook.com/Image \n Post",
-                    color: Colors.white,
-                    fontsize: 12.h,
-                    textAlign: TextAlign.start,
-                    maxline: 10,
-                    top: 10.h,
-                    bottom: 10.h,
-                    left: 16.w,
-                    right: 16.w,
+                  child: Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: 16.w,vertical: 8.h),
+                    child: CustomText(
+                      textOverflow: TextOverflow.ellipsis,
+                      text: postLink ?? "https://www.Facebook.com/Image \n Post",
+                      color: Colors.white,
+                      fontsize: 12.h,
+                      textAlign: TextAlign.start,
+                      maxline: 2,
+                    ),
                   ),
                 )
               ],

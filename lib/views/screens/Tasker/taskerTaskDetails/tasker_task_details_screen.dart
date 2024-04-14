@@ -27,6 +27,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var taskDetails = Get.arguments;
+    print("======================> ${parameters['tabBarIndex']}");
     return Scaffold(
       //=========================> AppBar Section  <============================
       appBar: AppBar(
@@ -66,7 +67,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               ),
               //=========================> Task price Rope <=======================
               SelectableText(
-                "${taskDetails.price}",
+                "R ${taskDetails?.price}" ?? "",
                 style: TextStyle(
                     fontSize: 16.h,
                     fontWeight: FontWeight.w500,
@@ -149,14 +150,21 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               //SizedBox(height: 24.h),
 
               //=========================> Submit Task Button <===================
-              parameters['screenType'] == "taskerTaskScreen" ? const SizedBox() :  CustomButton(
-                  title: AppString.taskRegisterNow,
-                  onpress: () {
-                    _taskerHomeController.taskRegister(
-                        "${taskDetails.name}",
-                        "${taskDetails?.id}",
-                        "${taskDetails.price}");
-                  }),
+              parameters['tabBarIndex'] == '0' ? CustomButton(title: AppString.submitTask, onpress: (){
+                Get.toNamed(AppRoutes.submitTaskScreen, parameters: {
+                  'sId':"${parameters['sId']}"
+                });
+              }) :
+              parameters['screenType'] == "taskerTaskScreen"
+                  ? const SizedBox()
+                  : CustomButton(
+                      title: AppString.taskRegisterNow,
+                      onpress: () {
+                        _taskerHomeController.taskRegister(
+                            "${taskDetails.name}",
+                            "${taskDetails?.id}",
+                            "${taskDetails.price}");
+                      }),
               SizedBox(height: 54.h)
             ],
           ),
