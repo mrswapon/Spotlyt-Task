@@ -54,6 +54,7 @@ dependencies:
 #  internet connection check
   internet_connection_checker: ^1.0.0+1
   connectivity_plus: ^5.0.2
+  lottie: ^3.1.0
   intl:
   flutter_link_previewer: ^3.2.2
   webview_flutter: ^4.7.0
@@ -85,6 +86,7 @@ flutter:
   assets:
      - assets/icons/
      - assets/images/
+     - assets/animation/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

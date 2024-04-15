@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/themes/app_themes.dart';
+import 'package:spotlyt_task/views/screens/payments/cancel_payment.dart';
+import 'package:spotlyt_task/views/screens/payments/failed_payment.dart';
 import 'package:spotlyt_task/views/screens/splashScreen/splash_screen.dart';
 import 'routes/app_routes.dart';
+import 'views/screens/payments/success_payment.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,9 +23,9 @@ class MyApp extends StatelessWidget {
               title: 'Spotlyt Task',
               theme: Themes().lightTheme,
             //  darkTheme: Themes().darkTheme,
-              initialRoute: AppRoutes.splashScreen,
+              initialRoute: AppRoutes.cancelPayment,
               getPages: AppRoutes.routes,
-              home: SplashScreen(),
+              home: CancelPayment(),
             ),
         designSize: const Size(393, 852));
   }

@@ -21,6 +21,9 @@ import '../views/screens/auth/resetPasswordScreen/reset_password_screen.dart';
 import '../views/screens/auth/signInScreen/sign_in_screen.dart';
 import '../views/screens/auth/signUpScreen/sign_up_screen.dart';
 import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
+import '../views/screens/payments/cancel_payment.dart';
+import '../views/screens/payments/failed_payment.dart';
+import '../views/screens/payments/success_payment.dart';
 import '../views/screens/profile/personalInformationScreen/personal_information_screen.dart';
 import '../views/screens/profile/updateProfileScreen/update_profile_screen.dart';
 import '../views/screens/settings/aboutusScreen/aboutus_screen.dart';
@@ -65,6 +68,9 @@ class AppRoutes {
   static const String taskerWalletScreen = "/TaskerWalletScreen.dart";
   static const String withdrawalHistory = "/withdrawal_history.dart";
   static const String withdrawBalanceScreen = "/withdraw_balance_screen";
+  static const String successPayment = "/success_payment";
+  static const String cancelPayment = "/cancel_payment";
+  static const String failedPayment = "/failed_payment";
 
 
   static List<GetPage> get routes => [
@@ -99,5 +105,8 @@ class AppRoutes {
         GetPage(name: taskerWalletScreen, page: () => TaskerWalletScreen()),
         GetPage(name: withdrawalHistory, page: () => WithdrawalHistory()),
         GetPage(name: withdrawBalanceScreen, page: () => WithdrawBalanceScreen()),
+        GetPage(name: successPayment, page: () => SuccessPayment()),
+        GetPage(name: cancelPayment, page: () => CancelPayment()),
+        GetPage(name: failedPayment, page: () => FailedPayment()),
   ];
 }

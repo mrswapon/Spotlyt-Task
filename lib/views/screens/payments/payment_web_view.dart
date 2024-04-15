@@ -51,7 +51,7 @@ initUrl(){
               {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (context) => const SuccessScreen(),
+                    builder: (context) => const SuccessPayment(),
                   ),
                 )
               }
@@ -67,7 +67,7 @@ initUrl(){
                 {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => const CancelScreen(),
+                      builder: (context) => const CancelPayment(),
                     ),
                   )
                 }
