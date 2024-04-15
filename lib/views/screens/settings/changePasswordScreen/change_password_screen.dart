@@ -111,7 +111,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           return "Please set new password";
                         }else if(value.length < 8){
                           return "Password must be at least 8 characters";
-                        }else if(_validatePassword(value)){
+                        }else if(!_validatePassword(value)){
                           return "password must contain at least 1 letter and 1 number";
                         }
                         return null;

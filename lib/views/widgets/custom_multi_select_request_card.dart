@@ -14,7 +14,7 @@ class CustomMultiSelectRequestCard extends StatefulWidget {
 
   List<Service> requestList;
   final Function(int index) onTap;
-  int initSelect;
+  num initSelect;
 
   CustomMultiSelectRequestCard({super.key, required this.requestList,required this.onTap,required this.initSelect});
 

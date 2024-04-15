@@ -123,7 +123,7 @@ class Categories {
 
 class Service {
   String? name;
-  double? price;
+  num? price;
   String? sId;
   String? subTitle;
 

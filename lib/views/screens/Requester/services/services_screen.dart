@@ -169,12 +169,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                           [],
                       onTap: (index) {
                         _serviceController.selectedServiceIndex.value = index;
-                        _serviceController.calculateTotalPrice(attributes
-                            .categories![_serviceController
-                            .selectedCategoryIndex.value]
-                            .service![index]
-                            .price ??
-                            0.0);
+                        _serviceController.calculateTotalPrice(attributes.categories![_serviceController.selectedCategoryIndex.value].service![index].price?.toDouble() ?? 0.0);
                       },
                       initSelect: _serviceController.selectedServiceIndex.value,
                     ),
@@ -213,7 +208,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                          .selectedCategoryIndex.value]
                          .service![_serviceController
                          .selectedServiceIndex.value]
-                         .price ??
+                         .price?.toDouble() ??
                          0.0);
 
                     },
