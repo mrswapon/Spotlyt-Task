@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../widgets/custom_text.dart';
@@ -40,7 +42,11 @@ class SuccessPayment extends StatelessWidget {
             ),
             //=====================> Proceed to Program Button <=======================
             SizedBox(height: 60.h),
-            CustomButton(onpress: () {}, title: 'Proceed to Program')
+            CustomButton(
+                onpress: () {
+                  Get.offAllNamed(AppRoutes.requesterTaskScreen);
+                },
+                title: 'Proceed to Program')
           ],
         ),
       ),

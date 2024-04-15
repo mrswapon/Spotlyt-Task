@@ -4,6 +4,7 @@ import '../views/screens/Add_Interest/add_interest_screen.dart';
 import '../views/screens/Invite_Earn/invite_earn_screen.dart';
 import '../views/screens/Notification/notification_screen.dart';
 import '../views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
+import '../views/screens/Requester/requesterTaskScreen/requester_task_screen.dart';
 import '../views/screens/Requester/requester_Task_details/requester_task_details_screen.dart';
 import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav_bar.dart';
 import '../views/screens/Requester/services/services_screen.dart';
@@ -52,6 +53,7 @@ class AppRoutes {
   static const String splashScreen = "/splash_screen.dart";
   static const String paymentScreen = "/PaymentScreen.dart";
   static const String notificationScreen = "/NotificationScreen.dart";
+  static const String requesterTaskScreen = "/RequesterTaskScreen.dart";
   static const String requesterTaskDetailsScreen = "/RequesterTaskDetailsScreen.dart";
   static const String personalInformationScreen = "/personal_information_screen.dart";
   static const String profileScreen = "/tasker_profile_screen.dart";
@@ -91,6 +93,7 @@ class AppRoutes {
         GetPage(name: profileScreen, page: () => RequesterProfileScreen()),
         GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen(), transition: Transition.cupertinoDialog, transitionDuration: const Duration(milliseconds: 450)),
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
+        GetPage(name: requesterTaskScreen, page: () => RequesterTaskScreen()),
         GetPage(name: requesterTaskDetailsScreen, page: () => RequesterTaskDetailsScreen()),
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
         GetPage(name: inviteEarnScreen, page: () => InviteEarnScreen()),

@@ -46,15 +46,13 @@ class RequesterTaskScreen extends StatelessWidget {
                               child: Text("No Data Found!"),
                             )
                           : ListView.builder(
-                              itemCount: _requesterTaskController
-                                      .taskList.length +
-                                  1,
+                              itemCount:
+                                  _requesterTaskController.taskList.length + 1,
                               controller:
                                   _requesterTaskController.scrollController,
                               itemBuilder: (context, index) {
                                 if (index ==
-                                    _requesterTaskController
-                                        .taskList.length) {
+                                    _requesterTaskController.taskList.length) {
                                   return _requesterTaskController
                                           .isLoadMoreRunning.value
                                       ? const CustomCircleLoader()

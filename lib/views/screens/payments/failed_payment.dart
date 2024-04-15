@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import '../../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
@@ -42,9 +43,7 @@ class FailedPayment extends StatelessWidget {
             SizedBox(height: 60.h),
             CustomButton(
               onpress: () {
-
-
-
+                Get.back();
               },
               title: 'Try Again',
               color: Colors.red,
