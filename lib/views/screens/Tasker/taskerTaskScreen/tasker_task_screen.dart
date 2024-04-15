@@ -160,7 +160,7 @@ class TaskerTaskScreen extends StatelessWidget {
                                   },
                                   child: TaskerTaskCard(
                                     faceBookPost: "${taskerTask?.name}",
-                                    date: formatDates,
+                                     date: formatDates,
                                      taskCompleteAmount: "${taskerTask?.price}",
                                     // amount: "${taskerTask?.price}",
                                     postLink:

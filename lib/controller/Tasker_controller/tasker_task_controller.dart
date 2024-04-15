@@ -34,6 +34,7 @@ class TaskerTaskController extends GetxController{
     // TODO: implement onInit
     super.onInit();
     taskerTaskGet();
+    loadMore();
   }
 
   final rxRequestStatus = Status.loading.obs;

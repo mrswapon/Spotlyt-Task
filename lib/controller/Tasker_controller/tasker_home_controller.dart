@@ -22,6 +22,7 @@ class TaskerHomeController extends GetxController {
     super.onInit();
     getTaskerHomeDataAll();
     getTaskerHomeDataToday();
+    loadMore();
   }
 
   Rx<TaskerHomeModel> taskerHomeModelAll = TaskerHomeModel().obs;
@@ -29,7 +30,7 @@ class TaskerHomeController extends GetxController {
 
 
   loadMore(){
-    if(totalPage != currentPage){
+    if(totalPage != currentPage && totalPage > page){
       print("=======page increment \n current page is : $page");
       page+=1;
     }

@@ -234,7 +234,7 @@ class AuthController extends GetxController {
     changeLoading(true);
     var body = {"oldPassword": oldPassword, "newPassword": newPassword};
 
-    var response = await ApiClient.postData(ApiConstants.changePasswordEndPoint, json.encode(body));
+    var response = await ApiClient.postData(ApiConstants.changePasswordEndPoint, body);
     print("===============> ${response.body}");
     if (response.statusCode == 200) {
       Fluttertoast.showToast(msg: response.body['message'],toastLength:Toast.LENGTH_LONG,gravity: ToastGravity.CENTER,backgroundColor:Colors.green,textColor:Colors.white);

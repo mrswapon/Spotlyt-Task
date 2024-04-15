@@ -111,7 +111,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           return "Please set new password";
                         }else if(value.length < 8){
                           return "Password must be at least 8 characters";
-                        }else if(_validatePassword(value)){
+                        }else if(!_validatePassword(value)){
                           return "password must contain at least 1 letter and 1 number";
                         }
                         return null;
@@ -205,7 +205,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
 
   bool _validatePassword(String value) {
-    RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+    RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
     return regex.hasMatch(value);
   }
 }
