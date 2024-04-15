@@ -2,6 +2,11 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
+import '../../helpers/prefs_helper.dart';
+import '../../models/interest_model.dart';
+import '../../services/api_checker.dart';
+import '../../utils/app_constant.dart';
+
 class AddInterestController extends GetxController{
 
   @override
@@ -11,15 +16,28 @@ class AddInterestController extends GetxController{
     getInterest();
   }
 
-  RxList interestList = [].obs;
+  RxList<Interest> interestList = <Interest>[].obs;
+  RxList<Interest> selectInterestList = <Interest>[].obs;
 
+
+
+  var loading=false.obs;
 
   getInterest()async{
-    var reponse = await ApiClient.getData(ApiConstants.interestEndPoint);
-
-
-    if(reponse.statusCode == 200){
-
+    loading(true);
+    var response = await ApiClient.getData(ApiConstants.interestApi);
+    if(response.statusCode==200){
+      interestList.value=List<Interest>.from(response.body['data']['attributes'].map((item) => Interest.fromJson(item)));
+      loading(false);
+    }else{
+      ApiChecker.checkApi(response);
     }
+
+
   }
+
+
+
+
+
 }

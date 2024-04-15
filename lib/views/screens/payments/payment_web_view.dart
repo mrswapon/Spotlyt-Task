@@ -82,15 +82,16 @@ initUrl(){
             _isLoading.value = false;
           },
           onWebResourceError: (WebResourceError error) {},
-          onNavigationRequest: (NavigationRequest request) {
+          onNavigationRequest: (NavigationRequest request)async {
             debugPrint("on navigation request ${request.url}");
             if (request.url.toString().contains("success")){
-              Map<String,String> data= getUrlQueryPrams(request.url);
+              Map<String,String> data=await getUrlQueryPrams(request.url);
               submitTask(data['TransactionId']!);
               //  add backend request
             } else if (request.url.toString().contains("error")){
               //  add backend request
             } else if (request.url.toString().contains("cancel")){
+
 
               //  add backend request
             }
