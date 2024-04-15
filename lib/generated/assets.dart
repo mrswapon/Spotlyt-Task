@@ -2,6 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String animationCancelAnimation = 'assets/animation/cancel_animation.json';
+  static const String animationFailedAnimation = 'assets/animation/failed_animation.json';
+  static const String animationSuccessAnimation = 'assets/animation/success_animation.json';
   static const String fontsLato = 'assets/fonts/Lato.ttf';
   static const String iconsAbout = 'assets/icons/about.svg';
   static const String iconsArt = 'assets/icons/art.svg';
