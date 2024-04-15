@@ -98,6 +98,7 @@ class TaskerHomeScreen extends StatelessWidget {
                           } else {
                             null;
                           }
+
                           return Padding(
                             padding: EdgeInsets.only(right: 12.w),
                             child: GestureDetector(
@@ -107,9 +108,9 @@ class TaskerHomeScreen extends StatelessWidget {
                               child: TaskerTaskCard(
                                 bgImageheights: 110.h,
                                 weight: 267.w,
-                                // taskCompleteAmount: "${taskData?.price}",
+                                 taskCompleteAmount: "${taskData?.price}",
                                 faceBookPost: taskData?.name,
-                                amount: "${taskData?.price}",
+                                // amount: "${taskData?.price}",
                                 date: formatDates,
                                 days: "5 Days",
                                 postLink: '${taskData?.taskLink}\nPost',
