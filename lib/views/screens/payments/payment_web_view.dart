@@ -3,9 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/views/screens/payments/cancel_payment.dart';
-import 'package:spotlyt_task/views/screens/payments/error_payment.dart';
+import 'package:spotlyt_task/views/screens/payments/failed_payment.dart';
 import 'package:spotlyt_task/views/screens/payments/success_payment.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../../services/api_checker.dart';
+import '../../../services/api_client.dart';
+import '../../../services/api_constants.dart';
 
 // ignore: must_be_immutable
 class OzowPaymentUI extends StatefulWidget {
@@ -59,7 +63,7 @@ initUrl(){
               {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (context) => const ErrorScreen(),
+                    builder: (context) => const FailedPayment(),
                   ),
                 )
               }
@@ -82,6 +86,7 @@ initUrl(){
             debugPrint("on navigation request ${request.url}");
             if (request.url.toString().contains("success")){
               Map<String,String> data= getUrlQueryPrams(request.url);
+              submitTask(data['TransactionId']!);
               //  add backend request
             } else if (request.url.toString().contains("error")){
               //  add backend request
@@ -103,6 +108,19 @@ initUrl(){
 }
 
   final _isLoading =true.obs;
+
+   submitTask(String transactionId) async {
+     widget.serviceInfo['transactionId']=transactionId;
+
+     print('=============================> ${widget.serviceInfo}');
+     Response response = await ApiClient.postData(
+         ApiConstants.requesterSubmitTaskEndPoint, widget.serviceInfo);
+     print("============> ${response.body} and ==> ${response.statusCode}");
+     if (response.statusCode == 201 || response.statusCode == 200) {
+     } else {
+       ApiChecker.checkApi(response);
+     }
+   }
 
   @override
   Widget build(BuildContext context) {

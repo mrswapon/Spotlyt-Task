@@ -6,6 +6,7 @@ import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
+import '../../services/api_checker.dart';
 import '../../utils/app_constant.dart';
 
 class TaskerHomeController extends GetxController {
@@ -57,6 +58,7 @@ class TaskerHomeController extends GetxController {
       }else{
         setRxRequestStatus(Status.error);
       }
+      ApiChecker.checkApi(response);
     }
   }
 

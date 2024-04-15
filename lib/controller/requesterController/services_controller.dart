@@ -11,7 +11,6 @@ import '../../services/api_checker.dart';
 import '../../services/api_client.dart';
 import '../../services/api_constants.dart';
 import '../../views/screens/payments/cancel_payment.dart';
-import '../../views/screens/payments/error_payment.dart';
 import '../../views/screens/payments/payment_web_view.dart';
 import '../../views/screens/payments/success_payment.dart';
 
@@ -63,24 +62,7 @@ class ServiceController extends GetxController {
   }
 //==================================> Submit Task Method <================================
 
-  requesterSubmitTask(String taskName, serviceId, price) async {
-    var body = {
-      "name": taskName,
-      "taskLink": addLinkCtrl.text,
-      "serviceId": "$serviceId",
-      "quantity": quantityCtrl.text,
-      "price": "$price",
-    };
-    print('=============================> $body');
-    Response response = await ApiClient.postData(
-        ApiConstants.requesterSubmitTaskEndPoint, body);
-    print("============> ${response.body} and ==> ${response.statusCode}");
-    if (response.statusCode == 201 || response.statusCode == 200) {
-      Fluttertoast.showToast(msg: response.body['message']);
-    } else {
-      ApiChecker.checkApi(response);
-    }
-  }
+
 
   ///  payment Ozow
 var paymentLoading=false.obs;

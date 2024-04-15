@@ -126,14 +126,18 @@ class Service {
   num? price;
   String? sId;
   String? subTitle;
+  int? max;
+  int?  min;
 
-  Service({this.name, this.price, this.sId});
+  Service({this.name, this.price, this.sId,this.min,this.max});
 
   Service.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     price = json['price'];
     subTitle = json['sobTitle'];
     sId = json['_id'];
+    max=json['max'];
+    min=json['min'];
   }
 
   Map<String, dynamic> toJson() {

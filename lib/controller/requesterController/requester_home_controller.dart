@@ -5,6 +5,7 @@ import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
 import '../../models/requester_home_screen_model.dart';
+import '../../services/api_checker.dart';
 import '../../utils/app_constant.dart';
 
 class RequesterHomeController extends GetxController {
@@ -38,6 +39,7 @@ class RequesterHomeController extends GetxController {
       }else{
         setRxRequestStatus(Status.error);
       }
+      ApiChecker.checkApi(response);
     }
   }
 }
