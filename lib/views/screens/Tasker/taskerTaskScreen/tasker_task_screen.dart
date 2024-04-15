@@ -19,8 +19,21 @@ class TaskerTaskScreen extends StatelessWidget {
   TaskerTaskScreen({super.key});
 
   final _taskerTaskController = Get.put(TaskerTaskController());
-
   RxInt tabBarIndex = 0.obs;
+
+
+
+  ScrollController scrollController = ScrollController();
+
+  TodayOrAllTaskScreen() {
+    /// loading new data when the user scrolls down
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        _taskerTaskController.loadMore();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +121,7 @@ class TaskerTaskScreen extends StatelessWidget {
                     Obx(
                       () => Expanded(
                         child: ListView.builder(
+                          controller: scrollController,
                           itemCount: _taskerTaskController.taskertaskModel.value
                               .data?.attributes?.tasks?.length,
                           itemBuilder: (context, index) {
@@ -147,10 +161,10 @@ class TaskerTaskScreen extends StatelessWidget {
                                   child: TaskerTaskCard(
                                     faceBookPost: "${taskerTask?.name}",
                                     date: formatDates,
-                                    // taskCompleteAmount: "${taskerTask?.price}",
-                                    amount: "${taskerTask?.price}",
+                                     taskCompleteAmount: "${taskerTask?.price}",
+                                    // amount: "${taskerTask?.price}",
                                     postLink:
-                                        "${taskerTask?.taskId?.taskLink}\n}",
+                                        "${taskerTask?.taskId?.taskLink}\n",
                                   )),
                             );
                           },

@@ -100,6 +100,7 @@ class _TextFormSectionState extends State<TextFormSection> {
               //===============================> Sign In Button <===============================
               SizedBox(height: 24.h),
               CustomButton(
+                // loading: authController.signInLoading.value,
                   title: AppString.signIn,
                   onpress: () {
                      if (_formKey.currentState!.validate()) {
