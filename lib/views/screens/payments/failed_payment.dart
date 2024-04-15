@@ -41,7 +41,9 @@ class FailedPayment extends StatelessWidget {
             //=====================> Try Again Button <=======================
             SizedBox(height: 60.h),
             CustomButton(
-              onpress: () {},
+              onpress: () {
+
+              },
               title: 'Try Again',
               color: Colors.red,
             )

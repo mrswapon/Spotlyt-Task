@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import '../../../routes/app_routes.dart';
 import '../../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text.dart';
@@ -41,7 +43,9 @@ class CancelPayment extends StatelessWidget {
             //=====================> Go Back Button <=======================
             SizedBox(height: 60.h),
             CustomButton(
-              onpress: () {},
+              onpress: () {
+                Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+              },
               title: 'Go Back',
               color: Colors.red,
             )

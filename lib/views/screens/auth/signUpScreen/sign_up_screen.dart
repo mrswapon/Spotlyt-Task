@@ -66,7 +66,7 @@ class SignUpScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 40.5.w, vertical: 6.5.h),
                               child: CustomText(
-                                text: AppString.requester,
+                                text: AppString.client,
                                 fontsize: 14.h,
                                 color: authController.isSelectedRole.value
                                     ? Colors.white
