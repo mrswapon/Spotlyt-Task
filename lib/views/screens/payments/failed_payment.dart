@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:spotlyt_task/utils/app_colors.dart';
-import 'package:spotlyt_task/views/widgets/custom_button.dart';
+import '../../../utils/app_colors.dart';
+import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text.dart';
 
-class SuccessPayment extends StatelessWidget {
-  const SuccessPayment({super.key});
+class FailedPayment extends StatelessWidget {
+  const FailedPayment({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,31 +16,35 @@ class SuccessPayment extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //=====================> Lottie Success Animation <=======================
+            //=====================> Lottie Failed Animation <=======================
             Lottie.asset(
-              'assets/animation/success_animation.json',
+              'assets/animation/failed_animation.json',
               width: 150.w,
               height: 150.h,
               fit: BoxFit.cover,
             ),
             SizedBox(height: 46.h),
-            //=====================> Purchase Completed Text <=======================
+            //=====================> Purchase Failed Text <=======================
             CustomText(
-              text: "Purchase Completed!",
+              text: "Purchase Failed!",
               fontsize: 24.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.primaryColor,
+              color: Colors.red,
             ),
             SizedBox(height: 36.h),
             CustomText(
               text:
-                  "Thank you for your purchase!\nFeel free to check your daily \nworkout activity.",
+                  "Bank balance issue, please check!\n your bank balance in order to \ncontinue.",
               fontsize: 16.sp,
               color: AppColors.black333333,
             ),
-            //=====================> Proceed to Program Button <=======================
+            //=====================> Try Again Button <=======================
             SizedBox(height: 60.h),
-            CustomButton(onpress: () {}, title: 'Proceed to Program')
+            CustomButton(
+              onpress: () {},
+              title: 'Try Again',
+              color: Colors.red,
+            )
           ],
         ),
       ),
