@@ -24,6 +24,7 @@ class ApiConstants{
   static  String profileEndPoint(String id) => "/users/$id";
   static String interestApi="/users/interest";
   static String walletEndPoint = "/withdrawal/my";
+  static String interestEndPoint = "/users/interest";
 
   ///  requester task api
   static String requesterTaskApi(String status,String page )=>"/tasks?status=$status&page=$page";
