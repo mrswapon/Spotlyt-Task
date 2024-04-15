@@ -44,6 +44,7 @@ class Assets {
   static const String iconsPrivacy = 'assets/icons/privacy.svg';
   static const String iconsProfile = 'assets/icons/profile.svg';
   static const String iconsProfileEdit = 'assets/icons/profileEdit.svg';
+  static const String iconsQuantity = 'assets/icons/quantity.svg';
   static const String iconsRadioButton = 'assets/icons/radio_button.svg';
   static const String iconsRightArrow = 'assets/icons/rightArrow.svg';
   static const String iconsSetting = 'assets/icons/setting.svg';
