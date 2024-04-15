@@ -5,6 +5,7 @@ import 'package:spotlyt_task/models/tasker_task_model.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
+import '../../services/api_checker.dart';
 import '../../utils/app_constant.dart';
 
 class TaskerTaskController extends GetxController{
@@ -56,6 +57,7 @@ class TaskerTaskController extends GetxController{
       }else{
         setRxRequestStatus(Status.error);
       }
+      ApiChecker.checkApi(response);
     }
   }
 }

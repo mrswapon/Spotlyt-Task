@@ -202,7 +202,17 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                       ),
                     ),
                     hintText: "Quantity",
-                    helperText: "Minimum Quantity 10, Maximum Quantity 1000",
+                    helperText: "Minimum Quantity ${attributes
+                        .categories![_serviceController
+                        .selectedCategoryIndex.value]
+                        .service![_serviceController
+                        .selectedServiceIndex.value]
+                        .min}, Maximum Quantity ${attributes
+                        .categories![_serviceController
+                        .selectedCategoryIndex.value]
+                        .service![_serviceController
+                        .selectedServiceIndex.value]
+                        .max}",
                     onChanged: (value){
                      _serviceController.calculateTotalPrice(attributes
                          .categories![_serviceController
@@ -214,15 +224,27 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
 
                     },
                     validator: (value) {
+                      var min=attributes
+                          .categories![_serviceController
+                          .selectedCategoryIndex.value]
+                          .service![_serviceController
+                          .selectedServiceIndex.value]
+                          .min;
+                      var max=attributes
+                          .categories![_serviceController
+                          .selectedCategoryIndex.value]
+                          .service![_serviceController
+                          .selectedServiceIndex.value]
+                          .max;
                       if (value == null || value.isEmpty) {
                         return "Enter quantity";
                       } else {
                         int? quantity = int.tryParse(value);
                         if (quantity == null) {
                           return "Invalid quantity";
-                        } else if (quantity < 10) {
+                        } else if (quantity < min!) {
                           return "Minimum quantity is 10";
-                        } else if (quantity > 1000) {
+                        } else if (quantity > max!) {
                           return "Maximum quantity is 1000";
                         }
                       }

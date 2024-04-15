@@ -44,7 +44,7 @@ class CancelPayment extends StatelessWidget {
             SizedBox(height: 60.h),
             CustomButton(
               onpress: () {
-                Get.offAllNamed(AppRoutes.requesterBottomNavBar);
+               Get.back();
               },
               title: 'Go Back',
               color: Colors.red,

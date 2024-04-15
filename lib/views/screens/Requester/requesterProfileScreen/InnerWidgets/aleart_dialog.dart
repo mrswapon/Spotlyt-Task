@@ -34,7 +34,6 @@ class LogoutDialog extends StatelessWidget {
             Get.back();
           }, child:Text("No",style: TextStyle(fontSize: 14.sp,color:Colors.grey),)),
           TextButton(onPressed:()async{
-            await PrefsHelper.remove(AppConstants.isLogged);
             await PrefsHelper.remove(AppConstants.role);
             await PrefsHelper.remove(AppConstants.isLogged);
             await PrefsHelper.remove(AppConstants.bearerToken);

@@ -8,6 +8,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/models/profile_models.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
+import 'package:spotlyt_task/services/api_checker.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/utils/app_constant.dart';
 import '../../services/api_constants.dart';
@@ -47,6 +48,7 @@ class ProfileController extends GetxController {
         }else{
           setRxRequestStatus(Status.error);
         }
+        ApiChecker.checkApi(response);
       }
       update();
   }
@@ -76,6 +78,8 @@ class ProfileController extends GetxController {
         profileModel.refresh();
         Get.back();
         Get.back();
+      }else{
+        ApiChecker.checkApi(response);
       }
 
   }
@@ -98,6 +102,8 @@ class ProfileController extends GetxController {
       profileModel.value = ProfileModel.fromJson(response.body['data']['attributes']);
       profileModel.refresh();
       Get.offAllNamed(AppRoutes.profileScreen);
+    }else{
+      ApiChecker.checkApi(response);
     }
   }
 
