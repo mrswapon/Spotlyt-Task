@@ -5,6 +5,7 @@ import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
 import '../../models/requester_home_screen_model.dart';
+import '../../utils/app_constant.dart';
 
 class RequesterHomeController extends GetxController {
   RequesterHomeScreenModel? homeScreenModel;
@@ -14,22 +15,31 @@ class RequesterHomeController extends GetxController {
     super.onInit();
   }
 
-  RxBool isLoading = false.obs;
+  // RxBool isLoading = false.obs;
   final ScrollController categoryScrollController = ScrollController();
   final ScrollController earlyAccessScrollController = ScrollController();
+
+  final rxRequestStatus = Status.loading.obs;
+  void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value;
 
   //=====================> Get Task Service Method <=================================
 
   requesterTaskService() async {
-    isLoading.value = true;
+    setRxRequestStatus(Status.loading);
+    // isLoading.value = true;
     var response = await ApiClient.getData(ApiConstants.requesterTaskService);
-    print(response);
     if (response.statusCode == 200) {
       homeScreenModel = RequesterHomeScreenModel.fromJson(response.body);
-    } else {
-      Get.snackbar(
-          response.statusCode.toString(), response.statusText ?? "error");
+      setRxRequestStatus(Status.completed);
+    }  else {
+      if(response.statusText == ApiClient.noInternetMessage){
+        setRxRequestStatus(Status.internetError);
+        Get.snackbar(response.statusCode.toString(), response.statusText ?? "error");
+      }else{
+        setRxRequestStatus(Status.error);
+      }
     }
-    isLoading.value = false;
   }
 }
+
+
