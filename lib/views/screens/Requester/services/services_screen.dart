@@ -195,9 +195,10 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(20.r),
                       child: SvgPicture.asset(
-                        AppIcons.linkIcon,
+                        AppIcons.quantity,
                         width: 18.w,
                         height: 18.h,
+                        color: AppColors.primaryColor,
                       ),
                     ),
                     hintText: "Quantity",
