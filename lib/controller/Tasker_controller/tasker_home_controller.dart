@@ -63,7 +63,7 @@ class TaskerHomeController extends GetxController {
 
   ///=========================get tasker home data Today=========================>
   getTaskerHomeDataToday() async {
-    var response = await ApiClient.getData("${ApiConstants.taskerHomeEidPoint}?page=$page&type=others");
+    var response = await ApiClient.getData("${ApiConstants.taskerHomeEidPoint}?page=$page&type=today");
 
     if (response.statusCode == 200) {
       taskerHomeModelToday.value = TaskerHomeModel.fromJson(response.body);
