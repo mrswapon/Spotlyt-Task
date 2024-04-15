@@ -130,13 +130,15 @@ class RequesterProfileScreen extends StatelessWidget {
 
                       ///--------------------------Invite & Earn---------------------------->
 
-                      CustomListTileWidget(
+                      _profileController.profileModel.value.role == "employee"
+                     ? CustomListTileWidget(
                         ontap: () {
                           Get.toNamed(AppRoutes.inviteEarnScreen);
                         },
                         title: AppString.inviteAndEarn,
                         icon: AppIcons.share,
-                      ),
+                      )
+                      :const SizedBox(),
 
                       ///--------------------------log out---------------------------->
                       CustomListTileWidget(
