@@ -18,6 +18,7 @@ class ProfileModel {
   final dynamic phoneNumber;
   final Image? image;
   final String? id;
+  final String? referralCode;
 
   ProfileModel({
     this.fullName,
@@ -37,6 +38,7 @@ class ProfileModel {
     this.phoneNumber,
     this.image,
     this.id,
+    this.referralCode,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
@@ -57,6 +59,7 @@ class ProfileModel {
     phoneNumber: json["phoneNumber"],
     image: json["image"] == null ? null : Image.fromJson(json["image"]),
     id: json["id"],
+    referralCode: json["referralCode"],
   );
 
   Map<String, dynamic> toJson() => {

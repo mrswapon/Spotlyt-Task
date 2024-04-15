@@ -32,8 +32,16 @@ class TaskerTaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///=======================convert Amount String to Double=====================>
+    double amountConvertToDouble;
+    if (taskCompleteAmount != null) {
+    amountConvertToDouble = double.parse(taskCompleteAmount!);
+    } else {
+      amountConvertToDouble = double.parse(amount!);
+    }
 
-    double amountConvertToDouble = double.parse(amount!);
+
+
     return Container(
       width: weight ?? double.infinity,
       decoration: BoxDecoration(
@@ -80,7 +88,7 @@ class TaskerTaskCard extends StatelessWidget {
                     ///-------------------------5 days -------------------------->
                     taskCompleteAmount != null
                         ? CustomText(
-                            text: "R $taskCompleteAmount",
+                            text: "R ${amountConvertToDouble / 2}",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryColor,

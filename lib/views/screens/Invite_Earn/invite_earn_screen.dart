@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/screens/Invite_Earn/InnerWidgets/invite_earn_controller.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
@@ -15,6 +16,7 @@ class InviteEarnScreen extends StatelessWidget {
 
 
   final InviteAndEernController _inviteAndEernController = Get.put(InviteAndEernController());
+  ProfileController _profileController = Get.put(ProfileController());
 
 
    void _copyToClipboard(BuildContext context) {
@@ -89,8 +91,9 @@ class InviteEarnScreen extends StatelessWidget {
                   ),
                   width: double.infinity,
                   height: 56.h,
-                  child:  Obx(()=>
-                     Center(
+                  child:  Obx(() {
+                 _profileController.profileModel.value;
+                   return  Center(
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Row(
@@ -98,7 +101,7 @@ class InviteEarnScreen extends StatelessWidget {
                           children: [
 
                              SelectableText(
-                              '${_inviteAndEernController.referrals}',
+                              '${_profileController.profileModel.value.referralCode}',
                                style: TextStyle(fontSize: 18.h, fontWeight: FontWeight.w600, color: AppColors.primaryColor),
                             ),
                             // CustomText(
@@ -130,7 +133,7 @@ class InviteEarnScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
+                    );}
                   ),
                 ),
               ),
@@ -140,9 +143,12 @@ class InviteEarnScreen extends StatelessWidget {
           const Spacer(),
           ///--------------------------invite friends botton------------------------------><
 
-          CustomButton(title: "Invite Friends", onpress: () {
-            Get.back();
-          }),
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 20.w),
+            child: CustomButton(title: "Invite Friends", onpress: () {
+              Get.back();
+            }),
+          ),
 
           SizedBox(
             height: 44.h,

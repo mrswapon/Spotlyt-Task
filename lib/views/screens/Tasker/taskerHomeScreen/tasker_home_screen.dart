@@ -108,11 +108,10 @@ class TaskerHomeScreen extends StatelessWidget {
                               child: TaskerTaskCard(
                                 bgImageheights: 110.h,
                                 weight: 267.w,
-                                 taskCompleteAmount: "${taskData?.price}",
+                                taskCompleteAmount: "${taskData?.price}",
                                 faceBookPost: taskData?.name,
-                                // amount: "${taskData?.price}",
                                 date: formatDates,
-                                days: "5 Days",
+                                // days: "5 Days",
                                 postLink: '${taskData?.taskLink}\nPost',
                                 // heights: 110,
                               ),
@@ -180,8 +179,7 @@ class TaskerHomeScreen extends StatelessWidget {
                               child: TaskerTaskCard(
                                 bgImageheights: 110.h,
                                 weight: 267.w,
-                                // taskCompleteAmount: "${allTaskDate?.price}" ?? "",
-                                amount: "${allTaskDate?.price}",
+                                taskCompleteAmount: "${allTaskDate?.price}" ?? "",
                                 faceBookPost: allTaskDate?.name ?? "",
                                 postLink: "${allTaskDate?.taskLink}\n" ?? "",
                                 date: formatDate,
