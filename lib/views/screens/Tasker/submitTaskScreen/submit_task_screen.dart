@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:spotlyt_task/controller/Tasker_controller/tasker_task_controller.dart';
 import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
 import '../../../../controller/submitController/submit_controller.dart';
 import '../../../../routes/app_routes.dart';
@@ -26,7 +27,7 @@ class SubmitTaskScreen extends StatefulWidget {
 class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
 
 
-  final  _taskerHomeController= Get.put(TaskerHomeController());
+  final  _taskerHomeController= Get.put(TaskerTaskController());
 
   var parameter = Get.parameters;
   Uint8List? image;
@@ -126,7 +127,7 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                     title: AppString.submitTask,
                     onpress: () {
                       print("==============> ddd ${parameter['sId']}");
-                      _taskerHomeController.submitTask("${parameter['sId']}",selectedImage as File);
+                      _taskerHomeController.submitTask("${parameter['sId']}",selectedImage!);
                     }),
                 SizedBox(height: 54.h),
               ],

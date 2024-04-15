@@ -86,16 +86,5 @@ class TaskerHomeController extends GetxController {
 
 
   ///=========================Submit Task===========================>
-  submitTask(String id, File image) async {
-    List<MultipartBody> multipartBody = image == null ? [] : [MultipartBody("image", image)];
-    var body = {'submitTaskId': id};
 
-    var respose = await ApiClient.putMultipartData(
-        ApiConstants.taskRegisterEndPoint, body,
-        multipartBody: multipartBody);
-
-    if (respose.statusCode == 200 || respose.statusCode == 201) {
-      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
-    }
-  }
 }

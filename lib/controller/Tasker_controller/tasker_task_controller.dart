@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:spotlyt_task/models/tasker_task_model.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
+import '../../routes/app_routes.dart';
 import '../../services/api_checker.dart';
 import '../../utils/app_constant.dart';
 
@@ -44,7 +46,6 @@ class TaskerTaskController extends GetxController{
     setRxRequestStatus(Status.loading);
     var response = await ApiClient.getData(ApiConstants.allTaskGetApi("$status&page=$page"));
 
-    print('=====> tasker task response : ${response.statusCode} and ${response.body}');
     if(response.statusCode == 200){
       totalPage = jsonDecode(response.body['data']['attributes']['totalPages'].toString());
       currentPage = jsonDecode(response.body['data']['attributes']['page'].toString());
@@ -57,6 +58,22 @@ class TaskerTaskController extends GetxController{
       }else{
         setRxRequestStatus(Status.error);
       }
+      ApiChecker.checkApi(response);
+    }
+  }
+
+
+  submitTask(String id, File image) async {
+    List<MultipartBody> multipartBody = [MultipartBody("image", image)];
+    var body = {'submitTaskId': id};
+
+    var response = await ApiClient.patchMultipartData(
+        ApiConstants.taskRegisterEndPoint, body,
+        multipartBody: multipartBody);
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+    }else{
       ApiChecker.checkApi(response);
     }
   }
