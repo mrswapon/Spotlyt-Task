@@ -45,8 +45,7 @@ class TaskerHomeController extends GetxController {
     var response = await ApiClient.getData("${ApiConstants.taskerHomeEidPoint}?page=$page");
     if (response.statusCode == 200) {
       taskerHomeModelAll.value = TaskerHomeModel.fromJson(response.body);
-      // totalPage = jsonDecode(response.body['data']['attributes']['totalPages'].toString());
-      totalPage = 5;
+       totalPage = jsonDecode(response.body['data']['attributes']['totalPages'].toString());
       currentPage = jsonDecode(response.body['data']['attributes']['page'].toString());
       print("=================$totalPage \n $currentPage");
       setRxRequestStatus(Status.completed);
@@ -85,11 +84,10 @@ class TaskerHomeController extends GetxController {
 
   ///=========================Submit Task===========================>
   submitTask(String id, File image) async {
-    List<MultipartBody> multipartBody =
-        image == null ? [] : [MultipartBody("image", image)];
-    var body = {'id': id};
+    List<MultipartBody> multipartBody = image == null ? [] : [MultipartBody("image", image)];
+    var body = {'submitTaskId': id};
 
-    var respose = await ApiClient.patchMultipartData(
+    var respose = await ApiClient.putMultipartData(
         ApiConstants.taskRegisterEndPoint, body,
         multipartBody: multipartBody);
 

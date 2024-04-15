@@ -76,19 +76,17 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                       children: [
                         image != null
                             ? Container(
+                          height: 235.h,
+                          width: 180.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.r),
                               color: Colors.white,
                               border: Border.all(
                                   width: 1.w,
                                   color: AppColors.primaryColor)),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 95.w, vertical: 9.h),
-                            child: Image.memory(
-                              image!,
-                              fit: BoxFit.cover,
-                            ),
+                          child: Image.memory(
+                            image!,
+                            fit: BoxFit.cover,
                           ),
                         )
                             : Container(

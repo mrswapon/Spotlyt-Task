@@ -86,8 +86,9 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               ),
               //=================================>  Section <===============================
               SizedBox(height: 39.h),
-              CustomButton(title: AppString.verify, onpress: () {
-
+              CustomButton(
+                loading: _authCtrl.verifyLoading.value,
+                  title: AppString.verify, onpress: () {
                 if (_authCtrl.otpCtrl.text.length > 5) {
                   _authCtrl.handleOtpVery(email: "${prameters["email"]}", otp: _authCtrl.otpCtrl.text, type: "${prameters["screenType"]}");
                 }

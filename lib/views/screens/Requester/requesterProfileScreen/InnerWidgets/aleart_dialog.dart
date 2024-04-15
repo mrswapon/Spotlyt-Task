@@ -30,8 +30,16 @@ class LogoutDialog extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
         actions: [
-          TextButton(onPressed:(){}, child:Text("No",style: TextStyle(fontSize: 14.sp,color:Colors.grey),)),
-          TextButton(onPressed:(){}, child:Text("Yes",style:TextStyle(fontSize:14.sp,color:AppColors.primaryColor),)),
+          TextButton(onPressed:(){
+            Get.back();
+          }, child:Text("No",style: TextStyle(fontSize: 14.sp,color:Colors.grey),)),
+          TextButton(onPressed:()async{
+            await PrefsHelper.remove(AppConstants.isLogged);
+            await PrefsHelper.remove(AppConstants.role);
+            await PrefsHelper.remove(AppConstants.isLogged);
+            await PrefsHelper.remove(AppConstants.bearerToken);
+            Get.offAllNamed(AppRoutes.signInScreen);
+          }, child:Text("Yes",style:TextStyle(fontSize:14.sp,color:AppColors.primaryColor),)),
           // OutlinedButton(
           //     style: OutlinedButton.styleFrom(
           //       shape: RoundedRectangleBorder(
