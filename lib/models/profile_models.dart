@@ -19,7 +19,7 @@ class ProfileModel {
   final Image? image;
   final String? id;
   final String? referralCode;
-  final String? claimedReferralCode;
+   String? claimedReferralCode;
 
   ProfileModel({
     this.fullName,

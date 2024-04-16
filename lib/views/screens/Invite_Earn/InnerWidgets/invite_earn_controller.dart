@@ -24,7 +24,9 @@ var loading=false.obs;
       };
       var response = await ApiClient.postData(ApiConstants.referralCodeSubmitApi,body);
       if(response.statusCode==200 || response.statusCode==201){
-         _profileController.profileModel.value.claimedReferralCode!=code;
+         _profileController.profileModel.value.claimedReferralCode=code;
+         debugPrint(  _profileController.profileModel.value.claimedReferralCode);
+         _profileController.profileModel.refresh();
          refresh();
          Get.back();
          Get.back();
