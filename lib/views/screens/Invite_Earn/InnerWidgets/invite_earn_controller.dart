@@ -1,34 +1,39 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/services/api_checker.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 import 'package:spotlyt_task/utils/app_constant.dart';
 
+import '../../../../controller/Profile_Controller/profile_controller.dart';
+
 class InviteAndEernController extends GetxController {
-  var referrals = ''.obs;
+   TextEditingController referCodeCtrl= TextEditingController();
+   final ProfileController _profileController = Get.put(ProfileController());
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    haandleInviteAndEern();
-  }
+var loading=false.obs;
+   submit(String code)async{
+      loading(true);
 
 
-  haandleInviteAndEern() async {
 
+      var body={
+         "referralCode": code,
+      };
+      var response = await ApiClient.postData(ApiConstants.referralCodeSubmitApi,body);
+      if(response.statusCode==200 || response.statusCode==201){
+         _profileController.profileModel.value.claimedReferralCode!=code;
+         refresh();
+         Get.back();
+         Get.back();
 
-    var response = await ApiClient.getData(ApiConstants.inviteandEernEndPoint);
+      }else{
+         ApiChecker.checkApi(response);
+      }
+      loading(false);
 
-    print("========> invite and earn : ${response.body}");
-    if (response.statusCode == 200) {
-      var responseData = response.body;
+   }
 
-      var data = responseData['data']['attributes']['referrals'][0]['userId']['referralCode'];
-      print("===> $data");
-      referrals.value =  data;
-      print("====> data: $data");
-    }
-  }
 }

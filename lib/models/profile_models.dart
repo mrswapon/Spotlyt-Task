@@ -4,7 +4,7 @@ class ProfileModel {
   final String? fullName;
   final String? email;
   final String? role;
-  final int? rand;
+  final double? rand;
   final List<String>? interest;
   final bool? isEmailVerified;
   final String? nidStatus;
@@ -19,6 +19,7 @@ class ProfileModel {
   final Image? image;
   final String? id;
   final String? referralCode;
+  final String? claimedReferralCode;
 
   ProfileModel({
     this.fullName,
@@ -39,13 +40,14 @@ class ProfileModel {
     this.image,
     this.id,
     this.referralCode,
+    this.claimedReferralCode,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
     fullName: json["fullName"],
     email: json["email"],
     role: json["role"],
-    rand: json["rand"],
+    rand: json["rand"].runtimeType==int?json["rand"].toDouble():json["rand"],
     interest: json["interest"] == null ? [] : List<String>.from(json["interest"]!.map((x) => x)),
     nidStatus: json["nidStatus"],
     isEmailVerified: json["isEmailVerified"],
@@ -60,6 +62,7 @@ class ProfileModel {
     image: json["image"] == null ? null : Image.fromJson(json["image"]),
     id: json["id"],
     referralCode: json["referralCode"],
+    claimedReferralCode: json["claimedReferralCode"],
   );
 
   Map<String, dynamic> toJson() => {

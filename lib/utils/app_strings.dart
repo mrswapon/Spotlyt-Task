@@ -132,7 +132,8 @@ class AppString {
   ///--------------------------invite and earn screen------------------------->
    static String inviteYourFriendsAndGetRand = "Invite your friends and get \n Rand 1.0";
    static String shareTheLinkBeloworAsk = "Share the link below or ask them to enter it \n during they signup. Earn when your friend signs\n up on our app.";
-
+    static String referralCode="Referral Code";
+    static String referralSubmitDes="Please enter your referral code below";
 
 
    ///-------------------------add interest screen---------------------------->
