@@ -149,7 +149,7 @@ class UserId {
   String? email;
   Image? image;
   String? role;
-  int? rand;
+  double? rand;
   int? phoneNumber;
   String? nidStatus;
   List<Null>? interest;
@@ -189,7 +189,7 @@ class UserId {
     email = json['email'];
     image = json['image'] != null ? new Image.fromJson(json['image']) : null;
     role = json['role'];
-    rand = json['rand'];
+    rand = json["rand"].runtimeType == int?json["rand"].toDouble():json["rand"];
     phoneNumber = json['phoneNumber'];
     nidStatus = json['nidStatus'];
     address = json['address'];

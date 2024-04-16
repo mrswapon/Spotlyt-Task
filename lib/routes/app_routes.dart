@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import '../helpers/Bindings/requester_binding.dart';
 import '../views/screens/Add_Interest/add_interest_screen.dart';
 import '../views/screens/Invite_Earn/invite_earn_screen.dart';
+import '../views/screens/Invite_Earn/submit_refer.dart';
 import '../views/screens/Notification/notification_screen.dart';
 import '../views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
 import '../views/screens/Requester/requesterTaskScreen/requester_task_screen.dart';
@@ -73,6 +74,7 @@ class AppRoutes {
   static const String successPayment = "/success_payment";
   static const String cancelPayment = "/cancel_payment";
   static const String failedPayment = "/failed_payment";
+  static const String submitReferCode = "/submit_refer_code";
 
 
   static List<GetPage> get routes => [
@@ -111,5 +113,6 @@ class AppRoutes {
         GetPage(name: successPayment, page: () => SuccessPayment()),
         GetPage(name: cancelPayment, page: () => CancelPayment()),
         GetPage(name: failedPayment, page: () => FailedPayment()),
+        GetPage(name: submitReferCode, page: () => SubmitReferCodeScreen()),
   ];
 }

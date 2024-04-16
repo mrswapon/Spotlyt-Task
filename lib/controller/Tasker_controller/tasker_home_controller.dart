@@ -21,7 +21,7 @@ class TaskerHomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    getTaskerHomeDataAll();
+
     getTaskerHomeDataToday();
     loadMore();
   }
@@ -50,6 +50,7 @@ class TaskerHomeController extends GetxController {
        totalPage = jsonDecode(response.body['data']['attributes']['totalPages'].toString());
       currentPage = jsonDecode(response.body['data']['attributes']['page'].toString());
       print("=================$totalPage \n $currentPage");
+
       setRxRequestStatus(Status.completed);
       refresh();
     } else {
@@ -69,6 +70,7 @@ class TaskerHomeController extends GetxController {
 
     if (response.statusCode == 200) {
       taskerHomeModelToday.value = TaskerHomeModel.fromJson(response.body);
+      await  getTaskerHomeDataAll();
       refresh();
     }
   }
