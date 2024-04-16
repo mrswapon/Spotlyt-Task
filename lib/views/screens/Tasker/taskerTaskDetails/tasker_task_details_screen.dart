@@ -147,24 +147,26 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 fontWeight: FontWeight.w600,
                 bottom: 24.h,
               ),
-              //SizedBox(height: 24.h),
+              SizedBox(height: 231.h),
 
               //=========================> Submit Task Button <===================
-              parameters['tabBarIndex'] == '0' ? CustomButton(title: AppString.submitTask, onpress: (){
-                Get.toNamed(AppRoutes.submitTaskScreen, parameters: {
-                  'sId':"${parameters['sId']}"
-                });
-              }) :
-              parameters['screenType'] == "taskerTaskScreen"
-                  ? const SizedBox()
-                  : CustomButton(
-                      title: AppString.taskRegisterNow,
+              parameters['tabBarIndex'] == '0'
+                  ? CustomButton(
+                      title: AppString.submitTask,
                       onpress: () {
-                        _taskerHomeController.taskRegister(
-                            "${taskDetails.name}",
-                            "${taskDetails?.id}",
-                            "${taskDetails.price}");
-                      }),
+                        Get.toNamed(AppRoutes.submitTaskScreen,
+                            parameters: {'sId': "${parameters['sId']}"});
+                      })
+                  : parameters['screenType'] == "taskerTaskScreen"
+                      ? const SizedBox()
+                      : CustomButton(
+                          title: AppString.taskRegisterNow,
+                          onpress: () {
+                            _taskerHomeController.taskRegister(
+                                "${taskDetails.name}",
+                                "${taskDetails?.id}",
+                                "${taskDetails.price}");
+                          }),
               SizedBox(height: 54.h)
             ],
           ),
