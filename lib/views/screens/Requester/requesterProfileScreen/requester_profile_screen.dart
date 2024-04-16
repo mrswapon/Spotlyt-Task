@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/helpers/prefs_helper.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
-import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/widgets/custom_loader.dart';
-import 'package:spotlyt_task/views/widgets/custom_text.dart';
 import '../../../../utils/app_constant.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
-import '../../../widgets/custom_button.dart';
 import '../../../widgets/genarel_error_screen.dart';
 import '../../../widgets/no_internet_screen.dart';
 import 'InnerWidgets/aleart_dialog.dart';
@@ -83,7 +79,6 @@ class RequesterProfileScreen extends StatelessWidget {
                         icon: AppIcons.profile,
                       ),
 
-
                       ///==================== If This is Tasker show 2 filled verify and wallet================>
                       _profileController.profileModel.value.role != "employee"
                           ? const SizedBox()
@@ -93,10 +88,14 @@ class RequesterProfileScreen extends StatelessWidget {
                                 ///============user already verify NID then show a Badge beside of profile name===============>
 
                                 Obx(() {
-                                  switch (_profileController.profileModel.value.nidStatus) {
-                                    case "approved":return const SizedBox();
-                                    case "pending":return const SizedBox();
-                                    default:return CustomListTileWidget(
+                                  switch (_profileController
+                                      .profileModel.value.nidStatus) {
+                                    case "approved":
+                                      return const SizedBox();
+                                    case "pending":
+                                      return const SizedBox();
+                                    default:
+                                      return CustomListTileWidget(
                                         ontap: () {
                                           Get.toNamed(AppRoutes.verifyScreen,
                                               arguments: profileData);
@@ -131,14 +130,14 @@ class RequesterProfileScreen extends StatelessWidget {
                       ///--------------------------Invite & Earn---------------------------->
 
                       _profileController.profileModel.value.role == "employee"
-                     ? CustomListTileWidget(
-                        ontap: () {
-                          Get.toNamed(AppRoutes.inviteEarnScreen);
-                        },
-                        title: AppString.inviteAndEarn,
-                        icon: AppIcons.share,
-                      )
-                      :const SizedBox(),
+                          ? CustomListTileWidget(
+                              ontap: () {
+                                Get.toNamed(AppRoutes.inviteEarnScreen);
+                              },
+                              title: AppString.inviteAndEarn,
+                              icon: AppIcons.share,
+                            )
+                          : const SizedBox(),
 
                       ///--------------------------log out---------------------------->
                       CustomListTileWidget(
@@ -168,5 +167,3 @@ class RequesterProfileScreen extends StatelessWidget {
     }));
   }
 }
-
-

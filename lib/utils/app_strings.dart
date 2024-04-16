@@ -150,6 +150,7 @@ class AppString {
    static String todaysTask = "Today’s Task";
    static String taskPrice = "Task Price:";
    static String totalBalance = "Total balance";
+   static String takeScreenshot = "Take a screenshot of the completed task and \nupload it below and then click on submit task \nto get paid.";
 
 
 
