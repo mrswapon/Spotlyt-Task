@@ -115,6 +115,7 @@ class TaskerWalletScreen extends StatelessWidget {
                 ? const CustomLoader()
                 : Expanded(
                     child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: (_walletController.walletModel.value.data?.attributes?.length ?? 0) <= 3
                           ? _walletController
                               .walletModel.value.data?.attributes?.length

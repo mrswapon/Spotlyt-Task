@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:spotlyt_task/views/screens/Tasker/taskerTaskScreen/task_details.dart';
 import '../helpers/Bindings/requester_binding.dart';
 import '../views/screens/Add_Interest/add_interest_screen.dart';
 import '../views/screens/Invite_Earn/invite_earn_screen.dart';
@@ -75,6 +76,7 @@ class AppRoutes {
   static const String cancelPayment = "/cancel_payment";
   static const String failedPayment = "/failed_payment";
   static const String submitReferCode = "/submit_refer_code";
+  static const String taskDetails = "/tasks_details";
 
 
   static List<GetPage> get routes => [
@@ -105,6 +107,7 @@ class AppRoutes {
         GetPage(name: taskerBottomNavBar, page: () => TaskerBottomNavBar()),
         GetPage(name: verifyScreen, page: () => VerifyScreen()),
         GetPage(name: taskerTaskDetailsScreen, page: () => TaskerTaskDetailsScreen()),
+        GetPage(name:taskDetails, page: () => TaskDetailsScreen()),
         GetPage(name: homeCardDetails, page: () => HomeCardDetails()),
         GetPage(name: todayOrAllTaskScreen, page: () => TodayOrAllTaskScreen()),
         GetPage(name: taskerWalletScreen, page: () => TaskerWalletScreen()),

@@ -101,7 +101,7 @@ class TaskerHomeScreen extends StatelessWidget {
                             var taskData = _taskerHomeController
                                 .taskerHomeModelToday
                                 .value
-                                ?.data
+                                .data
                                 ?.attributes
                                 ?.tasks?[index];
                             var date = taskData?.createdAt;
@@ -169,13 +169,13 @@ class TaskerHomeScreen extends StatelessWidget {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: _taskerHomeController.taskerHomeModelAll
-                                  .value?.data?.attributes?.tasks?.length ??
+                                  .value.data?.attributes?.tasks?.length ??
                               0,
                           itemBuilder: (context, index) {
                             var allTaskDate = _taskerHomeController
                                 .taskerHomeModelAll
                                 .value
-                                ?.data
+                                .data
                                 ?.attributes
                                 ?.tasks?[index];
                             var date = allTaskDate?.createdAt;
