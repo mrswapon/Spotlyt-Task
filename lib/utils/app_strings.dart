@@ -41,8 +41,8 @@ class AppString {
 //==========================> Reset password Screen <=============================
   static String resetpassword = "Reset password";
   static String resetPassword = "Reset Password";
-  static String setNewPassword = "Set new Password";
-  static String confirmPassword = "Confirm Password";
+  static String setNewPassword = "Set new password";
+  static String confirmPassword = "Confirm password";
 
 //==========================> Settings Screen <=============================
   static String settings = "Settings";

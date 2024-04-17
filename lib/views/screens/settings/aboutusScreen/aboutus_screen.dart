@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -35,11 +36,8 @@ class AboutusScreen extends StatelessWidget {
             children: [
               //===========================================> Text Section <=============================================
               Obx(
-                () => CustomText(
-                  textAlign: TextAlign.start,
-                  text: _aboutUsController.content.value,
-                  fontsize: 14.h,
-                  maxline: 1000,
+                () => Html(
+                  data: _aboutUsController.content.value,
                 ),
               ),
             ],

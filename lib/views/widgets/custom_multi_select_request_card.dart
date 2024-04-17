@@ -4,25 +4,28 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotlyt_task/models/requester_home_screen_model.dart';
-
 import '../../utils/app_colors.dart';
 import '../../utils/app_icons.dart';
 import 'custom_text.dart';
 
 class CustomMultiSelectRequestCard extends StatefulWidget {
-
-
   List<Service> requestList;
   final Function(int index) onTap;
   num initSelect;
 
-  CustomMultiSelectRequestCard({super.key, required this.requestList,required this.onTap,required this.initSelect});
+  CustomMultiSelectRequestCard(
+      {super.key,
+      required this.requestList,
+      required this.onTap,
+      required this.initSelect});
 
   @override
-  State<CustomMultiSelectRequestCard> createState() => _CustomMultiSelectRequestCardState();
+  State<CustomMultiSelectRequestCard> createState() =>
+      _CustomMultiSelectRequestCardState();
 }
 
-class _CustomMultiSelectRequestCardState extends State<CustomMultiSelectRequestCard> {
+class _CustomMultiSelectRequestCardState
+    extends State<CustomMultiSelectRequestCard> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,8 +39,6 @@ class _CustomMultiSelectRequestCardState extends State<CustomMultiSelectRequestC
               ///--------------------------------
               var services = widget.requestList[index];
               bool isSelected = widget.initSelect == index;
-
-
 
               return Padding(
                 padding: EdgeInsets.only(bottom: 12.h),
@@ -75,6 +76,7 @@ class _CustomMultiSelectRequestCardState extends State<CustomMultiSelectRequestC
                                 textAlign: TextAlign.start,
                                 text: "${services.name}",
                                 fontsize: 14.h,
+                                maxline: 2,
                               ),
                             )
                           ],
@@ -84,14 +86,14 @@ class _CustomMultiSelectRequestCardState extends State<CustomMultiSelectRequestC
                       Row(
                         children: [
                           CustomText(
-                            text: services.subTitle??"",
+                            text: services.subTitle ?? "",
                             fontsize: 14.h,
                           ),
                           SizedBox(
                             width: 8.w,
                           ),
                           CustomText(
-                            text: "${services.price}",
+                            text: "R${services.price}",
                             fontsize: 14.h,
                             color: AppColors.primaryColor,
                           )

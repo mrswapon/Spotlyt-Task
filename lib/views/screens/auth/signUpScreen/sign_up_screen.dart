@@ -9,8 +9,8 @@ import '../../../../utils/app_images.dart';
 import '../../../../utils/app_strings.dart';
 
 class SignUpScreen extends StatelessWidget {
-   SignUpScreen({super.key});
-   AuthController authController = Get.put(AuthController());
+  SignUpScreen({super.key});
+  AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,6 @@ class SignUpScreen extends StatelessWidget {
                             // authController.role.value = "employee";
                             authController.selectRole("client");
                             authController.isSelectedRole(true);
-
                           },
                           child: Container(
                             width: double.infinity,
