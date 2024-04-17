@@ -62,6 +62,8 @@ class _ResetFormState extends State<ResetForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please set new password";
+                  }else if(value.length < 8 || !_validatePassword(value)){
+                    return "Password: 8 characters min, letters & digits required";
                   }
                   return null;
                 },
@@ -94,6 +96,8 @@ class _ResetFormState extends State<ResetForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please confirm your password";
+                  }else if(value != _newPassController.text){
+                    return "Passwords do not match";
                   }
                   return null;
                 },
@@ -128,5 +132,13 @@ class _ResetFormState extends State<ResetForm> {
         width: 24.w,
       ),
     );
+  }
+
+
+  bool _validatePassword(String value) {
+    // RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+    RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
+    // RegExp regex = RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+    return regex.hasMatch(value);
   }
 }
