@@ -4,10 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
-import 'package:spotlyt_task/views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/tasker_home_screen.dart';
 import '../../../../utils/app_icons.dart';
-import '../../Tasker/taskerProfileScreen/tasker_profile_screen.dart';
+import '../../ProfileScreen/profile_screen.dart';
 import '../taskerTaskScreen/tasker_task_screen.dart';
 
 class TaskerBottomNavBar extends StatefulWidget {
@@ -81,7 +80,7 @@ class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
       case 1:
         return TaskerTaskScreen();
       default:
-        return RequesterProfileScreen();
+        return ProfileScreen();
     }
   }
 }

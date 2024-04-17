@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 import 'package:spotlyt_task/utils/app_images.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_strings.dart';
-import '../../../../widgets/custom_text.dart';
+import '../../../widgets/custom_text.dart';
 
 class TopProfileCard extends StatelessWidget {
   final String? profileName;
@@ -16,19 +14,18 @@ class TopProfileCard extends StatelessWidget {
   final double? height;
   final String? badge;
 
-  const TopProfileCard({super.key, this.profileName, this.profileUrl, this. height, this.badge});
+  const TopProfileCard(
+      {super.key, this.profileName, this.profileUrl, this.height, this.badge});
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
-
       height: height ?? 337.h,
       width: double.infinity,
       decoration: BoxDecoration(
           color: const Color(0xffA0C5A0),
-          border:
-              const Border(bottom: BorderSide(color: AppColors.primaryColor,width: 1.80)),
+          border: const Border(
+              bottom: BorderSide(color: AppColors.primaryColor, width: 1.80)),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(24.r),
             bottomRight: Radius.circular(24.r),
@@ -48,15 +45,16 @@ class TopProfileCard extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: AppColors.primaryColor)),
-            ///------------------image------------------>
-            child: profileUrl == null?
-            const CircleAvatar(
-              backgroundImage: AssetImage(AppImages.no_internet_profile),
-            )
 
-            :CircleAvatar(
-              backgroundImage: NetworkImage("${ApiConstants.imageBaseUrl}$profileUrl"),
-            ),
+            ///------------------image------------------>
+            child: profileUrl == null
+                ? const CircleAvatar(
+                    backgroundImage: AssetImage(AppImages.no_internet_profile),
+                  )
+                : CircleAvatar(
+                    backgroundImage:
+                        NetworkImage("${ApiConstants.imageBaseUrl}$profileUrl"),
+                  ),
           ),
           Expanded(
             child: Row(
@@ -69,15 +67,21 @@ class TopProfileCard extends StatelessWidget {
                   // top: 5.h,
                 ),
 
-                SizedBox(width: 4.w,),
+                SizedBox(
+                  width: 4.w,
+                ),
                 if (badge == "cancelled")
                   const SizedBox()
                 else if (badge == "pending")
                   const SizedBox()
                 else if (badge == "unverified")
-                    const SizedBox()
-                else if(badge == "approved")
-                SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,),
+                  const SizedBox()
+                else if (badge == "approved")
+                  SvgPicture.asset(
+                    AppIcons.badgeCheck,
+                    color: AppColors.primaryColor,
+                    height: 25.h,
+                  ),
                 // badge == null ? const SizedBox() :
                 // SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,),
               ],
@@ -88,13 +92,3 @@ class TopProfileCard extends StatelessWidget {
     );
   }
 }
-
-
-// Obx(() {
-// switch(badge){
-// case "cancelled":return const SizedBox();
-// case "pending":return const SizedBox();
-// case "unverified":return const SizedBox();
-// default:return  SvgPicture.asset(AppIcons.badgeCheck, color: AppColors.primaryColor, height: 25.h,);
-// }
-// }),

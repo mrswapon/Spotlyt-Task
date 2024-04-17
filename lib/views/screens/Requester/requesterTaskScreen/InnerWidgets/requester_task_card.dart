@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_images.dart';
@@ -98,7 +97,7 @@ class RequesterTaskCard extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: AppColors.black5C5C5C,
                             left: 8.w)
-                        : SizedBox(),
+                        : const SizedBox(),
                   ],
                 ),
 
@@ -118,9 +117,11 @@ class RequesterTaskCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4.r),
                       color: AppColors.primaryColor),
                   child: Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                     child: CustomText(
-                      text: postLink ?? "https://www.Facebook.com/Image \n Post",
+                      text:
+                          postLink ?? "https://www.Facebook.com/Image \n Post",
                       color: Colors.white,
                       fontsize: 12.h,
                       textAlign: TextAlign.start,

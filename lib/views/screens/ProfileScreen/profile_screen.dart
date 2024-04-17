@@ -8,14 +8,14 @@ import 'package:spotlyt_task/views/widgets/custom_loader.dart';
 import '../../../../utils/app_constant.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
-import '../../../widgets/genarel_error_screen.dart';
-import '../../../widgets/no_internet_screen.dart';
+import '../../widgets/genarel_error_screen.dart';
+import '../../widgets/no_internet_screen.dart';
 import 'InnerWidgets/aleart_dialog.dart';
 import 'InnerWidgets/custom_list_tile_widget.dart';
 import 'InnerWidgets/top_profile_card.dart';
 
-class RequesterProfileScreen extends StatelessWidget {
-  RequesterProfileScreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  ProfileScreen({super.key});
 
   final ProfileController _profileController = Get.put(ProfileController());
 
