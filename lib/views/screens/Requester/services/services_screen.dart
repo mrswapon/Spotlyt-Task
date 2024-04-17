@@ -261,7 +261,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                   // ),
 
                   ///-------------------------------------------select time line text---------------------------------------------->
-                  if (attributes.name == "Corporate")
+                  if (attributes.name == "Business Offerings")
                     CustomText(
                       text: AppString.selectTimeline,
                       fontWeight: FontWeight.w500,
@@ -270,7 +270,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                     ),
 
                   ///--------------------------------select time line form-------------------------------->
-                  if (attributes.name == "Corporate")
+                  if (attributes.name == "Business Offerings")
                     Row(
                       children: [
                         Expanded(

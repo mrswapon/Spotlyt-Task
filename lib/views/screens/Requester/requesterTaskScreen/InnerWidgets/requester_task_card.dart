@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotlyt_task/helpers/time_format.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_images.dart';
@@ -10,8 +11,8 @@ class RequesterTaskCard extends StatelessWidget {
   final double? weight;
   final double? bgImageheights;
   final String? amount;
-  final String? faceBookPost;
-  final String? date;
+  final String? title;
+  final DateTime? date;
   final String? days;
   final String? postLink;
   final String? taskCompleteAmount;
@@ -21,7 +22,7 @@ class RequesterTaskCard extends StatelessWidget {
       this.weight,
       this.bgImageheights,
       this.amount,
-      this.faceBookPost,
+      this.title,
       this.date,
       this.days,
       this.postLink,
@@ -54,7 +55,7 @@ class RequesterTaskCard extends StatelessWidget {
               children: [
                 ///-------------------------facebook post 5k like----------------------------->
                 CustomText(
-                  text: faceBookPost ?? "Facebook Post 5K Like ",
+                  text: title ?? "Facebook Post 5K Like ",
                   fontsize: 22.h,
                   fontWeight: FontWeight.w600,
                   bottom: 10.h,
@@ -62,12 +63,13 @@ class RequesterTaskCard extends StatelessWidget {
 
                 ///--------------------------date------------------------------->
                 CustomText(
-                  text: date ?? "Friday 01 Feb, 2024",
+                  text: TimeFormatHelper.formatDate(date!),
                   fontsize: 14.h,
                   fontWeight: FontWeight.w500,
                   color: AppColors.black5C5C5C,
                   bottom: 14.h,
                 ),
+               days!=null?
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -99,7 +101,12 @@ class RequesterTaskCard extends StatelessWidget {
                             left: 8.w)
                         : const SizedBox(),
                   ],
-                ),
+                ): CustomText(
+                   text: "$amount",
+                   fontsize: 14.h,
+                   fontWeight: FontWeight.w500,
+                   color: AppColors.black5C5C5C,
+                   left: 8.w),
 
                 ///------------------------task link------------------------------->
                 CustomText(
@@ -121,7 +128,7 @@ class RequesterTaskCard extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                     child: CustomText(
                       text:
-                          postLink ?? "https://www.Facebook.com/Image \n Post",
+                          postLink??"",
                       color: Colors.white,
                       fontsize: 12.h,
                       textAlign: TextAlign.start,
