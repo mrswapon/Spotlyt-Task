@@ -42,12 +42,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     // TODO: implement initState
     super.initState();
     setState(() {
-      _nameController.text = parameter['name']! == "null" ? "" : parameter['name']!;
+      _nameController.text =
+          parameter['name']! == "null" ? "" : parameter['name']!;
       _emailController.text = parameter['email']!;
-      _phoneNumberController.text = parameter['phone']! == 'null' ? "" : parameter['phone']!;
-      _nidNumberController.text = parameter['nidNo']! == 'null' ? "" : parameter['nidNo']!;
-      dateCtrl.text = parameter['dateOfBirth'] == 'null' ? "" : parameter['dateOfBirth']!;
-      _locationController.text = parameter['address']! == 'null' ? "" : parameter['address']!;
+      _phoneNumberController.text =
+          parameter['phone']! == 'null' ? "" : parameter['phone']!;
+      _nidNumberController.text =
+          parameter['nidNo']! == 'null' ? "" : parameter['nidNo']!;
+      dateCtrl.text =
+          parameter['dateOfBirth'] == 'null' ? "" : parameter['dateOfBirth']!;
+      _locationController.text =
+          parameter['address']! == 'null' ? "" : parameter['address']!;
     });
   }
 
@@ -195,7 +200,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           _profileControllor.editProfile(
                               _nameController.text,
                               _phoneNumberController.text,
-                               _nidNumberController.text,
+                              _nidNumberController.text,
                               _locationController.text,
                               selectedIMage,
                               dateCtrl.text);

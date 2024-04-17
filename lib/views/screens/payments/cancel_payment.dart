@@ -28,7 +28,7 @@ class CancelPayment extends StatelessWidget {
             SizedBox(height: 46.h),
             //=====================> Purchase Cancel Text <=======================
             CustomText(
-              text: "Purchase Cancel!",
+              text: "Purchase Canceled!",
               fontsize: 24.sp,
               fontWeight: FontWeight.w600,
               color: Colors.red,

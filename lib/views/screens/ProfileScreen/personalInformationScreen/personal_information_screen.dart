@@ -85,7 +85,7 @@ class PersonalInformationScreen extends StatelessWidget {
               CustomListTile(
                   title: profileData.dataOfBirth == null ||
                           profileData.dataOfBirth!.isEmpty
-                      ? "MM/DD/Year"
+                      ? "MM/DD/YYYY"
                       : '${profileData.dataOfBirth}',
                   prefixIcon: _prefixIcon(AppIcons.calendar)),
 

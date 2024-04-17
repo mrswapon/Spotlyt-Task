@@ -54,6 +54,7 @@ dependencies:
 #  internet connection check
   internet_connection_checker: ^1.0.0+1
   connectivity_plus: ^5.0.2
+  flutter_html:
   lottie: ^3.1.0
   intl:
   flutter_link_previewer: ^3.2.2
