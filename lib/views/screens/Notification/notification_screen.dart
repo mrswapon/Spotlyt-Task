@@ -17,7 +17,7 @@ class NotificationScreen extends StatelessWidget {
       appBar: AppBar(
         title: CustomText(
           textAlign: TextAlign.start,
-          text: "Notifiacation",
+          text: "Notifications",
           fontsize: 18.h,
           fontWeight: FontWeight.w500,
         ),

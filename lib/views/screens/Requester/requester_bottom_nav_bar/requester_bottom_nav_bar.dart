@@ -6,7 +6,7 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/views/screens/Requester/requesterHome/requester_home_screen.dart';
 import '../../../../utils/app_icons.dart';
-import '../requesterProfileScreen/requester_profile_screen.dart';
+import '../../ProfileScreen/profile_screen.dart';
 import '../requesterTaskScreen/requester_task_screen.dart';
 
 class RequesterBottomNavBar extends StatefulWidget {
@@ -80,7 +80,7 @@ class _RequesterBottomNavBarState extends State<RequesterBottomNavBar> {
       case 1:
         return RequesterTaskScreen();
       default:
-        return RequesterProfileScreen();
+        return ProfileScreen();
     }
   }
 }

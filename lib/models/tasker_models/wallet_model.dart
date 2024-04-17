@@ -97,7 +97,7 @@ class UserId {
   final String? email;
   final Image? image;
   final String? role;
-  final int? rand;
+  final num? rand;
   final String? id;
 
   UserId({

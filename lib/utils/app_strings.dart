@@ -10,10 +10,10 @@ class AppString {
   static String signUps = "Sign Up";
   static String fullName = "Full Name";
   static String email = "Email";
-  static String createPassword = "Create a Password";
-  static String reenterPassword = "Re-enter Password";
+  static String createPassword = "Create a password";
+  static String reenterPassword = "Re-enter password";
   static String byCreating = "By creating an account, I accept the";
-  static String termsOfServices = "Terms \nof Services";
+  static String termsOfServices = "Terms \n& Conditions";
   static String and = "And";
   static String privacyPolicy = "Privacy Policy";
   static String alreadyHave = "Already have an account?";
@@ -23,7 +23,7 @@ class AppString {
   static String verifyOTP = "Verify OTP";
   static String weHaveSent =
       "We have sent a verification code to your email address. Please check and enter the code here.";
-  static String didntRecieve = "Didn’t recieve the code?";
+  static String didntRecieve = "Did’t receive the code?";
   static String resend = "Resend";
   static String verify = "Verify";
 

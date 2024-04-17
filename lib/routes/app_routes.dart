@@ -4,7 +4,9 @@ import '../views/screens/Add_Interest/add_interest_screen.dart';
 import '../views/screens/Invite_Earn/invite_earn_screen.dart';
 import '../views/screens/Invite_Earn/submit_refer.dart';
 import '../views/screens/Notification/notification_screen.dart';
-import '../views/screens/Requester/requesterProfileScreen/requester_profile_screen.dart';
+import '../views/screens/ProfileScreen/personalInformationScreen/personal_information_screen.dart';
+import '../views/screens/ProfileScreen/profile_screen.dart';
+import '../views/screens/ProfileScreen/updateProfileScreen/update_profile_screen.dart';
 import '../views/screens/Requester/requesterTaskScreen/requester_task_screen.dart';
 import '../views/screens/Requester/requester_Task_details/requester_task_details_screen.dart';
 import '../views/screens/Requester/requester_bottom_nav_bar/requester_bottom_nav_bar.dart';
@@ -26,8 +28,6 @@ import '../views/screens/auth/verifyOTPScreen/verify_otp_screen.dart';
 import '../views/screens/payments/cancel_payment.dart';
 import '../views/screens/payments/failed_payment.dart';
 import '../views/screens/payments/success_payment.dart';
-import '../views/screens/profile/personalInformationScreen/personal_information_screen.dart';
-import '../views/screens/profile/updateProfileScreen/update_profile_screen.dart';
 import '../views/screens/settings/aboutusScreen/aboutus_screen.dart';
 import '../views/screens/settings/changePasswordScreen/change_password_screen.dart';
 import '../views/screens/settings/privacyPolicyScreen/privacy_policy_screen.dart';
@@ -92,12 +92,12 @@ class AppRoutes {
         GetPage(name: aboutusScreen, page: () => AboutusScreen()),
         GetPage(name: splashScreen, page: () => SplashScreen()),
         GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen(), transition: Transition.cupertinoDialog, transitionDuration: const Duration(milliseconds: 450)),
-        GetPage(name: profileScreen, page: () => RequesterProfileScreen()),
+        GetPage(name: profileScreen, page: () => ProfileScreen()),
         GetPage(name: updateProfileScreen, page: () => UpdateProfileScreen(), transition: Transition.cupertinoDialog, transitionDuration: const Duration(milliseconds: 450)),
         GetPage(name: notificationScreen, page: () => NotificationScreen()),
         GetPage(name: requesterTaskScreen, page: () => RequesterTaskScreen()),
         GetPage(name: requesterTaskDetailsScreen, page: () => RequesterTaskDetailsScreen()),
-        GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
+        //GetPage(name: personalInformationScreen, page: () => PersonalInformationScreen()),
         GetPage(name: inviteEarnScreen, page: () => InviteEarnScreen()),
         GetPage(name: addInterestScreen, page: () => AddInterestScreen()),
          // GetPage(name: taskerProfileScreen, page: () => TaskerProfileScreen()),
