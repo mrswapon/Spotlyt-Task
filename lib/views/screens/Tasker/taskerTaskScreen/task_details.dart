@@ -3,6 +3,7 @@ import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
+import 'package:spotlyt_task/models/tasker_task_model.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
@@ -11,15 +12,15 @@ import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
 
-class TaskerTaskDetailsScreen extends StatefulWidget {
-  const TaskerTaskDetailsScreen({super.key});
+class TaskDetailsScreen extends StatefulWidget {
+  const TaskDetailsScreen({super.key});
 
   @override
-  State<TaskerTaskDetailsScreen> createState() =>
-      _TaskerTaskDetailsScreenState();
+  State<TaskDetailsScreen> createState() =>
+      _TaskDetailsScreenState();
 }
 
-class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
+class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
   final _taskerHomeController = Get.put(TaskerHomeController());
 
   Map<String, PreviewData> datas = {};
@@ -27,7 +28,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Task taskDetails = Get.arguments;
+    Tasks taskDetails = Get.arguments;
     print("======================> ${parameters['tabBarIndex']}");
     return Scaffold(
       //=========================> AppBar Section  <============================
@@ -42,7 +43,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
+          EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -68,7 +69,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               ),
               //=========================> Task price Rope <=======================
               SelectableText(
-                 "R${taskDetails.price!/2}" ?? "",
+                "R${taskDetails.price!/2}" ?? "",
 
                 style: TextStyle(
                     fontSize: 16.h,
@@ -88,8 +89,8 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               Container(
                 // key: const ValueKey("https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk"),
                 key: parameters['screenType'] == "taskerTaskScreen"
-                    ? ValueKey("${taskDetails.taskLink}")
-                    : ValueKey("${taskDetails.taskLink}"),
+                    ? ValueKey("${taskDetails.taskId!.taskLink}")
+                    : ValueKey("${taskDetails.taskId!.taskLink}"),
                 margin: const EdgeInsets.all(16),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
@@ -108,21 +109,21 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                         datas = {
                           ...datas,
                           parameters['screenType'] == "taskerTaskScreen"
-                              ? "${taskDetails.taskLink}"
-                              : "${taskDetails.taskLink}": data,
+                              ? "${taskDetails.taskId!.taskLink}"
+                              : "${taskDetails.taskId!.taskLink}": data,
                           // "https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk":data,
                         };
                       });
                     },
                     // previewData: datas['https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk'],
                     previewData: datas[
-                        parameters['screenType'] == "taskerTaskScreen"
-                            ? "${taskDetails.taskLink}"
-                            : "${taskDetails.taskLink}"],
+                    parameters['screenType'] == "taskerTaskScreen"
+                        ? "${taskDetails.taskId!.taskLink}"
+                        : "${taskDetails.taskId!.taskLink}"],
                     // text:"https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk",
                     text: parameters['screenType'] == "taskerTaskScreen"
-                        ? "${taskDetails.taskLink}"
-                        : "${taskDetails.taskLink}",
+                        ? "${taskDetails.taskId!.taskLink}"
+                        : "${taskDetails.taskId!.taskLink}",
                     width: MediaQuery.of(context).size.width,
                   ),
                 ),
@@ -154,21 +155,21 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               //=========================> Submit Task Button <===================
               parameters['tabBarIndex'] == '0'
                   ? CustomButton(
-                      title: AppString.submitTask,
-                      onpress: () {
-                        Get.toNamed(AppRoutes.submitTaskScreen,
-                            parameters: {'sId': "${parameters['sId']}"});
-                      })
+                  title: AppString.submitTask,
+                  onpress: () {
+                    Get.toNamed(AppRoutes.submitTaskScreen,
+                        parameters: {'sId': "${parameters['sId']}"});
+                  })
                   : parameters['screenType'] == "taskerTaskScreen"
-                      ? const SizedBox()
-                      : CustomButton(
-                          title: AppString.taskRegisterNow,
-                          onpress: () {
-                            _taskerHomeController.taskRegister(
-                                "${taskDetails.name}",
-                                "${taskDetails.id}",
-                                "${taskDetails.price}");
-                          }),
+                  ? const SizedBox()
+                  : CustomButton(
+                  title: AppString.taskRegisterNow,
+                  onpress: () {
+                    _taskerHomeController.taskRegister(
+                        "${taskDetails.name}",
+                        "${taskDetails.taskId!.sId}",
+                        "${taskDetails.price}");
+                  }),
               SizedBox(height: 54.h)
             ],
           ),

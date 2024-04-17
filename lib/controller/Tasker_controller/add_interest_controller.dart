@@ -32,8 +32,6 @@ class AddInterestController extends GetxController{
     }else{
       ApiChecker.checkApi(response);
     }
-
-
   }
 
 

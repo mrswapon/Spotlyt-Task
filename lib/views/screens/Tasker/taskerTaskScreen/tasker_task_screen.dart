@@ -72,7 +72,7 @@ class TaskerTaskScreen extends StatelessWidget {
               } else if (value == 2) {
                 tabBarIndex.value = 2;
                 _taskerTaskController.isSelected(true);
-                _taskerTaskController.setStatus("Completed");
+                _taskerTaskController.setStatus("accepted");
                 _taskerTaskController.taskerTaskGet();
               }
             },
@@ -122,15 +122,9 @@ class TaskerTaskScreen extends StatelessWidget {
                       () => Expanded(
                         child: ListView.builder(
                           controller: scrollController,
-                          itemCount: _taskerTaskController.taskertaskModel.value
-                              .data?.attributes?.tasks?.length,
+                          itemCount: _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?.length,
                           itemBuilder: (context, index) {
-                            var taskerTask = _taskerTaskController
-                                .taskertaskModel
-                                .value
-                                .data
-                                ?.attributes
-                                ?.tasks?[index];
+                            var taskerTask = _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?[index];
 
                             ///==================date formed================>
                             var date = taskerTask?.createdAt;
@@ -150,7 +144,7 @@ class TaskerTaskScreen extends StatelessWidget {
                                   onTap: () {
                                     print("============sId ${taskerTask?.sId}");
                                     Get.toNamed(
-                                        AppRoutes.taskerTaskDetailsScreen,
+                                        AppRoutes.taskDetails,
                                         arguments: taskerTask,
                                         parameters: {
                                           "screenType": "taskerTaskScreen",
@@ -161,7 +155,7 @@ class TaskerTaskScreen extends StatelessWidget {
                                   child: TaskerTaskCard(
                                     faceBookPost: "${taskerTask?.name}",
                                      date: formatDates,
-                                     taskCompleteAmount: "${taskerTask?.price}",
+                                     taskCompleteAmount: "${taskerTask?.taskId?.price}",
                                     // amount: "${taskerTask?.price}",
                                     postLink:
                                         "${taskerTask?.taskId?.taskLink}\n",

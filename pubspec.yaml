@@ -59,6 +59,7 @@ dependencies:
   flutter_link_previewer: ^3.2.2
   webview_flutter: ^4.7.0
   crypto: ^3.0.3
+  timeago: ^3.6.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
