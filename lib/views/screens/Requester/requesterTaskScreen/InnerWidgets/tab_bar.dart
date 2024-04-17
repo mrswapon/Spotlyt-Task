@@ -26,6 +26,7 @@ class RequesterTaskTab extends StatelessWidget {
           border: Border.all(color: AppColors.primaryColor)),
       child: Row(
         children: [
+          ///---------------------------Submitted botton----------------------->
           Expanded(
             flex: 1,
             child: Obx(() => GestureDetector(
@@ -33,8 +34,6 @@ class RequesterTaskTab extends StatelessWidget {
                _requesterTaskController.selectTab.value="pending";
                _requesterTaskController.fastLoad();
               },
-
-              ///---------------------------Submitted botton----------------------->
               child: Container(
                 decoration: BoxDecoration(
                     color: _requesterTaskController.selectTab.value=="pending"
@@ -56,6 +55,7 @@ class RequesterTaskTab extends StatelessWidget {
               ),
             )),
           ),
+          ///-------------------------- completed botton----------------------->
           Expanded(
             flex: 1,
             child: Obx(() => GestureDetector(
@@ -63,8 +63,6 @@ class RequesterTaskTab extends StatelessWidget {
                 _requesterTaskController.selectTab.value="complete";
                 _requesterTaskController.fastLoad();
               },
-
-              ///-------------------------- completed botton----------------------->
               child: Container(
                 decoration: BoxDecoration(
                     color:  _requesterTaskController.selectTab.value=="pending"
