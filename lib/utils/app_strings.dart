@@ -18,7 +18,6 @@ class AppString {
   static String privacyPolicy = "Privacy Policy";
   static String alreadyHave = "Already have an account?";
   static String signIn = "Sign In";
-
   //==========================> Verify OTP Screen <=============================
   static String verifyOTP = "Verify OTP";
   static String weHaveSent =
@@ -26,24 +25,20 @@ class AppString {
   static String didntRecieve = "Did’t receive the code?";
   static String resend = "Resend";
   static String verify = "Verify";
-
   //==========================> Sign in Screen <=============================
   static String signin = "Sign in";
   static String forgotPassword = "Forgot password? ";
   static String dontHaveAccount = "Don’t have an account?";
   static String password = "Password";
-
 //==========================> Forgot password Screen <=============================
   static String forgotpassword = "Forgot password";
   static String enterEmail = "Enter email address to reset password.";
   static String getOTP = "Get OTP";
-
 //==========================> Reset password Screen <=============================
   static String resetpassword = "Reset password";
   static String resetPassword = "Reset Password";
   static String setNewPassword = "Set new password";
   static String confirmPassword = "Confirm password";
-
 //==========================> Settings Screen <=============================
   static String settings = "Settings";
   static String getVerfied = "Get Verified";
@@ -52,11 +47,9 @@ class AppString {
   static String privacyPolicys = "Privacy policy";
   static String termsAndConditions = "Terms & Conditions";
   static String aboutUs = "About Us";
-
 //==========================> Change Password Screen <=============================
   static String oldPassword = "Old password";
   static String reEnterPassword = "Re-enter new password";
-
   //==========================> Profile Screen <=============================
   static String profile = "Profile";
   static String personalInformation = "Personal Information";
@@ -80,7 +73,6 @@ class AppString {
   static String  startDate = "Start Date";
   static String  endDate = "End Date";
   static String  timeLine = "Time Line:";
-
   //================================> Wallet Screen <===========================
   static String  minimumWithdrawal = "Minimum Withdrawal - R 20";
   static String  maximumWithdrawal = "Maximum Withdrawal - R 10000";
@@ -97,67 +89,44 @@ class AppString {
   static String  withdrawalAmount = "Withdrawal Amount";
   static String  withdraw = "Withdraw";
   static String  verifys = "Verify";
-
   ///----------------------------services screen----------------------------------------->
   static String requestForService = "Request for a Service";
-
-  static String selectCategoryThatYouWantService = "Select Category that you want service for";
+  static String selectCategoryThatYouWantService = "Select category that you want service for";
   static String selectTheRequiredServiceyouWant = "Select the required service you want";
   static String addQuantity = "Add Quantity";
   static String addLink = "Add Link";
   static String totalPayable = "Total Payable";
   static String selectTimeline = "Select Timeline";
   static String addPerferabelInterest = "Add preferable interest";
-
-
   ///-------------------------payment screen------------------------>
   static String makePayment = "Make Payment";
   static String selectPaymentMethod = "Select Payment Method";
   static String cardHolderName = "Card holder name";
   static String cardNumber = "Card number";
-
   ///---------------------requesterTaskScreen screen------------------------------>
   static String task = "Task";
   static String running = "Running";
   static String submitted = "Submitted";
   static String completed = "Completed";
-
-
   ///----------------requesterTaskScreen details screen------------------------>
   static String taskDetails = "Task Details";
   static String taskLink = "Task Link:";
   static String taskPost = "Task Post Date:";
-
-
   ///--------------------------invite and earn screen------------------------->
    static String inviteYourFriendsAndGetRand = "Invite your friends and get \n Rand 1.0";
    static String shareTheLinkBeloworAsk = "Share the link below or ask them to enter it \n during they signup. Earn when your friend signs\n up on our app.";
     static String referralCode="Referral Code";
     static String referralSubmitDes="Please enter your referral code below";
-
-
    ///-------------------------add interest screen---------------------------->
    static String addInterest = "Add Interest";
    static String selectYourInterest = "Select your Interest";
-
-
    ///-----------------------------------tasker home screen------------------------------------->
    static String todayTask = "Today's Task";
    static String allTask = "All Task";
    static String seeAll = "See All";
-
-
-
    static String todaysTask = "Today’s Task";
    static String taskPrice = "Task Price:";
    static String totalBalance = "Total balance";
    static String takeScreenshot = "Take a screenshot of the completed task and \nupload it below and then click on submit task \nto get paid.";
-
-
-
-
-
-
-
 }
 

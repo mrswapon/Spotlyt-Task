@@ -66,7 +66,7 @@ class RequesterTaskScreen extends StatelessWidget {
                                       },
                                       child: RequesterTaskCard(
                                         taskCompleteAmount:"",
-                                        amount:"R${data.price!/2}",
+                                        amount:data.price!/2,
                                         title:data.name,
                                         postLink:data.taskLink,
                                         date: data.createdAt,
