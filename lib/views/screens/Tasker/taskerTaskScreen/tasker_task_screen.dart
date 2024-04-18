@@ -11,6 +11,7 @@ import '../../../../utils/app_constant.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_loader.dart';
 import '../../../widgets/genarel_error_screen.dart';
+import '../../../widgets/no_data_found.dart';
 import '../../../widgets/no_internet_screen.dart';
 import 'InnerWidgets/tasker_task_card.dart';
 
@@ -120,7 +121,14 @@ class TaskerTaskScreen extends StatelessWidget {
                   children: [
                     Obx(
                       () => Expanded(
-                        child: ListView.builder(
+                        child:
+                         _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?.length == 0 ?
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 100.h, left: 40.w,right: 40.w),
+                            child: const CustomNoDataFound(title: '',),
+                          ):
+
+                        ListView.builder(
                           controller: scrollController,
                           itemCount: _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?.length,
                           itemBuilder: (context, index) {

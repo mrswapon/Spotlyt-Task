@@ -55,10 +55,10 @@ class AddInterestController extends GetxController{
 
    var response = await ApiClient.postData(ApiConstants.interestEndPoint, body);
 
-
     if(response.statusCode == 200){
       print("=============> Interest post done and interest list $interestTitle");
       Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+      await PrefsHelper.setBool(AppConstants.isLogged, true);
     }
   }
 }

@@ -6,7 +6,6 @@ import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.da
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../routes/app_routes.dart';
-import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_list_lile.dart';
 import '../../../widgets/custom_text.dart';
 import 'InnerWidget/top_container_section.dart';
@@ -26,7 +25,7 @@ class PersonalInformationScreen extends StatelessWidget {
       appBar: AppBar(
         // leading: const SizedBox(),
         title: CustomText(
-          text: AppString.personalInformation,
+          text: _profileController.profileModel.value.role != "employee" ? "Client Information" : "Employee Information",
           fontWeight: FontWeight.w500,
         ),
         centerTitle: true,
