@@ -44,15 +44,16 @@ class TaskerHomeScreenAppBar extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
-                  text: "Hello",
-                  color: AppColors.black5C5C5C,
-                ),
+
                 CustomText(
                   text: "${profileData.fullName}",
                   fontsize: 20.h,
                   fontWeight: FontWeight.w500,
-                )
+                ),
+                CustomText(
+                  text: "R${profileData.rand}" ,
+                  color: AppColors.black5C5C5C,
+                ),
               ],
             ),
           ),

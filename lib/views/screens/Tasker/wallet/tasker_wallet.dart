@@ -166,7 +166,7 @@ class TaskerWalletScreen extends StatelessWidget {
                                 children: [
                                   ///==============================withdrawal Amount ======================>
                                   CustomText(
-                                    text: '-\$${walletData?.withdrawalAmount}',
+                                    text: '-R${walletData?.withdrawalAmount}',
                                     fontWeight: FontWeight.w600,
                                     color: Colors.red,
                                   ),

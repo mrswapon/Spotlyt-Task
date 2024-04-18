@@ -263,8 +263,8 @@ class AuthController extends GetxController {
       showDialog(context: Get.context!,
           barrierDismissible:false,
           builder:(_)=> AlertDialog(
-            title: const Text("Password Changed!"),
-            content: const Text("Your password has been changed successfully."),
+            title: const Text("Password reset!"),
+            content: const Text("Your password has been reset successfully."),
             actions: [
               TextButton(
                   onPressed:(){

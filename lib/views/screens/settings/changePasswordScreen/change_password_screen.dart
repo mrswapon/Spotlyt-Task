@@ -109,10 +109,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       validator: (value) {
                         if (value == null) {
                           return "Please set new password";
-                        }else if(value.length < 8){
-                          return "Password must be at least 8 characters";
-                        }else if(!_validatePassword(value)){
-                          return "password must contain at least 1 letter and 1 number";
+                        }else if(value.length < 8 || !_validatePassword(value)){
+                          return "Password: 8 characters min, letters & digits required";
                         }
                         return null;
                       },
@@ -145,7 +143,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       validator: (value) {
                         if (value == null) {
                           return "Please re-enter new password";
-                        }else if(value == _authController.newPasswordCtrl){
+                        }else if(value != _authController.newPasswordCtrl.text){
                           return "Passwords do not match";
                         }
                         return null;
