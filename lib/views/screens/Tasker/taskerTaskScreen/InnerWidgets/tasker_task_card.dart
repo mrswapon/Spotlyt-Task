@@ -88,7 +88,7 @@ class TaskerTaskCard extends StatelessWidget {
                     ///-------------------------5 days -------------------------->
                     taskCompleteAmount != null
                         ? CustomText(
-                            text: "R ${amountConvertToDouble / 2}",
+                            text: "R ${amountConvertToDouble/ 2}",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryColor,

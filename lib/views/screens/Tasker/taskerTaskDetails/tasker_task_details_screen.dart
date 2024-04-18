@@ -69,7 +69,6 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
               //=========================> Task price Rope <=======================
               SelectableText(
                  "R${taskDetails.price!/2}" ?? "",
-
                 style: TextStyle(
                     fontSize: 16.h,
                     fontWeight: FontWeight.w500,

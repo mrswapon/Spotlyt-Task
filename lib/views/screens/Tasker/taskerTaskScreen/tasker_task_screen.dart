@@ -15,13 +15,10 @@ import '../../../widgets/no_internet_screen.dart';
 import 'InnerWidgets/tasker_task_card.dart';
 
 class TaskerTaskScreen extends StatelessWidget {
-
   TaskerTaskScreen({super.key});
 
   final _taskerTaskController = Get.put(TaskerTaskController());
   RxInt tabBarIndex = 0.obs;
-
-
 
   ScrollController scrollController = ScrollController();
 
@@ -122,9 +119,15 @@ class TaskerTaskScreen extends StatelessWidget {
                       () => Expanded(
                         child: ListView.builder(
                           controller: scrollController,
-                          itemCount: _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?.length,
+                          itemCount: _taskerTaskController.taskertaskModel.value
+                              .data?.attributes?.tasks?.length,
                           itemBuilder: (context, index) {
-                            var taskerTask = _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?[index];
+                            var taskerTask = _taskerTaskController
+                                .taskertaskModel
+                                .value
+                                .data
+                                ?.attributes
+                                ?.tasks?[index];
 
                             ///==================date formed================>
                             var date = taskerTask?.createdAt;
@@ -143,8 +146,7 @@ class TaskerTaskScreen extends StatelessWidget {
                               child: GestureDetector(
                                   onTap: () {
                                     print("============sId ${taskerTask?.sId}");
-                                    Get.toNamed(
-                                        AppRoutes.taskDetails,
+                                    Get.toNamed(AppRoutes.taskDetails,
                                         arguments: taskerTask,
                                         parameters: {
                                           "screenType": "taskerTaskScreen",
@@ -154,8 +156,9 @@ class TaskerTaskScreen extends StatelessWidget {
                                   },
                                   child: TaskerTaskCard(
                                     faceBookPost: "${taskerTask?.name}",
-                                     date: formatDates,
-                                     taskCompleteAmount: "${taskerTask?.taskId?.price}",
+                                    date: formatDates,
+                                    taskCompleteAmount:
+                                        "${taskerTask?.taskId?.price?.toStringAsFixed(2)}",
                                     // amount: "${taskerTask?.price}",
                                     postLink:
                                         "${taskerTask?.taskId?.taskLink}\n",

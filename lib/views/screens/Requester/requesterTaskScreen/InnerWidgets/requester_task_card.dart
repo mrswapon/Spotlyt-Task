@@ -10,7 +10,7 @@ import '../../../../widgets/custom_text.dart';
 class RequesterTaskCard extends StatelessWidget {
   final double? weight;
   final double? bgImageheights;
-  final String? amount;
+  final double? amount;
   final String? title;
   final DateTime? date;
   final String? days;
@@ -94,7 +94,7 @@ class RequesterTaskCard extends StatelessWidget {
                     ///---------------------------amount not equal null amount text------------------------>
                     amount != null
                         ? CustomText(
-                            text: "$amount",
+                            text: "${amount?.toStringAsFixed(2)}",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.black5C5C5C,
@@ -102,7 +102,7 @@ class RequesterTaskCard extends StatelessWidget {
                         : const SizedBox(),
                   ],
                 ): CustomText(
-                   text: "$amount",
+                   text: "${amount?.toStringAsFixed(2)}",
                    fontsize: 14.h,
                    fontWeight: FontWeight.w500,
                    color: AppColors.black5C5C5C,
