@@ -24,7 +24,7 @@ class AddInterestScreen extends StatefulWidget {
 }
 
 class _AddInterestScreenState extends State<AddInterestScreen> {
-  AddInterestController  _controller = Get.put(AddInterestController());
+  final AddInterestController  _controller = Get.put(AddInterestController());
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +143,8 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
               CustomButton(
                   title: "Continue",
                   onpress: () {
-                    Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+                    _controller.addInterestsList();
+                     // Get.offAllNamed(AppRoutes.taskerBottomNavBar);
                   }),
 
               SizedBox(height: 44.h)

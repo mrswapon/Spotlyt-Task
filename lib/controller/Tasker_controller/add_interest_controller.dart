@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
 import '../../helpers/prefs_helper.dart';
 import '../../models/interest_model.dart';
+import '../../routes/app_routes.dart';
 import '../../services/api_checker.dart';
 import '../../utils/app_constant.dart';
 
@@ -14,6 +17,7 @@ class AddInterestController extends GetxController{
     // TODO: implement onInit
     super.onInit();
     getInterest();
+    addInterestsList();
   }
 
   RxList<Interest> interestList = <Interest>[].obs;
@@ -36,6 +40,25 @@ class AddInterestController extends GetxController{
 
 
 
+  RxBool addInterestLoading = false.obs;
+  addInterestsList()async{
+    addInterestLoading(true);
+
+   // var interestTitle = [];
+    var interestTitle = selectInterestList.map((interest) => interest.title).join(',');
+   var  body = {
+     "interest" : interestTitle
+   };
+    // for (var interest in selectInterestList) {
+    //   interestTitle.add(interest.title);
+    // }
+
+   var response = await ApiClient.postData(ApiConstants.interestEndPoint, body);
 
 
+    if(response.statusCode == 200){
+      print("=============> Interest post done and interest list $interestTitle");
+      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+    }
+  }
 }
