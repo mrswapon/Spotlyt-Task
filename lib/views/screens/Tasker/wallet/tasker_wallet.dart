@@ -55,7 +55,7 @@ class TaskerWalletScreen extends StatelessWidget {
                 children: [
                   CustomText(text: AppString.totalBalance, fontsize: 24.h),
                   CustomText(
-                      text: "R ${_profileController.profileModel.value.rand}",
+                      text: "R ${_profileController.profileModel.value.rand?.toStringAsFixed(2)}",
                       fontsize: 30.h,
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor),
