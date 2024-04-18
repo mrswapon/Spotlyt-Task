@@ -51,7 +51,7 @@ class TaskerHomeScreenAppBar extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 CustomText(
-                  text: "R${profileData.rand}" ,
+                  text: "R${profileData.rand?.toStringAsFixed(2)}" ,
                   color: AppColors.black5C5C5C,
                 ),
               ],
