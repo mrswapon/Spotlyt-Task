@@ -5,10 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
-import 'package:spotlyt_task/utils/app_constant.dart';
-import 'package:spotlyt_task/utils/app_images.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
@@ -24,7 +23,8 @@ class UpdateProfileScreen extends StatefulWidget {
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
-  final _profileControllor = Get.put(ProfileController());
+  final _profileController = Get.put(ProfileController());
+  DateTime _selectedDate = DateTime.now();
 
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -33,7 +33,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final _locationController = TextEditingController();
   final dateCtrl = TextEditingController();
   var parameter = Get.parameters;
-
   Uint8List? _image;
   File? selectedIMage;
 
@@ -58,8 +57,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var profileData = _profileControllor.profileModel.value;
-
+    var profileData = _profileController.profileModel.value;
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
@@ -115,15 +113,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                       prefixIcon: _prefixIcon(AppIcons.person),
                     ),
                     SizedBox(height: 16.h),
-                    // CustomTextField(
-                    //   controller:  _emailController,
-                    //   keyboardType: TextInputType.emailAddress,
-                    //   contenpaddingHorizontal: 12.w,
-                    //   contenpaddingVertical: 16.h,
-                    //   hintText: 'Enter your email',
-                    //   prefixIcon: _prefixIcon(AppIcons.mail),
-                    // ),
-                    // SizedBox(height: 16.h),
 
                     ///=========================phone number================>
                     CustomTextField(
@@ -138,6 +127,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
                     ///=======================data picker===========================>
                     CustomTextField(
+                      readOnly: true,
                       keyboardType: TextInputType.datetime,
                       controller: dateCtrl,
                       contenpaddingHorizontal: 12.w,
@@ -150,35 +140,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         AppIcons.calendar,
                       ),
                     ),
-
-                    // Container(
-                    //   height: 59.h,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(4.r),
-                    //     color: Colors.white,
-                    //     border: Border.all(color: AppColors.primaryColor)
-                    //   ),
-                    //   child: ListTile(
-                    //      contentPadding: EdgeInsets.symmetric(horizontal: 7.w),
-                    //     leading: GestureDetector(
-                    //         onTap: (){
-                    //           _selectDate(context);
-                    //         },
-                    //         child: SvgPicture.asset(AppIcons.calendar,color: AppColors.primaryColor,)),
-                    //     title: CustomText(text: "$date", textAlign: TextAlign.start,),
-                    //   ),
-                    // ),
-                    // SizedBox(height: 16.h),
-                    //
-                    // ///========================NID Number======================>
-                    // CustomTextField(
-                    //   keyboardType: TextInputType.number,
-                    //   controller: _nidNumberController,
-                    //   contenpaddingHorizontal: 12.w,
-                    //   contenpaddingVertical: 16.h,
-                    //   hintText: 'NID Number',
-                    //   prefixIcon: _prefixIcon(AppIcons.creditCard),
-                    // ),
                     SizedBox(height: 16.h),
 
                     ///========================location========================>?
@@ -197,7 +158,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     CustomButton(
                         title: AppString.updateProfile,
                         onpress: () {
-                          _profileControllor.editProfile(
+                          _profileController.editProfile(
                               _nameController.text,
                               _phoneNumberController.text,
                               _nidNumberController.text,
@@ -312,15 +273,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: _selectedDate ?? DateTime.now(),
       firstDate: DateTime(1950),
       lastDate: DateTime.now(),
     );
 
-    if (pickedDate != null) {
+    if (pickedDate != null && pickedDate != _selectedDate) {
       setState(() {
-        dateCtrl.text =
-            "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";
+        _selectedDate = pickedDate;
+        dateCtrl.text = DateFormat('MM/dd/yyyy').format(_selectedDate);
+        /*dateCtrl.text =
+            "${pickedDate.month}/${pickedDate.day}/${pickedDate.year}";*/
         // date = "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
       });
       print('Selected date: ${dateCtrl.text}');

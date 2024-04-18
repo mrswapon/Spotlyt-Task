@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final String? labelText;
   final String? hintText;
+  final bool? readOnly;
   final double contenpaddingHorizontal;
   final double contenpaddingVertical;
   final Widget? sufixicons;
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
     required this.contenpaddingVertical,
     this.hintText,
     this.prefixIcon,
+    this.readOnly = false,
     this.sufixicons,
     this.validator,
     required this.controller,
@@ -45,6 +47,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly!,
       onChanged: onChanged,
       controller: controller,
       keyboardType: keyboardType,
