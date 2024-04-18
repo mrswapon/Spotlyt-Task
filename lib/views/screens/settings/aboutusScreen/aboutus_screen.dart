@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:spotlyt_task/controller/aboutUsController/about_us_controller.dart';
+import 'package:spotlyt_task/utils/app_colors.dart';
 
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
@@ -28,19 +29,23 @@ class AboutusScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
-          child: Column(
-            children: [
-              //===========================================> Text Section <=============================================
-              Obx(
-                () => Html(
-                  data: _aboutUsController.content.value,
+      body: Container(
+        color: AppColors.fillColorWhite,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
+            child: Column(
+              children: [
+                //===========================================> Text Section <=============================================
+                Obx(
+                  () => Html(
+                    shrinkWrap: true,
+                    data: _aboutUsController.content.value,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

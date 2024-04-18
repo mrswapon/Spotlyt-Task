@@ -20,11 +20,11 @@ class LogoutDialog extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 26.h),
         title: Text(
           "Confirm Logout!",
-          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+          style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
         ),
         content: CustomText(
           text: AppString.youAreSure,
-          fontsize: 16.sp,
+          fontsize: 18.sp,
           maxline: 3,
           color: Colors.black,
           fontName: 'Lato',
@@ -37,7 +37,7 @@ class LogoutDialog extends StatelessWidget {
               },
               child: Text(
                 "No",
-                style: TextStyle(fontSize: 14.sp, color: Colors.grey),
+                style: TextStyle(fontSize: 20.sp, color: Colors.grey),
               )),
           TextButton(
               onPressed: () async {
@@ -49,39 +49,8 @@ class LogoutDialog extends StatelessWidget {
               child: Text(
                 "Yes",
                 style:
-                    TextStyle(fontSize: 14.sp, color: AppColors.primaryColor),
+                    TextStyle(fontSize: 20.sp, color: AppColors.primaryColor),
               )),
-          // OutlinedButton(
-          //     style: OutlinedButton.styleFrom(
-          //       shape: RoundedRectangleBorder(
-          //         borderRadius: BorderRadius.circular(8.r),
-          //       ),
-          //       side: const BorderSide(
-          //         color: AppColors.primaryColor,
-          //         width: 1,
-          //       ),
-          //       padding: EdgeInsets.zero,
-          //       minimumSize: Size(120.w, 41.h),
-          //     ),
-          //     onPressed: () {},
-          //     child: Text(
-          //       "Logout",
-          //       style: TextStyle(
-          //           fontSize: 14.sp, color: AppColors.primaryColor),
-          //     )),
-          // SizedBox(width: 20.w,),
-          // ElevatedButton(
-          //     style: ElevatedButton.styleFrom(
-          //         padding: EdgeInsets.zero,
-          //         minimumSize: Size(120.w, 41.h),
-          //         textStyle:
-          //         TextStyle(fontSize: 14.sp, color: Colors.white)),
-          //     child: const Text(
-          //       "Cancel",
-          //     ),
-          //     onPressed: () {
-          //       //Get.back();
-          //     }),
         ],
         elevation: 12.0,
         shape: RoundedRectangleBorder(

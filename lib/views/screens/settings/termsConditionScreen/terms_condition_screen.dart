@@ -28,19 +28,22 @@ class TermsConditionScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
-          child: Column(
-            children: [
-              //===========================================> Text Section <=============================================
-              Obx(
-                () => Html(
-                  data: _termsConditionsController.content.value,
+      body: Container(
+        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
+            child: Column(
+              children: [
+                //===========================================> Text Section <=============================================
+                Obx(
+                  () => Html(
+                    data: _termsConditionsController.content.value,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
