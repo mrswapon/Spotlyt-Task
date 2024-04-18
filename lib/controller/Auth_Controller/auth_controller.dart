@@ -77,7 +77,7 @@ class AuthController extends GetxController {
 
 
 
-  /// <====================== Sign in screen =================->
+  /// <====================== Sign in =================->
   TextEditingController signInPassCtrl = TextEditingController();
   TextEditingController signInEmailCtrl = TextEditingController();
   var signInLoading =false.obs;
@@ -102,7 +102,7 @@ class AuthController extends GetxController {
 
       String userRole = response.body['data']['attributes']['user']['role'];
       await PrefsHelper.setString(AppConstants.role, userRole);
-      await PrefsHelper.setBool(AppConstants.isLogged, true);
+      // await PrefsHelper.setBool(AppConstants.isLogged, true);
 
       if(userRole == Role.employee.name){
         if(response.body['data']['attributes']['user']['isInterest']){
@@ -110,6 +110,7 @@ class AuthController extends GetxController {
           await PrefsHelper.setBool(AppConstants.isLogged, true);
         }else{
           Get.offAllNamed(AppRoutes.addInterestScreen);
+          await PrefsHelper.setBool(AppConstants.isLogged, true);
         }
       }else if(userRole == Role.client.name){
         Get.offAllNamed(AppRoutes.requesterBottomNavBar);
@@ -238,7 +239,8 @@ class AuthController extends GetxController {
     print("===============> ${response.body}");
     if (response.statusCode == 200) {
       Fluttertoast.showToast(msg: response.body['message'],toastLength:Toast.LENGTH_LONG,gravity: ToastGravity.CENTER,backgroundColor:Colors.green,textColor:Colors.white);
-      Get.offAllNamed(AppRoutes.signInScreen);
+      // Get.offAllNamed(AppRoutes.signInScreen);
+
     } else {
       ApiChecker.checkApi(response);
     }

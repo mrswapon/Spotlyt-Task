@@ -32,20 +32,10 @@ class ProfileScreen extends StatelessWidget {
           return const CustomLoader();
         case Status.internetError:
           return NoInternetScreen(onTap: () async {
-            await PrefsHelper.remove(AppConstants.isLogged);
-            await PrefsHelper.remove(AppConstants.role);
-            await PrefsHelper.remove(AppConstants.isLogged);
-            await PrefsHelper.remove(AppConstants.bearerToken);
-            Get.offAllNamed(AppRoutes.signInScreen);
             _profileController.getProfileData();
           });
         case Status.error:
           return GeneralErrorScreen(onTap: () async {
-            await PrefsHelper.remove(AppConstants.isLogged);
-            await PrefsHelper.remove(AppConstants.role);
-            await PrefsHelper.remove(AppConstants.isLogged);
-            await PrefsHelper.remove(AppConstants.bearerToken);
-            Get.offAllNamed(AppRoutes.signInScreen);
             _profileController.getProfileData();
           });
         case Status.completed:
@@ -75,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                         ontap: () {
                           Get.toNamed(AppRoutes.personalInformationScreen);
                         },
-                        title: AppString.personalInformation,
+                        title: _profileController.profileModel.value.role != "employee" ? "Client Information" : "Employee Information",
                         icon: AppIcons.profile,
                       ),
 

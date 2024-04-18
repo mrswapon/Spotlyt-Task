@@ -101,7 +101,7 @@ class ProfileController extends GetxController {
     if(response.statusCode == 200 || response.statusCode == 201){
       profileModel.value = ProfileModel.fromJson(response.body['data']['attributes']);
       profileModel.refresh();
-      Get.offAllNamed(AppRoutes.profileScreen);
+      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
     }else{
       ApiChecker.checkApi(response);
     }
