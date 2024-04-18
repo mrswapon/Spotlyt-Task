@@ -240,6 +240,8 @@ class AuthController extends GetxController {
     if (response.statusCode == 200) {
       Fluttertoast.showToast(msg: response.body['message'],toastLength:Toast.LENGTH_LONG,gravity: ToastGravity.CENTER,backgroundColor:Colors.green,textColor:Colors.white);
       // Get.offAllNamed(AppRoutes.signInScreen);
+      Get.back();
+      Get.back();
 
     } else {
       ApiChecker.checkApi(response);
