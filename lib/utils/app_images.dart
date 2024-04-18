@@ -1,8 +1,6 @@
 class AppImages {
   static const String path = "assets/images";
 
-  ///------------------------dynamic------------------------>
-  static const String sagor = "$path/profile_Image.png";
 
   ///-----------------------static------------------------>
   static const String cardBgImage = "$path/cardBgImage.png";
@@ -16,7 +14,6 @@ class AppImages {
   static const String masterCard = "$path/master_card.png";
   static const String paypalCard = "$path/paypal_card.png";
   static const String taskCardImage = "$path/task_card_image.png";
-  static const String profileImg = "$path/profileImg.png";
   static const String earnImage = "$path/earn_image.png";
   static const String no_internet_profile = "$path/no_internet_profile.png";
 }
