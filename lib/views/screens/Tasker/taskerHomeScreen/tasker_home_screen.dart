@@ -133,8 +133,7 @@ class TaskerHomeScreen extends StatelessWidget {
                                       child: TaskerTaskCard(
                                         bgImageheights: 110.h,
                                         weight: 267.w,
-                                        taskCompleteAmount:
-                                            "${taskData?.price}",
+                                        taskCompleteAmount: "${taskData?.price}",
                                         faceBookPost: taskData?.name ?? "",
                                         date: formatDates,
                                         postLink:
