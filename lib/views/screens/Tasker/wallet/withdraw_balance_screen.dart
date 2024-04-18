@@ -70,7 +70,7 @@ class WithdrawBalanceScreen extends StatelessWidget {
                       hintText: AppString.accountType,
                       validator: (value) {
                         if (value.isEmpty) {
-                          return "Please enter account type email";
+                          return "Please enter account type";
                         }
                         return null;
                       },
