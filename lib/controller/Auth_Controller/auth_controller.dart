@@ -110,7 +110,6 @@ class AuthController extends GetxController {
           await PrefsHelper.setBool(AppConstants.isLogged, true);
         }else{
           Get.offAllNamed(AppRoutes.addInterestScreen);
-          await PrefsHelper.setBool(AppConstants.isLogged, true);
         }
       }else if(userRole == Role.client.name){
         Get.offAllNamed(AppRoutes.requesterBottomNavBar);

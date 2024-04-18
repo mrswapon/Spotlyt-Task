@@ -101,7 +101,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                             },
                           ),
 
-                          _profileController.profileModel.value.phoneNumber == null
+                          _profileController.profileModel.value.phoneNumber == null || _profileController.profileModel.value.address == null
                               ? const SizedBox()
                               : Column(
                                   children: [

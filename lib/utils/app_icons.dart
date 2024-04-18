@@ -39,4 +39,5 @@ class AppIcons {
    static const String noInternetImage = "$path/no_internet.svg";
    static const String badgeCheck = "$path/badge-check.svg";
    static const String quantity = "$path/quantity.svg";
+   static const String notDataFound = "$path/not_found.svg";
 }
