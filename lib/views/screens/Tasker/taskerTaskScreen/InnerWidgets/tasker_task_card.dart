@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_icons.dart';
 import '../../../../../utils/app_images.dart';
@@ -35,12 +32,10 @@ class TaskerTaskCard extends StatelessWidget {
     ///=======================convert Amount String to Double=====================>
     double amountConvertToDouble;
     if (taskCompleteAmount != null) {
-    amountConvertToDouble = double.parse(taskCompleteAmount!);
+      amountConvertToDouble = double.parse(taskCompleteAmount!);
     } else {
       amountConvertToDouble = double.parse(amount!);
     }
-
-
 
     return Container(
       width: weight ?? double.infinity,
@@ -88,11 +83,11 @@ class TaskerTaskCard extends StatelessWidget {
                     ///-------------------------5 days -------------------------->
                     taskCompleteAmount != null
                         ? CustomText(
-                            text: "R ${amountConvertToDouble/ 2}",
+                            text: "R ${amountConvertToDouble / 2}",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryColor,
-                    )
+                          )
                         : Row(
                             children: [
                               SvgPicture.asset(
@@ -113,7 +108,7 @@ class TaskerTaskCard extends StatelessWidget {
                     ///---------------------------amount not equal null amount text------------------------>
                     amount != null
                         ? CustomText(
-                            text: "R ${amountConvertToDouble /2}",
+                            text: "R ${amountConvertToDouble / 2}",
                             fontsize: 14.h,
                             fontWeight: FontWeight.w500,
                             color: AppColors.black5C5C5C,
@@ -138,10 +133,12 @@ class TaskerTaskCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4.r),
                       color: AppColors.primaryColor),
                   child: Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: 16.w,vertical: 8.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                     child: CustomText(
                       textOverflow: TextOverflow.ellipsis,
-                      text: postLink ?? "https://www.Facebook.com/Image \n Post",
+                      text:
+                          postLink ?? "https://www.Facebook.com/Image \n Post",
                       color: Colors.white,
                       fontsize: 12.h,
                       textAlign: TextAlign.start,
