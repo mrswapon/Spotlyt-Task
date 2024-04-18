@@ -114,17 +114,17 @@ class AppString {
   static String taskPost = "Task Post Date:";
   ///--------------------------invite and earn screen------------------------->
    static String inviteYourFriendsAndGetRand = "Invite your friends and get \n Rand 1.0";
-   static String shareTheLinkBeloworAsk = "Share the link below or ask them to enter it \n during they signup. Earn when your friend signs\n up on our app.";
+   static String shareTheLinkBeloworAsk = "Share the code below or ask them to enter it \n as refer code. Earn when your friend users\n the refer code in our app.";
     static String referralCode="Referral Code";
     static String referralSubmitDes="Please enter your referral code below";
    ///-------------------------add interest screen---------------------------->
    static String addInterest = "Add Interest";
    static String selectYourInterest = "Select your Interest";
    ///-----------------------------------tasker home screen------------------------------------->
-   static String todayTask = "Today's Task";
-   static String allTask = "All Task";
+   static String todayTask = "Today's Tasks";
+   static String allTask = "All Tasks";
    static String seeAll = "See All";
-   static String todaysTask = "Today’s Task";
+   static String todaysTask = "Today’s Tasks";
    static String taskPrice = "Task Price:";
    static String totalBalance = "Total balance";
    static String takeScreenshot = "Take a screenshot of the completed task and \nupload it below and then click on submit task \nto get paid.";
