@@ -11,7 +11,7 @@ import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_text_field.dart';
 
 class ResetForm extends StatefulWidget {
-   ResetForm({super.key, required this.email});
+  ResetForm({super.key, required this.email});
   String email;
 
   @override
@@ -62,7 +62,7 @@ class _ResetFormState extends State<ResetForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please set new password";
-                  }else if(value.length < 8 || !_validatePassword(value)){
+                  } else if (value.length < 8 || !_validatePassword(value)) {
                     return "Password: 8 characters min, letters & digits required";
                   }
                   return null;
@@ -96,7 +96,7 @@ class _ResetFormState extends State<ResetForm> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please confirm your password";
-                  }else if(value != _newPassController.text){
+                  } else if (value != _newPassController.text) {
                     return "Passwords do not match";
                   }
                   return null;
@@ -108,7 +108,8 @@ class _ResetFormState extends State<ResetForm> {
                   title: AppString.resetPassword,
                   onpress: () {
                     if (_formKey.currentState!.validate()) {
-                      _authController.resetPassword(widget.email, _newPassController.text);
+                      _authController.resetPassword(
+                          widget.email, _newPassController.text);
                       // Get.toNamed(AppRoutes.verifyOtpScreen);
                     }
                   }),
@@ -134,11 +135,8 @@ class _ResetFormState extends State<ResetForm> {
     );
   }
 
-
   bool _validatePassword(String value) {
-    // RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
     RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
-    // RegExp regex = RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
     return regex.hasMatch(value);
   }
 }

@@ -24,6 +24,7 @@ class MediaServicesScreen extends StatefulWidget {
   @override
   State<MediaServicesScreen> createState() => _MediaServicesScreenState();
 }
+
 class _MediaServicesScreenState extends State<MediaServicesScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final ServiceController _serviceController = Get.put(ServiceController());
@@ -173,7 +174,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                         CustomText(
                           text: AppString.addQuantity,
                           fontWeight: FontWeight.w500,
-                          top: 24.h,
+                          top: 30.h,
                           bottom: 12.h,
                         ),
 
@@ -251,21 +252,19 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                             children: [
                               Expanded(
                                 child: TextFormField(
+                                  onTap: () {
+                                    _serviceController.startDate(context);
+                                  },
+                                  readOnly: true,
                                   controller: _serviceController.startDateCtrl,
                                   decoration: InputDecoration(
                                       suffixIcon: SizedBox(
                                         child: Padding(
                                           padding: EdgeInsets.all(16.r),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              _serviceController
-                                                  .startDate(context);
-                                            },
-                                            child: SvgPicture.asset(
-                                              AppIcons.calendar,
-                                              width: 18.w,
-                                              height: 18.h,
-                                            ),
+                                          child: SvgPicture.asset(
+                                            AppIcons.calendar,
+                                            width: 18.w,
+                                            height: 18.h,
                                           ),
                                         ),
                                       ),
@@ -279,21 +278,19 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                               SizedBox(width: 17.w),
                               Expanded(
                                 child: TextFormField(
+                                  onTap: () {
+                                    _serviceController.endDate(context);
+                                  },
+                                  readOnly: true,
                                   controller: _serviceController.endDateCtrl,
                                   decoration: InputDecoration(
                                       suffixIcon: SizedBox(
                                         child: Padding(
                                           padding: EdgeInsets.all(16.r),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              _serviceController
-                                                  .endDate(context);
-                                            },
-                                            child: SvgPicture.asset(
-                                              AppIcons.calendar,
-                                              width: 18.w,
-                                              height: 18.h,
-                                            ),
+                                          child: SvgPicture.asset(
+                                            AppIcons.calendar,
+                                            width: 18.w,
+                                            height: 18.h,
                                           ),
                                         ),
                                       ),
@@ -425,7 +422,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                                                 .selectedCategoryIndex.value]
                                             .service![_serviceController
                                                 .selectedServiceIndex.value]
-                                            .price?.toStringAsFixed(2) ??
+                                            .price
+                                            ?.toStringAsFixed(2) ??
                                         0.0,
                                   );
                                 } else {

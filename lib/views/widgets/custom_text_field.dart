@@ -16,11 +16,10 @@ class CustomTextField extends StatelessWidget {
   final double contenpaddingVertical;
   final Widget? sufixicons;
   final FormFieldValidator? validator;
-  final VoidCallback? ontapPrefix;
+  final VoidCallback? onTap;
   final String? helperText;
   final AutovalidateMode? autovalidateMode;
   final Function(String value)? onChanged;
-
 
   const CustomTextField({
     super.key,
@@ -37,16 +36,16 @@ class CustomTextField extends StatelessWidget {
     this.obscureCharacrter = '*',
     this.filColor,
     this.labelText,
-    this.ontapPrefix,
+    this.onTap,
     this.helperText,
     this.autovalidateMode,
     this.onChanged,
-
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       readOnly: readOnly!,
       onChanged: onChanged,
       controller: controller,
@@ -62,11 +61,8 @@ class CustomTextField extends StatelessWidget {
             horizontal: contenpaddingHorizontal.toDouble(),
             vertical: contenpaddingVertical.toDouble()),
         filled: true,
-
         fillColor: filColor ?? const Color(0xFFFFFFFF),
-        prefixIcon: prefixIcon == null ? null : GestureDetector(
-            onTap: ontapPrefix,
-            child: prefixIcon),
+        prefixIcon: prefixIcon,
         suffixIcon: sufixicons,
         helperText: helperText,
         prefixIconConstraints: BoxConstraints(minHeight: 24.w, minWidth: 24.w),
@@ -75,8 +71,10 @@ class CustomTextField extends StatelessWidget {
         prefixIconColor: AppColors.primaryColor,
         labelText: labelText,
         hintText: hintText,
-        hintStyle:
-            const TextStyle(color: Color(0xFF5C5C5C), fontFamily: 'Lato/R 16', fontWeight: FontWeight.w400),
+        hintStyle: const TextStyle(
+            color: Color(0xFF5C5C5C),
+            fontFamily: 'Lato/R 16',
+            fontWeight: FontWeight.w400),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(

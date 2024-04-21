@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -127,15 +129,18 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
                     ///=======================data picker===========================>
                     CustomTextField(
+                      onTap: () {
+                        _selectDate(context);
+                      },
                       readOnly: true,
                       keyboardType: TextInputType.datetime,
                       controller: dateCtrl,
                       contenpaddingHorizontal: 12.w,
                       contenpaddingVertical: 16.h,
                       hintText: 'Enter your date of birth',
-                      ontapPrefix: () {
+                      /*ontapPrefix: () {
                         _selectDate(context);
-                      },
+                      },*/
                       prefixIcon: _prefixIcon(
                         AppIcons.calendar,
                       ),
