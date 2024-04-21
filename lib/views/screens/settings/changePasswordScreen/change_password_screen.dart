@@ -109,8 +109,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       validator: (value) {
                         if (value == null) {
                           return "Please set new password";
-                        }else if(value.length < 8 || !_validatePassword(value)){
-                          return "Password: 8 characters min, letters & digits required";
+                        } else if (value.length < 8 ||
+                            !_validatePassword(value)) {
+                          return "Password: 8 characters min, letters & digits \nrequired";
                         }
                         return null;
                       },
@@ -143,7 +144,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       validator: (value) {
                         if (value == null) {
                           return "Please re-enter new password";
-                        }else if(value != _authController.newPasswordCtrl.text){
+                        } else if (value !=
+                            _authController.newPasswordCtrl.text) {
                           return "Passwords do not match";
                         }
                         return null;
@@ -152,9 +154,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     SizedBox(height: 16.h),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(AppRoutes.forgotPasswordScreen, parameters: {
-                          "email" : _authController.emailCtrl.text
-                        });
+                        Get.toNamed(AppRoutes.forgotPasswordScreen,
+                            parameters: {
+                              "email": _authController.emailCtrl.text
+                            });
                         // Get.toNamed(AppRoutes.forgotPasswordScreen);
                       },
                       child: CustomText(
@@ -171,7 +174,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         title: AppString.changePassword,
                         onpress: () {
                           if (_formKey.currentState!.validate()) {
-                            _authController.handleChangePassword(_authController.oldPasswordCtrl.text, _authController.newPasswordCtrl.text);
+                            _authController.handleChangePassword(
+                                _authController.oldPasswordCtrl.text,
+                                _authController.newPasswordCtrl.text);
                             // Get.toNamed(AppRoutes.verifyOtpScreen);
                           }
                         }),
@@ -200,7 +205,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       ),
     );
   }
-
 
   bool _validatePassword(String value) {
     RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');

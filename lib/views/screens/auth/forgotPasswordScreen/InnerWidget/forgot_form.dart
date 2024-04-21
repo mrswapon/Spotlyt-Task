@@ -46,17 +46,15 @@ class _ForgotFormState extends State<ForgotForm> {
               ),
               //===============================> Sign Up Button <===============================
               SizedBox(height: 44.h),
-              Obx(()=>
-                  CustomButton(
-                      loading: _authcontroller.forgotLoading.value,
-                      title: AppString.getOTP,
-                      onpress: () {
-                        if (_formKey.currentState!.validate()) {
-                          _authcontroller.handleForget();
-                          // Get.toNamed(AppRoutes.verifyOtpScreen);
-                        }
-                      })
-              ),
+              Obx(() => CustomButton(
+                  loading: _authcontroller.forgotLoading.value,
+                  title: AppString.getOTP,
+                  onpress: () {
+                    if (_formKey.currentState!.validate()) {
+                      _authcontroller.handleForget();
+                      // Get.toNamed(AppRoutes.verifyOtpScreen);
+                    }
+                  })),
             ],
           ),
         )

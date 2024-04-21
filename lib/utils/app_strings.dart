@@ -13,7 +13,7 @@ class AppString {
   static String createPassword = "Create a password";
   static String reenterPassword = "Re-enter password";
   static String byCreating = "By creating an account, I accept the";
-  static String termsOfServices = "Terms \n& Conditions";
+  static String termsOfServices = " Terms \n& Conditions";
   static String and = "And";
   static String privacyPolicy = "Privacy Policy";
   static String alreadyHave = "Already have an account?";
@@ -114,7 +114,7 @@ class AppString {
   static String taskPost = "Task Post Date:";
   ///--------------------------invite and earn screen------------------------->
    static String inviteYourFriendsAndGetRand = "Invite your friends and get \n Rand 1.0";
-   static String shareTheLinkBeloworAsk = "Share the code below or ask them to enter it \n as refer code. Earn when your friend users\n the refer code in our app.";
+   static String shareTheLinkBeloworAsk = "Share the code below or ask them to enter it \n as refer code. Earn when your friends use\n the refer code in our app.";
     static String referralCode="Referral Code";
     static String referralSubmitDes="Please enter your referral code below";
    ///-------------------------add interest screen---------------------------->

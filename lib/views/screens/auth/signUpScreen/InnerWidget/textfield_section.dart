@@ -1,10 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:spotlyt_task/controller/Auth_Controller/auth_controller.dart';
 import '../../../../../routes/app_routes.dart';
 import '../../../../../utils/app_colors.dart';
@@ -110,7 +108,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                     if (value == null || value.isEmpty) {
                       return "Please enter your password";
                     } else if (value.length < 8 || !_validatePassword(value)) {
-                      return "Password: 8 characters min, letters & digits required";
+                      return "Password: 8 characters min, letters & digits \nrequired";
                     }
                     return null;
                   },
@@ -143,7 +141,7 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                   validator: (value) {
                     if (value.isEmpty) {
                       return "Please enter again your user password";
-                    } else if (value == _authController.passwordCtrl) {
+                    } else if (value != _authController.passwordCtrl.text) {
                       return "Passwords do not match";
                     }
                     return null;
@@ -157,7 +155,6 @@ class _TextfieldSectionState extends State<TextfieldSection> {
               CustomButton(
                   title: AppString.signUps,
                   onpress: () {
-
                     if (_formKey.currentState!.validate()) {
                       if (_isChecked) {
                         _authController.handleSignUp();
@@ -168,8 +165,6 @@ class _TextfieldSectionState extends State<TextfieldSection> {
                       }
                     }
                   }),
-
-
 
               SizedBox(height: 64.h),
               //===============================> Already have an account Section <===============================
@@ -295,14 +290,11 @@ class _TextfieldSectionState extends State<TextfieldSection> {
       ],
     );
   }
-
-  static RegExp emailValidate =
-  RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  static RegExp emailValidate = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
   bool _validatePassword(String value) {
-    // RegExp regex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
     RegExp regex = RegExp(r'^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$');
-    // RegExp regex = RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
     return regex.hasMatch(value);
   }
 }
