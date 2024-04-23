@@ -93,7 +93,7 @@ class _CustomMultiSelectRequestCardState
                             width: 8.w,
                           ),
                           CustomText(
-                            text: "R${services.price?.toStringAsFixed(2)}",
+                            text: "R-${services.price?.toStringAsFixed(2)}",
                             fontsize: 14.h,
                             color: AppColors.primaryColor,
                           )

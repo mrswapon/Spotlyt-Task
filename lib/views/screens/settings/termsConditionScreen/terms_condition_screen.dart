@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:spotlyt_task/controller/termsConditionsController/terms_conditions_controller.dart';
+import 'package:spotlyt_task/views/widgets/custom_circle_loader.dart';
 
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
@@ -16,6 +17,7 @@ class TermsConditionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _termsConditionsController.getTermsCondition();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
@@ -28,24 +30,25 @@ class TermsConditionScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        color: Colors.white,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
-            child: Column(
-              children: [
-                //===========================================> Text Section <=============================================
-                Obx(
-                  () => Html(
-                    data: _termsConditionsController.content.value,
+      body: Obx(
+        () => _termsConditionsController.isLoading.value
+            ? const CustomCircleLoader()
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
+                  child: Column(
+                    children: [
+                      //===========================================> Text Section <=============================================
+                      Obx(
+                        () => Html(
+                          data: _termsConditionsController.content.value,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }
