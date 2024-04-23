@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:spotlyt_task/controller/aboutUsController/about_us_controller.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
+import 'package:spotlyt_task/views/widgets/custom_circle_loader.dart';
 
 import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
@@ -16,7 +17,7 @@ class AboutusScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _aboutUsController;
+    _aboutUsController.getAboutUs();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBody: true,
@@ -29,25 +30,26 @@ class AboutusScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        color: AppColors.fillColorWhite,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
-            child: Column(
-              children: [
-                //===========================================> Text Section <=============================================
-                Obx(
-                  () => Html(
-                    shrinkWrap: true,
-                    data: _aboutUsController.content.value,
+      body: Obx(
+        () => _aboutUsController.isLoading.value
+            ? const CustomCircleLoader()
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.paddingSizeLarge, vertical: 16.h),
+                  child: Column(
+                    children: [
+                      //===========================================> Text Section <=============================================
+                      Obx(
+                        () => Html(
+                          shrinkWrap: true,
+                          data: _aboutUsController.content.value,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }

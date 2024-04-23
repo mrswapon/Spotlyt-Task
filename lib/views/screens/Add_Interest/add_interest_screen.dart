@@ -24,7 +24,7 @@ class AddInterestScreen extends StatefulWidget {
 }
 
 class _AddInterestScreenState extends State<AddInterestScreen> {
-  final AddInterestController  _controller = Get.put(AddInterestController());
+  final AddInterestController _controller = Get.put(AddInterestController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,121 +36,138 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
           fontWeight: FontWeight.w500,
         ),
       ),
-      body: Obx(()=>_controller.loading.value?const CustomLoader():
-         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
-          child: Column(
-            children: [
-              ///-------------------------------select your interest text---------------------------------->
-              Align(
-                alignment: Alignment.centerLeft,
-                child: CustomText(
-                  text: AppString.selectYourInterest,
-                  fontsize: 18.h,
-                  fontWeight: FontWeight.w500,
-                  top: 24.h,
-                  bottom: 16.h,
-                ),
-              ),
+      body: Obx(
+        () => _controller.loading.value
+            ? const CustomLoader()
+            : Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.paddingSizeDefault.w),
+                child: Column(
+                  children: [
+                    ///-------------------------------select your interest text---------------------------------->
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: CustomText(
+                        text: AppString.selectYourInterest,
+                        fontsize: 18.h,
+                        fontWeight: FontWeight.w500,
+                        top: 24.h,
+                        bottom: 16.h,
+                      ),
+                    ),
 
-              Expanded(
-                child: ListView.builder(
-                  ///------------------------total items and 4 items a row----------------------------->
-                  itemCount: (_controller.interestList.length / 4).ceil(),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(vertical: 6.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        ///------------------------4 items a row and when complete 4 items then create new row---------------------------->
-                        children: List.generate(4, (i) {
-                          final itemsIndex = index * 4 + i;
-                          print("-------------$itemsIndex--------------$i");
+                    Expanded(
+                      child: ListView.builder(
+                        ///------------------------total items and 4 items a row----------------------------->
+                        itemCount: (_controller.interestList.length / 4).ceil(),
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(vertical: 6.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                          if (itemsIndex < _controller.interestList.length) {
-                            return GestureDetector(
-                              onTap: () {
-                                ///------------------------on tap-------------------------------->
-                                setState(() {
-                                  final item = _controller.interestList[itemsIndex];
+                              ///------------------------4 items a row and when complete 4 items then create new row---------------------------->
+                              children: List.generate(4, (i) {
+                                final itemsIndex = index * 4 + i;
+                                print(
+                                    "-------------$itemsIndex--------------$i");
 
-                                  ///---------------------selected list initially empty --------------->
-                                  ///-------------------if selectedItems have item do remove from this list and if selectedItems don't have item do add ---------------->
-                                  if (_controller.selectInterestList.contains(item)) {
-                                    _controller.selectInterestList.remove(item);
-                                  } else {
-                                    _controller.selectInterestList.add(item);
-                                  }
-                                });
-                              },
+                                if (itemsIndex <
+                                    _controller.interestList.length) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      ///------------------------on tap-------------------------------->
+                                      setState(() {
+                                        final item = _controller
+                                            .interestList[itemsIndex];
 
-                              ///--------------------------------items Container------------------------------------->
-                              child: Container(
-                                decoration: BoxDecoration(
+                                        ///---------------------selected list initially empty --------------->
+                                        ///-------------------if selectedItems have item do remove from this list and if selectedItems don't have item do add ---------------->
+                                        if (_controller.selectInterestList
+                                            .contains(item)) {
+                                          _controller.selectInterestList
+                                              .remove(item);
+                                        } else {
+                                          _controller.selectInterestList
+                                              .add(item);
+                                        }
+                                      });
+                                    },
 
-                                    ///--------------------------------Botton color------------------------------->
-                                    color: _controller.selectInterestList.
-                                            contains(_controller.interestList[itemsIndex])
-                                        ? AppColors.primaryColor
-                                        : Colors.white,
-                                    borderRadius: BorderRadius.circular(16.r),
-                                    border: Border.all(
-                                      ///----------------------------------border color---------------------------->
-                                      color: AppColors.primaryColor,
-                                    )),
-                                child: Row(
-                                  children: [
+                                    ///--------------------------------items Container------------------------------------->
+                                    child: Container(
+                                      decoration: BoxDecoration(
 
-                                    ///--------------------------icon------------------------->
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 6.w, right: 3.w),
-                                      child:SvgPicture.network(
-                                        "${ApiConstants.imageBaseUrl}${_controller.interestList[itemsIndex].icon}",
-                                        color: _controller.selectInterestList.contains(
-                                                _controller.interestList[itemsIndex])
-                                            ? Colors.white
-                                            : AppColors.primaryColor,
+                                          ///--------------------------------Botton color------------------------------->
+                                          color: _controller.selectInterestList
+                                                  .contains(_controller
+                                                      .interestList[itemsIndex])
+                                              ? AppColors.primaryColor
+                                              : Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(16.r),
+                                          border: Border.all(
+                                            ///----------------------------------border color---------------------------->
+                                            color: AppColors.primaryColor,
+                                          )),
+                                      child: Row(
+                                        children: [
+                                          ///--------------------------icon------------------------->
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 6.w, right: 3.w),
+                                            child: SvgPicture.network(
+                                              "${ApiConstants.imageBaseUrl}${_controller.interestList[itemsIndex].icon}",
+                                              color: _controller
+                                                      .selectInterestList
+                                                      .contains(_controller
+                                                              .interestList[
+                                                          itemsIndex])
+                                                  ? Colors.white
+                                                  : AppColors.primaryColor,
+                                            ),
+                                          ),
+
+                                          ///----------------------------------title name------------------------------------->
+                                          CustomText(
+                                            text:
+                                                "${_controller.interestList[itemsIndex].title}",
+                                            fontsize: 11.5.h,
+                                            top: 7.h,
+                                            bottom: 7.h,
+                                            right: 11.w,
+                                            color: _controller
+                                                    .selectInterestList
+                                                    .contains(_controller
+                                                            .interestList[
+                                                        itemsIndex])
+                                                ? Colors.white
+                                                : AppColors.primaryColor,
+                                          )
+                                        ],
                                       ),
                                     ),
-
-                                    ///----------------------------------title name------------------------------------->
-                                    CustomText(
-                                      text: "${_controller.interestList[itemsIndex].title}",
-                                      fontsize: 11.5.h,
-                                      top: 7.h,
-                                      bottom: 7.h,
-                                      right: 11.w,
-                                      color: _controller.selectInterestList.contains(
-                                          _controller.interestList[itemsIndex])
-                                          ? Colors.white
-                                          : AppColors.primaryColor,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          }
-                          return const SizedBox();
-                        }),
+                                  );
+                                }
+                                return const SizedBox();
+                              }),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
+                    ),
+
+                    CustomButton(
+                        title: "Continue",
+                        onpress: () {
+                          _controller.addInterestsList();
+                          // Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+                        }),
+
+                    SizedBox(height: 44.h)
+                  ],
                 ),
               ),
-
-              CustomButton(
-                  title: "Continue",
-                  onpress: () {
-                    _controller.addInterestsList();
-                     // Get.offAllNamed(AppRoutes.taskerBottomNavBar);
-                  }),
-
-              SizedBox(height: 44.h)
-            ],
-          ),
-        ),
       ),
     );
   }
