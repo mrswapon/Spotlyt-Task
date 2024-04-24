@@ -35,7 +35,31 @@ var loading=false.obs;
          ApiChecker.checkApi(response);
       }
       loading(false);
+   }
 
+
+
+
+
+
+   RxMap referralData = {}.obs;
+
+
+   getReferralAmount()async{
+      var response = await ApiClient.getData(ApiConstants.referralAmount);
+
+      if(response.statusCode == 200){
+         var data = response.body['data']['attributes'];
+         referralData.value = data;
+      }
+   }
+
+
+   @override
+   void onInit() {
+      // TODO: implement onInit
+      super.onInit();
+      getReferralAmount();
    }
 
 }

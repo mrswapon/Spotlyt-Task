@@ -15,7 +15,7 @@ import '../../widgets/custom_text.dart';
 class InviteEarnScreen extends StatelessWidget {
    InviteEarnScreen({super.key});
 
-  // final InviteAndEernController _inviteAndEernController = Get.put(InviteAndEernController());
+   final InviteAndEernController _inviteAndEernController = Get.put(InviteAndEernController());
   final ProfileController _profileController = Get.put(ProfileController());
 
 
@@ -59,7 +59,7 @@ class InviteEarnScreen extends StatelessWidget {
 
             ///-----------------------------invite your friends and get rand text-------------------->
             CustomText(
-              text: AppString.inviteYourFriendsAndGetRand,
+              text: "${AppString.inviteYourFriendsAndGetRand} ${_inviteAndEernController.referralData['amount'] ?? ""}",
               fontsize: 24.h,
               fontWeight: FontWeight.w500,
               top: 34.h,
