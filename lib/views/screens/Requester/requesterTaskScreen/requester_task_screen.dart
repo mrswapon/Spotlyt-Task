@@ -62,7 +62,7 @@ class RequesterTaskScreen extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {
                                         Get.toNamed(AppRoutes
-                                            .requesterTaskDetailsScreen);
+                                            .requesterTaskDetailsScreen,arguments: data);
                                       },
                                       child: RequesterTaskCard(
                                         taskCompleteAmount:"",
