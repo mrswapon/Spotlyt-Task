@@ -13,15 +13,7 @@ class TaskerTaskModel {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['message'] = this.message;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
-  }
+
 }
 
 class Data {
@@ -35,13 +27,7 @@ class Data {
         : null;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.attributes != null) {
-      data['attributes'] = this.attributes!.toJson();
-    }
-    return data;
-  }
+
 }
 
 class Attributes {
@@ -67,17 +53,7 @@ class Attributes {
     totalResults = json['totalResults'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.tasks != null) {
-      data['tasks'] = this.tasks!.map((v) => v.toJson()).toList();
-    }
-    data['page'] = this.page;
-    data['limit'] = this.limit;
-    data['totalPages'] = this.totalPages;
-    data['totalResults'] = this.totalResults;
-    return data;
-  }
+
 }
 
 class Tasks {
@@ -112,7 +88,7 @@ class Tasks {
     taskId =
     json['taskId'] != null ? new TaskId.fromJson(json['taskId']) : null;
     status = json['status'];
-    price = json['price'].runtimeType==int?json['price'].toDouble():json['price'];
+    price = json['price'].runtimeType == int?json['price'].toDouble():json['price'];
     if (json['image'] != null) {
       image = <Image>[];
       json['image'].forEach((v) {
@@ -127,26 +103,7 @@ class Tasks {
 
 
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['name'] = this.name;
-    if (this.userId != null) {
-      data['userId'] = this.userId!.toJson();
-    }
-    if (this.taskId != null) {
-      data['taskId'] = this.taskId!.toJson();
-    }
-    data['status'] = this.status;
-    data['price'] = this.price;
-    if (this.image != null) {
-      data['image'] = this.image!.map((v) => v.toJson()).toList();
-    }
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    data['__v'] = this.iV;
-    return data;
-  }
+
 }
 
 class UserId {
@@ -264,8 +221,11 @@ class TaskId {
   int? quantity;
   double? price;
   String? createdAt;
-  String? updatedAt;
-  int? iV;
+  DateTime? startDate;
+  DateTime? endDate;
+
+
+
 
   TaskId(
       {this.sId,
@@ -278,8 +238,9 @@ class TaskId {
         this.quantity,
         this.price,
         this.createdAt,
-        this.updatedAt,
-        this.iV});
+        this.endDate,
+        this.startDate
+      });
 
   TaskId.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -292,24 +253,21 @@ class TaskId {
     quantity = json['quantity'];
     price = json['price'].runtimeType==int?json['price'].toDouble():json['price'];
     createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
-    iV = json['__v'];
+    startDate=json["timelinesStart"] == null
+        ? null
+        : DateTime.parse(json["timelinesStart"]);
+    endDate=json["timelinesEnd"] == null
+        ? null
+        : DateTime.parse(json["timelinesEnd"]);
+
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['name'] = this.name;
-    data['taskLink'] = this.taskLink;
-    data['userId'] = this.userId;
-    data['type'] = this.type;
-    data['serviceId'] = this.serviceId;
-    data['status'] = this.status;
-    data['quantity'] = this.quantity;
-    data['price'] = this.price;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    data['__v'] = this.iV;
-    return data;
-  }
+
+
+
+
+
+
 }
+
+

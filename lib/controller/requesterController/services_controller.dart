@@ -75,32 +75,33 @@ var paymentLoading=false.obs;
       "serviceId": "$serviceId",
       "quantity": quantityCtrl.text,
       "price": "$price",
+      "interest":selectInterest.id
     };
+
     var dataCo = {
       "name": taskName,
       "taskLink": addLinkCtrl.text,
       "serviceId": "$serviceId",
-      "timeline":{             //optional value
-        "start":startDateCtrl.text,    //optional value
-        "end":endDateCtrl.text      //optional value
-      },
+      "timelinesStart": startDateCtrl.text,
+      "timelinesEnd": endDateCtrl.text,
       "quantity": quantityCtrl.text,
+      "interest":selectInterest.id,
       "price": "$price",
     };
-    submitTask(dataCo);
-    // var response= await paymentService.makePaymentRequest(amount:50.03,);
-    // if(response.runtimeType !=int){
-    //   var responseData = jsonDecode(response);
-    //   print(responseData);
-    //   var successResponseUrl = responseData['url']; // Assuming the URL is in a 'url' field of the response
-    //   if (successResponseUrl != null && successResponseUrl.isNotEmpty) {
-    //     //  await launchUrl(Uri.parse(successResponseUrl),mode: LaunchMode.inAppWebView); // Opens successResponseUrl in the default browser
-    //     Get.to(OzowPaymentUI(paymentLink:successResponseUrl,serviceInfo:isCorporate?dataCo:data,));
-    //     print(successResponseUrl);
-    //   } else {
-    //     print('No valid URL found in the response.');
-    //   }
-    // }
+
+    var response= await paymentService.makePaymentRequest(amount:totalPayable.value,);
+    if(response.runtimeType !=int){
+      var responseData = jsonDecode(response);
+      print(responseData);
+      var successResponseUrl = responseData['url']; // Assuming the URL is in a 'url' field of the response
+      if (successResponseUrl != null && successResponseUrl.isNotEmpty) {
+        //  await launchUrl(Uri.parse(successResponseUrl),mode: LaunchMode.inAppWebView); // Opens successResponseUrl in the default browser
+        Get.to(OzowPaymentUI(paymentLink:successResponseUrl,serviceInfo:isCorporate?dataCo:data,));
+        print(successResponseUrl);
+      } else {
+        print('No valid URL found in the response.');
+      }
+    }
     paymentLoading(false);
 
 
@@ -147,14 +148,4 @@ var paymentLoading=false.obs;
   }
 
 
-  submitTask(var serviceInfo) async {
-
-    Response response = await ApiClient.postData(
-        ApiConstants.requesterSubmitTaskEndPoint, json.encode(serviceInfo));
-    print("============> ${response.body} and ==> ${response.statusCode}");
-    if (response.statusCode == 201 || response.statusCode == 200) {
-    } else {
-      ApiChecker.checkApi(response);
-    }
-  }
 }

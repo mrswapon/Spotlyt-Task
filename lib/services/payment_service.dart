@@ -43,7 +43,7 @@ class PaymentService {
     String inputString = (siteCode +
         countryCode +
         currencyCode +
-        amount.toString() +
+        amount.toStringAsFixed(2) +
         transactionReference +
         bankReference +
         cancelUrl +
@@ -69,7 +69,7 @@ class PaymentService {
 
     Map<String, dynamic> data = {
       "countryCode": "ZA",
-      "amount": amount.toString(),
+      "amount": amount.toStringAsFixed(2),
       "transactionReference": "Ref",
       "bankReference": "Ref",
       "cancelUrl": cancelUrl,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/helpers/time_format.dart';
 import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
@@ -9,6 +10,7 @@ import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
@@ -149,11 +151,92 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               CustomText(
                 text: TimeFormatHelper.formatDate(DateTime.parse(taskDetails.taskId!.createdAt!)),
                 fontWeight: FontWeight.w600,
-
+                bottom: 16.h,
               ),
 
 
+              //=========================> time line <=======================
+              if(taskDetails.taskId!.startDate!=null )
+                CustomText(
+                  text: AppString.timeLine,
+                  fontWeight: FontWeight.w500,
+                  bottom: 10.h,
+                ),
+              //========================> time line <=============================
 
+              if(taskDetails.taskId!.startDate != null )
+
+                Container(
+                  decoration:
+                  BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(color: const Color(0xffB5B5B5))),
+                  child: Row(
+                    children: [
+
+
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: SvgPicture.asset(AppIcons.timeIcon,height: 44.h,width: 44.h,),
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                    fontsize: 12.h,
+                                    text: AppString.startDate,
+                                    fontWeight: FontWeight.w500,
+                                    bottom: 3.h,
+                                  ),
+                                  CustomText(
+                                    fontsize: 14.h,
+                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.taskId!.startDate!),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+
+
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: SvgPicture.asset(AppIcons.timeIcon,height: 44.h,width: 44.h,),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                    fontsize: 12.h,
+                                    text: AppString.endDate,
+                                    fontWeight: FontWeight.w500,
+                                    bottom: 3.h,
+                                  ),
+                                  CustomText(
+                                    fontsize: 14.h,
+                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.taskId!.endDate!),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
 
 
               SizedBox(height: 50.h),

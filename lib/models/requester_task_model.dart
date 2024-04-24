@@ -13,8 +13,9 @@ class RequesterTaskModel {
   final int? quantity;
   final double? price;
   final DateTime? createdAt;
-  final DateTime? updatedAt;
-  final int? v;
+  final DateTime? startDate;
+  final DateTime? endDate;
+
 
   RequesterTaskModel({
     this.id,
@@ -27,8 +28,9 @@ class RequesterTaskModel {
     this.quantity,
     this.price,
     this.createdAt,
-    this.updatedAt,
-    this.v,
+    this.endDate,
+    this.startDate
+
   });
 
   factory RequesterTaskModel.fromJson(Map<String, dynamic> json) =>
@@ -47,10 +49,13 @@ class RequesterTaskModel {
         createdAt: json["createdAt"] == null
             ? null
             : DateTime.parse(json["createdAt"]),
-        updatedAt: json["updatedAt"] == null
+        startDate: json["timelinesStart"] == null
             ? null
-            : DateTime.parse(json["updatedAt"]),
-        v: json["__v"],
+            : DateTime.parse(json["timelinesStart"]),
+        endDate: json["timelinesEnd"] == null
+            ? null
+            : DateTime.parse(json["timelinesEnd"]),
+
       );
 }
 
