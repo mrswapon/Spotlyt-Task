@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:spotlyt_task/helpers/time_format.dart';
 import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
 import 'package:spotlyt_task/models/tasker_task_model.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
@@ -146,11 +147,16 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               ),
               //========================> Date Text <=============================
               CustomText(
-                text: "Friday 01 Feb, 2024",
+                text: TimeFormatHelper.formatDate(DateTime.parse(taskDetails.taskId!.createdAt!)),
                 fontWeight: FontWeight.w600,
-                bottom: 24.h,
+
               ),
-              SizedBox(height: 231.h),
+
+
+
+
+
+              SizedBox(height: 50.h),
 
               //=========================> Submit Task Button <===================
               parameters['tabBarIndex'] == '0'

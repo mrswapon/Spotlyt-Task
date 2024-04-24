@@ -16,6 +16,8 @@ class TaskerHomeController extends GetxController {
   var currentPage=(-1);
   var taskRegId = "".obs;
 
+  var alreadyTaskRegister = <String>[].obs;
+
 
   @override
   void onInit() {
@@ -76,14 +78,19 @@ class TaskerHomeController extends GetxController {
   }
 
   ///==================== task Register ==========================>
+   var loading=false.obs;
   taskRegister(String name, taskId, price) async {
+    loading(true);
     var body = {"name": name, "taskId": taskId, "price": price};
     var response = await ApiClient.postData(ApiConstants.taskRegisterEndPoint, body);
     if (response.statusCode == 200) {
        taskRegId.value = response.body['data']['attributes']['_id'];
       print("==============================> id for submitted: $taskId");
-      Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+      alreadyTaskRegister.add(taskId);
+      alreadyTaskRegister.refresh();
     }
+    loading(false);
+    update();
   }
 
 
