@@ -32,7 +32,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Task taskDetails = Get.arguments;
+    var taskDetails = Get.arguments;
     print("======================> ${parameters['tabBarIndex']}");
     return Scaffold(
       //=========================> AppBar Section  <============================
@@ -74,7 +74,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 ),
                 //=========================> Task price Rope <=======================
                 SelectableText(
-                  "R${(taskDetails.price! / 2).toStringAsFixed(2)}" ?? "",
+                  "R${(taskDetails.price/ 2).toStringAsFixed(2)}" ?? "",
                   style: TextStyle(
                       fontSize: 16.h,
                       fontWeight: FontWeight.w500,
@@ -157,7 +157,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
 
 
                 //=========================> time line <=======================
-                if(taskDetails.timeline!=null  || taskDetails.timeline != '')
+                if(taskDetails.timeline!=null)
                 CustomText(
                   text: AppString.timeLine,
                   fontWeight: FontWeight.w500,
@@ -165,8 +165,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 ),
                 //========================> time line <=============================
 
-                if(taskDetails.timeline!=null || taskDetails.timeline != '')
-
+                if(taskDetails.timeline!=null)
                 Container(
                   decoration:
                   BoxDecoration(

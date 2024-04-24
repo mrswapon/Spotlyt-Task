@@ -265,7 +265,10 @@ class TaskId {
   double? price;
   String? createdAt;
   String? updatedAt;
+  Timeline? timeline;
   int? iV;
+
+
 
   TaskId(
       {this.sId,
@@ -279,6 +282,7 @@ class TaskId {
         this.price,
         this.createdAt,
         this.updatedAt,
+        this.timeline,
         this.iV});
 
   TaskId.fromJson(Map<String, dynamic> json) {
@@ -293,8 +297,13 @@ class TaskId {
     price = json['price'].runtimeType==int?json['price'].toDouble():json['price'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
+    timeline = json["timeline"] == null ? null : Timeline.fromJson(json["timeline"]);
     iV = json['__v'];
   }
+
+
+
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -310,6 +319,29 @@ class TaskId {
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;
     data['__v'] = this.iV;
+    // data['timeline'] = this.timeline;
     return data;
   }
+
+
+}
+
+class Timeline {
+  final DateTime? start;
+  final DateTime? end;
+
+  Timeline({
+    this.start,
+    this.end,
+  });
+
+  factory Timeline.fromJson(Map<String, dynamic> json) => Timeline(
+    start: json["start"] == null ? null : DateTime.parse(json["start"]),
+    end: json["end"] == null ? null : DateTime.parse(json["end"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "start": start?.toIso8601String(),
+    "end": end?.toIso8601String(),
+  };
 }
