@@ -256,8 +256,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                                     _serviceController.startDate(context);
                                   },
                                   readOnly: true,
-                                  validator:(value){
-                                    if(value!.isEmpty){
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
                                       return "Select start date!";
                                     }
                                     return null;
@@ -288,8 +288,8 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                                     _serviceController.endDate(context);
                                   },
                                   readOnly: true,
-                                  validator:(value){
-                                    if(value!.isEmpty){
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
                                       return "Select end date!";
                                     }
                                     return null;
@@ -427,17 +427,19 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                               onpress: () {
                                 if (_formKey.currentState!.validate()) {
                                   _serviceController.makePayment(
-                                    "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
-                                    attributes.sId,
-                                    attributes
-                                            .categories![_serviceController
-                                                .selectedCategoryIndex.value]
-                                            .service![_serviceController
-                                                .selectedServiceIndex.value]
-                                            .price
-                                            ?.toStringAsFixed(2) ??
-                                        0.0,attributes.name == "Business Offerings"?true:false
-                                  );
+                                      "${attributes.categories![_serviceController.selectedCategoryIndex.value].name} ${attributes.categories![_serviceController.selectedCategoryIndex.value].service![_serviceController.selectedServiceIndex.value].name!.replaceAll("Request", "").trim()}",
+                                      attributes.sId,
+                                      attributes
+                                              .categories![_serviceController
+                                                  .selectedCategoryIndex.value]
+                                              .service![_serviceController
+                                                  .selectedServiceIndex.value]
+                                              .price
+                                              ?.toStringAsFixed(2) ??
+                                          0.0,
+                                      attributes.name == "Business Offerings"
+                                          ? true
+                                          : false);
                                 } else {
                                   print('enter the link');
                                 }
