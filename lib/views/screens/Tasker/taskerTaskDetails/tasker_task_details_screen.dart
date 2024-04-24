@@ -33,7 +33,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     Task taskDetails = Get.arguments;
-    print("======================> ${parameters['tabBarIndex']}");
+
     return Scaffold(
       //=========================> AppBar Section  <============================
       appBar: AppBar(
@@ -61,7 +61,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 ),
                 //====================> Facebook Post Like Text  <==================
                 CustomText(
-                  text: "${taskDetails?.name}",
+                  text: "${taskDetails.name}",
                   fontWeight: FontWeight.w600,
                   bottom: 16.h,
                 ),
