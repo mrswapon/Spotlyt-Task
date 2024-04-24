@@ -3,24 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/helpers/time_format.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
-
-import '../../../../controller/requesterController/requester_submit_task_controller.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 
-
 class RequesterTaskDetailsScreen extends StatefulWidget {
   RequesterTaskDetailsScreen({super.key});
 
   @override
-  State<RequesterTaskDetailsScreen> createState() => _RequesterTaskDetailsScreenState();
+  State<RequesterTaskDetailsScreen> createState() =>
+      _RequesterTaskDetailsScreenState();
 }
 
-class _RequesterTaskDetailsScreenState extends State<RequesterTaskDetailsScreen> {
-
- Map<String, PreviewData> datas = {};
+class _RequesterTaskDetailsScreenState
+    extends State<RequesterTaskDetailsScreen> {
+  Map<String, PreviewData> datas = {};
   @override
   Widget build(BuildContext context) {
     var data = Get.arguments;
@@ -63,24 +61,8 @@ class _RequesterTaskDetailsScreenState extends State<RequesterTaskDetailsScreen>
             ),
 
             ///--------------------------link text---------------------------->
-
-            // SelectableText(
-            //   "https://www.Facebook.com",
-            //   style: TextStyle(
-            //       fontSize: 16.h,
-            //       fontWeight: FontWeight.w500,
-            //       color: const Color(0xff0FD726)),
-            //   textAlign: TextAlign.start,
-            // ),
-
-
-
-
-
-
             Container(
-              // key: const ValueKey("https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk"),
-              key:  ValueKey("${data.taskLink}"),
+              key: ValueKey("${data.taskLink}"),
               margin: const EdgeInsets.all(16),
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -99,31 +81,17 @@ class _RequesterTaskDetailsScreenState extends State<RequesterTaskDetailsScreen>
                       datas = {
                         ...datas,
                         "${data.taskLink}": datass,
-                        // "https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk":data,
                       };
                     });
                   },
-                  // previewData: datas['https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk'],
-                  previewData: datas[
-               "${data.taskLink}"],
-                  // text:"https://www.facebook.com/share/p/9vicnX8ujrEJDGyY/?mibextid=oFDknk",
-                  text:"${data.taskLink}",
+                  previewData: datas["${data.taskLink}"],
+                  text: "${data.taskLink}",
                   width: MediaQuery.of(context).size.width,
                 ),
               ),
             ),
 
-
-
-
-
-
-
-
-
-            SizedBox(
-              height: 24.h,
-            ),
+            SizedBox(height: 24.h),
 
             ///---------------------------------task post text-------------------------->
             CustomText(

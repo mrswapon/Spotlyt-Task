@@ -41,7 +41,7 @@ class _CustomMultiSelectRequestCardState
               bool isSelected = widget.initSelect == index;
 
               return Padding(
-                padding: EdgeInsets.only(bottom: 12.h),
+                padding: EdgeInsets.only(bottom: 8.h),
                 child: GestureDetector(
                   onTap: () => widget.onTap(index),
                   child: Row(
