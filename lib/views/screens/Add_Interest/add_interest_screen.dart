@@ -160,6 +160,7 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
 
                     CustomButton(
                         title: "Continue",
+                        loading: _controller.addInterestLoading.value,
                         onpress: () {
                           _controller.addInterestsList();
                           // Get.offAllNamed(AppRoutes.taskerBottomNavBar);

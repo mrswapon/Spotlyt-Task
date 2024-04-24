@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
 
@@ -44,25 +45,39 @@ class AddInterestController extends GetxController{
   RxBool addInterestLoading = false.obs;
   addInterestsList()async{
     addInterestLoading(true);
+     List interestList = [];
 
-    List<String> interestList = [];
 
+     for (var interest in selectInterestList) {
+       interestList.add(interest.id.toString());
+     }
 
-    for (var interest in selectInterestList) {
-      interestList.add(interest.id.toString());
-    }
+     debugPrint("$interestList");
 
-    debugPrint("$interestList");
-
-    Map<String,dynamic>  body = {
-      "interest" : interestList
+     Map<String,dynamic>  body = {
+       "interest" : interestList
+     };
+  var   bearerToken = await PrefsHelper.getString(AppConstants.bearerToken);
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $bearerToken'
     };
-   var response = await ApiClient.postData(ApiConstants.interestEndPoint, body);
+    var request = http.Request('POST', Uri.parse(ApiConstants.baseUrl+ApiConstants.interestEndPoint));
+    request.body = json.encode(body);
+    request.headers.addAll(headers);
 
-    if(response.statusCode == 200){
-      print("=============> Interest post done and interest list $interestList");
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
       Get.offAllNamed(AppRoutes.taskerBottomNavBar);
       await PrefsHelper.setBool(AppConstants.isLogged, true);
+
     }
+    else {
+      print(response.reasonPhrase);
+    }
+    addInterestLoading(false);
+
+
   }
 }
