@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:spotlyt_task/views/widgets/custom_loader.dart';
 import '../../../../controller/Tasker_controller/wallet_controller.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_icons.dart';
@@ -32,7 +33,7 @@ class WithdrawalHistory extends StatelessWidget {
               SizedBox(height: 10.h),
               //======================> List View Item Section <======================
               Expanded(
-                child: ListView.builder(
+                child: _walletController.walletModel.value.data!.attributes!.isEmpty ?  Center(child: CustomText(text: "No data found",),) : ListView.builder(
                   itemCount: _walletController.walletModel.value.data?.attributes?.length,
                   itemBuilder: (context, index) {
                     var walletData = _walletController.walletModel.value.data?.attributes![index];

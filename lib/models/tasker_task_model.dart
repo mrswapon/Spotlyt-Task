@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class TaskerTaskModel {
   int? code;
   String? message;
@@ -110,7 +112,7 @@ class Tasks {
     taskId =
     json['taskId'] != null ? new TaskId.fromJson(json['taskId']) : null;
     status = json['status'];
-    price = json['price'];
+    price = json['price'].runtimeType==int?json['price'].toDouble():json['price'];
     if (json['image'] != null) {
       image = <Image>[];
       json['image'].forEach((v) {
@@ -121,6 +123,9 @@ class Tasks {
     updatedAt = json['updatedAt'];
     iV = json['__v'];
   }
+
+
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -285,7 +290,7 @@ class TaskId {
     serviceId = json['serviceId'];
     status = json['status'];
     quantity = json['quantity'];
-    price = json['price'];
+    price = json['price'].runtimeType==int?json['price'].toDouble():json['price'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     iV = json['__v'];

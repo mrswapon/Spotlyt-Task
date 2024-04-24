@@ -7,4 +7,9 @@ class TimeFormatHelper{
   }
 
 
+
+  static   String dataTimeYearFromat(DateTime date) {
+    return DateFormat('dd MMM, yyyy').format(date);
+  }
+
 }
