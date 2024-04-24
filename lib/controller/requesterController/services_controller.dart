@@ -67,7 +67,7 @@ class ServiceController extends GetxController {
   ///  payment Ozow
 var paymentLoading=false.obs;
 
-  makePayment(String taskName, serviceId, price)async{
+  makePayment(String taskName, serviceId, price,bool isCorporate)async{
     paymentLoading(true);
     var data = {
       "name": taskName,
@@ -75,16 +75,28 @@ var paymentLoading=false.obs;
       "serviceId": "$serviceId",
       "quantity": quantityCtrl.text,
       "price": "$price",
+      "interest":selectInterest.id
     };
 
-    var response= await paymentService.makePaymentRequest(amount:0.08, serviceInfo: data,);
+    var dataCo = {
+      "name": taskName,
+      "taskLink": addLinkCtrl.text,
+      "serviceId": "$serviceId",
+      "timelinesStart": startDateCtrl.text,
+      "timelinesEnd": endDateCtrl.text,
+      "quantity": quantityCtrl.text,
+      "interest":selectInterest.id,
+      "price": "$price",
+    };
+
+    var response= await paymentService.makePaymentRequest(amount:totalPayable.value,);
     if(response.runtimeType !=int){
       var responseData = jsonDecode(response);
       print(responseData);
       var successResponseUrl = responseData['url']; // Assuming the URL is in a 'url' field of the response
       if (successResponseUrl != null && successResponseUrl.isNotEmpty) {
         //  await launchUrl(Uri.parse(successResponseUrl),mode: LaunchMode.inAppWebView); // Opens successResponseUrl in the default browser
-        Get.to(OzowPaymentUI(paymentLink:successResponseUrl,serviceInfo:data,));
+        Get.to(OzowPaymentUI(paymentLink:successResponseUrl,serviceInfo:isCorporate?dataCo:data,));
         print(successResponseUrl);
       } else {
         print('No valid URL found in the response.');
@@ -134,4 +146,6 @@ var paymentLoading=false.obs;
       print('Selected date: ${endDateCtrl.text}');
     }
   }
+
+
 }

@@ -72,7 +72,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               ),
               //=========================> Task price Rope <=======================
               SelectableText(
-                "R${(taskDetails.price!/2).toStringAsFixed(2)}" ?? "",
+                "R-${(taskDetails.price!/2).toStringAsFixed(2)}" ?? "",
 
                 style: TextStyle(
                     fontSize: 16.h,
@@ -156,7 +156,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
 
 
               //=========================> time line <=======================
-              if(taskDetails.taskId!.timeline!=null  || taskDetails.taskId!.timeline != '')
+              if(taskDetails.taskId!.startDate!=null )
                 CustomText(
                   text: AppString.timeLine,
                   fontWeight: FontWeight.w500,
@@ -164,7 +164,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                 ),
               //========================> time line <=============================
 
-              if(taskDetails.taskId!.timeline != null || taskDetails.taskId!.timeline != '')
+              if(taskDetails.taskId!.startDate != null )
 
                 Container(
                   decoration:
@@ -194,7 +194,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                   ),
                                   CustomText(
                                     fontsize: 14.h,
-                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.taskId!.timeline!.start!),
+                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.taskId!.startDate!),
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ],
@@ -225,7 +225,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                   ),
                                   CustomText(
                                     fontsize: 14.h,
-                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.taskId!.timeline!.end!),
+                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.taskId!.endDate!),
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ],

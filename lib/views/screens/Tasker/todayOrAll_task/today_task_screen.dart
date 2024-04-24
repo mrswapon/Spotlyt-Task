@@ -75,7 +75,7 @@ class TodayOrAllTaskScreen extends StatelessWidget {
                   date: formatDate,
                   postLink: taskData?.taskLink,
                   days: "",
-                  taskCompleteAmount: "${taskData?.price}",
+                  taskCompleteAmount: taskData?.price,
                 ),
               ),
             );

@@ -43,7 +43,7 @@ class PaymentService {
     String inputString = (siteCode +
         countryCode +
         currencyCode +
-        amount.toString() +
+        amount.toStringAsFixed(2) +
         transactionReference +
         bankReference +
         cancelUrl +
@@ -61,7 +61,6 @@ class PaymentService {
 
   Future<dynamic> makePaymentRequest({
     required double amount,
-    required Map<String, dynamic> serviceInfo,
   }) async {
     String url = "https://api.ozow.com/postpaymentrequest";
     // String url = "https://stagingapi.ozow.com/PostPaymentRequest";
@@ -70,7 +69,7 @@ class PaymentService {
 
     Map<String, dynamic> data = {
       "countryCode": "ZA",
-      "amount": amount.toString(),
+      "amount": amount.toStringAsFixed(2),
       "transactionReference": "Ref",
       "bankReference": "Ref",
       "cancelUrl": cancelUrl,

@@ -256,6 +256,12 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                                     _serviceController.startDate(context);
                                   },
                                   readOnly: true,
+                                  validator:(value){
+                                    if(value!.isEmpty){
+                                      return "Select start date!";
+                                    }
+                                    return null;
+                                  },
                                   controller: _serviceController.startDateCtrl,
                                   decoration: InputDecoration(
                                       suffixIcon: SizedBox(
@@ -282,6 +288,12 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                                     _serviceController.endDate(context);
                                   },
                                   readOnly: true,
+                                  validator:(value){
+                                    if(value!.isEmpty){
+                                      return "Select end date!";
+                                    }
+                                    return null;
+                                  },
                                   controller: _serviceController.endDateCtrl,
                                   decoration: InputDecoration(
                                       suffixIcon: SizedBox(
@@ -424,7 +436,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                                                 .selectedServiceIndex.value]
                                             .price
                                             ?.toStringAsFixed(2) ??
-                                        0.0,
+                                        0.0,attributes.name == "Business Offerings"?true:false
                                   );
                                 } else {
                                   print('enter the link');

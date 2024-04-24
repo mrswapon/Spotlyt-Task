@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
@@ -44,19 +45,22 @@ class AddInterestController extends GetxController{
   addInterestsList()async{
     addInterestLoading(true);
 
-   // var interestTitle = [];
-    var interestTitle = selectInterestList.map((interest) => interest.title).join(',');
-   var  body = {
-     "interest" : interestTitle
-   };
-    // for (var interest in selectInterestList) {
-    //   interestTitle.add(interest.title);
-    // }
+    List<String> interestList = [];
 
+
+    for (var interest in selectInterestList) {
+      interestList.add(interest.id.toString());
+    }
+
+    debugPrint("$interestList");
+
+    Map<String,dynamic>  body = {
+      "interest" : interestList
+    };
    var response = await ApiClient.postData(ApiConstants.interestEndPoint, body);
 
     if(response.statusCode == 200){
-      print("=============> Interest post done and interest list $interestTitle");
+      print("=============> Interest post done and interest list $interestList");
       Get.offAllNamed(AppRoutes.taskerBottomNavBar);
       await PrefsHelper.setBool(AppConstants.isLogged, true);
     }

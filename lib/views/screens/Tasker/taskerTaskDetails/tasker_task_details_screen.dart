@@ -32,8 +32,13 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+// <<<<<<< HEAD
     var taskDetails = Get.arguments;
     print("======================> ${parameters['tabBarIndex']}");
+// =======
+//     Task taskDetails = Get.arguments;
+//
+// >>>>>>> 9c2d9cc3a627d4779123aa380f07e19396edd067
     return Scaffold(
       //=========================> AppBar Section  <============================
       appBar: AppBar(
@@ -61,7 +66,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 ),
                 //====================> Facebook Post Like Text  <==================
                 CustomText(
-                  text: "${taskDetails?.name}",
+                  text: "${taskDetails.name}",
                   fontWeight: FontWeight.w600,
                   bottom: 16.h,
                 ),
@@ -157,7 +162,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
 
 
                 //=========================> time line <=======================
-                if(taskDetails.timeline!=null)
+                if(taskDetails.startDate!=null)
                 CustomText(
                   text: AppString.timeLine,
                   fontWeight: FontWeight.w500,
@@ -165,7 +170,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 ),
                 //========================> time line <=============================
 
-                if(taskDetails.timeline!=null)
+                if(taskDetails.startDate!=null)
                 Container(
                   decoration:
                   BoxDecoration(
@@ -194,7 +199,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                                   ),
                                   CustomText(
                                     fontsize: 14.h,
-                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.timeline!.start!),
+                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.startDate!),
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ],
@@ -225,7 +230,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                                   ),
                                   CustomText(
                                     fontsize: 14.h,
-                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.timeline!.end!),
+                                    text: TimeFormatHelper.dataTimeYearFromat(taskDetails.endDate!),
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ],
@@ -254,8 +259,12 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                             ? CustomButton(
                                 title: AppString.submitTask,
                                 onpress: () {
+
+                              var index=    _taskerHomeController.alreadyTaskRegister.indexOf(taskDetails.id);
+
+
                                   Get.toNamed(AppRoutes.submitTaskScreen,
-                                      parameters: {'sId': "${taskDetails.id}"});
+                                      parameters: {'sId':   _taskerHomeController.registerTaskIdList[index]});
                                 })
                             : Obx(
                                 () => CustomButton(

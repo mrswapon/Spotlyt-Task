@@ -92,7 +92,6 @@ initUrl(){
               //  add backend request
             } else if (request.url.toString().contains("cancel")){
 
-
               //  add backend request
             }
             return NavigationDecision.navigate;

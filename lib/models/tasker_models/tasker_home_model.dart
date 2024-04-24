@@ -73,7 +73,9 @@ class Task {
   final DateTime? createdAt;
   final DateTime? updatedAt;
   final int? v;
-  final Timeline? timeline;
+ final DateTime? startDate;
+ final  DateTime? endDate;
+
 
   Task({
     this.id,
@@ -88,7 +90,9 @@ class Task {
     this.createdAt,
     this.updatedAt,
     this.v,
-    this.timeline
+    this.endDate,
+    this.startDate
+
   });
 
   factory Task.fromJson(Map<String, dynamic> json) => Task(
@@ -104,7 +108,12 @@ class Task {
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
     updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
     v: json["__v"],
-    timeline: json["timeline"] == null ? null : Timeline.fromJson(json["timeline"]),
+    startDate: json["timelinesStart"] == null
+        ? null
+        : DateTime.parse(json["timelinesStart"]),
+    endDate: json["timelinesEnd"] == null
+        ? null
+        : DateTime.parse(json["timelinesEnd"]),
   );
 
 

@@ -17,6 +17,7 @@ class TaskerHomeController extends GetxController {
   var taskRegId = "".obs;
 
   var alreadyTaskRegister = <String>[].obs;
+  var registerTaskIdList = <String>[].obs;
 
 
   @override
@@ -87,6 +88,7 @@ class TaskerHomeController extends GetxController {
        taskRegId.value = response.body['data']['attributes']['_id'];
       print("==============================> id for submitted: $taskId");
       alreadyTaskRegister.add(taskId);
+       registerTaskIdList.add(response.body['data']['attributes']["_id"]);
       alreadyTaskRegister.refresh();
     }
     loading(false);
