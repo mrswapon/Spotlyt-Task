@@ -61,7 +61,6 @@ class PaymentService {
 
   Future<dynamic> makePaymentRequest({
     required double amount,
-    required Map<String, dynamic> serviceInfo,
   }) async {
     String url = "https://api.ozow.com/postpaymentrequest";
     // String url = "https://stagingapi.ozow.com/PostPaymentRequest";

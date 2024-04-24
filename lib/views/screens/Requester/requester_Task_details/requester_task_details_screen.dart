@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:spotlyt_task/controller/requesterController/services_controller.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 
+import '../../../../controller/requesterController/requester_submit_task_controller.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 
 class RequesterTaskDetailsScreen extends StatelessWidget {
-  const RequesterTaskDetailsScreen({super.key});
+  RequesterTaskDetailsScreen({super.key});
+  final _requesterTaskController = Get.put(RequesterTaskController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +42,7 @@ class RequesterTaskDetailsScreen extends StatelessWidget {
 
             ///---------------------------facebook post like text------------------------->
             CustomText(
-              text: "Facebook Post Like ( 5000 )",
+              text: "_requesterTaskController.taskList",
               fontWeight: FontWeight.w500,
               bottom: 24.h,
             ),
@@ -52,7 +57,7 @@ class RequesterTaskDetailsScreen extends StatelessWidget {
             ///--------------------------link text---------------------------->
 
             SelectableText(
-              "https://www.Facebook.com/Image Post",
+              "https://www.Facebook.com",
               style: TextStyle(
                   fontSize: 16.h,
                   fontWeight: FontWeight.w500,
