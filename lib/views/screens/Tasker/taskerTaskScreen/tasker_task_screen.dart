@@ -122,7 +122,7 @@ class TaskerTaskScreen extends StatelessWidget {
                          _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?.length == 0 ?
                           Padding(
                             padding: EdgeInsets.only(bottom: 100.h, left: 40.w,right: 40.w),
-                            child: const CustomNoDataFound(title: '',),
+                            child: const CustomNoDataFound(),
                           ):
 
                         ListView.builder(
