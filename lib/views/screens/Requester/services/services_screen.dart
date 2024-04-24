@@ -393,7 +393,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                             Obx(
                               () => CustomText(
                                 text:
-                                    "R${_serviceController.totalPayable.value.toStringAsFixed(2)}",
+                                    "R-${_serviceController.totalPayable.value.toStringAsFixed(2)}",
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.primaryColor,
                                 textAlign: TextAlign.end,

@@ -7,7 +7,7 @@ class ApiConstants{
   static const String signUpEndPoint = "/auth/register";
   static const String forgot = "/auth/forgot-password";
   static const String otpVerifyEndPoint = "/auth/verify-email";
-  static const String requesterTaskService = "/tasks/service";
+  static const String requesterTaskService = "/service";
   static const String loginEndPoint = "/auth/login";
   static const String forgotPasswordEndPoint = "/auth/forgot-password";
   static const String changePasswordEndPoint = "/auth/change-password";
