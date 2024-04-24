@@ -113,29 +113,30 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
                                       child: Row(
                                         children: [
                                           ///--------------------------icon------------------------->
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 6.w, right: 3.w),
-                                            child: SvgPicture.network(
-                                              "${ApiConstants.imageBaseUrl}${_controller.interestList[itemsIndex].icon}",
-                                              color: _controller
-                                                      .selectInterestList
-                                                      .contains(_controller
-                                                              .interestList[
-                                                          itemsIndex])
-                                                  ? Colors.white
-                                                  : AppColors.primaryColor,
-                                            ),
-                                          ),
+                                          // Padding(
+                                          //   padding: EdgeInsets.only(
+                                          //       left: 6.w, right: 3.w),
+                                          //   child: SvgPicture.network(
+                                          //     "${ApiConstants.imageBaseUrl}${_controller.interestList[itemsIndex].icon}",
+                                          //     color: _controller
+                                          //             .selectInterestList
+                                          //             .contains(_controller
+                                          //                     .interestList[
+                                          //                 itemsIndex])
+                                          //         ? Colors.white
+                                          //         : AppColors.primaryColor,
+                                          //   ),
+                                          // ),
 
                                           ///----------------------------------title name------------------------------------->
                                           CustomText(
                                             text:
                                                 "${_controller.interestList[itemsIndex].title}",
                                             fontsize: 11.5.h,
-                                            top: 7.h,
-                                            bottom: 7.h,
-                                            right: 11.w,
+                                            top: 8.h,
+                                            bottom: 8.h,
+                                            left: 16.w,
+                                            right: 16.w,
                                             color: _controller
                                                     .selectInterestList
                                                     .contains(_controller
