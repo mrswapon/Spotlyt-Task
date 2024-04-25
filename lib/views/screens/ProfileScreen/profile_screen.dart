@@ -65,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                         ontap: () {
                           Get.toNamed(AppRoutes.personalInformationScreen);
                         },
-                        title: _profileController.profileModel.value.role != "employee" ? "Client Information" : "Employee Information",
+                        title: _profileController.profileModel.value.role != "employee" ? "Client Information" : "User Information",
                         icon: AppIcons.profile,
                       ),
 

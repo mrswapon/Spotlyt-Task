@@ -113,7 +113,7 @@ class AppString {
   static String taskLink = "Task Link:";
   static String taskPost = "Task Post Date:";
   ///--------------------------invite and earn screen------------------------->
-   static String inviteYourFriendsAndGetRand = "Invite your friends and get \n Rand ";
+   static String inviteYourFriendsAndGetRand = "Invite your friends and get\n ";
    static String shareTheLinkBeloworAsk = "Share the code below or ask them to enter it \n as refer code. Earn when your friends use\n the refer code in our app.";
     static String referralCode="Referral Code";
     static String referralSubmitDes="Please enter your referral code below";

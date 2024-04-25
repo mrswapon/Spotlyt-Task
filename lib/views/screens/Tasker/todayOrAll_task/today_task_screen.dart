@@ -46,15 +46,15 @@ class TodayOrAllTaskScreen extends StatelessWidget {
           controller: scrollController,
           itemCount: parameter['screenType'] == "todaysTask"
               ? _taskerHomeController
-                  .taskerHomeModelToday.value.data?.attributes?.tasks?.length
+                  .todayTaskList.value.length
               : _taskerHomeController
-                  .taskerHomeModelAll.value.data?.attributes?.tasks?.length,
+                  .allTaskList.value.length,
           itemBuilder: (context, index) {
             var taskData = parameter['screenType'] == "todaysTask"
                 ? _taskerHomeController
-                    .taskerHomeModelToday.value.data?.attributes?.tasks![index]
+                    .todayTaskList.value[index]
                 : _taskerHomeController
-                    .taskerHomeModelAll.value.data?.attributes?.tasks?[index];
+                    .allTaskList.value[index];
             var date = taskData?.createdAt;
             var formatDate = '';
             if (date != null) {

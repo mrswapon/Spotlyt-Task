@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:spotlyt_task/controller/Profile_Controller/profile_controller.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
@@ -22,6 +23,8 @@ class TaskerHomeScreen extends StatelessWidget {
 
   final TaskerHomeController _taskerHomeController =
       Get.put(TaskerHomeController());
+
+  ProfileController _profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,7 @@ class TaskerHomeScreen extends StatelessWidget {
               child: RefreshIndicator(
                 onRefresh: ()async {
                 await  _taskerHomeController.getTaskerHomeDataToday();
+                _profileController.getProfileData();
                 },
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
@@ -100,27 +104,16 @@ class TaskerHomeScreen extends StatelessWidget {
                       Obx(
                         () => SizedBox(
                           height: 257.h,
-                          child: _taskerHomeController.taskerHomeModelToday.value
-                                      .data!.attributes?.totalResults ==
-                                  0
+                          child: _taskerHomeController.todayTaskList.isEmpty
                               ? const CustomNoDataFound()
                               : ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: _taskerHomeController
-                                          .taskerHomeModelToday
-                                          .value
-                                          ?.data
-                                          ?.attributes
-                                          ?.tasks
-                                          ?.length ??
-                                      0,
+                                  itemCount: _taskerHomeController.todayTaskList.value.length,
                                   itemBuilder: (context, index) {
                                     var taskData = _taskerHomeController
-                                        .taskerHomeModelToday
+                                        .todayTaskList
                                         .value
-                                        .data
-                                        ?.attributes
-                                        ?.tasks?[index];
+                                       [index];
                                     var date = taskData?.createdAt;
                                     var formatDates = date != null
                                         ? DateFormat('EEEE dd MMM, yyyy')
@@ -186,27 +179,15 @@ class TaskerHomeScreen extends StatelessWidget {
                       Obx(
                         () => SizedBox(
                           height: 257.h,
-                          child: _taskerHomeController.taskerHomeModelToday.value
-                                      .data!.attributes?.totalResults ==
-                                  0
+                          child: _taskerHomeController.allTaskList.isEmpty
                               ? const CustomNoDataFound()
                               : ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: _taskerHomeController
-                                          .taskerHomeModelAll
-                                          .value
-                                          .data
-                                          ?.attributes
-                                          ?.tasks
-                                          ?.length ??
-                                      0,
+                                  itemCount: _taskerHomeController.allTaskList.value.length,
                                   itemBuilder: (context, index) {
                                     var allTaskDate = _taskerHomeController
-                                        .taskerHomeModelAll
-                                        .value
-                                        .data
-                                        ?.attributes
-                                        ?.tasks?[index];
+                                        .allTaskList
+                                        .value[index];
                                     var date = allTaskDate?.createdAt;
                                     var formatDate = date != null
                                         ? DateFormat('EEEE dd MMM, yyyy')
