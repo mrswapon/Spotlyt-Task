@@ -174,7 +174,7 @@ class _MediaServicesScreenState extends State<MediaServicesScreen> {
                         CustomText(
                           text: AppString.addQuantity,
                           fontWeight: FontWeight.w500,
-                          top: 30.h,
+                          top: 10.h,
                           bottom: 12.h,
                         ),
 
