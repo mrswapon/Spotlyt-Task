@@ -66,7 +66,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 ),
                 //====================> Facebook Post Like Text  <==================
                 CustomText(
-                  text: "${taskDetails.name}",
+                  text: "${taskDetails.name} ",
                   fontWeight: FontWeight.w600,
                   bottom: 16.h,
                 ),

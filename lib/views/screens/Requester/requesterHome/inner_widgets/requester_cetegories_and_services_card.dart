@@ -25,7 +25,7 @@ class CetegoriesAndServicesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 330.h,
+       height: (servicesInfo!.length * 28 + 195).h,
       width: 345.w,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
       child: Container(

@@ -36,7 +36,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
   initProfileData() {
     var data = _profileController.profileModel.value;
-    _fullNameController.text = data.fullName!;
+    _fullNameController.text = data.fullName ?? '';
     _emailController.text = data.email!;
     _phoneController.text =
         data.phoneNumber != null ? data.phoneNumber.toString() : "";

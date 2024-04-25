@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
 import 'package:spotlyt_task/routes/app_routes.dart';
@@ -29,8 +31,8 @@ class TaskerHomeController extends GetxController {
     loadMore();
   }
 
-  Rx<TaskerHomeModel> taskerHomeModelAll = TaskerHomeModel().obs;
-  Rx<TaskerHomeModel> taskerHomeModelToday = TaskerHomeModel().obs;
+  RxList<Task> todayTaskList = <Task>[].obs;
+  RxList<Task> allTaskList = <Task>[].obs;
 
 
   loadMore(){
@@ -49,13 +51,15 @@ class TaskerHomeController extends GetxController {
 
     var response = await ApiClient.getData("${ApiConstants.taskerHomeEidPoint}?page=$page");
     if (response.statusCode == 200) {
-      taskerHomeModelAll.value = TaskerHomeModel.fromJson(response.body);
+      var demoData=TaskerHomeModel.fromJson(response.body);
+      allTaskList.value = demoData.data!.attributes!.tasks??[];
        totalPage = jsonDecode(response.body['data']['attributes']['totalPages'].toString());
       currentPage = jsonDecode(response.body['data']['attributes']['page'].toString());
       print("=================$totalPage \n $currentPage");
-
+      allTaskList.refresh();
       setRxRequestStatus(Status.completed);
       refresh();
+      update();
     } else {
       if(response.statusText == ApiClient.noInternetMessage){
         setRxRequestStatus(Status.internetError);
@@ -72,7 +76,9 @@ class TaskerHomeController extends GetxController {
     var response = await ApiClient.getData("${ApiConstants.taskerHomeEidPoint}?page=$page&type=today");
 
     if (response.statusCode == 200) {
-      taskerHomeModelToday.value = TaskerHomeModel.fromJson(response.body);
+      var demoData=TaskerHomeModel.fromJson(response.body);
+      todayTaskList.value = demoData.data!.attributes!.tasks??[];
+      todayTaskList.refresh();
       await  getTaskerHomeDataAll();
       refresh();
     }
@@ -89,7 +95,21 @@ class TaskerHomeController extends GetxController {
       print("==============================> id for submitted: $taskId");
       alreadyTaskRegister.add(taskId);
        registerTaskIdList.add(response.body['data']['attributes']["_id"]);
+
       alreadyTaskRegister.refresh();
+    }else{
+     var message =  response.body['message'];
+      Fluttertoast.showToast(
+          msg: message,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 3,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+
+        Get.offAllNamed(AppRoutes.taskerBottomNavBar);
     }
     loading(false);
     update();

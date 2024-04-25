@@ -112,7 +112,7 @@ class TaskerWalletScreen extends StatelessWidget {
           //======================> List View Item Section <======================
           Obx(
             () => _walletController.walletLoading.value || _walletController.walletModel.value.data!.attributes!.isEmpty
-                ? const CustomLoader()
+                ? SizedBox(height: 20.h,)
                 : Expanded(
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),

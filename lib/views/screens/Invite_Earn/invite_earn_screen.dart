@@ -59,7 +59,7 @@ class InviteEarnScreen extends StatelessWidget {
 
             ///-----------------------------invite your friends and get rand text-------------------->
             CustomText(
-              text: "${AppString.inviteYourFriendsAndGetRand} ${_inviteAndEernController.referralData['amount'] ?? ""}",
+              text: "${AppString.inviteYourFriendsAndGetRand} ${_inviteAndEernController.referralData['amount'] ?? ""} Rand",
               fontsize: 24.h,
               fontWeight: FontWeight.w500,
               top: 34.h,

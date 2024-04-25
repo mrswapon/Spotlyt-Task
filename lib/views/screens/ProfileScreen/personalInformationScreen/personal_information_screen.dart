@@ -25,7 +25,7 @@ class PersonalInformationScreen extends StatelessWidget {
       appBar: AppBar(
         // leading: const SizedBox(),
         title: CustomText(
-          text: _profileController.profileModel.value.role != "employee" ? "Client Information" : "Employee Information",
+          text: _profileController.profileModel.value.role != "employee" ? "Client Information" : "User Information",
           fontWeight: FontWeight.w500,
         ),
         centerTitle: true,
