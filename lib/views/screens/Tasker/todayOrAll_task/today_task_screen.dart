@@ -11,8 +11,6 @@ import 'package:spotlyt_task/views/widgets/no_data_found.dart';
 import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
 
 class TodayOrAllTaskScreen extends StatelessWidget {
-
-
   final _taskerHomeController = Get.put(TaskerHomeController());
   var parameter = Get.parameters;
   ScrollController scrollController = ScrollController();
@@ -42,45 +40,44 @@ class TodayOrAllTaskScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-        child: ListView.builder(
-          controller: scrollController,
-          itemCount: parameter['screenType'] == "todaysTask"
-              ? _taskerHomeController
-                  .todayTaskList.value.length
-              : _taskerHomeController
-                  .allTaskList.value.length,
-          itemBuilder: (context, index) {
-            var taskData = parameter['screenType'] == "todaysTask"
-                ? _taskerHomeController
-                    .todayTaskList.value[index]
-                : _taskerHomeController
-                    .allTaskList.value[index];
-            var date = taskData?.createdAt;
-            var formatDate = '';
-            if (date != null) {
-              formatDate =
-                  DateFormat('EEEE dd MMM, yyyy').format(date);
-            } else {
-              null;
-            }
-            return Padding(
-              padding: EdgeInsets.only(bottom: 16.h),
-              child: GestureDetector(
-                onTap: () {
-                  Get.toNamed(AppRoutes.taskerTaskDetailsScreen, arguments : taskData);
+        child: _taskerHomeController.todayTaskList.isEmpty ||
+                _taskerHomeController.allTaskList.isEmpty
+            ? const CustomNoDataFound()
+            : ListView.builder(
+                controller: scrollController,
+                itemCount: parameter['screenType'] == "todaysTask"
+                    ? _taskerHomeController.todayTaskList.value.length
+                    : _taskerHomeController.allTaskList.value.length,
+                itemBuilder: (context, index) {
+                  var taskData = parameter['screenType'] == "todaysTask"
+                      ? _taskerHomeController.todayTaskList.value[index]
+                      : _taskerHomeController.allTaskList.value[index];
+                  var date = taskData?.createdAt;
+                  var formatDate = '';
+                  if (date != null) {
+                    formatDate = DateFormat('EEEE dd MMM, yyyy').format(date);
+                  } else {
+                    null;
+                  }
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 16.h),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.taskerTaskDetailsScreen,
+                            arguments: taskData);
+                      },
+                      child: TaskerTaskCard(
+                        //amount: "${taskData?.price}",
+                        faceBookPost: "${taskData?.name}",
+                        date: formatDate,
+                        postLink: taskData?.taskLink,
+                        days: "",
+                        taskCompleteAmount: taskData?.price,
+                      ),
+                    ),
+                  );
                 },
-                child: TaskerTaskCard(
-                 //amount: "${taskData?.price}",
-                  faceBookPost: "${taskData?.name}",
-                  date: formatDate,
-                  postLink: taskData?.taskLink,
-                  days: "",
-                  taskCompleteAmount: taskData?.price,
-                ),
               ),
-            );
-          },
-        ),
       ),
     );
   }
