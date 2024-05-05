@@ -1,6 +1,6 @@
 class ApiConstants{
-  static const String baseUrl = "http://103.145.138.54:3232/v1";
-  static const String imageBaseUrl="http://103.145.138.54:3232";
+  static const String baseUrl = "https://api.spotlyt.co.za/v1";
+  static const String imageBaseUrl="https://api.spotlyt.co.za/";
 
 
 
