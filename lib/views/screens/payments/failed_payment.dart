@@ -27,7 +27,7 @@ class FailedPayment extends StatelessWidget {
             SizedBox(height: 46.h),
             //=====================> Purchase Failed Text <=======================
             CustomText(
-              text: "Purchase Failed!",
+              text: "Purchase Failed",
               fontsize: 24.sp,
               fontWeight: FontWeight.w600,
               color: Colors.red,
@@ -35,7 +35,7 @@ class FailedPayment extends StatelessWidget {
             SizedBox(height: 36.h),
             CustomText(
               text:
-                  "Bank balance issue, please check!\n your bank balance in order to \ncontinue.",
+                  "Bank balance issues, please check\n your bank balance in order to \ncontinue.",
               fontsize: 16.sp,
               color: AppColors.black333333,
             ),
