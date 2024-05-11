@@ -8,10 +8,10 @@ class PaymentService {
   final String _apiKey = "535d93d718fc411f8b34b2817ae48009";
   final String _privateKey = "d8e48c91ae0f485e941145f380f0d10c";
   final String _siteCode = "LRA-LRA-001";
-  final String cancelUrl = 'http://test.i-pay.co.za/responsetest.php';
-  final String errorUrl = 'http://test.i-pay.co.za/responsetest.php';
-  final String successUrl = 'http://test.i-pay.co.za/responsetest.php';
-  final String notifyUrl = 'http://test.i-pay.co.za/responsetest.php';
+   final String _cancelUrl = 'https://api.spotlyt.co.za/cancel';
+  final String _errorUrl = 'https://api.spotlyt.co.za/error';
+  final String _successUrl = 'https://api.spotlyt.co.za/success';
+  final String _notifyUrl = 'https://api.spotlyt.co.za/notify';
 
   String generateRequestHashCheck(String inputString) {
     var sha = sha512.convert(utf8.encode(inputString));
@@ -27,16 +27,16 @@ class PaymentService {
     return 'ref-$randomNumber';
   }
 
-  String generateRequestHash(double amount) {
+  String generateRequestHash(double amount,String ref) {
     String siteCode = _siteCode;
     String countryCode = 'ZA';
     String currencyCode = 'ZAR';
-    String transactionReference = 'Ref';
+    String transactionReference = ref;
     String bankReference = 'Ref';
-    String cancelUrl = 'http://test.i-pay.co.za/responsetest.php';
-    String errorUrl = 'http://test.i-pay.co.za/responsetest.php';
-    String successUrl = 'http://test.i-pay.co.za/responsetest.php';
-    String notifyUrl = 'http://test.i-pay.co.za/responsetest.php';
+    String cancelUrl = _cancelUrl;
+    String errorUrl = _errorUrl;
+    String successUrl = _successUrl;
+    String notifyUrl = _notifyUrl;
     String privateKey = _privateKey;
     bool isTest = false;
 
@@ -64,24 +64,25 @@ class PaymentService {
   }) async {
     String url = "https://api.ozow.com/postpaymentrequest";
     // String url = "https://stagingapi.ozow.com/PostPaymentRequest";
-    String hash = generateRequestHash(amount);
+
     String ref = generateRef();
+    String hash = generateRequestHash(amount,ref);
 
     Map<String, dynamic> data = {
       "countryCode": "ZA",
       "amount": amount.toStringAsFixed(2),
-      "transactionReference": "Ref",
+      "transactionReference": ref,
       "bankReference": "Ref",
-      "cancelUrl": cancelUrl,
+      "cancelUrl": _cancelUrl,
       "currencyCode": "ZAR",
-      "errorUrl": cancelUrl,
+      "errorUrl": _errorUrl,
       "isTest": false,
-      "notifyUrl": notifyUrl,
+      "notifyUrl": _notifyUrl,
       "siteCode": _siteCode,
       "Optional1": "",
       "Optional2": "",
       "Optional3": "",
-      "successUrl": successUrl,
+      "successUrl": _successUrl,
       "hashCheck": hash
     };
 
