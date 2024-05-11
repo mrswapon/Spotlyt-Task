@@ -35,78 +35,87 @@ class _RequesterTaskDetailsScreenState
       body: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ///-----------------------------task name----------------------->
-            CustomText(
-              text: AppString.taskName,
-              fontWeight: FontWeight.w500,
-              bottom: 16.h,
-              top: 24.h,
-            ),
-
-            ///---------------------------facebook post like text------------------------->
-            CustomText(
-              text: data.name,
-              fontWeight: FontWeight.w500,
-              bottom: 24.h,
-            ),
-
-            ///--------------------------task link------------------------->
-            CustomText(
-              text: AppString.taskLink,
-              fontWeight: FontWeight.w500,
-              bottom: 16.h,
-            ),
-
-            ///--------------------------link text---------------------------->
-            Container(
-              key: ValueKey("${data.taskLink}"),
-              margin: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20),
-                ),
-                color: Color(0xfff7f7f8),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ///-----------------------------task name----------------------->
+              CustomText(
+                text: AppString.taskName,
+                fontWeight: FontWeight.w500,
+                bottom: 16.h,
+                top: 24.h,
               ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(20),
+          
+              ///---------------------------facebook post like text------------------------->
+              CustomText(
+                text: data.name,
+                fontWeight: FontWeight.w500,
+                bottom: 24.h,
+              ),
+          
+              ///--------------------------quantity------------------------->
+              CustomText(
+                text: "Quantity : ${data.quantity}",
+                fontWeight: FontWeight.w500,
+                bottom: 16.h,
+              ),
+
+             ///--------------------------task link------------------------->
+              CustomText(
+                text: AppString.taskLink,
+                fontWeight: FontWeight.w500,
+                bottom: 16.h,
+              ),
+
+              ///--------------------------link text---------------------------->
+              Container(
+                key: ValueKey("${data.taskLink}"),
+                margin: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  color: Color(0xfff7f7f8),
                 ),
-                child: LinkPreview(
-                  enableAnimation: true,
-                  onPreviewDataFetched: (datass) {
-                    setState(() {
-                      datas = {
-                        ...datas,
-                        "${data.taskLink}": datass,
-                      };
-                    });
-                  },
-                  previewData: datas["${data.taskLink}"],
-                  text: "${data.taskLink}",
-                  width: MediaQuery.of(context).size.width,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  child: LinkPreview(
+                    enableAnimation: true,
+                    onPreviewDataFetched: (datass) {
+                      setState(() {
+                        datas = {
+                          ...datas,
+                          "${data.taskLink}": datass,
+                        };
+                      });
+                    },
+                    previewData: datas["${data.taskLink}"],
+                    text: "${data.taskLink}",
+                    width: MediaQuery.of(context).size.width,
+                  ),
                 ),
               ),
-            ),
-
-            SizedBox(height: 24.h),
-
-            ///---------------------------------task post text-------------------------->
-            CustomText(
-              text: AppString.taskPost,
-              fontWeight: FontWeight.w500,
-              bottom: 16.h,
-            ),
-
-            ///----------------------------------date text----------------------->
-            CustomText(
-              text: TimeFormatHelper.formatDate(data.createdAt),
-              fontWeight: FontWeight.w500,
-              bottom: 24.h,
-            ),
-          ],
+          
+              SizedBox(height: 24.h),
+          
+              ///---------------------------------task post text-------------------------->
+              CustomText(
+                text: AppString.taskPost,
+                fontWeight: FontWeight.w500,
+                bottom: 16.h,
+              ),
+          
+              ///----------------------------------date text----------------------->
+              CustomText(
+                text: TimeFormatHelper.formatDate(data.createdAt),
+                fontWeight: FontWeight.w500,
+                bottom: 24.h,
+              ),
+            ],
+          ),
         ),
       ),
     );

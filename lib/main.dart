@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/themes/app_themes.dart';
+import 'package:spotlyt_task/views/screens/payments/cancel_payment.dart';
+import 'package:spotlyt_task/views/screens/payments/failed_payment.dart';
+import 'package:spotlyt_task/views/screens/payments/success_payment.dart';
 import 'package:spotlyt_task/views/screens/splashScreen/splash_screen.dart';
 import 'routes/app_routes.dart';
 

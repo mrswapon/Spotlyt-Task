@@ -36,7 +36,7 @@ class SuccessPayment extends StatelessWidget {
             SizedBox(height: 36.h),
             CustomText(
               text:
-                  "Thank you for your purchase!\nFeel free to check your daily \nworkout activity.",
+                  "Thank you. Your task is now\nactive and you can check the\nstatus on your account.",
               fontsize: 16.sp,
               color: AppColors.black333333,
             ),
@@ -46,7 +46,7 @@ class SuccessPayment extends StatelessWidget {
                 onpress: () {
                   Get.offAllNamed(AppRoutes.requesterTaskScreen);
                 },
-                title: 'Proceed to Program')
+                title: 'Proceed')
           ],
         ),
       ),

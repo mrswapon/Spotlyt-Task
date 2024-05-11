@@ -32,13 +32,9 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-// <<<<<<< HEAD
+
     var taskDetails = Get.arguments;
     print("======================> ${parameters['tabBarIndex']}");
-// =======
-//     Task taskDetails = Get.arguments;
-//
-// >>>>>>> 9c2d9cc3a627d4779123aa380f07e19396edd067
     return Scaffold(
       //=========================> AppBar Section  <============================
       appBar: AppBar(
