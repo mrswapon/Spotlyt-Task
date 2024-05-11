@@ -46,6 +46,7 @@ class RequesterTaskScreen extends StatelessWidget {
                               controller:
                                   _requesterTaskController.scrollController,
                               itemBuilder: (context, index) {
+
                                 if (index ==
                                     _requesterTaskController.taskList.length) {
                                   return _requesterTaskController
@@ -54,6 +55,7 @@ class RequesterTaskScreen extends StatelessWidget {
                                       : const SizedBox();
                                 } else {
                                   var data=_requesterTaskController.taskList[index];
+                                  var totalPrice = data.price! * data.quantity!.toDouble();
                                   return Padding(
                                     padding: EdgeInsets.only(
                                       bottom: 16.h,
@@ -66,7 +68,7 @@ class RequesterTaskScreen extends StatelessWidget {
                                       },
                                       child: RequesterTaskCard(
                                         taskCompleteAmount:"",
-                                        amount:data.price!/2,
+                                        amount:totalPrice,
                                         title:data.name,
                                         postLink:data.taskLink,
                                         date: data.createdAt,
