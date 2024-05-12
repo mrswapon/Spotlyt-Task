@@ -92,7 +92,9 @@ class TaskerHomeController extends GetxController {
     var response = await ApiClient.postData(ApiConstants.taskRegisterEndPoint, body);
     if (response.statusCode == 200) {
        taskRegId.value = response.body['data']['attributes']['_id'];
-      print("==============================> id for submitted: $taskId");
+
+        print("==============================> id for submitted: $taskId");
+
       alreadyTaskRegister.add(taskId);
        registerTaskIdList.add(response.body['data']['attributes']["_id"]);
 

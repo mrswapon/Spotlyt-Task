@@ -54,47 +54,51 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
                   child: Column(
                     children: [
                       image != null
-                          ? Container(
-                              height: 235.h,
-                              width: 180.w,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.r),
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      width: 1.w,
-                                      color: AppColors.primaryColor)),
-                              child: Image.memory(
-                                image!,
-                                fit: BoxFit.cover,
+                          ? GestureDetector(
+                        onTap: (){
+                          pickImageFromGallery();
+                        },
+                            child: Container(
+                                height: 235.h,
+                                width: 180.w,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.r),
+                                    color: Colors.white,
+                                    image: DecorationImage(image:FileImage(selectedImage!,),fit: BoxFit.fill),
+                                    border: Border.all(
+                                        width: 1.w,
+                                        color: AppColors.primaryColor)),
+
                               ),
-                            )
-                          : Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.r),
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      width: 1.w,
-                                      color: AppColors.primaryColor)),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 16.w, vertical: 97.h),
-                                child: Column(
-                                  children: [
-                                    GestureDetector(
-                                        onTap: () {
-                                          pickImageFromGallery();
-                                        },
-                                        child: Icon(Icons.add_circle_outline,
-                                            weight: 30.w, size: 30.h)),
-                                    CustomText(
-                                      top: 6.h,
-                                      text: AppString.uploadTaskScreenshot,
-                                      color: Colors.grey,
-                                    )
-                                  ],
+                          )
+                          : GestureDetector(
+                        onTap: (){
+                          pickImageFromGallery();
+                        },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.r),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        width: 1.w,
+                                        color: AppColors.primaryColor)),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 16.w, vertical: 97.h),
+                                  child: Column(
+                                    children: [
+                                      Icon(Icons.add_circle_outline,
+                                          weight: 30.w, size: 30.h),
+                                      CustomText(
+                                        top: 6.h,
+                                        text: AppString.uploadTaskScreenshot,
+                                        color: Colors.grey,
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
+                          ),
                     ],
                   ),
                 ),

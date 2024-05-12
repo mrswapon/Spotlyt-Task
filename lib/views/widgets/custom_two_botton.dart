@@ -32,7 +32,7 @@ class CustomTwoBotton extends StatelessWidget {
                   onTap: () {
                     _taskerTaskController.isSelected(true);
                     _taskerTaskController.setStatus("submitted");
-                   _taskerTaskController.taskerTaskGet();
+                   _taskerTaskController.fastLoad();
                   },
 
                   ///---------------------------Submitted botton----------------------->
@@ -63,7 +63,7 @@ class CustomTwoBotton extends StatelessWidget {
                   onTap: () {
                     _taskerTaskController.isSelected(false);
                     _taskerTaskController.setStatus("accepted");
-                    _taskerTaskController.taskerTaskGet();
+                    _taskerTaskController.fastLoad();
                   },
 
                   ///-------------------------- completed botton----------------------->

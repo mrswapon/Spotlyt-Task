@@ -28,10 +28,11 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
 
   Map<String, PreviewData> datas = {};
   var parameters = Get.parameters;
+  Tasks taskDetails = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
-    Tasks taskDetails = Get.arguments;
+
     print("======================> ${parameters['tabBarIndex']}");
     return Scaffold(
       //=========================> AppBar Section  <============================
@@ -59,7 +60,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               ),
               //====================> Facebook Post Like Text  <==================
               CustomText(
-                text: "${taskDetails?.name}",
+                text: "${taskDetails.name}",
                 fontWeight: FontWeight.w600,
                 bottom: 16.h,
               ),
@@ -257,7 +258,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                     _taskerHomeController.taskRegister(
                         "${taskDetails.name}",
                         "${taskDetails.taskId!.sId}",
-                        "${taskDetails.price}");
+                        "${taskDetails.price! / 2}");
                   }),
               SizedBox(height: 54.h)
             ],

@@ -107,7 +107,7 @@ class AppRoutes {
         GetPage(name: taskerBottomNavBar, page: () => TaskerBottomNavBar()),
         GetPage(name: verifyScreen, page: () => VerifyScreen()),
         GetPage(name: taskerTaskDetailsScreen, page: () => TaskerTaskDetailsScreen()),
-         GetPage(name:taskDetails, page: () => TaskDetailsScreen()),
+         GetPage(name:taskDetails, page: () =>  TaskDetailsScreen()),
          GetPage(name: homeCardDetails, page: () => HomeCardDetails()),
         GetPage(name: todayOrAllTaskScreen, page: () => TodayOrAllTaskScreen()),
         GetPage(name: taskerWalletScreen, page: () => TaskerWalletScreen()),

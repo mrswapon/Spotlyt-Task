@@ -15,23 +15,39 @@ import '../../../widgets/no_data_found.dart';
 import '../../../widgets/no_internet_screen.dart';
 import 'InnerWidgets/tasker_task_card.dart';
 
-class TaskerTaskScreen extends StatelessWidget {
+class TaskerTaskScreen extends StatefulWidget {
   TaskerTaskScreen({super.key});
 
+  @override
+  State<TaskerTaskScreen> createState() => _TaskerTaskScreenState();
+}
+
+class _TaskerTaskScreenState extends State<TaskerTaskScreen> {
   final _taskerTaskController = Get.put(TaskerTaskController());
+
   RxInt tabBarIndex = 0.obs;
 
-  ScrollController scrollController = ScrollController();
 
-  TodayOrAllTaskScreen() {
-    /// loading new data when the user scrolls down
-    scrollController.addListener(() {
-      if (scrollController.position.pixels ==
-          scrollController.position.maxScrollExtent) {
+  @override
+  void initState() {
+    _taskerTaskController.setStatus("pending");
+    _taskerTaskController.fastLoad();
+    _taskerTaskController.scrollController.addListener(() {
+      // if (scrollController.position.pixels ==
+      //     scrollController.position.maxScrollExtent) {
+      //   loadMore();
+      // }
+      if (_taskerTaskController.scrollController.offset >=
+          _taskerTaskController.scrollController.position.maxScrollExtent &&
+          !_taskerTaskController.scrollController.position.outOfRange) {
         _taskerTaskController.loadMore();
       }
+      debugPrint("Load More Scroll Controller ");
     });
+
+    super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,17 +77,17 @@ class TaskerTaskScreen extends StatelessWidget {
                 tabBarIndex.value = 0;
                 _taskerTaskController.isSelected(true);
                 _taskerTaskController.setStatus("pending");
-                _taskerTaskController.taskerTaskGet();
+                _taskerTaskController.fastLoad();
               } else if (value == 1) {
                 tabBarIndex.value = 1;
                 _taskerTaskController.isSelected(true);
                 _taskerTaskController.setStatus("submitted");
-                _taskerTaskController.taskerTaskGet();
+                _taskerTaskController.fastLoad();
               } else if (value == 2) {
                 tabBarIndex.value = 2;
                 _taskerTaskController.isSelected(true);
                 _taskerTaskController.setStatus("accepted");
-                _taskerTaskController.taskerTaskGet();
+                _taskerTaskController.fastLoad();
               }
             },
 
@@ -100,13 +116,13 @@ class TaskerTaskScreen extends StatelessWidget {
             case Status.internetError:
               return NoInternetScreen(
                 onTap: () {
-                  _taskerTaskController.taskerTaskGet();
+                  _taskerTaskController.fastLoad();
                 },
               );
             case Status.error:
               return GeneralErrorScreen(
                 onTap: () {
-                  _taskerTaskController.taskerTaskGet();
+                  _taskerTaskController.fastLoad();
                 },
               );
 
@@ -114,31 +130,27 @@ class TaskerTaskScreen extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.paddingSizeDefault.w),
-                child: Column(
+                child: _taskerTaskController.isFirstLoadRunning.value?CustomLoader(): Column(
                   children: [
                     Obx(
                       () => Expanded(
                         child:
-                         _taskerTaskController.taskertaskModel.value.data?.attributes?.tasks?.length == 0 ?
+                         _taskerTaskController.taskerTaskList.isEmpty?
                           Padding(
                             padding: EdgeInsets.only(bottom: 100.h, left: 40.w,right: 40.w),
                             child: const CustomNoDataFound(),
                           ):
 
                         ListView.builder(
-                          controller: scrollController,
-                          itemCount: _taskerTaskController.taskertaskModel.value
-                              .data?.attributes?.tasks?.length,
+                          controller:_taskerTaskController.scrollController ,
+                          itemCount: _taskerTaskController.taskerTaskList.length+1,
                           itemBuilder: (context, index) {
+                          if(index < _taskerTaskController.taskerTaskList.length){
                             var taskerTask = _taskerTaskController
-                                .taskertaskModel
-                                .value
-                                .data
-                                ?.attributes
-                                ?.tasks?[index];
+                                .taskerTaskList[index];
 
                             ///==================date formed================>
-                            var date = taskerTask?.createdAt;
+                            var date = taskerTask.createdAt;
                             var formatDates = '';
                             if (date != null) {
                               var parsedDate = DateTime.parse(date);
@@ -153,25 +165,32 @@ class TaskerTaskScreen extends StatelessWidget {
                                   bottom: 16.h, top: index == 0 ? 16.h : 0),
                               child: GestureDetector(
                                   onTap: () {
-                                    print("============sId ${taskerTask?.sId}");
+                                    print("============sId ${taskerTask.sId}");
                                     Get.toNamed(AppRoutes.taskDetails,
                                         arguments: taskerTask,
                                         parameters: {
                                           "screenType": "taskerTaskScreen",
                                           'tabBarIndex': '$tabBarIndex',
-                                          'sId': "${taskerTask?.sId}",
+                                          'sId': "${taskerTask.sId}",
                                         });
                                   },
                                   child: TaskerTaskCard(
-                                    faceBookPost: "${taskerTask?.name}",
+                                    faceBookPost: "${taskerTask.name}",
                                     date: formatDates,
-                                    taskCompleteAmount:0.6,
-                                   //     "${taskerTask?.taskId?.price?.toStringAsFixed(2)}",
+                                    taskCompleteAmount:taskerTask.price,
+                                    //     "${taskerTask?.taskId?.price?.toStringAsFixed(2)}",
                                     // amount: "${taskerTask?.price}",
                                     postLink:
-                                        "${taskerTask?.taskId?.taskLink}\n",
+                                    "${taskerTask.taskId?.taskLink}\n",
                                   )),
                             );
+                          }else{
+                            if(_taskerTaskController.isLoadMoreRunning.value){
+                              return CustomLoader();
+                            }else{
+                              return SizedBox();
+                            }
+                          }
                           },
                         ),
                       ),

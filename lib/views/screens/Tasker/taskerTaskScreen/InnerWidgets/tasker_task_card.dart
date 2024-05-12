@@ -57,7 +57,7 @@ class TaskerTaskCard extends StatelessWidget {
               children: [
                 ///-------------------------facebook post 5k like----------------------------->
                 CustomText(
-                  text: faceBookPost ?? "Facebook Post Like ",
+                  text: faceBookPost ?? "",
                   fontsize: 22.h,
                   fontWeight: FontWeight.w600,
                   bottom: 10.h,
@@ -65,7 +65,7 @@ class TaskerTaskCard extends StatelessWidget {
 
                 ///--------------------------date------------------------------->
                 CustomText(
-                  text: date ?? "Friday 01 Feb, 2024",
+                  text: date ?? "",
                   fontsize: 14.h,
                   fontWeight: FontWeight.w500,
                   color: AppColors.black5C5C5C,
@@ -92,7 +92,7 @@ class TaskerTaskCard extends StatelessWidget {
                                 color: AppColors.black5C5C5C,
                               ),
                               CustomText(
-                                  text: days ?? "5 Days",
+                                  text: days ?? "",
                                   fontsize: 14.h,
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.black5C5C5C,
