@@ -8,23 +8,6 @@ import '../../utils/app_constant.dart';
 
 class  RequesterTaskController extends GetxController{
   ScrollController scrollController =ScrollController(initialScrollOffset:0.0);
-  @override
-  void onInit() {
-  fastLoad();
-  scrollController.addListener(() {
-    // if (scrollController.position.pixels ==
-    //     scrollController.position.maxScrollExtent) {
-    //   loadMore();
-    // }
-    if (scrollController.offset >=
-        scrollController.position.maxScrollExtent &&
-        !scrollController.position.outOfRange) {
-      loadMore();
-    }
-    debugPrint("Load More Scroll Controller ");
-  });
-    super.onInit();
-  }
 
   int page = 1;
   var isFirstLoadRunning = false.obs;

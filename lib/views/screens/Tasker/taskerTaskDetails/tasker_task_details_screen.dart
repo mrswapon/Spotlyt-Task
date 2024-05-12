@@ -270,7 +270,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                                       _taskerHomeController.taskRegister(
                                           "${taskDetails.name}",
                                           "${taskDetails.id}",
-                                          "${taskDetails.price}");
+                                          "${taskDetails.price/2}");
                                     }),
                               ),
                 SizedBox(height: 54.h)

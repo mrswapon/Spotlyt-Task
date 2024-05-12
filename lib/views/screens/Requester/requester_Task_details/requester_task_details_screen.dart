@@ -19,9 +19,10 @@ class RequesterTaskDetailsScreen extends StatefulWidget {
 class _RequesterTaskDetailsScreenState
     extends State<RequesterTaskDetailsScreen> {
   Map<String, PreviewData> datas = {};
+  var data = Get.arguments;
   @override
   Widget build(BuildContext context) {
-    var data = Get.arguments;
+
     return Scaffold(
       ///----------------------------app bar section---------------------------->
       appBar: AppBar(
@@ -56,7 +57,7 @@ class _RequesterTaskDetailsScreenState
           
               ///--------------------------quantity------------------------->
               CustomText(
-                text: "Quantity : ${data.quantity}",
+                text: "Quantity : ${data.count}",
                 fontWeight: FontWeight.w500,
                 bottom: 16.h,
               ),

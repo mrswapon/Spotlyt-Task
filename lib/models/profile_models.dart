@@ -4,7 +4,7 @@ class ProfileModel {
   final String? fullName;
   final String? email;
   final String? role;
-  final double? rand;
+   double? rand;
   final List<String>? interest;
   final bool? isEmailVerified;
   final String? nidStatus;

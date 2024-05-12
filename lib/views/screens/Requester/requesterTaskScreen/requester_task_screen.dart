@@ -11,9 +11,36 @@ import '../../../../utils/app_strings.dart';
 import 'InnerWidgets/requester_task_card.dart';
 import 'InnerWidgets/tab_bar.dart';
 
-class RequesterTaskScreen extends StatelessWidget {
+class RequesterTaskScreen extends StatefulWidget {
   RequesterTaskScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RequesterTaskScreen> createState() => _RequesterTaskScreenState();
+}
+
+class _RequesterTaskScreenState extends State<RequesterTaskScreen> {
   final _requesterTaskController = Get.put(RequesterTaskController());
+
+  @override
+  void initState() {
+    _requesterTaskController.selectTab.value="pending";
+    _requesterTaskController.fastLoad();
+
+    _requesterTaskController.scrollController.addListener(() {
+      // if (scrollController.position.pixels ==
+      //     scrollController.position.maxScrollExtent) {
+      //   loadMore();
+      // }
+      if (_requesterTaskController.scrollController.offset >=
+              _requesterTaskController
+                  .scrollController.position.maxScrollExtent &&
+          !_requesterTaskController.scrollController.position.outOfRange) {
+        _requesterTaskController.loadMore();
+      }
+      debugPrint("Load More Scroll Controller ");
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +60,8 @@ class RequesterTaskScreen extends StatelessWidget {
             SizedBox(height: 24.h),
             RequesterTaskTab(),
             SizedBox(height: 16.h),
-            Obx(() => Expanded(
+            Obx(
+              () => Expanded(
                   child: _requesterTaskController.isFirstLoadRunning.value
                       ? const CustomLoader()
                       : _requesterTaskController.taskList.isEmpty
@@ -46,7 +74,6 @@ class RequesterTaskScreen extends StatelessWidget {
                               controller:
                                   _requesterTaskController.scrollController,
                               itemBuilder: (context, index) {
-
                                 if (index ==
                                     _requesterTaskController.taskList.length) {
                                   return _requesterTaskController
@@ -54,8 +81,10 @@ class RequesterTaskScreen extends StatelessWidget {
                                       ? const CustomCircleLoader()
                                       : const SizedBox();
                                 } else {
-                                  var data=_requesterTaskController.taskList[index];
-                                  var totalPrice = data.price! * data.quantity!.toDouble();
+                                  var data =
+                                      _requesterTaskController.taskList[index];
+                                  var totalPrice =
+                                      data.price! * data.count!.toDouble();
                                   return Padding(
                                     padding: EdgeInsets.only(
                                       bottom: 16.h,
@@ -63,14 +92,16 @@ class RequesterTaskScreen extends StatelessWidget {
                                     ),
                                     child: GestureDetector(
                                       onTap: () {
-                                        Get.toNamed(AppRoutes
-                                            .requesterTaskDetailsScreen,arguments: data);
+                                        Get.toNamed(
+                                            AppRoutes
+                                                .requesterTaskDetailsScreen,
+                                            arguments: data);
                                       },
                                       child: RequesterTaskCard(
-                                        taskCompleteAmount:"",
-                                        amount:totalPrice,
-                                        title:data.name,
-                                        postLink:data.taskLink,
+                                        taskCompleteAmount: "",
+                                        amount: totalPrice,
+                                        title: data.name,
+                                        postLink: data.taskLink,
                                         date: data.createdAt,
                                       ),
                                     ),

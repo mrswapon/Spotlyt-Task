@@ -91,6 +91,7 @@ initUrl(){
             } else if (request.url.toString().contains("error")){
               //  add backend request
             } else if (request.url.toString().contains("cancel")){
+              submitTask("sdfsdfdf354345");
 
               //  add backend request
             }

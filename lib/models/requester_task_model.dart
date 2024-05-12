@@ -11,6 +11,7 @@ class RequesterTaskModel {
   final ServiceId? serviceId;
   final String? status;
   final int? quantity;
+  final int? count;
   final double? price;
   final DateTime? createdAt;
   final DateTime? startDate;
@@ -26,7 +27,9 @@ class RequesterTaskModel {
     this.serviceId,
     this.status,
     this.quantity,
+    this.count,
     this.price,
+
     this.createdAt,
     this.endDate,
     this.startDate
@@ -45,6 +48,7 @@ class RequesterTaskModel {
             : ServiceId.fromJson(json["serviceId"]),
         status: json["status"]!,
         quantity: json["quantity"],
+        count: json["count"],
         price: json["price"]?.toDouble(),
         createdAt: json["createdAt"] == null
             ? null

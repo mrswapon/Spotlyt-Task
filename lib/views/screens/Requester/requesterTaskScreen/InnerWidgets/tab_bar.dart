@@ -60,7 +60,7 @@ class RequesterTaskTab extends StatelessWidget {
             flex: 1,
             child: Obx(() => GestureDetector(
               onTap: () {
-                _requesterTaskController.selectTab.value="complete";
+                _requesterTaskController.selectTab.value="completed";
                 _requesterTaskController.fastLoad();
               },
               child: Container(

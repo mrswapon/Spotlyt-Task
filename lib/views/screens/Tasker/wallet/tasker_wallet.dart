@@ -24,9 +24,9 @@ class TaskerWalletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _profileController.getBalance();
     _walletController.walletModel;
-    var walletLength =
-        _walletController.walletModel.value.data?.attributes?.length ?? 0;
+
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
@@ -77,6 +77,13 @@ class TaskerWalletScreen extends StatelessWidget {
               fontsize: 14.h,
               color: Colors.black),
           SizedBox(height: 24.h),
+          //========================> Request for withdraw Button <=================
+          CustomButton(
+              title: AppString.requestForWithdraw,
+              onpress: () {
+                Get.toNamed(AppRoutes.withdrawBalanceScreen);
+              }),
+          SizedBox(height: 25.h),
           //==========================> Last Withdrawal Row Button <============================
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,10 +116,16 @@ class TaskerWalletScreen extends StatelessWidget {
               ),
             ],
           ),
+
           //======================> List View Item Section <======================
           Obx(
             () => _walletController.walletLoading.value || _walletController.walletModel.value.data!.attributes!.isEmpty
-                ? SizedBox(height: 20.h,)
+                ? Column(
+                  children: [
+                    SizedBox(height: 100.h,),
+                    const Center(child: Text("Withdrawal history empty!")),
+                  ],
+                )
                 : Expanded(
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
@@ -192,13 +205,7 @@ class TaskerWalletScreen extends StatelessWidget {
                     ),
                   ),
           ),
-          //========================> Request for withdraw Button <=================
-          CustomButton(
-              title: AppString.requestForWithdraw,
-              onpress: () {
-                Get.toNamed(AppRoutes.withdrawBalanceScreen);
-              }),
-          SizedBox(height: 15.h)
+
         ]),
       ),
     );
