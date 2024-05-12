@@ -25,7 +25,7 @@ class TaskerTaskScreen extends StatefulWidget {
 class _TaskerTaskScreenState extends State<TaskerTaskScreen> {
   final _taskerTaskController = Get.put(TaskerTaskController());
 
-  RxInt tabBarIndex = 0.obs;
+
 
 
   @override
@@ -51,155 +51,159 @@ class _TaskerTaskScreenState extends State<TaskerTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: CustomText(
-            text: AppString.task,
-            fontsize: 18.h,
-            fontWeight: FontWeight.w500,
-          ),
-          bottom: TabBar(
-            ///==========================Tap Bar Design====================>
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorColor: AppColors.primaryColor,
-            dividerColor: Colors.transparent,
-            labelColor: AppColors.primaryColor,
-            unselectedLabelColor: Colors.black87,
-            padding: EdgeInsets.only(
-              bottom: 10.h,
+    return Obx(()=>
+       DefaultTabController(
+        length: 3,
+        initialIndex: _taskerTaskController.tabBarIndex.value,
+        child: Scaffold(
+          appBar: AppBar(
+            title: CustomText(
+              text: AppString.task,
+              fontsize: 18.h,
+              fontWeight: FontWeight.w500,
             ),
-
-            ///=======================On Tap Tap Bar =============================>
-            onTap: (value) {
-              if (value == 0) {
-                tabBarIndex.value = 0;
-                _taskerTaskController.isSelected(true);
-                _taskerTaskController.setStatus("pending");
-                _taskerTaskController.fastLoad();
-              } else if (value == 1) {
-                tabBarIndex.value = 1;
-                _taskerTaskController.isSelected(true);
-                _taskerTaskController.setStatus("submitted");
-                _taskerTaskController.fastLoad();
-              } else if (value == 2) {
-                tabBarIndex.value = 2;
-                _taskerTaskController.isSelected(true);
-                _taskerTaskController.setStatus("accepted");
-                _taskerTaskController.fastLoad();
-              }
-            },
-
-            ///======================Tap Bar Items===============================>
-            tabs: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 10.h),
-                child: Text(AppString.running),
+            bottom: TabBar(
+              ///==========================Tap Bar Design====================>
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorColor: AppColors.primaryColor,
+              dividerColor: Colors.transparent,
+              labelColor: AppColors.primaryColor,
+              unselectedLabelColor: Colors.black87,
+              padding: EdgeInsets.only(
+                bottom: 10.h,
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 10.h),
-                child: Text(AppString.submitted),
-              ),
-              Padding(
+
+              ///=======================On Tap Tap Bar =============================>
+              onTap: (value) {
+                if (value == 0) {
+                  _taskerTaskController.tabBarIndex.value = 0;
+                  _taskerTaskController.isSelected(true);
+                  _taskerTaskController.setStatus("pending");
+                  _taskerTaskController.fastLoad();
+                } else if (value == 1) {
+                  _taskerTaskController.tabBarIndex.value = 1;
+                  _taskerTaskController.isSelected(true);
+                  _taskerTaskController.setStatus("submitted");
+                  _taskerTaskController.fastLoad();
+                } else if (value == 2) {
+                  _taskerTaskController.tabBarIndex.value = 2;
+                  _taskerTaskController.isSelected(true);
+                  _taskerTaskController.setStatus("accepted");
+                  _taskerTaskController.fastLoad();
+                }
+              },
+
+              ///======================Tap Bar Items===============================>
+              tabs: [
+                Padding(
                   padding: EdgeInsets.only(bottom: 10.h),
-                  child: Text(AppString.completed)),
-            ],
-          ),
-        ),
-
-        ///==================================Body Section========================>?
-        body: Obx(() {
-          switch (_taskerTaskController.rxRequestStatus.value) {
-            case Status.loading:
-              return const CustomLoader();
-            case Status.internetError:
-              return NoInternetScreen(
-                onTap: () {
-                  _taskerTaskController.fastLoad();
-                },
-              );
-            case Status.error:
-              return GeneralErrorScreen(
-                onTap: () {
-                  _taskerTaskController.fastLoad();
-                },
-              );
-
-            case Status.completed:
-              return Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.paddingSizeDefault.w),
-                child: _taskerTaskController.isFirstLoadRunning.value?CustomLoader(): Column(
-                  children: [
-                    Obx(
-                      () => Expanded(
-                        child:
-                         _taskerTaskController.taskerTaskList.isEmpty?
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 100.h, left: 40.w,right: 40.w),
-                            child: const CustomNoDataFound(),
-                          ):
-
-                        ListView.builder(
-                          controller:_taskerTaskController.scrollController ,
-                          itemCount: _taskerTaskController.taskerTaskList.length+1,
-                          itemBuilder: (context, index) {
-                          if(index < _taskerTaskController.taskerTaskList.length){
-                            var taskerTask = _taskerTaskController
-                                .taskerTaskList[index];
-
-                            ///==================date formed================>
-                            var date = taskerTask.createdAt;
-                            var formatDates = '';
-                            if (date != null) {
-                              var parsedDate = DateTime.parse(date);
-                              formatDates = DateFormat('EEEE dd MMM, yyyy')
-                                  .format(parsedDate);
-                            } else {
-                              formatDates = 'Date is not available';
-                            }
-
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                  bottom: 16.h, top: index == 0 ? 16.h : 0),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    print("============sId ${taskerTask.sId}");
-                                    Get.toNamed(AppRoutes.taskDetails,
-                                        arguments: taskerTask,
-                                        parameters: {
-                                          "screenType": "taskerTaskScreen",
-                                          'tabBarIndex': '$tabBarIndex',
-                                          'sId': "${taskerTask.sId}",
-                                        });
-                                  },
-                                  child: TaskerTaskCard(
-                                    faceBookPost: "${taskerTask.name}",
-                                    date: formatDates,
-                                    taskCompleteAmount:taskerTask.price,
-                                    //     "${taskerTask?.taskId?.price?.toStringAsFixed(2)}",
-                                    // amount: "${taskerTask?.price}",
-                                    postLink:
-                                    "${taskerTask.taskId?.taskLink}\n",
-                                  )),
-                            );
-                          }else{
-                            if(_taskerTaskController.isLoadMoreRunning.value){
-                              return CustomLoader();
-                            }else{
-                              return SizedBox();
-                            }
-                          }
-                          },
-                        ),
-                      ),
-                    )
-                  ],
+                  child: Text(AppString.running),
                 ),
-              );
-          }
-        }),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10.h),
+                  child: Text(AppString.submitted),
+                ),
+                Padding(
+                    padding: EdgeInsets.only(bottom: 10.h),
+                    child: Text(AppString.completed)),
+              ],
+            ),
+          ),
+
+          ///==================================Body Section========================>?
+          body: Obx(() {
+            switch (_taskerTaskController.rxRequestStatus.value) {
+              case Status.loading:
+                return const CustomLoader();
+              case Status.internetError:
+                return NoInternetScreen(
+                  onTap: () {
+                    _taskerTaskController.fastLoad();
+                  },
+                );
+              case Status.error:
+                return GeneralErrorScreen(
+                  onTap: () {
+                    _taskerTaskController.fastLoad();
+                  },
+                );
+
+              case Status.completed:
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.paddingSizeDefault.w),
+                  child: _taskerTaskController.isFirstLoadRunning.value?const CustomLoader(): Column(
+                    children: [
+                      Obx(
+                        () => Expanded(
+                          child:
+                           _taskerTaskController.taskerTaskList.isEmpty?
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 100.h, left: 40.w,right: 40.w),
+                              child: const CustomNoDataFound(),
+                            ):
+
+                          ListView.builder(
+                            controller:_taskerTaskController.scrollController ,
+                            itemCount: _taskerTaskController.taskerTaskList.length+1,
+                            itemBuilder: (context, index) {
+                            if(index < _taskerTaskController.taskerTaskList.length){
+                              var taskerTask = _taskerTaskController
+                                  .taskerTaskList[index];
+
+                              ///==================date formed================>
+                              var date = taskerTask.createdAt;
+                              var formatDates = '';
+                              if (date != null) {
+                                var parsedDate = DateTime.parse(date);
+                                formatDates = DateFormat('EEEE dd MMM, yyyy')
+                                    .format(parsedDate);
+                              } else {
+                                formatDates = 'Date is not available';
+                              }
+
+
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                    bottom: 16.h, top: index == 0 ? 16.h : 0),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      print("============sId ${taskerTask.sId}");
+                                      Get.toNamed(AppRoutes.taskDetails,
+                                          arguments: taskerTask,
+                                          parameters: {
+                                            "screenType": "taskerTaskScreen",
+                                            'tabBarIndex': '${_taskerTaskController.tabBarIndex}',
+                                            'sId': "${taskerTask.sId}",
+                                          });
+                                    },
+                                    child: TaskerTaskCard(
+                                      faceBookPost: "${taskerTask.name}",
+                                      date: formatDates,
+                                      taskCompleteAmount:taskerTask.taskId!.price,
+                                      //     "${taskerTask?.taskId?.price?.toStringAsFixed(2)}",
+                                      // amount: "${taskerTask?.price}",
+                                      postLink:
+                                      "${taskerTask.taskId?.taskLink}\n",
+                                    )),
+                              );
+                            }else{
+                              if(_taskerTaskController.isLoadMoreRunning.value){
+                                return const CustomLoader();
+                              }else{
+                                return const SizedBox();
+                              }
+                            }
+                            },
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+            }
+          }),
+        ),
       ),
     );
   }

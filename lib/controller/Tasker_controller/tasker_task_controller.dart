@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/models/tasker_task_model.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
+import 'package:spotlyt_task/views/screens/Tasker/taskerBottomNavBar/tasker_bottom_controller.dart';
 
 import '../../routes/app_routes.dart';
 import '../../services/api_checker.dart';
@@ -16,6 +17,7 @@ class TaskerTaskController extends GetxController{
   RxList<Tasks> taskerTaskList = <Tasks>[].obs;
   RxBool isSelected = true.obs;
   RxString status = 'pending'.obs;
+  RxInt tabBarIndex = 0.obs;
 
   void setStatus(String newStatus) {
     status.value = newStatus;
@@ -110,6 +112,13 @@ class TaskerTaskController extends GetxController{
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+
+
+     Get.put(TaskerBottomController()).updateIndex(1);
+      tabBarIndex.value = 1;
+     isSelected(true);
+    setStatus("submitted");
+      fastLoad();
     }else{
       ApiChecker.checkApi(response);
     }

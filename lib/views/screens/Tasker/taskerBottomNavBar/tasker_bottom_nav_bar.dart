@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:get/get.dart';
 import 'package:spotlyt_task/utils/app_colors.dart';
+import 'package:spotlyt_task/views/screens/Tasker/taskerBottomNavBar/tasker_bottom_controller.dart';
 import 'package:spotlyt_task/views/screens/Tasker/taskerHomeScreen/tasker_home_screen.dart';
 import '../../../../utils/app_icons.dart';
 import '../../ProfileScreen/profile_screen.dart';
@@ -17,7 +19,7 @@ class TaskerBottomNavBar extends StatefulWidget {
 }
 
 class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
-  int _index = 0;
+  final TaskerBottomController _taskerBottomController =Get.put(TaskerBottomController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
       extendBody: true,
 
       ///--------------------------body section--------------------------->
-      body: pageControll(_index),
+      body: Obx(()=>pageControll(_taskerBottomController.selectIndex.value)),
 
       ///---------------------------botton nav bar------------------------>
       bottomNavigationBar: CurvedNavigationBar(
@@ -33,6 +35,7 @@ class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
         height: 67.h,
         color: AppColors.primaryColor,
         iconPadding: 10,
+        index: _taskerBottomController.selectIndex.value,
         items: [
           ///-------------------home---------------------->
           CurvedNavigationBarItem(
@@ -64,11 +67,7 @@ class _TaskerBottomNavBarState extends State<TaskerBottomNavBar> {
             labelStyle: const TextStyle(color: Colors.white),
           ),
         ],
-        onTap: (index) {
-          setState(() {
-            _index = index;
-          });
-        },
+        onTap: _taskerBottomController.updateIndex,
       ),
     );
   }

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         builder: (context, child) => GetMaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Spotlyt Task',
+              title: 'Spotlyt',
               theme: Themes().lightTheme,
             //  darkTheme: Themes().darkTheme,
               initialRoute: AppRoutes.splashScreen,

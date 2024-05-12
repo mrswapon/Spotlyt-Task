@@ -4,7 +4,7 @@
 
 
     <application
-        android:label="spotlyt_task"
+        android:label="Spotlyt"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
