@@ -139,7 +139,7 @@ class TaskerTaskController extends GetxController {
         barrierDismissible: false,
           context: Get.context!,
           builder: (_) => const CustomSuccessAlertBox(
-                title: 'Successfully',
+                title: 'Successful',
                 subTitle: 'Your task has been successfully submitted.',
               ));
     } else {
