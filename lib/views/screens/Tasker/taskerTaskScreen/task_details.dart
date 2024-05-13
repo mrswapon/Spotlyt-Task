@@ -73,7 +73,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               ),
               //=========================> Task price Rope <=======================
               SelectableText(
-                "R-${(taskDetails.price!/2).toStringAsFixed(2)}" ?? "",
+                "R-${(taskDetails.price!).toStringAsFixed(2)}" ?? "",
 
                 style: TextStyle(
                     fontSize: 16.h,
