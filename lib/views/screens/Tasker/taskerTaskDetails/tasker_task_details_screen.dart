@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:spotlyt_task/helpers/time_format.dart';
-import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
 import 'package:spotlyt_task/utils/app_dimentions.dart';
 import 'package:spotlyt_task/views/widgets/custom_button.dart';
 import '../../../../controller/Tasker_controller/tasker_home_controller.dart';
@@ -15,6 +14,7 @@ import '../../../../utils/app_icons.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_text.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
+import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
 
 class TaskerTaskDetailsScreen extends StatefulWidget {
   const TaskerTaskDetailsScreen({super.key});
@@ -29,11 +29,10 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
 
   Map<String, PreviewData> datas = {};
   var parameters = Get.parameters;
-
+  Task taskDetails = Get.arguments;
   @override
   Widget build(BuildContext context) {
 
-    var taskDetails = Get.arguments;
     print("======================> ${parameters['tabBarIndex']}");
     return Scaffold(
       //=========================> AppBar Section  <============================
@@ -49,7 +48,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
         child: Padding(
           padding:
               EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault.w),
-          child: Obx(()=>
+          child:
              Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -75,7 +74,7 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 ),
                 //=========================> Task price Rope <=======================
                 SelectableText(
-                  "R${(taskDetails.price/ 2).toStringAsFixed(2)}" ?? "",
+                  "R${(taskDetails.price! / 2).toStringAsFixed(2)}" ?? "",
                   style: TextStyle(
                       fontSize: 16.h,
                       fontWeight: FontWeight.w500,
@@ -241,42 +240,48 @@ class _TaskerTaskDetailsScreenState extends State<TaskerTaskDetailsScreen> {
                 SizedBox(height: 50.h),
 
                 //=========================> Submit Task Button <===================
-                parameters['tabBarIndex'] == '0'
-                    ? CustomButton(
-                        title: AppString.submitTask,
-                        onpress: () {
-                          Get.toNamed(AppRoutes.submitTaskScreen,
-                              parameters: {'sId': "${parameters['sId']}"});
-                        })
-                    : parameters['screenType'] == "taskerTaskScreen"
-                        ? const SizedBox()
-                        : _taskerHomeController.alreadyTaskRegister
-                                .contains(taskDetails.id)
-                            ? CustomButton(
-                                title: AppString.submitTask,
-                                onpress: () {
-
-                              var index=    _taskerHomeController.alreadyTaskRegister.indexOf(taskDetails.id);
-
-
-                                  Get.toNamed(AppRoutes.submitTaskScreen,
-                                      parameters: {'sId':   _taskerHomeController.registerTaskIdList[index]});
-                                })
-                            : Obx(
-                                () => CustomButton(
-                                    loading: _taskerHomeController.loading.value,
-                                    title: AppString.taskRegisterNow,
-                                    onpress: () {
-                                      _taskerHomeController.taskRegister(
-                                          "${taskDetails.name}",
-                                          "${taskDetails.id}",
-                                          "${taskDetails.price/2}");
-                                    }),
-                              ),
+                CustomButton(
+                    title: AppString.submitTask,
+                    onpress: () {
+                      Get.toNamed(AppRoutes.submitTaskScreen,
+                          arguments: taskDetails);
+                    }),
+                // parameters['tabBarIndex'] == '0'
+                //     ? CustomButton(
+                //         title: AppString.submitTask,
+                //         onpress: () {
+                //           Get.toNamed(AppRoutes.submitTaskScreen,
+                //               parameters: {'sId': "${parameters['sId']}"});
+                //         })
+                //     : parameters['screenType'] == "taskerTaskScreen"
+                //         ? const SizedBox()
+                //         : _taskerHomeController.alreadyTaskRegister
+                //                 .contains(taskDetails.id)
+                //             ? CustomButton(
+                //                 title: AppString.submitTask,
+                //                 onpress: () {
+                //
+                //               var index=    _taskerHomeController.alreadyTaskRegister.indexOf(taskDetails.id);
+                //
+                //
+                //                   Get.toNamed(AppRoutes.submitTaskScreen,
+                //                       parameters: {'sId':   _taskerHomeController.registerTaskIdList[index]});
+                //                 })
+                //             : Obx(
+                //                 () => CustomButton(
+                //                     loading: _taskerHomeController.loading.value,
+                //                     title: AppString.taskRegisterNow,
+                //                     onpress: () {
+                //                       // _taskerHomeController.taskRegister(
+                //                       //     "${taskDetails.name}",
+                //                       //     "${taskDetails.id}",
+                //                       //     "${taskDetails.price/2}");
+                //                     }),
+                //               ),
                 SizedBox(height: 54.h)
               ],
             ),
-          ),
+
         ),
       ),
     );

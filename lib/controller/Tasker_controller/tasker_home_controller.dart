@@ -85,38 +85,38 @@ class TaskerHomeController extends GetxController {
   }
 
   ///==================== task Register ==========================>
-   var loading=false.obs;
-  taskRegister(String name, taskId, price) async {
-    loading(true);
-    var body = {"name": name, "taskId": taskId, "price": price};
-    var response = await ApiClient.postData(ApiConstants.taskRegisterEndPoint, body);
-    if (response.statusCode == 200) {
-       taskRegId.value = response.body['data']['attributes']['_id'];
-
-        print("==============================> id for submitted: $taskId");
-
-      alreadyTaskRegister.add(taskId);
-       registerTaskIdList.add(response.body['data']['attributes']["_id"]);
-
-      alreadyTaskRegister.refresh();
-    }else{
-     var message =  response.body['message'];
-      Fluttertoast.showToast(
-          msg: message,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 3,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
-
-        Get.offAllNamed(AppRoutes.taskerBottomNavBar);
-    }
-    loading(false);
-    update();
-  }
-
+  //  var loading=false.obs;
+  // taskRegister(String name, taskId, price) async {
+  //   loading(true);
+  //   var body = {"name": name, "taskId": taskId, "price": price};
+  //   var response = await ApiClient.postData(ApiConstants.taskRegisterEndPoint, body);
+  //   if (response.statusCode == 200) {
+  //      taskRegId.value = response.body['data']['attributes']['_id'];
+  //
+  //       print("==============================> id for submitted: $taskId");
+  //
+  //     alreadyTaskRegister.add(taskId);
+  //      registerTaskIdList.add(response.body['data']['attributes']["_id"]);
+  //
+  //     alreadyTaskRegister.refresh();
+  //   }else{
+  //    var message =  response.body['message'];
+  //     Fluttertoast.showToast(
+  //         msg: message,
+  //         toastLength: Toast.LENGTH_SHORT,
+  //         gravity: ToastGravity.CENTER,
+  //         timeInSecForIosWeb: 3,
+  //         backgroundColor: Colors.red,
+  //         textColor: Colors.white,
+  //         fontSize: 16.0
+  //     );
+  //
+  //       Get.offAllNamed(AppRoutes.taskerBottomNavBar);
+  //   }
+  //   loading(false);
+  //   update();
+  // }
+  //
 
   ///=========================Submit Task===========================>
 

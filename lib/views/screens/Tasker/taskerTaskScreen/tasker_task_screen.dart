@@ -30,7 +30,7 @@ class _TaskerTaskScreenState extends State<TaskerTaskScreen> {
 
   @override
   void initState() {
-    _taskerTaskController.setStatus("pending");
+    _taskerTaskController.setStatus("submitted");
     _taskerTaskController.fastLoad();
     _taskerTaskController.scrollController.addListener(() {
       // if (scrollController.position.pixels ==
@@ -53,7 +53,7 @@ class _TaskerTaskScreenState extends State<TaskerTaskScreen> {
   Widget build(BuildContext context) {
     return Obx(()=>
        DefaultTabController(
-        length: 3,
+        length: 2,
         initialIndex: _taskerTaskController.tabBarIndex.value,
         child: Scaffold(
           appBar: AppBar(
@@ -75,18 +75,13 @@ class _TaskerTaskScreenState extends State<TaskerTaskScreen> {
 
               ///=======================On Tap Tap Bar =============================>
               onTap: (value) {
-                if (value == 0) {
+               if (value == 0) {
                   _taskerTaskController.tabBarIndex.value = 0;
-                  _taskerTaskController.isSelected(true);
-                  _taskerTaskController.setStatus("pending");
-                  _taskerTaskController.fastLoad();
-                } else if (value == 1) {
-                  _taskerTaskController.tabBarIndex.value = 1;
                   _taskerTaskController.isSelected(true);
                   _taskerTaskController.setStatus("submitted");
                   _taskerTaskController.fastLoad();
-                } else if (value == 2) {
-                  _taskerTaskController.tabBarIndex.value = 2;
+                } else if (value == 1) {
+                  _taskerTaskController.tabBarIndex.value = 1;
                   _taskerTaskController.isSelected(true);
                   _taskerTaskController.setStatus("accepted");
                   _taskerTaskController.fastLoad();
@@ -95,10 +90,6 @@ class _TaskerTaskScreenState extends State<TaskerTaskScreen> {
 
               ///======================Tap Bar Items===============================>
               tabs: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.h),
-                  child: Text(AppString.running),
-                ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 10.h),
                   child: Text(AppString.submitted),

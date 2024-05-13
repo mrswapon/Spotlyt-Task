@@ -10,6 +10,7 @@ import '../../../../utils/app_dimentions.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/custom_text.dart';
+import 'package:spotlyt_task/models/tasker_models/tasker_home_model.dart';
 
 class SubmitTaskScreen extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class SubmitTaskScreen extends StatefulWidget {
 class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
   final _taskerHomeController = Get.put(TaskerTaskController());
 
-  var parameter = Get.parameters;
+  Task task =Get.arguments;
   Uint8List? image;
   File? selectedImage;
 
@@ -105,13 +106,16 @@ class _SubmitTaskScreenState extends State<SubmitTaskScreen> {
 
                 SizedBox(height: 271.h),
                 //===============================> task completed Button <===============================
-                CustomButton(
-                    title: AppString.submitTask,
-                    onpress: () {
-                      print("==============> ddd ${parameter['sId']}");
-                      _taskerHomeController.submitTask(
-                          "${parameter['sId']}", selectedImage!);
-                    }),
+                Obx(()=>
+                   CustomButton(
+                      title:"Submit",
+                      loading: _taskerHomeController.loading.value,
+                      onpress: () {
+                        if(selectedImage !=null){
+                          _taskerHomeController.taskRegisterAndSubmit(task.name!,task.id,task.price!, selectedImage!);
+                        }
+                      }),
+                ),
                 SizedBox(height: 54.h),
               ],
             )

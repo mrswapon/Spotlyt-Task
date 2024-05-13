@@ -243,23 +243,29 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
               SizedBox(height: 50.h),
 
               //=========================> Submit Task Button <===================
-              parameters['tabBarIndex'] == '0'
-                  ? CustomButton(
-                  title: AppString.submitTask,
-                  onpress: () {
-                    Get.toNamed(AppRoutes.submitTaskScreen,
-                        parameters: {'sId': "${parameters['sId']}"});
-                  })
-                  : parameters['screenType'] == "taskerTaskScreen"
-                  ? const SizedBox()
-                  : CustomButton(
-                  title: AppString.taskRegisterNow,
-                  onpress: () {
-                    _taskerHomeController.taskRegister(
-                        "${taskDetails.name}",
-                        "${taskDetails.taskId!.sId}",
-                        "${taskDetails.price! / 2}");
-                  }),
+              // CustomButton(
+              //     title: AppString.submitTask,
+              //     onpress: () {
+              //       Get.toNamed(AppRoutes.submitTaskScreen,
+              //           parameters: {'sId': "${parameters['sId']}"});
+              //     }),
+              // parameters['tabBarIndex'] == '0'
+              //     ? CustomButton(
+              //     title: AppString.submitTask,
+              //     onpress: () {
+              //       Get.toNamed(AppRoutes.submitTaskScreen,
+              //           parameters: {'sId': "${parameters['sId']}"});
+              //     })
+              //     : parameters['screenType'] == "taskerTaskScreen"
+              //     ? const SizedBox()
+              //     : CustomButton(
+              //     title: AppString.taskRegisterNow,
+              //     onpress: () {
+              //       _taskerHomeController.taskRegister(
+              //           "${taskDetails.name}",
+              //           "${taskDetails.taskId!.sId}",
+              //           "${taskDetails.price! / 2}");
+              //     }),
               SizedBox(height: 54.h)
             ],
           ),
