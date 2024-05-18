@@ -23,14 +23,10 @@ class _RequesterTaskScreenState extends State<RequesterTaskScreen> {
 
   @override
   void initState() {
-    _requesterTaskController.selectTab.value="pending";
+    _requesterTaskController.selectTab.value = "pending";
     _requesterTaskController.fastLoad();
 
     _requesterTaskController.scrollController.addListener(() {
-      // if (scrollController.position.pixels ==
-      //     scrollController.position.maxScrollExtent) {
-      //   loadMore();
-      // }
       if (_requesterTaskController.scrollController.offset >=
               _requesterTaskController
                   .scrollController.position.maxScrollExtent &&
