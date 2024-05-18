@@ -87,7 +87,7 @@ class SignUpScreen extends StatelessWidget {
                       },
                       child: Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(right: 8.w),
+                        margin: EdgeInsets.only(left: 8.w),
                         decoration: BoxDecoration(
                             color: authController.isSelectedRole.value
                                 ? Colors.white
