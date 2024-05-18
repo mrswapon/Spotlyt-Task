@@ -8,8 +8,6 @@ import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_strings.dart';
 import '../../../../widgets/custom_text.dart';
 
-
-
 class RequesterTaskTab extends StatelessWidget {
   RequesterTaskTab({super.key});
 
@@ -30,59 +28,64 @@ class RequesterTaskTab extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Obx(() => GestureDetector(
-              onTap: () {
-               _requesterTaskController.selectTab.value="pending";
-               _requesterTaskController.fastLoad();
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: _requesterTaskController.selectTab.value=="pending"
-                        ? AppColors.primaryColor
-                        : Colors.white,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(8.r),
-                        topLeft: Radius.circular(8.r))),
-                child: Center(
-                  child: CustomText(
-                    text: AppString.submitted,
-                    fontsize: 20.h,
-                    color:  _requesterTaskController.selectTab.value=="pending"
-                        ? Colors.white
-                        : AppColors.primaryColor,
-                    fontWeight: FontWeight.w500,
+                  onTap: () {
+                    _requesterTaskController.selectTab.value = "pending";
+                    _requesterTaskController.fastLoad();
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: _requesterTaskController.selectTab.value ==
+                                "pending"
+                            ? AppColors.primaryColor
+                            : Colors.white,
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(8.r),
+                            topLeft: Radius.circular(8.r))),
+                    child: Center(
+                      child: CustomText(
+                        text: AppString.submitted,
+                        fontsize: 20.h,
+                        color: _requesterTaskController.selectTab.value ==
+                                "pending"
+                            ? Colors.white
+                            : AppColors.primaryColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            )),
+                )),
           ),
+
           ///-------------------------- completed botton----------------------->
           Expanded(
             flex: 1,
             child: Obx(() => GestureDetector(
-              onTap: () {
-                _requesterTaskController.selectTab.value="completed";
-                _requesterTaskController.fastLoad();
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color:  _requesterTaskController.selectTab.value=="pending"
-                        ? Colors.white
-                        : AppColors.primaryColor,
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(8.r),
-                        topRight: Radius.circular(8.r))),
-                child: Center(
-                  child: CustomText(
-                    text: AppString.completed,
-                    fontsize: 20.h,
-                    color:_requesterTaskController.selectTab.value=="pending"
-                        ? AppColors.primaryColor
-                        : Colors.white,
-                    fontWeight: FontWeight.w500,
+                  onTap: () {
+                    _requesterTaskController.selectTab.value = "completed";
+                    _requesterTaskController.fastLoad();
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: _requesterTaskController.selectTab.value ==
+                                "pending"
+                            ? Colors.white
+                            : AppColors.primaryColor,
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(8.r),
+                            topRight: Radius.circular(8.r))),
+                    child: Center(
+                      child: CustomText(
+                        text: AppString.completed,
+                        fontsize: 20.h,
+                        color: _requesterTaskController.selectTab.value ==
+                                "pending"
+                            ? AppColors.primaryColor
+                            : Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            )),
+                )),
           ),
         ],
       ),

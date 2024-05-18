@@ -22,7 +22,7 @@ class AuthController extends GetxController {
   final passwordCtrl = TextEditingController();
   final conPasswordCtrl = TextEditingController();
   RxBool isSelectedRole = true.obs;
-  RxString role = "client".obs;
+  RxString role = "employee".obs;
   var signUpLoading = false.obs;
   var token = "";
 
@@ -40,7 +40,7 @@ class AuthController extends GetxController {
         "fullName": fullNameCtrl.text.trim(),
         "email": emailCtrl.text.trim(),
         "password": passwordCtrl.text,
-        "role": "${role.value}",
+        "role": role.value,
       };
 
       print("=================>ROLE ${role.value}");

@@ -42,13 +42,13 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //===============================> Requester Button <===============================
+                  //===============================> Tasker Button <===============================
                   Expanded(
                     flex: 1,
                     child: Obx(() => GestureDetector(
                           onTap: () {
-                            // authController.role.value = "employee";
-                            authController.selectRole("client");
+                            // authController.role.value = "client";
+                            authController.selectRole("employee");
                             authController.isSelectedRole(true);
                           },
                           child: Container(
@@ -65,7 +65,7 @@ class SignUpScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 40.5.w, vertical: 6.5.h),
                               child: CustomText(
-                                text: AppString.client,
+                                text: AppString.tasker,
                                 fontsize: 14.h,
                                 color: authController.isSelectedRole.value
                                     ? Colors.white
@@ -76,39 +76,39 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         )),
                   ),
-                  //===============================> Tasker Button <===============================
+                  //===============================> Client Button <===============================
                   Expanded(
                     flex: 1,
                     child: Obx(() => GestureDetector(
-                          onTap: () {
-                            // authController.role.value = "client";
-                            authController.selectRole("employee");
-                            authController.isSelectedRole(false);
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.only(left: 8.w),
-                            decoration: BoxDecoration(
-                                color: authController.isSelectedRole.value
-                                    ? Colors.white
-                                    : AppColors.primaryColor,
-                                border: Border.all(
-                                    width: 1.w, color: AppColors.primaryColor),
-                                borderRadius: BorderRadius.circular(8.r)),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 40.5.w, vertical: 6.5.h),
-                              child: CustomText(
-                                text: AppString.tasker,
-                                fontsize: 14.h,
-                                color: authController.isSelectedRole.value
-                                    ? AppColors.primaryColor
-                                    : Colors.white,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                      onTap: () {
+                        // authController.role.value = "employee";
+                        authController.selectRole("client");
+                        authController.isSelectedRole(false);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.only(right: 8.w),
+                        decoration: BoxDecoration(
+                            color: authController.isSelectedRole.value
+                                ? Colors.white
+                                : AppColors.primaryColor,
+                            border: Border.all(
+                                width: 1.w, color: AppColors.primaryColor),
+                            borderRadius: BorderRadius.circular(8.r)),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 40.5.w, vertical: 6.5.h),
+                          child: CustomText(
+                            text: AppString.client,
+                            fontsize: 14.h,
+                            color: authController.isSelectedRole.value
+                                ? AppColors.primaryColor
+                                : Colors.white,
+                            fontWeight: FontWeight.w500,
                           ),
-                        )),
+                        ),
+                      ),
+                    )),
                   ),
                 ],
               ),

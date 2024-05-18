@@ -6,8 +6,9 @@ import '../../services/api_client.dart';
 import '../../services/api_constants.dart';
 import '../../utils/app_constant.dart';
 
-class  RequesterTaskController extends GetxController{
-  ScrollController scrollController =ScrollController(initialScrollOffset:0.0);
+class RequesterTaskController extends GetxController {
+  ScrollController scrollController =
+      ScrollController(initialScrollOffset: 0.0);
 
   int page = 1;
   var isFirstLoadRunning = false.obs;
@@ -15,24 +16,23 @@ class  RequesterTaskController extends GetxController{
   var totalPage = (-1);
   var currentPage = (-1);
 
-  var selectTab="pending".obs;
+  var selectTab = "pending".obs;
 
+  RxList<RequesterTaskModel> taskList = <RequesterTaskModel>[].obs;
 
-  RxList<RequesterTaskModel> taskList=<RequesterTaskModel>[].obs;
-
-  refreshLoad()async {
+  refreshLoad() async {
     page = 1;
     Response response = await ApiClient.getData(
       ApiConstants.requesterTaskApi(selectTab.value, page.toString()),
     );
     if (response.statusCode == 200) {
-      currentPage =
-      response.body['data']['attributes']['page'];
-      totalPage =
-      response.body['data']['attributes']['totalPages'];
-      taskList.value = List<RequesterTaskModel>.from(response.body['data']['attributes']['results'].map((x)=>RequesterTaskModel.fromJson(x)));
-    } else if(response.statusCode==404){
-        taskList.refresh();
+      currentPage = response.body['data']['attributes']['page'];
+      totalPage = response.body['data']['attributes']['totalPages'];
+      taskList.value = List<RequesterTaskModel>.from(response.body['data']
+              ['attributes']['results']
+          .map((x) => RequesterTaskModel.fromJson(x)));
+    } else if (response.statusCode == 404) {
+      taskList.refresh();
     } else {
       ApiChecker.checkApi(response);
     }
@@ -45,14 +45,14 @@ class  RequesterTaskController extends GetxController{
       ApiConstants.requesterTaskApi(selectTab.value, page.toString()),
     );
     if (response.statusCode == 200) {
-      currentPage =
-      response.body['data']['attributes']['page'];
-      totalPage =
-      response.body['data']['attributes']['totalPages'];
-      taskList.value = List<RequesterTaskModel>.from(response.body['data']['attributes']['results'].map((x)=>RequesterTaskModel.fromJson(x)));
-     taskList.refresh();
+      currentPage = response.body['data']['attributes']['page'];
+      totalPage = response.body['data']['attributes']['totalPages'];
+      taskList.value = List<RequesterTaskModel>.from(response.body['data']
+              ['attributes']['results']
+          .map((x) => RequesterTaskModel.fromJson(x)));
+      taskList.refresh();
       isFirstLoadRunning(false);
-    }else if(response.statusCode==404){
+    } else if (response.statusCode == 404) {
       taskList.refresh();
       isFirstLoadRunning(false);
     } else {
@@ -71,13 +71,12 @@ class  RequesterTaskController extends GetxController{
       Response response = await ApiClient.getData(
         ApiConstants.requesterTaskApi(selectTab.value, page.toString()),
       );
-      currentPage =
-          currentPage =
-      response.body['data']['attributes']['page'];
-      totalPage =
-      response.body['data']['attributes']['totalPages'];
+      currentPage = currentPage = response.body['data']['attributes']['page'];
+      totalPage = response.body['data']['attributes']['totalPages'];
       if (response.statusCode == 200) {
-        var demoList = List<RequesterTaskModel>.from(response.body['data']['attributes']['results'].map((x)=>RequesterTaskModel.fromJson(x)));
+        var demoList = List<RequesterTaskModel>.from(response.body['data']
+                ['attributes']['results']
+            .map((x) => RequesterTaskModel.fromJson(x)));
         taskList.addAll(demoList);
         taskList.refresh();
         isLoadMoreRunning(false);
@@ -85,17 +84,6 @@ class  RequesterTaskController extends GetxController{
         ApiChecker.checkApi(response);
         isLoadMoreRunning(false);
       }
-
     }
   }
-
-
-
-
-
-
-
-
-
-
 }

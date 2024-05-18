@@ -58,17 +58,17 @@ class _AddInterestScreenState extends State<AddInterestScreen> {
 
                     Expanded(
                       child: ListView.builder(
-                        ///------------------------total items and 4 items a row----------------------------->
-                        itemCount: (_controller.interestList.length / 4).ceil(),
+                        ///------------------------total items and 3 items a row----------------------------->
+                        itemCount: (_controller.interestList.length / 2).ceil(),
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.symmetric(vertical: 6.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                              ///------------------------4 items a row and when complete 4 items then create new row---------------------------->
-                              children: List.generate(4, (i) {
-                                final itemsIndex = index * 4 + i;
+                              ///------------------------3 items a row and when complete 3 items then create new row---------------------------->
+                              children: List.generate(3, (i) {
+                                final itemsIndex = index * 3 + i;
                                 print(
                                     "-------------$itemsIndex--------------$i");
 
