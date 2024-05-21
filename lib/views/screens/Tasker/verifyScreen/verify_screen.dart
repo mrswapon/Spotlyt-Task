@@ -151,7 +151,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                             hintText: AppString.nid,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return "Please enter your nid";
+                                return "Please enter your id number";
                               }
                               return null;
                             },

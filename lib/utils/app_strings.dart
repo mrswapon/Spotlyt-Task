@@ -75,7 +75,7 @@ class AppString {
   static String  timeLine = "Time Line:";
   //================================> Wallet Screen <===========================
   static String  minimumWithdrawal = "Minimum Withdrawal - R 20";
-  static String  maximumWithdrawal = "Maximum Withdrawal - R 10000";
+  static String  maximumWithdrawal = "Maximum Withdrawal - R 3000";
   static String  lastWithdrawal = "Last Withdrawal";
   static String  seeAllHistory = "See all history";
   static String  withDrawal = "Withdrawal";
