@@ -30,7 +30,7 @@ class ApiConstants{
   static String notificationEndPoint = "/notification";
 
   ///  requester task api
-  static String requesterTaskApi(String status,String page )=>"/tasks?status=$status&page=$page";
+  static String requesterTaskApi(String status,String page)=>"/tasks?status=$status&page=$page";
 
   ///======================tasker end point==========================>
   static const String taskerHomeEidPoint = "/tasks/home";
