@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,9 +6,6 @@ import 'package:get/get.dart';
 import 'package:spotlyt_task/models/tasker_task_model.dart';
 import 'package:spotlyt_task/services/api_client.dart';
 import 'package:spotlyt_task/services/api_constants.dart';
-import 'package:spotlyt_task/views/screens/Tasker/taskerBottomNavBar/tasker_bottom_controller.dart';
-
-import '../../routes/app_routes.dart';
 import '../../services/api_checker.dart';
 import '../../utils/app_constant.dart';
 import '../../views/screens/Tasker/submitTaskScreen/InnerWidget/sucessfull_dialog.dart';
@@ -104,9 +99,9 @@ class TaskerTaskController extends GetxController {
   }
 
   var loading = false.obs;
-  taskRegisterAndSubmit(String name, taskId,double price, File image) async {
+  taskRegisterAndSubmit(String name, taskId, double price, File image) async {
     loading(true);
-    var body = {"name": name, "taskId": taskId, "price":"${price/2}"};
+    var body = {"name": name, "taskId": taskId, "price": "${price / 2}"};
     var response =
         await ApiClient.postData(ApiConstants.taskRegisterEndPoint, body);
     if (response.statusCode == 200) {
@@ -136,7 +131,7 @@ class TaskerTaskController extends GetxController {
         multipartBody: multipartBody);
     if (response.statusCode == 200 || response.statusCode == 201) {
       showDialog(
-        barrierDismissible: false,
+          barrierDismissible: false,
           context: Get.context!,
           builder: (_) => const CustomSuccessAlertBox(
                 title: 'Successful',
