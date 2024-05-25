@@ -6,7 +6,7 @@ class PrivacyPolicyController extends GetxController {
   RxBool isLoading = false.obs;
   RxString content = ''.obs;
 
-//==============================> Get Privacy Policy Method <==========================
+//==========================> Get Privacy Policy Method <=======================
   getPrivacy() async {
     isLoading.value = true;
     Map<String, String> header = {'Content-Type': 'application/json'};

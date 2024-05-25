@@ -4,7 +4,6 @@ import 'package:spotlyt_task/models/requester_task_model.dart';
 import '../../services/api_checker.dart';
 import '../../services/api_client.dart';
 import '../../services/api_constants.dart';
-import '../../utils/app_constant.dart';
 
 class RequesterTaskController extends GetxController {
   ScrollController scrollController =
